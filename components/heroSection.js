@@ -15,122 +15,106 @@ import {
     StackDivider,
     HStack,
 } from '@chakra-ui/react';
-import { Inter, Plus_Jakarta_Sans } from '@next/font/google'
+import { DM_Sans, Bree_Serif } from '@next/font/google'
 
-const plus = Plus_Jakarta_Sans({ weight: ['500', '700'], subsets: ['latin'] })
+const bree = Bree_Serif({ weight: '400', subsets: ['latin'] })
 
+const dmsans = DM_Sans({ weight: '400', subsets: ['latin'] })
 
 export default function HeroSection() {
     return (
-        <Container maxW={'7xl'}>
-            <Stack
 
-                spacing={{ base: 8, md: 10 }}
-                // py={{ base: 20, md: 28 }}
-                direction={{ base: 'column', md: 'row' }}>
-                <Stack flex={1} mt="60px" spacing={{ base: 6, md: 10 }}>
+        <Stack
+            mt={{ base: '3.93em', md: '5.604375em' }}
+            pb={'6rem'}
+            direction={{ base: 'column', md: 'row' }}>
+            <Stack w={{ base: '100%', md: '31.5rem' }} mr={{ base: '0rem', md: "7.37vw" }} mt={{ base: '0em', md: '3.395625em' }} ml={{ base: '0rem', md: '16.302vw' }} align={{ base: "center", md: "start" }} >
 
-                    <Heading
-                        fontWeight={700}
+                <Box
+                    textAlign={{ base: "center", md: "start" }}
+                    w={{ base: '23.812rem', md: 'auto' }}
+                >
+                    <Text
+                        letterSpacing={{ base: '-0.79px', md: '-1px' }}
+                        lineHeight={{ base: '3rem', md: '5rem' }}
+                        fontWeight={400}
                         color="white"
-                        fontSize={{ base: '70px' }}>
-                        <Text
-                            as={'span'}
-                            className={plus.className}
-                        >
-                            The next gen payment method.
-                        </Text>
+                        fontSize={{ base: '2.75rem', md: '3.75rem' }}
+                        className={bree.className}
 
-                    </Heading>
-
-                    <Text color={'gray.500'} >
-                        Snippy is a rich coding snippets even sync them in the cloud so
-                        you can use them anywhere. All that is free!
-                    </Text>
-                    <Stack
-                        spacing={{ base: 4, sm: 6 }}
-                        direction={{ base: 'column', sm: 'row' }}>
-                        <Button
-                            borderRadius={'12px'}
-                            size={'lg'}
-                            px={6}
-                            fontWeight={500}
-                            color={'white'}
-                            bg={'#002ECF'}
-                            href={'#'}
-                            _hover={{
-                                bg: '#002ECF',
-                            }}
-
-                        >
-                            Get your card
-                        </Button>
-
-                    </Stack>
-
-                    <HStack
-                        divider={<StackDivider borderColor='gray.200' />}
-                        spacing={16}
                     >
-                        <Flex flexDirection={'row'} align="center">
-                            <Text color="#232323" fontWeight={700} className={plus.className} mr="22px" fontSize={'43px'}>50</Text>
-                            <Text color="#969696" fontWeight={500} className={plus.className} mr="22px" fontSize={'20px'}>Cards <br />requested</Text>
-                        </Flex>
-                        <Flex flexDirection={'row'} align="center" >
-                            <Text color="#232323" fontWeight={700} className={plus.className} mr="22px" fontSize={'43px'}>$1M+</Text>
-                            <Text color="#969696" fontWeight={500} className={plus.className} mr="22px" fontSize={'20px'}>Transaction <br /> completed</Text>
-                        </Flex>
+                        A better way to make payment for the next gen
+                    </Text>
 
-                    </HStack>
-                </Stack>
-                <Flex
-                    flex={1}
-                    justify={'center'}
-                    align={'center'}
-                    w={'full'}>
+                </Box>
+                <Box
+                    textAlign={{ base: "center", md: "start" }}
+                    w={{ base: '22.43rem', md: 'auto' }}
 
-                    <Box
-                        height={'auto'}
-                        boxShadow={'2xl'}
-                        width={'full'}>
 
-                        <Image
-                            alt={'Hero Image'}
+                >
+                    <Text className={dmsans.className} fontWeight={400} color={'#FFFFFF'} fontSize={{ base: '1.125rem' }} mt={{ base: '1.5rem', md: '1rem' }} mb={'2.3em'} lineHeight={{ base: '1.5rem', md: '1.75rem' }}
+                    >
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                    </Text>
+                </Box>
+                <HStack spacing={{ base: '0.85rem', md: '2.3rem' }}  >
+                    <Image
+                        alt={'Hero Image'}
 
-                            align={'center'}
+                        align={'center'}
+                        width={{ base: '10.3rem', md: '10.677vw' }}
+                        height={{ base: '3.36rem', md: '7.39vh' }}
+                        src={
+                            '/playstore.png'
+                        }
+                    />
+                    <Image
+                        alt={'Hero Image'}
 
-                            src={
-                                '/heroCard.png'
-                            }
-                        />
-                    </Box>
-                </Flex>
+                        align={'center'}
+                        width={{ base: '10.37rem', md: '10.75vw' }}
+                        height={{ base: '3.43rem', md: '7.55vh' }}
+                        src={
+                            '/appstore.png'
+                        }
+                    />
+
+                </HStack>
+                {/* 
+                <Flex flexDirection={'row'} mr={'1.87rem'} align="center">
+                    <Text className={dmsans.className} fontWeight={400} color={'#FFFFFF'} fontSize={{ base: '1rem' }} lineHeight={'2.63rem'} letterSpacing={'0px'} opacity={'0.6'}></Text>
+
+                </Flex> */}
+
+
             </Stack>
-        </Container>
+            <Flex
+                flex={1}
+                justify={'center'}
+                align={'center'}
+                w={'full'}>
+
+                <Box
+                    height={'auto'}
+                    boxShadow={'2xl'}
+                    width={{ base: 'auto', md: 'full' }}
+                    mt={{ base: '3.93rem', md: '0px' }}
+                >
+
+                    <Image
+                        alt={'Hero Image'}
+
+                        align={'center'}
+                        width={{ base: '18.53rem', md: '35.26vw' }}
+                        height={{ base: '17.06rem', md: '68.87vh' }}
+                        src={
+                            '/heroPhones.png'
+                        }
+                    />
+                </Box>
+            </Flex>
+        </Stack>
+
     );
 }
-
-const PlayIcon = createIcon({
-    displayName: 'PlayIcon',
-    viewBox: '0 0 58 58',
-    d:
-        'M28.9999 0.562988C13.3196 0.562988 0.562378 13.3202 0.562378 29.0005C0.562378 44.6808 13.3196 57.438 28.9999 57.438C44.6801 57.438 57.4374 44.6808 57.4374 29.0005C57.4374 13.3202 44.6801 0.562988 28.9999 0.562988ZM39.2223 30.272L23.5749 39.7247C23.3506 39.8591 23.0946 39.9314 22.8332 39.9342C22.5717 39.9369 22.3142 39.8701 22.0871 39.7406C21.86 39.611 21.6715 39.4234 21.5408 39.1969C21.4102 38.9705 21.3421 38.7133 21.3436 38.4519V19.5491C21.3421 19.2877 21.4102 19.0305 21.5408 18.8041C21.6715 18.5776 21.86 18.3899 22.0871 18.2604C22.3142 18.1308 22.5717 18.064 22.8332 18.0668C23.0946 18.0696 23.3506 18.1419 23.5749 18.2763L39.2223 27.729C39.4404 27.8619 39.6207 28.0486 39.7458 28.2713C39.8709 28.494 39.9366 28.7451 39.9366 29.0005C39.9366 29.2559 39.8709 29.507 39.7458 29.7297C39.6207 29.9523 39.4404 30.1391 39.2223 30.272Z',
-});
-
-export const Blob = (props) => {
-    return (
-        <Icon
-            width={'100%'}
-            viewBox="0 0 578 440"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            {...props}>
-            <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M239.184 439.443c-55.13-5.419-110.241-21.365-151.074-58.767C42.307 338.722-7.478 282.729.938 221.217c8.433-61.644 78.896-91.048 126.871-130.712 34.337-28.388 70.198-51.348 112.004-66.78C282.34 8.024 325.382-3.369 370.518.904c54.019 5.115 112.774 10.886 150.881 49.482 39.916 40.427 49.421 100.753 53.385 157.402 4.13 59.015 11.255 128.44-30.444 170.44-41.383 41.683-111.6 19.106-169.213 30.663-46.68 9.364-88.56 35.21-135.943 30.551z"
-                fill="currentColor"
-            />
-        </Icon>
-    );
-};

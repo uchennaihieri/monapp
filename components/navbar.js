@@ -8,21 +8,23 @@ import {
     Collapse,
     Icon,
     Link,
+    Img,
     Popover,
     PopoverTrigger,
     PopoverContent,
     useColorModeValue,
     useDisclosure,
 } from '@chakra-ui/react';
-import { Poppins } from '@next/font/google'
+import { DM_Sans } from '@next/font/google'
 import {
     HamburgerIcon,
     CloseIcon,
     ChevronDownIcon,
 } from '@chakra-ui/icons';
 import Image from 'next/image';
+import { RiMenu3Line } from 'react-icons/ri';
 
-const poppins = Poppins({ weight: '500', subsets: ['latin'] })
+const dmsans = DM_Sans({ weight: ['500', '700'], subsets: ['latin'] })
 
 export default function Navbar() {
 
@@ -31,79 +33,34 @@ export default function Navbar() {
     const { isOpen, onToggle } = useDisclosure();
 
     return (
-        <Box className={poppins.className}>
+        <Box className={dmsans.className}>
             <Flex
                 color={useColorModeValue('gray.600', 'white')}
-                minH={'60px'}
-                py={{ base: '54px' }}
-                px={{ base: '47px' }}
+                pt={{ base: '2.875rem', md: '4.08vh' }}
+                pl={{ base: '1.25rem', md: '15.885vw' }}
                 align={'center'}>
-                <Flex
-                    flex={{ base: 1, md: 'auto' }}
-                    ml={{ base: -2 }}
-                    display={{ base: 'flex', md: 'none' }}>
-                    <IconButton
-                        onClick={onToggle}
-                        icon={
-                            isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
-                        }
-                        variant={'ghost'}
-                        aria-label={'Toggle Navigation'}
-                    />
-                </Flex>
-                <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-                    <Image src="/logo.svg" width={212.3} height={64}
-                        priority />
+
+                <Flex justify={{ base: 'start', md: 'start' }}>
+                    <Img src="/logo.png" width={{ base: '8.625rem', md: "14.4275rem" }} height={{ base: '1.569rem', md: "2.625rem" }} />
                 </Flex>
 
-                <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
+                <Flex pl={{ base: '36.154vw' }} justify={{ base: 'center', md: 'start' }}>
                     <Flex display={{ base: 'none', md: 'flex' }} >
                         <DesktopNav />
                     </Flex>
                 </Flex>
+                <Flex
+                    flex={{ base: 1, md: 'auto' }}
+                    justify="end"
+                    display={{ base: 'flex', md: 'none' }}
+                    marginRight="1.25rem"
+                >
 
-                <Stack
-                    flex={{ base: 1, md: 0 }}
-                    justify={'flex-end'}
-                    direction={'row'}
-                    spacing={6}>
-                    <Button
-                        as={'a'}
-                        fontWeight={500}
-                        variant={'outline'}
-                        width="131px"
-                        height="49px"
-                        padding={'10px'}
-                        borderRadius={'10px'}
-                        borderColor={'#002ECF'}
-                        color={'white'}
-                        fontSize={'18px'}
-                        gap={'10px'}
-                        href={'#'}
-                        _hover={{
-                            bg: '#002ECF',
-                        }}>
-                        Sign In
-                    </Button>
-                    <Button
-                        as={'a'}
-                        display={{ base: 'none', md: 'inline-flex' }}
-                        width="131px"
-                        height="49px"
-                        padding={'10px'}
-                        borderRadius={'10px'}
-                        fontSize={'18px'}
-                        gap={'10px'}
-                        fontWeight={500}
-                        color={'white'}
-                        bg={'#002ECF'}
-                        href={'#'}
-                        _hover={{
-                            bg: '#0110A4',
-                        }}>
-                        Sign Up
-                    </Button>
-                </Stack>
+                    {
+                        isOpen ? <CloseIcon color="white" w={5} h={5} onClick={onToggle} /> : <RiMenu3Line color="white" w={5} h={5} onClick={onToggle} />
+                    }
+
+                </Flex>
             </Flex>
 
             <Collapse in={isOpen} animateOpacity>
@@ -118,24 +75,23 @@ const DesktopNav = () => {
     const linkHoverColor = useColorModeValue('gray.400', 'white');
 
     return (
-        <Stack direction={'row'} spacing={'33px'} align={'center'}>
+        <Stack direction={'row'} spacing={'2.875rem'} align={'center'}>
             {NAV_ITEMS.map((navItem) => (
-                <Box key={navItem.label}>
+                <Box key={navItem.label} align={'center'} justify={'center'} role="group" position={'relative'}>
 
                     <Link
-                        p={2}
+
                         href={navItem.href ?? '#'}
-                        fontSize={'sm'}
+                        fontSize={'1rem'}
                         fontWeight={500}
                         color={linkColor}
                         _hover={{
                             textDecoration: 'none',
-                            color: linkHoverColor,
                         }}>
                         {navItem.label}
                     </Link>
 
-
+                    <Img position={'absolute'} w={'0em'} _groupHover={{ width: "100%" }} src="line.svg" height="0.6em" transition={'width .5s ease-in-out'} />
                 </Box>
             ))}
         </Stack>
@@ -209,13 +165,20 @@ const MobileNavItem = ({ label, children, href }) => {
 
 const NAV_ITEMS = [
     {
-        label: 'Home'
+        label: 'Pricing',
+        href: '/pricing'
 
     },
     {
-        label: 'Pricing'
+        label: 'Support'
     },
     {
-        label: 'Contact Us'
+        label: 'Sign in',
+        href: '/auth?task=signin'
+    },
+    {
+        label: 'Get Started',
+        href: '/auth?task=signup'
     }
+
 ];

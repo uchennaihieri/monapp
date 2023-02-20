@@ -1,16 +1,14 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { Inter, Poppins } from '@next/font/google'
-import styles from '@/styles/Home.module.css'
 import Navbar from '@/components/navbar'
 import HeroSection from '@/components/heroSection'
 import Features from '@/components/features'
 import DataSection from '@/components/dataSection'
 import CardSection from '@/components/cardSection'
 import { Box } from '@chakra-ui/react'
-import BlueSection from '@/components/blueSection'
-import ReadySection from '@/components/readySection'
 import FooterSection from '@/components/footerSection'
+import BlackSection from '@/components/blackSection'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -23,17 +21,17 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <Box bg="#000000">
+      <main bg="#F5F5F5">
+        <Box bg="#000000" >
           <div><Navbar /></div>
           <div><HeroSection /></div>
-          <div><Features /></div>
-          <div><DataSection /></div>
-          <div><CardSection /></div>
-          <div><BlueSection /></div>
-          <div><ReadySection /></div>
-          <div><FooterSection /></div>
+
         </Box>
+        <div><Features /></div>
+        <div><DataSection /></div>
+        <div><CardSection /></div>
+        <div><BlackSection /></div>
+        <div><FooterSection /></div>
       </main>
 
     </>
