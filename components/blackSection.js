@@ -47,7 +47,7 @@ export default function BlackSection() {
                         fontSize={{ base: '0.7rem', md: '1rem' }}
                         className={dmsans.className}
 
-                    >Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.</Text>
+                    >Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard.</Text>
                 </Box>
                 <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
                     <Feature

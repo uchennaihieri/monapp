@@ -72,7 +72,7 @@ export default function DataSection() {
                             fontSize={{ base: '1rem', md: '1.0625rem' }}
                             className={dmsans.className}
                         >
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,
                         </Text>
 
                         <List spacing={1} mb={{ base: '0.875rem', md: "1.56rem" }}>
