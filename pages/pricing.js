@@ -79,7 +79,7 @@ const Pricing = () => {
                             }}
                             textAlign={'center'}>
                             <Heading size={'2xl'}>
-                                The Right Plan for <Text color="purple.400">Your Business</Text>
+                                Unbelievable Prices  <Text color="#3183FF">just for you</Text>
                             </Heading>
                         </Stack>
                         <Stack
@@ -105,11 +105,11 @@ const Pricing = () => {
                     <PackageTier
                         title={'Lorem Plus'}
                         checked={true}
-                        typePlan="$32.00"
+                        typePlan="&#8358;1,500"
                         options={options}
                     />
                     <Divider />
-                    <PackageTier title={'Lorem Pro'} typePlan="$50.00" options={options} />
+                    <PackageTier title={'Lorem Pro'} typePlan="Free" options={options} />
                 </Stack>
             </Box>
         </Box>

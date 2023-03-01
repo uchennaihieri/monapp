@@ -34,10 +34,37 @@ import {
     FiSearch,
     FiBell
 } from "react-icons/fi"
+import {
+    AuthAction,
+    useAuthUser,
+    withAuthUser,
+    withAuthUserTokenSSR,
+} from 'next-firebase-auth'
+import { auth, signOut } from '@/services/firebase';
+import { useRouter } from 'next/router';
 
-export default function Dashboard() {
+
+function Dashboard({ person }) {
+    const AuthUser = useAuthUser()
+    const router = useRouter()
     const [display, changeDisplay] = useState('hide')
     const [value, changeValue] = useState(1)
+
+
+    const goToLogin = () => {
+        router.push('/auth')
+    }
+
+
+    const signMeOut = () => {
+        signOut(auth).then(() => {
+            goToLogin()
+        }).catch((error) => {
+            // An error happened.
+        });
+    }
+
+
     return (
         <Flex
             h={[null, null, "100vh"]}
@@ -75,7 +102,8 @@ export default function Dashboard() {
                     </Flex>
                     <Flex flexDir="column" alignItems="center" mb={10} mt={5}>
                         <Avatar my={2} src="avatar-1.jpg" />
-                        <Text textAlign="center">Calvin West</Text>
+                        <Text textAlign="center">{person.firstName + " " + person.lastName}</Text>
+                        <Button fontWeight={600} variant={'link'} color='white' mt="1em" onClick={signMeOut}>logout</Button>
                     </Flex>
                 </Flex>
             </Flex>
@@ -227,3 +255,38 @@ export default function Dashboard() {
         </Flex>
     )
 }
+
+
+export const getServerSideProps = withAuthUserTokenSSR({
+    whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
+})(async ({ AuthUser }) => {
+    // Optionally, get other props.
+    const token = await AuthUser.getIdToken()
+    const UID = AuthUser.id
+    const response = await fetch(`https://us-central1-monapp-33057.cloudfunctions.net/app/api/user/${UID}`, {
+        method: 'GET',
+        headers: {
+            Authorization: token,
+        },
+    })
+
+    const data = await response.json()
+    if (!data.verified) {
+        return {
+            redirect: {
+                destination: '/verifyUser',
+                permanent: false,
+            },
+        }
+    }
+
+    return {
+        props: {
+            person: data,
+        },
+    }
+})
+
+export default withAuthUser()(Dashboard)
+
+

@@ -170,7 +170,8 @@ const NAV_ITEMS = [
 
     },
     {
-        label: 'Support'
+        label: 'Support',
+        href: '/support'
     },
     {
         label: 'Sign in',
