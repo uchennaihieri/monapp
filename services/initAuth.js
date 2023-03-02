@@ -14,8 +14,8 @@ const initAuth = () => {
         },
         firebaseAdminInitConfig: {
             credential: {
-                projectId: 'monapp-33057',
-                clientEmail: 'firebase-adminsdk-m6g22@monapp-33057.iam.gserviceaccount.com',
+                projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+                clientEmail: process.env.NEXT_PUBLIC_FIREBASE_CLIENT_EMAIL,
                 // The private key must not be accessible on the client side.
                 privateKey: process.env.FIREBASE_PRIVATE_KEY,
             },
@@ -24,9 +24,9 @@ const initAuth = () => {
         // Use application default credentials (takes precedence over firebaseAdminInitConfig if set)
         // useFirebaseAdminDefaultCredential: true,
         firebaseClientInitConfig: {
-            apiKey: process.env.FIREBASE_PUBLIC_API_KEY, // required
-            authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-            projectId: process.env.FIREBASE_PROJECT_ID,
+            apiKey: process.env.NEXT_PUBLIC_FIREBASE_PUBLIC_API_KEY, // required
+            authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+            projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
         },
         cookies: {
             name: 'ExampleApp', // required
