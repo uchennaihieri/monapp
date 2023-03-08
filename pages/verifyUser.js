@@ -1,4 +1,4 @@
-import { bvnN } from '@/recoil/atoms';
+import { bvnN, pinID } from '@/recoil/atoms';
 import { Box, Button, ButtonProps, Flex, Image, Text, useColorModeValue } from '@chakra-ui/react';
 import { Bree_Serif } from '@next/font/google';
 import { AuthAction, withAuthUser, withAuthUserTokenSSR } from 'next-firebase-auth';
@@ -14,7 +14,11 @@ const bree = Bree_Serif({ weight: '400', subsets: ['latin'] })
 const VerifyUser = ({ person }) => {
 
     const router = useRouter()
+    const [tokenPin, setTokenPin] = useRecoilState(pinID);
     const [verificationNumber, setVerificationNumber] = useRecoilState(bvnN);
+
+
+
     const config = {
         first_name: person.firstName,
         last_name: person.lastName,
@@ -24,17 +28,38 @@ const VerifyUser = ({ person }) => {
         is_test: false,  //set this to through for a test
         callback: (response) => {
             if (response.code == "00") {
-                axios.post('https://us-central1-monapp-33057.cloudfunctions.net/app/api/verifyBvn', {
-                    phoneNumber: `${response.data.bvn_data.phoneNumber1}`,
+
+
+                fetch("http://127.0.0.1:5001/monapp-33057/us-central1/app/api/verifyBvn", {
+
+                    // Adding method type
+                    method: "POST",
+
+                    // Adding body or contents to send
+                    body: JSON.stringify({
+                        "phoneNumber": person.phoneNumber
+                    }),
+
+                    // Adding headers to the request
+                    headers: {
+                        'Access-Control-Allow-Origin': '*',
+                        "Content-type": "application/json; charset=UTF-8"
+                    }
+                }).then(function (res) {
+                    return res.json();
                 })
-                    .then(function (res) {
-                        setVerificationNumber(response.data.bvn_data.phoneNumber1)
+                    // Converting to JSON
+                    .then(function (data) {
+                        setTokenPin(data.pinId)
+                        setVerificationNumber(data.to)
                         router.push('/confirmOtp')
-                        console.log(response);
                     })
                     .catch(function (error) {
                         console.log(error);
                     })
+
+
+
             } else if (response.code == "01") {
 
             } else if (response.code == "02") {
@@ -43,7 +68,12 @@ const VerifyUser = ({ person }) => {
         }
     }
 
+
+
+
     const verifyWithIdentity = useIdentityPayKYC(config)
+
+
 
     return (
         <Flex
@@ -78,6 +108,7 @@ const VerifyUser = ({ person }) => {
         </Flex >
     );
 }
+
 
 
 

@@ -29,7 +29,7 @@ import { AiOutlineLeft } from 'react-icons/ai';
 import { RiEyeCloseFill, RiEyeFill } from 'react-icons/ri';
 import { useForm } from "react-hook-form";
 import { useRouter } from 'next/router'
-import { auth, createUserWithEmailAndPassword, db, doc, setDoc, signInWithEmailAndPassword } from '@/services/firebase';
+import { auth, createUserWithEmailAndPassword, db, doc, serverTimestamp, setDoc, signInWithEmailAndPassword } from '@/services/firebase';
 import { AuthAction, withAuthUser } from 'next-firebase-auth';
 
 const dmsansBold = DM_Sans({ weight: '500', subsets: ['latin'] })
@@ -328,10 +328,12 @@ export const Signup = () => {
                 console.log(user)
 
                 await setDoc(doc(db, "users", `${user.uid}`), {
+                    userID: `${user.uid}`,
                     firstName: `${data.firstName}`,
                     lastName: `${data.lastName}`,
                     email: `${data.email}`,
-                    phoneNumber: `${data.phoneNumber}`
+                    phoneNumber: `${data.phoneNumber}`,
+                    createdAt: serverTimestamp()
                 });
 
                 setLoadingState(false)

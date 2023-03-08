@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     Flex,
     Heading,
@@ -19,7 +19,13 @@ import {
     Button,
     Input,
     InputGroup,
-    InputLeftElement
+    InputLeftElement,
+    Image,
+    Switch,
+    PinInputField,
+    PinInput,
+    HStack,
+    Textarea
 } from '@chakra-ui/react'
 import {
     FiHome,
@@ -40,8 +46,12 @@ import {
     withAuthUser,
     withAuthUserTokenSSR,
 } from 'next-firebase-auth'
-import { auth, signOut } from '@/services/firebase';
+import { auth, db, doc, onSnapshot, signOut } from '@/services/firebase';
 import { useRouter } from 'next/router';
+import { RiMailSendFill } from 'react-icons/ri';
+import { GiShop } from 'react-icons/gi';
+import { MdBlock, MdFiberPin, MdPin } from 'react-icons/md';
+import { BsDot } from 'react-icons/bs';
 
 
 function Dashboard({ person }) {
@@ -49,6 +59,37 @@ function Dashboard({ person }) {
     const router = useRouter()
     const [display, changeDisplay] = useState('hide')
     const [value, changeValue] = useState(1)
+    const [otherValue, changeOtherValue] = useState(1)
+    const [wallet, setWallet] = useState(null)
+
+
+    useEffect(() => {
+
+
+        getWallet()
+
+    }, [])
+
+    console.log(person)
+
+
+    const getWallet = async () => {
+
+
+        const unsub = onSnapshot(doc(db, "wallet", `${person.id}`), (doc) => {
+            setWallet({ id: doc.id, ...doc.data() });
+        });
+
+        return unsub
+
+    }
+
+    let Naira = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'NGN',
+    });
+
+    const amount = wallet?.merchantBalance + wallet?.personalBalance
 
 
     const goToLogin = () => {
@@ -89,29 +130,46 @@ function Dashboard({ person }) {
                         flexDir="column"
                         as="nav"
                     >
-                        <Heading
-                            mt={50}
-                            mb={[25, 50, 100]}
-                            fontSize={["4xl", "4xl", "2xl", "3xl", "4xl",]}
-                            alignSelf="center"
-                            letterSpacing="tight"
-                        >
-                            Monapp.
-                        </Heading>
+                        <Image src={'/logo.png'} width={{ base: '8.625rem', md: "14.4275rem" }} height={{ base: '1.569rem', md: "2.625rem" }} mt={50}
+                            mb={{ base: 5, md: 100 }} alignSelf="center" />
+
 
                     </Flex>
-                    <Flex flexDir="column" alignItems="center" mb={10} mt={5}>
-                        <Avatar my={2} src="avatar-1.jpg" />
-                        <Text textAlign="center">{person.firstName + " " + person.lastName}</Text>
+                    <Flex flexDir="column" alignItems="center" mb={10} mt={5} display={{ base: 'none', md: "flex" }}>
+                        <Flex flexDir="column" align="center" justify="center" bg="#ffffff" w="80%" borderRadius={'12px'} color="#000000" p="10px" mb="20px" position={'relative'} _hover={{
+                            bg: "gray.200",
+                            cursor: "pointer"
+                        }}>
+
+                            <Image src={'/seller.png'} w={20} h={20}
+                                alignSelf="center" />
+                            <Text fontWeight={600} > Merchants</Text>
+
+                        </Flex>
+
+                        <Flex flexDir="row" align="center" justify="center"> <Avatar my={2} src="avatar-1.jpg" mr="10px" />
+                            <Text textAlign="center">{person.firstName + " " + person.lastName}</Text> </Flex>
+
+
                         <Button fontWeight={600} variant={'link'} color='white' mt="1em" onClick={signMeOut}>logout</Button>
                     </Flex>
+
+                    <Flex flexDir="row" alignItems="center" my="20px" display={{ base: 'flex', md: "none" }} >
+                        <Button colorScheme='gray' fontWeight={600} variant={'link'} color='white' mr="30px" >
+                            Merchants
+                        </Button>
+                        <Button fontWeight={600} variant={'link'} color='white' onClick={signMeOut}>logout</Button>
+
+
+                    </Flex>
+
                 </Flex>
             </Flex>
 
             {/* Column 2 */}
             <Flex
                 w={["100%", "100%", "60%", "60%", "55%"]}
-                p="3%"
+                p={{ base: "5%", md: "3%" }}
                 flexDir="column"
                 overflow="auto"
                 minH="100vh"
@@ -121,10 +179,10 @@ function Dashboard({ person }) {
                     mb={4}
                     letterSpacing="tight"
                 >
-                    Welcome back, <Flex display="inline-flex" fontWeight="bold">Calvin</Flex>
+                    Welcome back, <Flex display="inline-flex" fontWeight="bold">{person.firstName}</Flex>
                 </Heading>
                 <Text color="gray" fontSize="sm">My Balance</Text>
-                <Text fontWeight="bold" fontSize="2xl">$5,750.20</Text>
+                <Text fontWeight="bold" fontSize="2xl">{Naira.format(amount)}</Text>
 
                 <Flex justifyContent="space-between" mt={8}>
                     <Flex align="flex-end">
@@ -198,7 +256,7 @@ function Dashboard({ person }) {
             {/* Column 3 */}
             <Flex
                 w={["100%", "100%", "30%"]}
-                bgColor="#F5F5F5" p="3%"
+                bgColor="#F5F5F5" p={{ base: "5%", md: "3%" }}
                 flexDir="column"
                 overflow="auto"
                 minW={[null, null, "300px", "300px", "400px"]}
@@ -211,48 +269,112 @@ function Dashboard({ person }) {
 
                 {value == 1 &&
                     <Box
-                        borderRadius="25px"
+
                         mt={4}
                         w="100%"
                         h="200px"
-                        bgGradient="linear(to-t, #B57295, #29259A)"
+                        position={'relative'}
+
+
                     >
-                        <Flex p="1em" color="#fff" flexDir="column" h="100%" justify="space-between">
-                            <Flex justify="space-between" w="100%" align="flex-start">
-                                <Flex flexDir="column">
-                                    <Text color="gray.400">Current Balance</Text>
-                                    <Text fontWeight="bold" fontSize="xl">$5,750.20</Text>
-                                </Flex>
-                                <Flex align="center">
-                                    <Icon mr={2} as={FiCreditCard} />
-                                    <Text>Rise.</Text>
-                                </Flex>
-                            </Flex>
-                            <Text mb={4}>**** **** **** 1289</Text>
-                            <Flex align="flex-end" justify="space-between">
-                                <Flex>
-                                    <Flex flexDir="column" mr={4}>
-                                        <Text textTransform="uppercase" fontSize="xs">Valid Thru</Text>
-                                        <Text fontSize="lg">12/23</Text>
-                                    </Flex>
-                                    <Flex flexDir="column">
-                                        <Text textTransform="uppercase" fontSize="xs">CVV</Text>
-                                        <Text fontSize="lg">***</Text>
-                                    </Flex>
-                                </Flex>
-                                <Icon as={FiCreditCard} />
-                            </Flex>
-                        </Flex>
+                        <Image src={wallet?.qrImage} left={'9em'} top={'3em'} alignSelf="center" position={'absolute'}
+                        />
+                        <Image src={'/cardBack.png'} width={'100%'} height={'100%'}
+                        />
                     </Box>
                 }
 
                 <Flex justifyContent="center" mt={2}>
-                    <Button bgColor={value == 1 ? "gray.600" : "gray.400"} size="xs" mx={1} onClick={() => changeValue(1)} />
+                    <Button bgColor={"gray.600"} size="xs" mx={1} onClick={() => changeValue(1)} />
 
                 </Flex>
 
+                <Flex flexDir="column" my={4}>
+                    <Flex justify="space-between">
+                        <Text>Name on card</Text>
+                        <Text fontWeight="bold">{person.firstName + " " + person.lastName}</Text>
+                    </Flex>
+                    <Flex justify="space-between" my={2}>
+                        <Text>Monapp Number</Text>
+
+                        <Text fontWeight="bold">{wallet?.accountNumber}</Text>
+                    </Flex>
+
+                </Flex>
+                <Flex my={4}>
+
+                    <Avatar icon={<RiMailSendFill />} ml={2} color="#fff" bgColor="gray.600" onClick={() => changeOtherValue(1)} />
+                    <Avatar icon={<MdFiberPin />} ml={2} color="#fff" bgColor="gray.600" onClick={() => changeOtherValue(2)} />
+                    <Avatar icon={<MdBlock />} ml={2} color="#fff" bgColor="gray.600" onClick={() => changeOtherValue(3)} />
+                </Flex>
+                {otherValue == 1 && <>
+                    <Heading letterSpacing="tight" size="md" >Deliver card</Heading>
+
+                    <Text color="gray" mt={10} mb={2}>Delivery address</Text>
+                    <InputGroup>
+
+                        <Input type="number" placeholder="xxxx xxxx xxxx xxxx" />
+                    </InputGroup>
+                    <Text color="gray" mt={4} mb={2}>Delivery contact</Text>
+                    <InputGroup>
+
+                        <Input type="number" placeholder="07012******" />
+                    </InputGroup>
+                    <Button disabled mt={4} bgColor="blackAlpha.900" _hover={{ bgColor: "blackAlpha.700" }} color="#fff" p={7} borderRadius={15}>Send card to me</Button>
+                </>
+                }
+
+                {otherValue == 2 && <>
+                    <Heading letterSpacing="tight" size="md" >Reset Pin</Heading>
+
+                    <Text color="gray" mt={10} mb={2}>Old Pin</Text>
+                    <HStack>
+                        <PinInput>
+                            <PinInputField />
+                            <PinInputField />
+                            <PinInputField />
+                            <PinInputField />
+                        </PinInput>
+                    </HStack>
+                    <Text color="gray" mt={4} mb={2}>New Pin</Text>
+                    <InputGroup>
+                        <HStack>
+                            <PinInput>
+                                <PinInputField />
+                                <PinInputField />
+                                <PinInputField />
+                                <PinInputField />
+                            </PinInput>
+                        </HStack>
+                    </InputGroup>
+                    <Button disabled mt={4} bgColor="blackAlpha.900" _hover={{ bgColor: "blackAlpha.700" }} color="#fff" p={7} borderRadius={15}>Reset my pin</Button>
+                </>
+                }
+
+
+                {otherValue == 3 && <>
+                    <Heading letterSpacing="tight" size="md" >Block transactions</Heading>
+
+                    <Text color="gray" mt={10} mb={2}>Reason for blocking</Text>
+                    <HStack>
+                        <Textarea placeholder='' />
+                    </HStack>
+                    <Text color="gray" mt={4} mb={2}>Pin</Text>
+                    <InputGroup>
+                        <HStack>
+                            <PinInput>
+                                <PinInputField />
+                                <PinInputField />
+                                <PinInputField />
+                                <PinInputField />
+                            </PinInput>
+                        </HStack>
+                    </InputGroup>
+                    <Button disabled mt={4} bgColor="blackAlpha.900" _hover={{ bgColor: "blackAlpha.700" }} color="#fff" p={7} borderRadius={15}>Block now</Button>
+                </>
+                }
             </Flex>
-        </Flex>
+        </Flex >
     )
 }
 
