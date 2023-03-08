@@ -165,14 +165,7 @@ export const Signin = () => {
             .then(async (userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
-                console.log(user)
-
-                await setDoc(doc(db, "users", `${user.uid}`), {
-                    firstName: `${data.firstName}`,
-                    lastName: `${data.lastName}`,
-                    email: `${data.email}`,
-                    phoneNumber: `${data.phoneNumber}`
-                });
+                router.push('/Dashboard')
                 setLoadingState(false)
             })
             .catch((error) => {
@@ -334,8 +327,8 @@ export const Signup = () => {
                     email: `${data.email}`,
                     phoneNumber: `${data.phoneNumber}`,
                     createdAt: serverTimestamp()
-                });
-
+                })
+                verifyUser()
                 setLoadingState(false)
             })
             .catch((error) => {
