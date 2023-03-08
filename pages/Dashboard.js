@@ -70,7 +70,6 @@ function Dashboard({ person }) {
 
     }, [])
 
-    console.log(person)
 
 
     const getWallet = async () => {
@@ -147,8 +146,8 @@ function Dashboard({ person }) {
 
                         </Flex>
 
-                        <Flex flexDir="row" align="center" justify="center"> <Avatar my={2} src="avatar-1.jpg" mr="10px" />
-                            <Text textAlign="center">{person.firstName + " " + person.lastName}</Text> </Flex>
+                        <Flex flexDir="row" align="center" justify="center"> <Avatar my={2} name={person.firstName + " " + person.lastName} src="avatar-1.jpg" mr="10px" />
+                            <Text fontWeight={600} textAlign="center">{person.firstName + " " + person.lastName}</Text> </Flex>
 
 
                         <Button fontWeight={600} variant={'link'} color='white' mt="1em" onClick={signMeOut}>logout</Button>
