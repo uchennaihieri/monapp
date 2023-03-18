@@ -263,7 +263,6 @@ function Dashboard({ person }) {
 
 
                 {!myTransactions && <>
-
                 </>}
 
 

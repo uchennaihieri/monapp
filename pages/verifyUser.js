@@ -172,7 +172,7 @@ const VerifyUser = ({ person }) => {
                         <ModalHeader >Hello {person?.firstName}</ModalHeader>
                         <ModalCloseButton />
                         <ModalBody>
-                            <Text className={roboto.className} my="2rem">It's been a while you logged in, Please reauthenticate and try again</Text>
+                            <Text className={roboto.className} my="2rem">It&#39;s been a while you logged in, Please reauthenticate and try again</Text>
 
                             <Box
                             >
@@ -241,7 +241,7 @@ const VerifyUser = ({ person }) => {
                 >Support</Button>
             </Flex>
             <Box mb={{ base: '2.75rem', md: "5.06rem" }}>
-                <Image src={'/footerlogo.png'} w={'14.17rem'} h={'3.06rem'} />
+                <Image src={'/footerlogo.png'} alt='' w={'14.17rem'} h={'3.06rem'} />
             </Box>
 
             <Box m="0" mb="2.92rem" p="0">
@@ -282,7 +282,7 @@ export const Verify = ({ person }) => {
             if (response.code == "00") {
 
 
-                fetch("http://127.0.0.1:5001/monapp-33057/us-central1/app/api/verifyBvn", {
+                fetch("https://us-central1-monapp-33057.cloudfunctions.net/app/api/verifyBvn", {
 
                     // Adding method type
                     method: "POST",
@@ -422,7 +422,7 @@ export const getServerSideProps = withAuthUserTokenSSR({
     // Optionally, get other props.
     const token = await AuthUser.getIdToken()
     const UID = AuthUser.id
-    const response = await fetch(`http://127.0.0.1:5001/monapp-33057/us-central1/app/api/user/${UID}`, {
+    const response = await fetch(`https://us-central1-monapp-33057.cloudfunctions.net/app/api/user/${UID}`, {
         method: 'GET',
         headers: {
             Authorization: token,

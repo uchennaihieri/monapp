@@ -130,91 +130,91 @@ app.post('/api/verifyOtp', (req, res) => {
 })
 
 
-app.post('/api/getBanks', (req, res) => {
-    (async () => {
-        try {
-            const options = {
-                method: 'POST',
-                headers: { accept: 'text/plain', 'content-type': 'application/json' },
-                body: JSON.stringify({ clientId: process.env.QOREID_CLIENT, secret: process.env.QOREID_SECRET })
-            };
+// app.post('/api/getBanks', (req, res) => {
+//     (async () => {
+//         try {
+//             const options = {
+//                 method: 'POST',
+//                 headers: { accept: 'text/plain', 'content-type': 'application/json' },
+//                 body: JSON.stringify({ clientId: process.env.QOREID_CLIENT, secret: process.env.QOREID_SECRET })
+//             };
 
-            fetch('https://api.qoreid.com/token', options)
-                .then(response => response.json())
-                .then(response => {
-                    const options2 = {
-                        method: 'GET',
-                        headers: {
-                            accept: 'application/json',
-                            authorization: `Bearer ${response.accessToken}`
-                        }
-                    };
+//             fetch('https://api.qoreid.com/token', options)
+//                 .then(response => response.json())
+//                 .then(response => {
+//                     const options2 = {
+//                         method: 'GET',
+//                         headers: {
+//                             accept: 'application/json',
+//                             authorization: `Bearer ${response.accessToken}`
+//                         }
+//                     };
 
-                    fetch('https://api.qoreid.com/v1/banks/bvn-nuban', options2)
-                        .then(response => response.json())
-                        .then(response => {
-                            return res.send(response)
-                        })
-                        .catch(err => console.error(err));
-                }
-                )
-                .catch(err => console.error(err));
+//                     fetch('https://api.qoreid.com/v1/banks/bvn-nuban', options2)
+//                         .then(response => response.json())
+//                         .then(response => {
+//                             return res.send(response)
+//                         })
+//                         .catch(err => console.error(err));
+//                 }
+//                 )
+//                 .catch(err => console.error(err));
 
-        } catch (error) {
-            console.log(error)
-            return res.send(error)
-        }
-    })();
+//         } catch (error) {
+//             console.log(error)
+//             return res.send(error)
+//         }
+//     })();
 
-})
-
-
-app.post('/api/getBankData', (req, res) => {
-
-    const access = JSON.parse(req.body);
-
-    (async () => {
-        try {
-            const options = {
-                method: 'POST',
-                headers: { accept: 'text/plain', 'content-type': 'application/json' },
-                body: JSON.stringify({ clientId: process.env.QOREID_CLIENT, secret: process.env.QOREID_SECRET })
-            };
-
-            fetch('https://api.qoreid.com/token', options)
-                .then(response => response.json())
-                .then(response => {
+// })
 
 
-                    fetch('https://api.qoreid.com/v1/ng/identities/bvn-nuban', {
-                        method: 'POST',
-                        headers: {
-                            accept: 'application/json',
-                            'content-type': 'application/json',
-                            authorization: `Bearer ${response.accessToken}`
-                        },
-                        body: JSON.stringify({
-                            firstname: `${access.firstname}`,
-                            lastname: `${access.lastname}`,
-                            accountNumber: `${access.accountNumber}`,
-                            bankCode: `${access.bankCode}`
-                        })
-                    })
-                        .then(response => response.json())
-                        .then(response => console.log(response)
-                        )
-                        .catch(err => console.error(err));
-                }
-                )
-                .catch(err => console.error(err));
+// app.post('/api/getBankData', (req, res) => {
 
-        } catch (error) {
-            console.log(error)
-            return res.send(error)
-        }
-    })();
+//     const access = JSON.parse(req.body);
 
-})
+//     (async () => {
+//         try {
+//             const options = {
+//                 method: 'POST',
+//                 headers: { accept: 'text/plain', 'content-type': 'application/json' },
+//                 body: JSON.stringify({ clientId: process.env.QOREID_CLIENT, secret: process.env.QOREID_SECRET })
+//             };
+
+//             fetch('https://api.qoreid.com/token', options)
+//                 .then(response => response.json())
+//                 .then(response => {
+
+
+//                     fetch('https://api.qoreid.com/v1/ng/identities/bvn-nuban', {
+//                         method: 'POST',
+//                         headers: {
+//                             accept: 'application/json',
+//                             'content-type': 'application/json',
+//                             authorization: `Bearer ${response.accessToken}`
+//                         },
+//                         body: JSON.stringify({
+//                             firstname: `${access.firstname}`,
+//                             lastname: `${access.lastname}`,
+//                             accountNumber: `${access.accountNumber}`,
+//                             bankCode: `${access.bankCode}`
+//                         })
+//                     })
+//                         .then(response => response.json())
+//                         .then(response => console.log(response)
+//                         )
+//                         .catch(err => console.error(err));
+//                 }
+//                 )
+//                 .catch(err => console.error(err));
+
+//         } catch (error) {
+//             console.log(error)
+//             return res.send(error)
+//         }
+//     })();
+
+// })
 
 
 

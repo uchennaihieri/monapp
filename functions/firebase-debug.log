@@ -399,3 +399,51 @@ Issues? Report them at https://github.com/firebase/firebase-tools/issues and att
 [debug] [2023-03-17T10:21:09.802Z] [worker-us-central1-app-c50eef56-716c-4fdb-a305-18861fd71673]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-c50eef56-716c-4fdb-a305-18861fd71673]: IDLE"}}
 [debug] [2023-03-17T10:21:09.803Z] [work-queue] {"queueLength":0,"workRunningCount":0}
 [info] i  functions: Finished "app" in 1826.9101ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"Finished \"app\" in 1826.9101ms"}}
+[debug] [2023-03-18T15:26:40.690Z] File C:\Users\Michael.i_FNGA0247\monapp\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\index.js changed, reloading triggers"}}
+[debug] [2023-03-18T15:26:41.792Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] !  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2023-03-18T15:27:01.109Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "api": "^5.0.7",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.18.0",
+    "node-fetch": "^2.6.9"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2023-03-18T15:27:01.110Z] Building nodejs source
+[debug] [2023-03-18T15:27:01.110Z] Analyzing nodejs backend spec
+[debug] [2023-03-18T15:27:01.132Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-03-18T15:27:05.672Z] Serving at port 9005
+
+[debug] [2023-03-18T15:27:16.604Z] Got response from /__/functions.yaml {"endpoints":{"app":{"platform":"gcfv1","httpsTrigger":{},"entryPoint":"app"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2023-03-18T15:27:16.618Z] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: app. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: app."}}
+[debug] [2023-03-18T15:27:16.643Z] [worker-pool] Shutting down IDLE worker (us-central1-app) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Shutting down IDLE worker (us-central1-app)"}}
+[debug] [2023-03-18T15:27:16.643Z] [worker-us-central1-app-c50eef56-716c-4fdb-a305-18861fd71673]: FINISHING {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-c50eef56-716c-4fdb-a305-18861fd71673]: FINISHING"}}
+[debug] [2023-03-18T15:27:16.645Z] [worker-pool] Shutting down IDLE worker (us-central1-app) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Shutting down IDLE worker (us-central1-app)"}}
+[debug] [2023-03-18T15:27:16.645Z] [worker-us-central1-app-313dd411-5474-44c6-bc78-12e19d2ce449]: FINISHING {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-313dd411-5474-44c6-bc78-12e19d2ce449]: FINISHING"}}
+[debug] [2023-03-18T15:27:16.662Z] [worker-us-central1-app-313dd411-5474-44c6-bc78-12e19d2ce449]: exited {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-313dd411-5474-44c6-bc78-12e19d2ce449]: exited"}}
+[debug] [2023-03-18T15:27:16.663Z] [worker-us-central1-app-313dd411-5474-44c6-bc78-12e19d2ce449]: FINISHED {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-313dd411-5474-44c6-bc78-12e19d2ce449]: FINISHED"}}
+[debug] [2023-03-18T15:27:16.664Z] [worker-us-central1-app-c50eef56-716c-4fdb-a305-18861fd71673]: exited {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-c50eef56-716c-4fdb-a305-18861fd71673]: exited"}}
+[debug] [2023-03-18T15:27:16.664Z] [worker-us-central1-app-c50eef56-716c-4fdb-a305-18861fd71673]: FINISHED {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-c50eef56-716c-4fdb-a305-18861fd71673]: FINISHED"}}
