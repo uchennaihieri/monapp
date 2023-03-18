@@ -1,6 +1,7 @@
 const functions = require("firebase-functions");
 const admin = require('firebase-admin');
 const fetch = require('node-fetch');
+const sdk = require('api')('@qoreid/v1.0#79ra32ll9x7kn58');
 var serviceAccount = require("./permissions.json");
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
@@ -119,6 +120,93 @@ app.post('/api/verifyOtp', (req, res) => {
                 .catch(function (error) {
                     console.log(error);
                 })
+
+        } catch (error) {
+            console.log(error)
+            return res.send(error)
+        }
+    })();
+
+})
+
+
+app.post('/api/getBanks', (req, res) => {
+    (async () => {
+        try {
+            const options = {
+                method: 'POST',
+                headers: { accept: 'text/plain', 'content-type': 'application/json' },
+                body: JSON.stringify({ clientId: process.env.QOREID_CLIENT, secret: process.env.QOREID_SECRET })
+            };
+
+            fetch('https://api.qoreid.com/token', options)
+                .then(response => response.json())
+                .then(response => {
+                    const options2 = {
+                        method: 'GET',
+                        headers: {
+                            accept: 'application/json',
+                            authorization: `Bearer ${response.accessToken}`
+                        }
+                    };
+
+                    fetch('https://api.qoreid.com/v1/banks/bvn-nuban', options2)
+                        .then(response => response.json())
+                        .then(response => {
+                            return res.send(response)
+                        })
+                        .catch(err => console.error(err));
+                }
+                )
+                .catch(err => console.error(err));
+
+        } catch (error) {
+            console.log(error)
+            return res.send(error)
+        }
+    })();
+
+})
+
+
+app.post('/api/getBankData', (req, res) => {
+
+    const access = JSON.parse(req.body);
+
+    (async () => {
+        try {
+            const options = {
+                method: 'POST',
+                headers: { accept: 'text/plain', 'content-type': 'application/json' },
+                body: JSON.stringify({ clientId: process.env.QOREID_CLIENT, secret: process.env.QOREID_SECRET })
+            };
+
+            fetch('https://api.qoreid.com/token', options)
+                .then(response => response.json())
+                .then(response => {
+
+
+                    fetch('https://api.qoreid.com/v1/ng/identities/bvn-nuban', {
+                        method: 'POST',
+                        headers: {
+                            accept: 'application/json',
+                            'content-type': 'application/json',
+                            authorization: `Bearer ${response.accessToken}`
+                        },
+                        body: JSON.stringify({
+                            firstname: `${access.firstname}`,
+                            lastname: `${access.lastname}`,
+                            accountNumber: `${access.accountNumber}`,
+                            bankCode: `${access.bankCode}`
+                        })
+                    })
+                        .then(response => response.json())
+                        .then(response => console.log(response)
+                        )
+                        .catch(err => console.error(err));
+                }
+                )
+                .catch(err => console.error(err));
 
         } catch (error) {
             console.log(error)

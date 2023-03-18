@@ -7,12 +7,16 @@ import {
     StatNumber,
     useColorModeValue,
 } from '@chakra-ui/react';
+import { DM_Sans } from '@next/font/google';
+
+
+const dmsans = DM_Sans({ weight: '400', subsets: ['latin'] })
 
 
 function StatsCard(props) {
     const { title, stat } = props;
     return (
-        <Stat
+        <Stat className={dmsans.className}
             px={{ base: 4, md: 8 }}
             py={'5'}
             shadow={'xl'}
@@ -33,16 +37,17 @@ export default function Headline() {
     return (
         <Box maxW="7xl" mx={'auto'} pt={{ base: 12, md: 36 }} px={{ base: 2, sm: 12, md: 17 }}>
             <chakra.h1
+                className={dmsans.className}
                 textAlign={'center'}
                 fontSize={'4xl'}
                 py={10}
                 fontWeight={'bold'}>
-                What is our company doing?
+                Be a part of what we are building today
             </chakra.h1>
             <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
-                <StatsCard title={'We serve'} stat={'50,000 people'} />
-                <StatsCard title={'In'} stat={'30 different countries'} />
-                <StatsCard title={'Who speak'} stat={'100 different languages'} />
+                <StatsCard title={'One'} stat={'team'} />
+                <StatsCard title={'In'} stat={'1 Nigerian state'} />
+                <StatsCard title={'Serving'} stat={'500+ different languages'} />
             </SimpleGrid>
         </Box>
     );

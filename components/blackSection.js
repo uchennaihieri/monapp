@@ -47,28 +47,28 @@ export default function BlackSection() {
                         fontSize={{ base: '0.7rem', md: '1rem' }}
                         className={dmsans.className}
 
-                    >Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard.</Text>
+                    >Everything you need to start paying and receiving payments is accessible in 5 minutes or less. Simply follow these easy steps.</Text>
                 </Box>
                 <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
                     <Feature
                         icon={'01'}
                         title={'Sign up on the website'}
                         text={
-                            'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the.'
+                            'Using your correct details, create an account that will be used to enjoy smooth payments in under 3 minutes.'
                         }
                     />
                     <Feature
                         icon={'02'}
                         title={'Download the app'}
                         text={
-                            'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the.'
+                            'Get the app on google play or the app store. It is easily identifiable and easy on memory space just for you. '
                         }
                     />
                     <Feature
                         icon={'03'}
                         title={'Sign in and start paying'}
                         text={
-                            'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the.'
+                            'Log into the app with your credentials, create your transaction pin, credit your account and start making payments.'
                         }
                     />
                 </SimpleGrid>

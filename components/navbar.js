@@ -23,11 +23,16 @@ import {
 } from '@chakra-ui/icons';
 import Image from 'next/image';
 import { RiMenu3Line } from 'react-icons/ri';
+import { useRouter } from 'next/router';
 
 const dmsans = DM_Sans({ weight: ['500', '700'], subsets: ['latin'] })
 
 export default function Navbar() {
 
+    const router = useRouter()
+    const goHome = () => {
+        router.push('/')
+    }
 
 
     const { isOpen, onToggle } = useDisclosure();
@@ -40,7 +45,9 @@ export default function Navbar() {
                 pl={{ base: '1.25rem', md: '15.885vw' }}
                 align={'center'}>
 
-                <Flex justify={{ base: 'start', md: 'start' }}>
+                <Flex justify={{ base: 'start', md: 'start' }} onClick={goHome} _hover={{
+                    cursor: "pointer"
+                }}>
                     <Img src="/logo.png" width={{ base: '8.625rem', md: "14.4275rem" }} height={{ base: '1.569rem', md: "2.625rem" }} />
                 </Flex>
 

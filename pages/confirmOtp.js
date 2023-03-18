@@ -1,4 +1,4 @@
-import { bvnN, pinID } from '@/recoil/atoms';
+import { businessCat, bvnN, myLocation, pinID, seller } from '@/recoil/atoms';
 import { Box, Center, Heading, Image } from '@chakra-ui/react';
 import {
     Button,
@@ -27,6 +27,9 @@ function ConfirmOtp() {
     const [src, setSrc] = useState('')
     const [srcUrl, setSrcUrl] = useState('')
     const [loadingState, setLoadingState] = useState(false);
+    const [location, setLocation] = useState(myLocation)
+    const [merchantName, setMerchantName] = useRecoilState(seller)
+    const [myBusiness, setMyBusiness] = useState(businessCat)
     const [personalBalance, setPersonalBalance] = useState(0);
     const [merchantBalance, setMerchantBalance] = useState(0);
     const [tokenPin, setTokenPin] = useRecoilState(pinID);
@@ -93,7 +96,10 @@ function ConfirmOtp() {
                     const updateUser = await updateDoc(doc(db, "users", `${AuthUser.id}`), {
                         id: `${AuthUser.id}`,
                         verified: true,
-                        verificationNumber: verificationNumber
+                        verificationNumber: verificationNumber,
+                        location: location,
+                        merchantName: merchantName,
+                        businessCategory: myBusiness
                     });
 
                     router.push('/Dashboard')

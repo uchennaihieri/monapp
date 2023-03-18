@@ -25,7 +25,12 @@ import FormSteps from '@/components/formSteps';
 import Headline from '@/components/headline';
 import { FaSlack, FaSlackHash, FaTelegramPlane } from 'react-icons/fa';
 import { RiWhatsappFill } from 'react-icons/ri';
+import { Bree_Serif, DM_Sans } from '@next/font/google';
 
+
+const dmsans = DM_Sans({ weight: '400', subsets: ['latin'] })
+
+const bree = Bree_Serif({ weight: '400', subsets: ['latin'] })
 
 const Feature = ({ text, icon, iconBg }) => {
     return (
@@ -50,12 +55,17 @@ export default function Support() {
             <Navbar />
             <Container maxW={'7xl'} py={{ base: 12, md: 24 }} minH={'100vh'}>
                 <SimpleGrid columns={{ base: 1, md: 2 }} spacing={20}>
-                    <Stack spacing={4}>
+                    <Stack spacing={8}>
 
-                        <Heading fontSize={'5xl'} mt="1em">A digital Product design agency</Heading>
-                        <Text color={'gray.500'} fontSize={'2xl'}>
-                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-                            nonumy eirmod tempor invidunt ut labore
+                        <Text mt={{ base: '1.5rem', md: '1.8rem' }} mb={{ base: '0.5rem', md: '0.8rem' }}
+                            letterSpacing={{ base: '-0.79px', md: '-1px' }}
+                            lineHeight={{ base: '3rem', md: '5rem' }}
+                            fontWeight={400}
+                            color="white"
+                            fontSize={{ base: '2.75rem', md: '3.75rem' }}
+                            className={bree.className}>We have communities ready to help you.</Text>
+                        <Text className={dmsans.className} fontWeight={400} color={'#FFFFFF'} fontSize={{ base: '1.125rem' }} mt={{ base: '1.5rem', md: '1rem' }} mb={'2.3em'} lineHeight={{ base: '1.5rem', md: '1.75rem' }}>
+                            You can join any of the communities below, there&#39;ll always be a friendly person there to make your life easy.
                         </Text>
                         <Stack
                             spacing={4}
@@ -87,10 +97,10 @@ export default function Support() {
                     </Stack>
                     <Flex>
                         <Image
-                            rounded={'md'}
+                            rounded={'lg'}
                             alt={'feature image'}
                             src={
-                                'https://images.unsplash.com/photo-1554200876-56c2f25224fa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
+                                '/support.png'
                             }
                             objectFit={'cover'}
                         />

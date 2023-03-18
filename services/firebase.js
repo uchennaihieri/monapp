@@ -3,7 +3,7 @@ import { initializeApp, getApps, getApp } from "firebase/app";
 import { getFirestore, onSnapshot, collection, updateDoc, addDoc, doc, getDoc, getDocs, serverTimestamp, setDoc, deleteDoc, arrayRemove, arrayUnion } from "firebase/firestore"
 
 import { getAnalytics } from "firebase/analytics";
-import { getAuth, createUserWithEmailAndPassword, isSignInWithEmailLink, signInWithEmailLink, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendEmailVerification, setPersistence, browserLocalPersistence, signInWithRedirect, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, deleteUser, isSignInWithEmailLink, signInWithEmailLink, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendEmailVerification, setPersistence, browserLocalPersistence, signInWithRedirect, GoogleAuthProvider } from "firebase/auth";
 
 
 
@@ -24,5 +24,5 @@ const auth = getAuth(app)
 const db = getFirestore(app)
 
 
-export { db, auth, addDoc, serverTimestamp, onSnapshot, isSignInWithEmailLink, signOut, signInWithEmailLink, collection, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateDoc, signInWithRedirect, GoogleAuthProvider, onAuthStateChanged, doc, getDoc, getDocs, setDoc, deleteDoc, sendEmailVerification, arrayRemove, arrayUnion }
+export { db, auth, addDoc, serverTimestamp, onSnapshot, isSignInWithEmailLink, signOut, signInWithEmailLink, collection, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateDoc, signInWithRedirect, GoogleAuthProvider, onAuthStateChanged, doc, deleteUser, getDoc, getDocs, setDoc, deleteDoc, sendEmailVerification, arrayRemove, arrayUnion }
 

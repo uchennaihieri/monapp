@@ -55,7 +55,7 @@ export default function HeroSection() {
                 >
                     <Text className={dmsans.className} fontWeight={400} color={'#FFFFFF'} fontSize={{ base: '1.125rem' }} mt={{ base: '1.5rem', md: '1rem' }} mb={'2.3em'} lineHeight={{ base: '1.5rem', md: '1.75rem' }}
                     >
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s,
+                        Enjoy the easiest and fastest means of making local payments. With our end-to-end solution, you can confirm transactions in real-time and experience the best payment option to cash.
                     </Text>
                 </Box>
                 <HStack spacing={{ base: '0.85rem', md: '2.3rem' }}  >

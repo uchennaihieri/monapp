@@ -41,35 +41,35 @@ export default function Features() {
                     fontSize={{ base: '1.32rem', md: '1.87rem' }}
                     className={bree.className}
 
-                >Go Beyond manual payment</Text>
+                >Go Beyond slow payments</Text>
                 <Text
                     lineHeight={{ base: '1.25rem', md: '2.18rem' }}
                     fontWeight={400}
                     fontSize={{ base: '0.7rem', md: '1rem' }}
                     className={dmsans.className}
 
-                >Focus only on your business, we take care of your payment. You can pay and get paid within seconds with just a simple scan.</Text>
+                >Focus only on your business, we take care of the payments. You can pay and get paid within seconds with zero hitches.</Text>
             </Box>
             <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
                 <Feature
                     icon={<Image src='/store.svg' w={{ base: 10, md: 36 }} h={'auto'} />}
-                    title={'Pay in stores with your card'}
+                    title={'Receive payment for your business'}
                     text={
-                        'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore...'
+                        "You get instant feedback on payments and can customize payment flows to fit your use case. It's all in your hands..."
                     }
                 />
                 <Feature
                     icon={<Image src='/gift.svg' w={{ base: 10, md: 36 }} h={'auto'} />}
-                    title={'Receive payment on purchase '}
+                    title={'Pay swiftly for purchases'}
                     text={
-                        'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore...'
+                        'Join the Monapp community and enjoy life without cash. End-to-end payments without transaction failure...'
                     }
                 />
                 <Feature
                     icon={<Image src='/cup.svg' w={{ base: 10, md: 36 }} h={'auto'} />}
                     title={'Grow your business'}
                     text={
-                        'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore...'
+                        'Businesses that use monapp save time and delight their customers. Giving them the best payment option locally...'
                     }
                 />
             </SimpleGrid>

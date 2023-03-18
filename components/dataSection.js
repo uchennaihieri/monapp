@@ -63,7 +63,7 @@ export default function DataSection() {
                             fontWeight={400}
                             fontSize={{ base: '1.75rem', md: '2.5rem' }}
                             className={bree.className}
-                        >With qr code payment option, you can boost your business profitability</Text>
+                        >Sleek, luxurious card to rule them all. Experience next gen cashless. </Text>
                         <Text
                             mb={{ base: '0.87rem', md: '1rem' }}
                             color={'#02073E'}
@@ -72,7 +72,7 @@ export default function DataSection() {
                             fontSize={{ base: '1rem', md: '1.0625rem' }}
                             className={dmsans.className}
                         >
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,
+                            Our authentication card enables you to make payment from any location in Nigeria. With a focus on speed to enable use-cases such as bus fares and market purchases.
                         </Text>
 
                         <List spacing={1} mb={{ base: '0.875rem', md: "1.56rem" }}>
@@ -84,7 +84,7 @@ export default function DataSection() {
                                     fontSize={{ base: '0.61rem', md: '1rem' }}
                                     className={dmsansBold.className}>
                                     <ListIcon fontSize={{ base: '0.75rem', md: "1.25rem" }} as={MdCheckCircle} color='#3FDBB1' />
-                                    Lorem Ipsum is simply dummy
+                                    Offline payments
 
                                 </ListItem>
                                 <ListItem
@@ -95,7 +95,7 @@ export default function DataSection() {
                                     className={dmsansBold.className}
                                 >
                                     <ListIcon fontSize={{ base: '0.75rem', md: "1.25rem" }} as={MdCheckCircle} color='#3FDBB1' />
-                                    Lorem Ipsum is simply dummy
+                                    Online Payments
 
                                 </ListItem>
                             </Flex>

@@ -59,9 +59,15 @@ const Auth = () => {
 
     console.log(page)
 
-    const goBack = () => {
-        router.back()
+    const goSupport = () => {
+        router.push('/support')
     }
+
+
+    const goHome = () => {
+        router.push('/')
+    }
+
 
 
 
@@ -90,10 +96,10 @@ const Auth = () => {
                     fontWeight={400}
                     lineHeight={'4rem'}
                     className={bree.className}
-                    onClick={goBack}
+                    onClick={goHome}
                 >Return Home</Button>
 
-                <Button m="0" p="0" variant={'ghost'} _hover={{
+                <Button onClick={goSupport} m="0" p="0" variant={'ghost'} _hover={{
                     backgroundColor: 'none'
                 }} color={'#000000'} fontSize={{ base: '0.75rem', md: "1rem" }}
                     fontWeight={500}
