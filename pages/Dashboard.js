@@ -53,6 +53,11 @@ import { GiShop } from 'react-icons/gi';
 import { MdBlock, MdFiberPin, MdPin } from 'react-icons/md';
 import { BsDot } from 'react-icons/bs';
 import { collection, query, where } from 'firebase/firestore';
+import MyChart from '@/components/myChart';
+import { Bree_Serif } from '@next/font/google';
+
+
+const bree = Bree_Serif({ weight: '400', subsets: ['latin'] })
 
 
 function Dashboard({ person }) {
@@ -201,7 +206,7 @@ function Dashboard({ person }) {
                 p={{ base: "5%", md: "3%" }}
                 flexDir="column"
                 overflow="auto"
-                minH="100vh"
+                minH={{ base: "90vh", md: "100vh" }}
             >
                 <Heading
                     fontWeight="normal"
@@ -263,6 +268,19 @@ function Dashboard({ person }) {
 
 
                 {!myTransactions && <>
+                    <Flex flexDirection={'column'} align="center" mt="30px">
+                        <MyChart />
+                        <Box align="center" mt={{ base: "50px", md: "35px" }}>
+
+                            <Heading size="lg" letterSpacing="tight" mb="5px">No transactions yet</Heading>
+                            <Text size="md" letterSpacing="tight" mb="10px">Get your monapp card and start making local payments</Text>
+
+
+                        </Box>
+
+
+                    </Flex>
+
                 </>}
 
 
@@ -321,9 +339,15 @@ function Dashboard({ person }) {
                 </Flex>
                 <Flex my={4}>
 
-                    <Avatar icon={<RiMailSendFill />} ml={2} color="#fff" bgColor="gray.600" onClick={() => changeOtherValue(1)} />
-                    <Avatar icon={<MdFiberPin />} ml={2} color="#fff" bgColor="gray.600" onClick={() => changeOtherValue(2)} />
-                    <Avatar icon={<MdBlock />} ml={2} color="#fff" bgColor="gray.600" onClick={() => changeOtherValue(3)} />
+                    <IconButton icon={<RiMailSendFill fontSize={'16px'} />} ml={2} color="#fff" bgColor="gray.600" _hover={{
+                        bgColor: "gray.500"
+                    }} onClick={() => changeOtherValue(1)} />
+                    <IconButton icon={<MdFiberPin fontSize={'16px'} />} ml={2} color="#fff" bgColor="gray.600" _hover={{
+                        bgColor: "gray.500"
+                    }} onClick={() => changeOtherValue(2)} />
+                    <IconButton icon={<MdBlock fontSize={'16px'} />} ml={2} color="#fff" bgColor="gray.600" _hover={{
+                        bgColor: "gray.500"
+                    }} onClick={() => changeOtherValue(3)} />
                 </Flex>
                 {otherValue == 1 && <>
                     <Heading letterSpacing="tight" size="md" >Deliver card</Heading>

@@ -1,4 +1,5 @@
 import Navbar from '@/components/navbar';
+import PageSeo from '@/Seo/pageSeo';
 import {
     Box,
     Button,
@@ -76,66 +77,71 @@ const Pricing = () => {
     ];
 
     return (
-        <Box bg="#000000" color="#ffffff">
-            <Navbar />
-            <Box py={12} px={5} minH={'100vh'}>
-                <Stack spacing={4} width={'100%'} direction={'column'}>
-                    <Stack
-                        p={5}
-                        alignItems={'center'}
-                        justifyContent={{
-                            base: 'flex-start',
-                            md: 'space-around',
-                        }}
-                        direction={{
-                            base: 'column',
-                            md: 'column',
-                        }}>
+        <>
+            <PageSeo title="Our Prices - Monapp" description="" />
+
+
+            <Box bg="#000000" color="#ffffff">
+                <Navbar />
+                <Box py={12} px={5} minH={'100vh'}>
+                    <Stack spacing={4} width={'100%'} direction={'column'}>
                         <Stack
-                            width={{
-                                base: '100%',
-                                md: '40%',
+                            p={5}
+                            alignItems={'center'}
+                            justifyContent={{
+                                base: 'flex-start',
+                                md: 'space-around',
                             }}
-                            textAlign={'center'}>
-                            <Text mt={{ base: '1.5rem', md: '1.8rem' }} mb={{ base: '0.5rem', md: '0.8rem' }}
-                                letterSpacing={{ base: '-0.79px', md: '-1px' }}
-                                lineHeight={{ base: '3rem', md: '5rem' }}
-                                fontWeight={400}
-                                color="white"
-                                fontSize={{ base: '2.75rem', md: '3.75rem' }}
-                                className={bree.className}>
-                                Simple and fair pricing <br /> <span style={{ color: "#3183FF" }}>just for you</span>
-                            </Text>
+                            direction={{
+                                base: 'column',
+                                md: 'column',
+                            }}>
+                            <Stack
+                                width={{
+                                    base: '100%',
+                                    md: '40%',
+                                }}
+                                textAlign={'center'}>
+                                <Text mt={{ base: '1.5rem', md: '1.8rem' }} mb={{ base: '0.5rem', md: '0.8rem' }}
+                                    letterSpacing={{ base: '-0.79px', md: '-1px' }}
+                                    lineHeight={{ base: '3rem', md: '5rem' }}
+                                    fontWeight={400}
+                                    color="white"
+                                    fontSize={{ base: '2.75rem', md: '3.75rem' }}
+                                    className={bree.className}>
+                                    Simple and fair pricing <br /> <span style={{ color: "#3183FF" }}>just for you</span>
+                                </Text>
+                            </Stack>
+                            <Stack
+                                width={{
+                                    base: '100%',
+                                    md: '60%',
+                                }}
+                                py={{
+                                    base: '1rem',
+                                    md: '1.5rem',
+                                }}
+                            >
+                                <Text className={dmsans.className} fontWeight={400} color={'#FFFFFF'} fontSize={{ base: '1.125rem' }} mt={{ base: '1.5rem', md: '1rem' }} mb={'2.3em'} lineHeight={{ base: '1.5rem', md: '1.75rem' }} textAlign={'center'}>
+                                    * Custom pricing can be made available to businesses with large-volume transactions.
+                                </Text>
+                            </Stack>
                         </Stack>
-                        <Stack
-                            width={{
-                                base: '100%',
-                                md: '60%',
-                            }}
-                            py={{
-                                base: '1rem',
-                                md: '1.5rem',
-                            }}
-                        >
-                            <Text className={dmsans.className} fontWeight={400} color={'#FFFFFF'} fontSize={{ base: '1.125rem' }} mt={{ base: '1.5rem', md: '1rem' }} mb={'2.3em'} lineHeight={{ base: '1.5rem', md: '1.75rem' }} textAlign={'center'}>
-                                * Custom pricing can be made available to businesses with large-volume transactions.
-                            </Text>
-                        </Stack>
+                        <Divider />
+                        <PackageTier title={'App'} typePlan="Free" options={appOptions} />
+                        <Divider />
+                        <PackageTier
+                            title={'Card'}
+                            checked={true}
+                            typePlan="&#8358;1,500"
+                            options={cardOptions}
+                        />
+                        <Divider />
+                        <PackageTier title={'Pay'} typePlan="1.5%" options={payOptions} />
                     </Stack>
-                    <Divider />
-                    <PackageTier title={'App'} typePlan="Free" options={appOptions} />
-                    <Divider />
-                    <PackageTier
-                        title={'Card'}
-                        checked={true}
-                        typePlan="&#8358;1,500"
-                        options={cardOptions}
-                    />
-                    <Divider />
-                    <PackageTier title={'Pay'} typePlan="1.5%" options={payOptions} />
-                </Stack>
+                </Box>
             </Box>
-        </Box>
+        </>
     );
 };
 
