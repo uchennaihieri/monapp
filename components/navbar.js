@@ -178,7 +178,7 @@ const NAV_ITEMS = [
     },
     {
         label: 'Work with us',
-        href: '/support'
+        href: '/workwithus'
     },
     {
         label: 'Sign in',

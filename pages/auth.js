@@ -61,7 +61,7 @@ const Auth = () => {
     console.log(page)
 
     const goSupport = () => {
-        router.push('/support')
+        router.push('/workwithus')
     }
 
 

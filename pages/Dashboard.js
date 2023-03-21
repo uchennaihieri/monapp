@@ -25,8 +25,23 @@ import {
     PinInputField,
     PinInput,
     HStack,
-    Textarea
+    Textarea,
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalCloseButton,
+    ModalBody,
+    useDisclosure,
+    Stat,
+    Card,
+    CardBody,
+    StatLabel,
+    StatNumber,
+    ButtonGroup,
+    Select
 } from '@chakra-ui/react'
+import _ from 'lodash';
 import {
     FiHome,
     FiPieChart,
@@ -52,10 +67,10 @@ import { RiMailSendFill } from 'react-icons/ri';
 import { GiShop } from 'react-icons/gi';
 import { MdBlock, MdFiberPin, MdPin } from 'react-icons/md';
 import { BsDot } from 'react-icons/bs';
-import { collection, query, where } from 'firebase/firestore';
+import { addDoc, collection, query, where } from 'firebase/firestore';
 import MyChart from '@/components/myChart';
 import { Bree_Serif } from '@next/font/google';
-
+import dayjs from 'dayjs';
 
 const bree = Bree_Serif({ weight: '400', subsets: ['latin'] })
 
@@ -67,7 +82,20 @@ function Dashboard({ person }) {
     const [value, changeValue] = useState(1)
     const [otherValue, changeOtherValue] = useState(1)
     const [wallet, setWallet] = useState(null)
+    const { isOpen, onOpen, onClose } = useDisclosure()
     const [myTransactions, setMyTransactions] = useState(null)
+    const [paymentDialog, setPaymentDialog] = useState(1)
+    const [loanAmount, setLoanAmount] = useState(1500)
+    const [clientRepaymentAmount, setClientRepaymentAmount] = useState(0)
+    const [clientRepaymentDate, setClientRepaymentDate] = useState('')
+    const [loanTenor, setLoanTenor] = useState('')
+    const [deliveryAddress, setDeliveryAddress] = useState('')
+    const [deliveryContact, setDeliveryContact] = useState('')
+    const [pin, setPin] = useState('')
+    const [confirmPin, setConfirmPin] = useState('')
+    const [view, setView] = useState('')
+
+    const now = dayjs()
 
     useEffect(() => {
 
@@ -76,6 +104,48 @@ function Dashboard({ person }) {
         getTransactions()
 
     }, [])
+
+
+    useEffect(() => {
+        if (loanAmount && loanTenor) {
+            const repaymentAmount = _.parseInt(loanAmount) + (loanAmount * _.parseInt(loanTenor) * 0.3333 / 100)
+
+            const repaymentDate = now.add(_.parseInt(loanTenor), 'day')
+            setClientRepaymentDate(dayjs(repaymentDate).format('MMMM D, YYYY'))
+            console.log(repaymentDate)
+            setClientRepaymentAmount(repaymentAmount.toLocaleString('en-US', { maximumFractionDigits: 2 }))
+
+        } else {
+            setClientRepaymentAmount(0)
+            setClientRepaymentDate('')
+        }
+    }, [loanAmount, loanTenor])
+
+    const submitLoan = async () => {
+
+        const postRef = await addDoc(collection(db, "CardApplication"), {
+            firstName: person.firstName,
+            lastName: person.lastName,
+            monappNumber: wallet?.accountNumber,
+            QrCode: wallet?.qrImage,
+            deliveryAddress: deliveryAddress,
+            deliveryContact: deliveryContact,
+            loanAmount: loanAmount,
+            loanTenor: `${loanTenor} days`, applicationDate: dayjs(now).format('MMMM D, YYYY'), repaymentDate: clientRepaymentDate, repaymentAmount: clientRepaymentAmount
+        }).then(() => toast({
+            title: 'Loan application submitted',
+            description: 'Our agent would reach out to you shortly',
+            status: 'success',
+            duration: 9000,
+            isClosable: true,
+            position: 'top',
+        })).catch(err => console.log(err));
+
+
+        setLoanTenor("")
+        closeModal()
+    }
+
 
 
 
@@ -138,6 +208,55 @@ function Dashboard({ person }) {
             // An error happened.
         });
     }
+
+
+    const openDelivery = () => {
+        onOpen()
+        setView('delivery')
+    }
+
+    const goPay = () => {
+
+
+        router.push('https://paystack.com/pay/monapp')
+    }
+
+    const closeModal = () => {
+        setDeliveryAddress('')
+        setDeliveryContact('')
+        setLoanTenor('')
+        setPaymentDialog(1)
+        onClose()
+    }
+
+
+
+
+    const createPin = async () => {
+        await fetch("http://127.0.0.1:5001/monapp-33057/us-central1/app/api/crypt", {
+
+            // Adding method type
+            method: "POST",
+
+            // Adding body or contents to send
+            body: JSON.stringify({
+                pin: pin
+            })
+        }).then(function (res) {
+            return res.json();
+        })
+            // Converting to JSON
+            .then(function (data) {
+                console.log(data)
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
+
+
+
+
 
 
     return (
@@ -355,41 +474,74 @@ function Dashboard({ person }) {
                     <Text color="gray" mt={10} mb={2}>Delivery address</Text>
                     <InputGroup>
 
-                        <Input type="text" placeholder="xxxx xxxx xxxx xxxx" />
+                        <Input type="text" value={deliveryAddress} placeholder="xxxx xxxx xxxx xxxx" onChange={e => setDeliveryAddress(e.target.value)} />
                     </InputGroup>
                     <Text color="gray" mt={4} mb={2}>Delivery contact</Text>
                     <InputGroup>
 
-                        <Input type="number" placeholder="07012******" />
+                        <Input type="number" value={deliveryContact} placeholder="07012******" onChange={e => setDeliveryContact(e.target.value)} />
                     </InputGroup>
-                    <Button disabled mt={4} bgColor="blackAlpha.900" _hover={{ bgColor: "blackAlpha.700" }} color="#fff" p={7} borderRadius={15}>Send card to me</Button>
+                    <Button disabled mt={4} bgColor="blackAlpha.900" _hover={{ bgColor: "blackAlpha.700" }} color="#fff" p={7} borderRadius={15} onClick={openDelivery}>Send card to me</Button>
                 </>
                 }
 
-                {otherValue == 2 && <>
-                    <Heading letterSpacing="tight" size="md" >Reset Pin</Heading>
+                {otherValue == 2 && <> {!person.pin ?
 
-                    <Text color="gray" mt={10} mb={2}>Old Pin</Text>
-                    <HStack>
-                        <PinInput>
-                            <PinInputField />
-                            <PinInputField />
-                            <PinInputField />
-                            <PinInputField />
-                        </PinInput>
-                    </HStack>
-                    <Text color="gray" mt={4} mb={2}>New Pin</Text>
-                    <InputGroup>
+                    <> <Heading letterSpacing="tight" size="md" >Create Pin</Heading>
+
+                        <Text color="gray" mt={10} mb={2}>Pin</Text>
                         <HStack>
-                            <PinInput>
+                            <PinInput mask otp onChange={(e) => setPin(e)}>
+                                <PinInputField />
+                                <PinInputField />
                                 <PinInputField />
                                 <PinInputField />
                                 <PinInputField />
                                 <PinInputField />
                             </PinInput>
                         </HStack>
-                    </InputGroup>
-                    <Button disabled mt={4} bgColor="blackAlpha.900" _hover={{ bgColor: "blackAlpha.700" }} color="#fff" p={7} borderRadius={15}>Reset my pin</Button>
+                        <Text color="gray" mt={4} mb={2}>Confirm Pin</Text>
+                        <InputGroup>
+                            <HStack>
+                                <PinInput mask otp onChange={(e) => setConfirmPin(e)}>
+                                    <PinInputField />
+                                    <PinInputField />
+                                    <PinInputField />
+                                    <PinInputField />
+                                    <PinInputField />
+                                    <PinInputField />
+                                </PinInput>
+                            </HStack>
+                        </InputGroup>
+                        <Button disabled mt={4} bgColor="blackAlpha.900" _hover={{ bgColor: "blackAlpha.700" }} color="#fff" p={7} borderRadius={15} onClick={createPin}>Create my pin</Button></> : <> <Heading letterSpacing="tight" size="md" >Set Pin</Heading>
+
+                        <Text color="gray" mt={10} mb={2}>Old Pin</Text>
+                        <HStack>
+                            <PinInput>
+                                <PinInputField />
+                                <PinInputField />
+                                <PinInputField />
+                                <PinInputField />
+                                <PinInputField />
+                                <PinInputField />
+                            </PinInput>
+                        </HStack>
+                        <Text color="gray" mt={4} mb={2}>New Pin</Text>
+                        <InputGroup>
+                            <HStack>
+                                <PinInput>
+                                    <PinInputField />
+                                    <PinInputField />
+                                    <PinInputField />
+                                    <PinInputField />
+                                    <PinInputField />
+                                    <PinInputField />
+                                </PinInput>
+                            </HStack>
+                        </InputGroup>
+                        <Button disabled mt={4} bgColor="blackAlpha.900" _hover={{ bgColor: "blackAlpha.700" }} color="#fff" p={7} borderRadius={15}>Reset my pin</Button></>
+                }
+
                 </>
                 }
 
@@ -409,12 +561,101 @@ function Dashboard({ person }) {
                                 <PinInputField />
                                 <PinInputField />
                                 <PinInputField />
+                                <PinInputField />
+                                <PinInputField />
                             </PinInput>
                         </HStack>
                     </InputGroup>
                     <Button disabled mt={4} bgColor="blackAlpha.900" _hover={{ bgColor: "blackAlpha.700" }} color="#fff" p={7} borderRadius={15}>Block now</Button>
                 </>
                 }
+                <Modal isOpen={isOpen} onClose={closeModal}>
+                    <ModalOverlay />
+                    <ModalContent align="center">
+                        <ModalHeader>Monapp Card</ModalHeader>
+                        <ModalCloseButton />
+                        <ModalBody align="left">
+                            <Box>
+                                {paymentDialog == 1 && <>
+                                    <Stat mb="10px">
+                                        <StatLabel>Name on card</StatLabel>
+                                        <StatNumber>{person.firstName + " " + person.lastName}</StatNumber>
+                                    </Stat>
+                                    <Stat mb="10px">
+                                        <StatLabel>Monapp Number</StatLabel>
+                                        <StatNumber>{wallet?.accountNumber}</StatNumber>
+                                    </Stat>
+                                    <Stat mb="10px">
+                                        <StatLabel>Delivery address</StatLabel>
+                                        <StatNumber>{deliveryAddress}</StatNumber>
+                                    </Stat>
+                                    <Stat mb="10px">
+                                        <StatLabel>Delivery contact</StatLabel>
+                                        <StatNumber>{deliveryContact}</StatNumber>
+                                    </Stat>
+                                    <Stat mb="10px">
+                                        <StatLabel>Price</StatLabel>
+                                        <StatNumber>&#x20A6; 1500</StatNumber>
+                                    </Stat>
+
+                                    <Box display='flex'
+                                        alignItems='center'
+                                        justifyContent='center'
+                                        width='100%'
+                                        py={12}>
+                                        <ButtonGroup gap='4'>
+                                            <Button bgColor="blackAlpha.900" _hover={{ bgColor: "blackAlpha.700" }} color="#fff" onClick={goPay} >Pay Now</Button>
+                                            <Button bgColor="blackAlpha.900" _hover={{ bgColor: "blackAlpha.700" }} color="#fff" onClick={() => setPaymentDialog(2)}>Pay Later</Button>
+                                        </ButtonGroup>
+                                    </Box>
+                                </>}
+
+                                {paymentDialog == 2 && <>
+
+                                    <Box>
+                                        <Text mb="5px">Loan amount: {loanAmount}</Text>
+
+
+                                    </Box>
+                                    <Box my="20px">
+                                        <Text mb="5px">Tenor:</Text>
+                                        <Select value={loanTenor} onChange={(e) => setLoanTenor(e.target.value)} placeholder='Select duration'>
+                                            <option value='7'>7 days</option>
+                                            <option value='14'>14 days</option>
+                                            <option value='21'>21 days</option>
+                                            <option value='30'>30 days</option>
+                                        </Select>
+                                    </Box>
+                                    <Card
+                                        direction={{ base: 'column', sm: 'row' }}
+                                        overflow='hidden'
+                                        variant='outline'
+                                    >
+
+
+                                        <CardBody align="left">
+                                            <Heading size='md'>Your repayment info</Heading>
+
+                                            <Text py='2'>
+                                                Amount: &#x20A6;{clientRepaymentAmount}
+                                            </Text>
+                                            <Text py='2'>
+                                                Date: {clientRepaymentDate}
+                                            </Text>
+                                        </CardBody>
+                                    </Card>
+                                    <Box display='flex'
+                                        alignItems='center'
+                                        justifyContent='center'
+                                        width='100%'
+                                        py={12}>
+                                        <Button bgColor="blackAlpha.900" _hover={{ bgColor: "blackAlpha.700" }} color="#fff" onClick={submitLoan}>Proceed</Button>
+                                    </Box>
+                                </>}
+                            </Box>
+                        </ModalBody>
+                    </ModalContent>
+                </Modal>
             </Flex>
         </Flex >
     )

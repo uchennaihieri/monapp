@@ -130,6 +130,35 @@ app.post('/api/verifyOtp', (req, res) => {
 })
 
 
+
+
+app.post('/api/crypt', (req, res) => {
+    (async () => {
+        try {
+            bcrypt.hash(req.body.pin, saltRounds, async function (err, hash) {
+                if (err) {
+                    return res.send(err)
+                } else {
+
+                    const document = db.collection('users').doc(req.body.id);
+                    let user = await document.get()
+                    let response = user.data();
+                    console.log(response)
+                    return res.status(200).send(response);
+
+                }
+            });
+
+
+        } catch (error) {
+            console.log(error)
+            return res.send(error)
+        }
+    })();
+
+})
+
+
 // app.post('/api/getBanks', (req, res) => {
 //     (async () => {
 //         try {

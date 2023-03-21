@@ -24,7 +24,9 @@ import Navbar from '@/components/navbar';
 import FormSteps from '@/components/formSteps';
 import Headline from '@/components/headline';
 import { FaSlack, FaSlackHash, FaTelegramPlane } from 'react-icons/fa';
-import { RiWhatsappFill } from 'react-icons/ri';
+import { BiSupport } from 'react-icons/bi';
+import { HiSpeakerphone } from 'react-icons/hi';
+import { TiSpanner } from 'react-icons/ti';
 import { Bree_Serif, DM_Sans } from '@next/font/google';
 import PageSeo from '@/Seo/pageSeo';
 
@@ -50,10 +52,10 @@ const Feature = ({ text, icon, iconBg }) => {
     );
 };
 
-export default function Support() {
+export default function Workwithus() {
     return (
         <>
-            <PageSeo title="Community full of support - Monapp" description="" />
+            <PageSeo title="Work with us - Monapp" description="" />
 
             <Box bg="#000000" color="#ffffff">
                 <Navbar />
@@ -67,9 +69,9 @@ export default function Support() {
                                 fontWeight={400}
                                 color="white"
                                 fontSize={{ base: '2.75rem', md: '3.75rem' }}
-                                className={bree.className}>We have communities ready to help you.</Text>
+                                className={bree.className}>Be a payment broker - work and earn from home.</Text>
                             <Text className={dmsans.className} fontWeight={400} color={'#FFFFFF'} fontSize={{ base: '1.125rem' }} mt={{ base: '1.5rem', md: '1rem' }} mb={'2.3em'} lineHeight={{ base: '1.5rem', md: '1.75rem' }}>
-                                You can join any of the communities below, there&#39;ll always be a friendly person there to make your life easy.
+                                Work with the fastest growing payment startup in Nigeria and be a vital piece of our financial inclusion movement. You decide when, where, and how much you work.
                             </Text>
                             <Stack
                                 spacing={4}
@@ -80,22 +82,22 @@ export default function Support() {
                                 }>
                                 <Feature
                                     icon={
-                                        <IconButton as={RiWhatsappFill} variant="ghost" _hover={{ bg: 'none' }} colorScheme='whatsapp' w={5} h={5} />
+                                        <IconButton as={HiSpeakerphone} variant="ghost" _hover={{ bg: 'none' }} colorScheme='whatsapp' w={5} h={5} />
                                     }
 
-                                    text={'Whatsapp family'}
+                                    text={'Marketing'}
                                 />
                                 <Feature
-                                    icon={<IconButton as={FaTelegramPlane} variant="ghost" colorScheme='telegram' _hover={{ bg: 'none' }} w={5} h={5} />}
+                                    icon={<IconButton as={BiSupport} variant="ghost" colorScheme='telegram' _hover={{ bg: 'none' }} w={5} h={5} />}
 
-                                    text={'Telegram hood'}
+                                    text={'1st Level Customer Support'}
                                 />
                                 <Feature
                                     icon={
-                                        <Icon as={FaSlackHash} color={'purple.500'} w={5} h={5} />
+                                        <Icon as={TiSpanner} color={'purple.500'} w={5} h={5} />
                                     }
 
-                                    text={'Slack community'}
+                                    text={'1st Level Technical Support'}
                                 />
                             </Stack>
                         </Stack>
@@ -104,7 +106,7 @@ export default function Support() {
                                 rounded={'lg'}
                                 alt={'feature image'}
                                 src={
-                                    '/support.png'
+                                    '/person.png'
                                 }
                                 objectFit={'cover'}
                             />

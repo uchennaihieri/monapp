@@ -46,7 +46,7 @@ export default function Headline() {
             </chakra.h1>
             <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
                 <StatsCard title={'One'} stat={'team'} />
-                <StatsCard title={'In'} stat={'1 Nigerian state'} />
+                <StatsCard title={'In'} stat={'36 Nigerian states'} />
                 <StatsCard title={'Serving'} stat={'500+ different languages'} />
             </SimpleGrid>
         </Box>
