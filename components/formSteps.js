@@ -26,7 +26,7 @@ import { db } from '@/services/firebase';
 
 
 
-export default function multistep() {
+export default function FormSteps() {
     const [show, setShow] = React.useState(false);
     const [location, setLocation] = useState('')
     const [firstName, setFirstName] = useState('')
