@@ -237,8 +237,6 @@ function Dashboard({ person }) {
 
             // Adding method type
             method: "POST",
-
-            // Adding body or contents to send
             body: JSON.stringify({
                 pin: pin
             })
