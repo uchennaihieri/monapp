@@ -24,6 +24,7 @@ import {
     Switch,
     PinInputField,
     PinInput,
+    useToast,
     HStack,
     Textarea,
     Modal,
@@ -77,17 +78,20 @@ const bree = Bree_Serif({ weight: '400', subsets: ['latin'] })
 
 function Dashboard({ person }) {
     const AuthUser = useAuthUser()
+    const toast = useToast()
     const router = useRouter()
     const [display, changeDisplay] = useState('hide')
     const [value, changeValue] = useState(1)
     const [otherValue, changeOtherValue] = useState(1)
     const [wallet, setWallet] = useState(null)
+    const [loadingState, setLoadingState] = useState(false);
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [myTransactions, setMyTransactions] = useState(null)
     const [paymentDialog, setPaymentDialog] = useState(1)
     const [loanAmount, setLoanAmount] = useState(1500)
     const [clientRepaymentAmount, setClientRepaymentAmount] = useState(0)
     const [clientRepaymentDate, setClientRepaymentDate] = useState('')
+    const [security, setSecurity] = useState(null)
     const [loanTenor, setLoanTenor] = useState('')
     const [deliveryAddress, setDeliveryAddress] = useState('')
     const [deliveryContact, setDeliveryContact] = useState('')
@@ -99,7 +103,7 @@ function Dashboard({ person }) {
 
     useEffect(() => {
 
-
+        getSecurity()
         getWallet()
         getTransactions()
 
@@ -133,7 +137,7 @@ function Dashboard({ person }) {
             loanAmount: loanAmount,
             loanTenor: `${loanTenor} days`, applicationDate: dayjs(now).format('MMMM D, YYYY'), repaymentDate: clientRepaymentDate, repaymentAmount: clientRepaymentAmount
         }).then(() => toast({
-            title: 'Loan application submitted',
+            title: 'Card application submitted',
             description: 'Our agent would reach out to you shortly',
             status: 'success',
             duration: 9000,
@@ -157,6 +161,13 @@ function Dashboard({ person }) {
         });
 
 
+    }
+
+
+    const getSecurity = () => {
+        const unsub = onSnapshot(doc(db, "security", `${person.id}`), (doc) => {
+            setSecurity({ id: doc.id, ...doc.data() });
+        });
     }
 
 
@@ -232,24 +243,61 @@ function Dashboard({ person }) {
 
 
 
-    const createPin = async () => {
-        await fetch("http://127.0.0.1:5001/monapp-33057/us-central1/app/api/crypt", {
+    const createPin = () => {
+        setLoadingState(true)
 
-            // Adding method type
-            method: "POST",
-            body: JSON.stringify({
-                pin: pin
+        if (pin != confirmPin) {
+            setLoadingState(false)
+            toast({
+                title: 'Pin creation error',
+                description: 'Your pin does not match',
+                status: 'error',
+                duration: 9000,
+                isClosable: true,
+                position: 'top',
             })
-        }).then(function (res) {
-            return res.json();
-        })
-            // Converting to JSON
-            .then(function (data) {
-                console.log(data)
+        } else {
+
+            fetch("https://us-central1-monapp-33057.cloudfunctions.net/app/api/crypt", {
+
+                // Adding method type
+                method: "POST",
+                body: JSON.stringify({
+                    pin: pin,
+                    id: person.id
+                })
+            }).then(function (res) {
+                return res.json();
             })
-            .catch(function (error) {
-                console.log(error);
-            })
+                // Converting to JSON
+                .then(function (data) {
+                    if (data.successful) {
+                        setLoadingState(false)
+                        toast({
+                            title: 'Pin creation successful',
+                            description: 'Your pin has been created',
+                            status: 'success',
+                            duration: 9000,
+                            isClosable: true,
+                            position: 'top',
+                        })
+                    } else {
+                        setLoadingState(false)
+                        toast({
+                            title: 'Pin creation error',
+                            description: 'There was an error somewhere, please try again',
+                            status: 'error',
+                            duration: 9000,
+                            isClosable: true,
+                            position: 'top',
+                        })
+                    }
+                })
+                .catch(function (error) {
+                    setLoadingState(false)
+                    console.log(error);
+                })
+        }
     }
 
 
@@ -386,12 +434,36 @@ function Dashboard({ person }) {
 
                 {!myTransactions && <>
                     <Flex flexDirection={'column'} align="center" mt="30px">
-                        <MyChart />
+                        {/* <MyChart /> */}
                         <Box align="center" mt={{ base: "50px", md: "35px" }}>
 
                             <Heading size="lg" letterSpacing="tight" mb="5px">No transactions yet</Heading>
                             <Text size="md" letterSpacing="tight" mb="10px">Get your monapp card and start making local payments</Text>
+                            <Text size="md" letterSpacing="tight" mb="10px">or</Text>
+                            <Text size="md" letterSpacing="tight" mb="30px">Download the app for full features</Text>
+                            <HStack spacing={{ base: '0.85rem', md: '2.3rem' }}  >
+                                <Image
+                                    alt={'Hero Image'}
 
+                                    align={'center'}
+                                    width={{ base: '10.3rem', md: '10.677vw' }}
+                                    height={{ base: '3.36rem', md: '7.39vh' }}
+                                    src={
+                                        '/playstore.png'
+                                    }
+                                />
+                                <Image
+                                    alt={'Hero Image'}
+
+                                    align={'center'}
+                                    width={{ base: '10.37rem', md: '10.75vw' }}
+                                    height={{ base: '3.43rem', md: '7.55vh' }}
+                                    src={
+                                        '/appstore.png'
+                                    }
+                                />
+
+                            </HStack>
 
                         </Box>
 
@@ -421,20 +493,22 @@ function Dashboard({ person }) {
                 </Flex>
 
                 {value == 1 &&
-                    <Box
+                    <Flex
+                        flexDirection={'row'}
+                        justify="center"
 
-                        mt={4}
-                        w="100%"
-                        h="200px"
-                        position={'relative'}
+
+
 
 
                     >
-                        <Image src={wallet?.qrImage} left={'9em'} top={'3em'} alignSelf="center" position={'absolute'}
+                        {/* <Image src={wallet?.qrImage} left={'9em'} top={'3em'} alignSelf="center" position={'absolute'}
+                        /> */}
+
+                        <Image src={'/cardImage.png'} width={'auto'} height={'25.6rem'}
                         />
-                        <Image src={'/cardBack.png'} width={'100%'} height={'100%'}
-                        />
-                    </Box>
+
+                    </Flex>
                 }
 
                 <Flex justifyContent="center" mt={2}>
@@ -483,7 +557,7 @@ function Dashboard({ person }) {
                 </>
                 }
 
-                {otherValue == 2 && <> {!person.pin ?
+                {otherValue == 2 && <> {!security?.pin &&
 
                     <> <Heading letterSpacing="tight" size="md" >Create Pin</Heading>
 
@@ -511,21 +585,13 @@ function Dashboard({ person }) {
                                 </PinInput>
                             </HStack>
                         </InputGroup>
-                        <Button disabled mt={4} bgColor="blackAlpha.900" _hover={{ bgColor: "blackAlpha.700" }} color="#fff" p={7} borderRadius={15} onClick={createPin}>Create my pin</Button></> : <> <Heading letterSpacing="tight" size="md" >Set Pin</Heading>
+                        <Button isLoading={loadingState}
+                            loadingText='Creating..' disabled mt={4} bgColor="blackAlpha.900" _hover={{ bgColor: "blackAlpha.700" }} color="#fff" p={7} borderRadius={15} onClick={createPin}>Create my pin</Button></>}
 
-                        <Text color="gray" mt={10} mb={2}>Old Pin</Text>
-                        <HStack>
-                            <PinInput>
-                                <PinInputField />
-                                <PinInputField />
-                                <PinInputField />
-                                <PinInputField />
-                                <PinInputField />
-                                <PinInputField />
-                            </PinInput>
-                        </HStack>
-                        <Text color="gray" mt={4} mb={2}>New Pin</Text>
-                        <InputGroup>
+                    {security?.pin &&
+                        <> <Heading letterSpacing="tight" size="md" >Reset Pin</Heading>
+
+                            <Text color="gray" mt={10} mb={2}>Old Pin</Text>
                             <HStack>
                                 <PinInput>
                                     <PinInputField />
@@ -536,12 +602,26 @@ function Dashboard({ person }) {
                                     <PinInputField />
                                 </PinInput>
                             </HStack>
-                        </InputGroup>
-                        <Button disabled mt={4} bgColor="blackAlpha.900" _hover={{ bgColor: "blackAlpha.700" }} color="#fff" p={7} borderRadius={15}>Reset my pin</Button></>
-                }
+                            <Text color="gray" mt={4} mb={2}>New Pin</Text>
+                            <InputGroup>
+                                <HStack>
+                                    <PinInput>
+                                        <PinInputField />
+                                        <PinInputField />
+                                        <PinInputField />
+                                        <PinInputField />
+                                        <PinInputField />
+                                        <PinInputField />
+                                    </PinInput>
+                                </HStack>
+                            </InputGroup>
+                            <Button disabled mt={4} bgColor="blackAlpha.900" _hover={{ bgColor: "blackAlpha.700" }} color="#fff" p={7} borderRadius={15}>Reset my pin</Button></>
 
-                </>
-                }
+                    }
+
+
+                </>}
+
 
 
                 {otherValue == 3 && <>

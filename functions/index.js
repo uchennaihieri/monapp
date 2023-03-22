@@ -2,7 +2,7 @@ const functions = require("firebase-functions");
 const admin = require('firebase-admin');
 const fetch = require('node-fetch');
 const sdk = require('api')('@qoreid/v1.0#79ra32ll9x7kn58');
-var serviceAccount = require("./permissions.json");
+var serviceAccount = require("./permissions.json"); const bcrypt = require('bcrypt');
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
 })
@@ -10,7 +10,7 @@ admin.initializeApp({
 const express = require('express');
 const app = express();
 const db = admin.firestore();
-
+const saltRounds = 10;
 const cors = require('cors');
 
 app.use(cors({ origin: true }))
@@ -92,9 +92,8 @@ app.post('/api/verifyOtp', (req, res) => {
 
     (async () => {
         try {
+            const termi = JSON.parse(req.body);
 
-            const pinId = req.body.pinId
-            const pin = req.body.pin
 
             fetch("https://api.ng.termii.com/api/sms/otp/verify", {
 
@@ -103,8 +102,8 @@ app.post('/api/verifyOtp', (req, res) => {
 
                 body: JSON.stringify({
                     "api_key": process.env.TERMI_API_KEY,
-                    "pin_id": pinId,
-                    "pin": pin,
+                    "pin_id": termi.pinId,
+                    "pin": termi.pin,
                 }),
 
                 headers: {
@@ -133,18 +132,28 @@ app.post('/api/verifyOtp', (req, res) => {
 
 
 app.post('/api/crypt', (req, res) => {
+
+    const cryptData = JSON.parse(req.body);
+
     (async () => {
         try {
-            bcrypt.hash(req.body.pin, saltRounds, async function (err, hash) {
+            bcrypt.hash(cryptData.pin, saltRounds, async function (err, hash) {
                 if (err) {
                     return res.send(err)
                 } else {
 
-                    const document = db.collection('users').doc(req.body.id);
-                    let user = await document.get()
-                    let response = user.data();
-                    console.log(response)
-                    return res.status(200).send(response);
+                    const document = db.collection('security').doc(cryptData.id);
+                    await document.set({
+                        pin: hash,
+                        status: 'active'
+                    }, { merge: true }).then(() => {
+                        return res.status(200).send({
+                            "successful": true
+                        });
+                    }).catch((error) => res.send({
+                        "successful": false,
+                        error: error
+                    }))
 
                 }
             });
