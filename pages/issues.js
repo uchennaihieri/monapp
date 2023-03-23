@@ -9,7 +9,7 @@ import PostCard from "@/components/postCard";
 import { db } from "@/services/firebase";
 import Navbar from "@/components/navbar";
 
-function issues() {
+function Issues() {
 
 
 
@@ -105,4 +105,4 @@ function issues() {
     )
 }
 
-export default issues
+export default Issues
