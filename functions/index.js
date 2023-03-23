@@ -92,8 +92,8 @@ app.post('/api/verifyOtp', (req, res) => {
 
     (async () => {
         try {
-            const termi = JSON.parse(req.body);
 
+            const termi = req.body;
 
             fetch("https://api.ng.termii.com/api/sms/otp/verify", {
 

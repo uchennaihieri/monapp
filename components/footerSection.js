@@ -70,6 +70,13 @@ export default function FooterSection() {
                         fontWeight={400}
                         className={dmsans.className}
                     >Privacy</Button>
+                    <Button m="0" p="0" variant={'ghost'} _hover={{
+                        backgroundColor: 'none'
+                    }} color={'#000000'} fontSize="0.875rem"
+                        fontWeight={400}
+                        className={dmsans.className}
+                    >Issues</Button>
+
 
                 </HStack>
                 <Center>

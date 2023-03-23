@@ -23,6 +23,5 @@ const app = getApps().length > 0 ? getApp() : initializeApp(config);
 const auth = getAuth(app)
 const db = getFirestore(app)
 
-
 export { db, auth, addDoc, serverTimestamp, onSnapshot, isSignInWithEmailLink, signOut, signInWithEmailLink, collection, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateDoc, signInWithRedirect, GoogleAuthProvider, onAuthStateChanged, doc, deleteUser, getDoc, getDocs, setDoc, deleteDoc, sendEmailVerification, arrayRemove, arrayUnion }
 

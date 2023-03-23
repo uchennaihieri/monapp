@@ -1,4 +1,4 @@
-import { businessCat, bvnN, myLocation, pinID, seller } from '@/recoil/atoms';
+
 import {
     Flex,
     Box,
@@ -44,6 +44,7 @@ import { Bree_Serif, DM_Sans, Roboto_Slab } from '@next/font/google';
 import { useEffect, useState } from 'react';
 import { AiOutlineLeft } from 'react-icons/ai';
 import { RiEyeCloseFill, RiEyeFill } from 'react-icons/ri';
+import { businessCat, bvnN, myLocation, pinID, seller } from '@/recoil/atoms';
 import { useForm } from "react-hook-form";
 import { auth, createUserWithEmailAndPassword, db, deleteDoc, doc, deleteUser, serverTimestamp, setDoc, signInWithEmailAndPassword } from '@/services/firebase';
 import { reauthenticateWithCredential } from 'firebase/auth';
@@ -263,9 +264,9 @@ export const Verify = ({ person }) => {
     const handleClick = () => setShow(!show)
     const [merchant, setMerchant] = useBoolean(true)
     const [banks, setBanks] = useState(null)
-    const [location, setLocation] = useState(myLocation)
+    const [location, setLocation] = useRecoilState(myLocation)
     const [merchantName, setMerchantName] = useRecoilState(seller)
-    const [myBusiness, setMyBusiness] = useState(businessCat)
+    const [myBusiness, setMyBusiness] = useRecoilState(businessCat)
     const [account, setAccount] = useState('')
     const [myBank, setMyBank] = useState("")
     const [errorFetchedChecker, setErrorFetchedChecker] = useState(false);
@@ -282,34 +283,6 @@ export const Verify = ({ person }) => {
             if (response.code == "00") {
 
 
-                fetch("https://us-central1-monapp-33057.cloudfunctions.net/app/api/verifyBvn", {
-
-                    // Adding method type
-                    method: "POST",
-
-                    // Adding body or contents to send
-                    body: JSON.stringify({
-                        "phoneNumber": person.phoneNumber
-                    }),
-
-                    // Adding headers to the request
-                    headers: {
-                        'Access-Control-Allow-Origin': '*',
-                        "Content-type": "application/json; charset=UTF-8"
-                    }
-                }).then(function (res) {
-                    return res.json();
-                })
-                    // Converting to JSON
-                    .then(function (data) {
-                        setTokenPin(data.pinId)
-                        setVerificationNumber(data.to)
-                        router.push('/confirmOtp')
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    })
-
 
 
             } else if (response.code == "01") {
@@ -323,7 +296,44 @@ export const Verify = ({ person }) => {
 
 
 
-    const verifyWithIdentity = useIdentityPayKYC(config)
+    // const verifyWithIdentity = useIdentityPayKYC(config)
+
+
+    const verifyUser = async () => {
+        setLoadingState(true)
+
+        await fetch("https://us-central1-monapp-33057.cloudfunctions.net/app/api/verifyBvn", {
+
+            // Adding method type
+            method: "POST",
+
+            // Adding body or contents to send
+            body: JSON.stringify({
+                "phoneNumber": person.phoneNumber
+            }),
+
+            // Adding headers to the request
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        }).then(function (res) {
+            return res.json();
+        })
+            // Converting to JSON
+            .then(function (data) {
+                setLoadingState(false)
+                setTokenPin(data.pinId)
+                setVerificationNumber(data.to)
+                router.push('/confirmOtp')
+            })
+            .catch(function (error) {
+                setLoadingState(false)
+                console.log(error);
+            })
+
+
+    }
 
 
 
@@ -343,7 +353,7 @@ export const Verify = ({ person }) => {
                         <FormLabel className={roboto.className}>Select Location</FormLabel>
 
                         <Select placeholder='Select option' value={location}
-                            onChange={e => setLocation(e.target.value)} variant='outline' mb="1.6rem" h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'}>
+                            onChange={(e) => setLocation(e.target.value)} variant='outline' mb="1.6rem" h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'}>
                             {locations?.map((loc, index) => <option key={index} value={loc}>{loc}</option>)}
 
                         </Select>
@@ -367,7 +377,7 @@ export const Verify = ({ person }) => {
                                 <FormLabel className={roboto.className}>Merchant Name</FormLabel>
 
                                 <Input
-                                    onChange={e => setMerchantName(e.target.value)} mb="1.6rem" h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'} type="text" placeholder='Business name' />
+                                    onChange={(e) => setMerchantName(e.target.value)} mb="1.6rem" h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'} type="text" placeholder='Business name' />
 
                             </FormControl>
                         </Box>
@@ -376,7 +386,7 @@ export const Verify = ({ person }) => {
                                 <FormLabel className={roboto.className}>Select Business Category</FormLabel>
 
                                 <Select placeholder='Select option' value={myBusiness}
-                                    onChange={e => setMyBusiness(e.target.value)} variant='outline' mb="1.6rem" h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'}>
+                                    onChange={(e) => setMyBusiness(e.target.value)} variant='outline' mb="1.6rem" h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'}>
                                     {business?.map((loc, index) => <option key={index} value={loc}>{loc}</option>)}
                                 </Select>
 
@@ -390,7 +400,7 @@ export const Verify = ({ person }) => {
                     type='submit'
                     isLoading={loadingState}
                     loadingText='Please wait..'
-                    onClick={verifyWithIdentity}
+                    onClick={verifyUser}
                     borderRadius={'0.125rem'}
                     h="4rem"
                     bg={'#000000'}
@@ -422,7 +432,7 @@ export const getServerSideProps = withAuthUserTokenSSR({
     // Optionally, get other props.
     const token = await AuthUser.getIdToken()
     const UID = AuthUser.id
-    const response = await fetch(`https://us-central1-monapp-33057.cloudfunctions.net/app/api/user/${UID}`, {
+    const response = await fetch(`http://127.0.0.1:5001/monapp-33057/us-central1/app/api/user/${UID}`, {
         method: 'GET',
         headers: {
             Authorization: token,

@@ -61,6 +61,9 @@ export default function Navbar() {
                     justify="end"
                     display={{ base: 'flex', md: 'none' }}
                     marginRight="1.25rem"
+                    _hover={{
+                        cursor: 'pointer'
+                    }}
                 >
 
                     {
@@ -108,7 +111,7 @@ const DesktopNav = () => {
 const MobileNav = () => {
     return (
         <Stack
-            bg={useColorModeValue('white', 'gray.800')}
+            bg="#000000"
             p={4}
             display={{ md: 'none' }}>
             {NAV_ITEMS.map((navItem) => (
@@ -134,7 +137,10 @@ const MobileNavItem = ({ label, children, href }) => {
                 }}>
                 <Text
                     fontWeight={600}
-                    color={useColorModeValue('gray.600', 'gray.200')}>
+
+                    color="white" _hover={{
+                        color: "gray.200",
+                    }}>
                     {label}
                 </Text>
                 {children && (

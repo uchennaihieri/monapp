@@ -43,7 +43,7 @@ export default function HeroSection() {
                         className={bree.className}
 
                     >
-                        A better way to make payment for the next gen
+                        A better way to make payment for the next generation
                     </Text>
 
                 </Box>

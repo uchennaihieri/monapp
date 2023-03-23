@@ -1,283 +1,63 @@
-[debug] [2023-03-18T15:30:28.379Z] ----------------------------------------------------------------------
-[debug] [2023-03-18T15:30:28.381Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Michael.i_FNGA0247\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only functions
-[debug] [2023-03-18T15:30:28.381Z] CLI Version:   11.15.0
-[debug] [2023-03-18T15:30:28.382Z] Platform:      win32
-[debug] [2023-03-18T15:30:28.382Z] Node Version:  v16.18.0
-[debug] [2023-03-18T15:30:28.388Z] Time:          Sat Mar 18 2023 16:30:28 GMT+0100 (West Africa Standard Time)
-[debug] [2023-03-18T15:30:28.388Z] ----------------------------------------------------------------------
+[debug] [2023-03-23T15:24:14.789Z] ----------------------------------------------------------------------
+[debug] [2023-03-23T15:24:14.791Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Michael.i_FNGA0247\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only functions
+[debug] [2023-03-23T15:24:14.792Z] CLI Version:   11.15.0
+[debug] [2023-03-23T15:24:14.792Z] Platform:      win32
+[debug] [2023-03-23T15:24:14.793Z] Node Version:  v16.18.0
+[debug] [2023-03-23T15:24:14.795Z] Time:          Thu Mar 23 2023 16:24:14 GMT+0100 (West Africa Standard Time)
+[debug] [2023-03-23T15:24:14.796Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2023-03-18T15:30:28.396Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
-[debug] [2023-03-18T15:30:28.543Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2023-03-18T15:30:28.543Z] > authorizing via signed-in user (leomyke4@gmail.com)
-[debug] [2023-03-18T15:30:28.544Z] [iam] checking project monapp-33057 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
-[debug] [2023-03-18T15:30:28.546Z] > refreshing access token with scopes: []
-[debug] [2023-03-18T15:30:28.547Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
-[debug] [2023-03-18T15:30:28.547Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
-[debug] [2023-03-18T15:30:32.075Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
-[debug] [2023-03-18T15:30:32.077Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
-[debug] [2023-03-18T15:30:32.226Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/monapp-33057:testIamPermissions [none]
-[debug] [2023-03-18T15:30:32.227Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/monapp-33057:testIamPermissions x-goog-quota-user=projects/monapp-33057
-[debug] [2023-03-18T15:30:32.228Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/monapp-33057:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
-[debug] [2023-03-18T15:30:32.239Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
-[debug] [2023-03-18T15:30:32.239Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
-[debug] [2023-03-18T15:30:33.365Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/monapp-33057:testIamPermissions 200
-[debug] [2023-03-18T15:30:33.365Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/monapp-33057:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
-[debug] [2023-03-18T15:30:33.367Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/monapp-33057/serviceAccounts/monapp-33057@appspot.gserviceaccount.com:testIamPermissions [none]
-[debug] [2023-03-18T15:30:33.368Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/monapp-33057/serviceAccounts/monapp-33057@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
-[debug] [2023-03-18T15:30:34.446Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/monapp-33057/serviceAccounts/monapp-33057@appspot.gserviceaccount.com:testIamPermissions 200
-[debug] [2023-03-18T15:30:34.447Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/monapp-33057/serviceAccounts/monapp-33057@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2023-03-23T15:24:14.949Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-03-23T15:24:14.950Z] > authorizing via signed-in user (leomyke4@gmail.com)
+[debug] [2023-03-23T15:24:14.950Z] [iam] checking project monapp-33057 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2023-03-23T15:24:14.953Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/monapp-33057:testIamPermissions [none]
+[debug] [2023-03-23T15:24:14.954Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/monapp-33057:testIamPermissions x-goog-quota-user=projects/monapp-33057
+[debug] [2023-03-23T15:24:14.954Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/monapp-33057:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2023-03-23T15:24:29.145Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/monapp-33057:testIamPermissions 200
+[debug] [2023-03-23T15:24:29.145Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/monapp-33057:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2023-03-23T15:24:29.147Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/monapp-33057/serviceAccounts/monapp-33057@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2023-03-23T15:24:29.147Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/monapp-33057/serviceAccounts/monapp-33057@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2023-03-23T15:24:31.021Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/monapp-33057/serviceAccounts/monapp-33057@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2023-03-23T15:24:31.021Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/monapp-33057/serviceAccounts/monapp-33057@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
 [info] 
 [info] === Deploying to 'monapp-33057'...
 [info] 
 [info] i  deploying functions 
-[debug] [2023-03-18T15:30:34.457Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057 [none]
-[debug] [2023-03-18T15:30:35.195Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057 200
-[debug] [2023-03-18T15:30:35.195Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057 {"projectId":"monapp-33057","projectNumber":"322702698679","displayName":"monapp","name":"projects/monapp-33057","resources":{"hostingSite":"monapp-33057","storageBucket":"monapp-33057.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_63a208ab-458d-466a-a972-52621eb5fb85"}
+[debug] [2023-03-23T15:24:31.029Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057 [none]
+[debug] [2023-03-23T15:24:32.854Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057 200
+[debug] [2023-03-23T15:24:32.855Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057 {"projectId":"monapp-33057","projectNumber":"322702698679","displayName":"monapp","name":"projects/monapp-33057","resources":{"hostingSite":"monapp-33057","storageBucket":"monapp-33057.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_4fbdcf4e-e25c-4446-8028-486f2560c6cd"}
 [info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
 [info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
 [info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
-[debug] [2023-03-18T15:30:35.200Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudfunctions.googleapis.com [none]
-[debug] [2023-03-18T15:30:35.200Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/monapp-33057
-[debug] [2023-03-18T15:30:35.203Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/runtimeconfig.googleapis.com [none]
-[debug] [2023-03-18T15:30:35.203Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/monapp-33057
-[debug] [2023-03-18T15:30:35.206Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudbuild.googleapis.com [none]
-[debug] [2023-03-18T15:30:35.206Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudbuild.googleapis.com x-goog-quota-user=projects/monapp-33057
-[debug] [2023-03-18T15:30:35.208Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/artifactregistry.googleapis.com [none]
-[debug] [2023-03-18T15:30:35.208Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/artifactregistry.googleapis.com x-goog-quota-user=projects/monapp-33057
-[debug] [2023-03-18T15:30:36.507Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudfunctions.googleapis.com 200
-[debug] [2023-03-18T15:30:36.508Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudfunctions.googleapis.com [omitted]
-[info] +  functions: required API cloudfunctions.googleapis.com is enabled 
-[debug] [2023-03-18T15:30:36.540Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/runtimeconfig.googleapis.com 200
-[debug] [2023-03-18T15:30:36.541Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/runtimeconfig.googleapis.com [omitted]
-[debug] [2023-03-18T15:30:36.633Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudbuild.googleapis.com 200
-[debug] [2023-03-18T15:30:36.633Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudbuild.googleapis.com [omitted]
-[info] +  functions: required API cloudbuild.googleapis.com is enabled 
-[debug] [2023-03-18T15:30:36.983Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/artifactregistry.googleapis.com 200
-[debug] [2023-03-18T15:30:36.984Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/artifactregistry.googleapis.com [omitted]
+[debug] [2023-03-23T15:24:32.859Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudfunctions.googleapis.com [none]
+[debug] [2023-03-23T15:24:32.859Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/monapp-33057
+[debug] [2023-03-23T15:24:32.862Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/runtimeconfig.googleapis.com [none]
+[debug] [2023-03-23T15:24:32.862Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/monapp-33057
+[debug] [2023-03-23T15:24:32.865Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudbuild.googleapis.com [none]
+[debug] [2023-03-23T15:24:32.866Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudbuild.googleapis.com x-goog-quota-user=projects/monapp-33057
+[debug] [2023-03-23T15:24:32.867Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/artifactregistry.googleapis.com [none]
+[debug] [2023-03-23T15:24:32.868Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/artifactregistry.googleapis.com x-goog-quota-user=projects/monapp-33057
+[debug] [2023-03-23T15:24:34.516Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/runtimeconfig.googleapis.com 200
+[debug] [2023-03-23T15:24:34.517Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2023-03-23T15:24:34.518Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/artifactregistry.googleapis.com 200
+[debug] [2023-03-23T15:24:34.518Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/artifactregistry.googleapis.com [omitted]
 [info] +  artifactregistry: required API artifactregistry.googleapis.com is enabled 
-[debug] [2023-03-18T15:30:36.989Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057/adminSdkConfig [none]
-[debug] [2023-03-18T15:30:37.600Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057/adminSdkConfig 200
-[debug] [2023-03-18T15:30:37.601Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057/adminSdkConfig {"projectId":"monapp-33057","storageBucket":"monapp-33057.appspot.com","locationId":"us-central"}
-[debug] [2023-03-18T15:30:37.603Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/monapp-33057/configs [none]
-[debug] [2023-03-18T15:30:38.312Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/monapp-33057/configs 200
-[debug] [2023-03-18T15:30:38.312Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/monapp-33057/configs {}
+[debug] [2023-03-23T15:24:34.522Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudfunctions.googleapis.com 200
+[debug] [2023-03-23T15:24:34.523Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudfunctions.googleapis.com [omitted]
+[info] +  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2023-03-23T15:24:34.526Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudbuild.googleapis.com 200
+[debug] [2023-03-23T15:24:34.526Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudbuild.googleapis.com [omitted]
+[info] +  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2023-03-23T15:24:34.529Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057/adminSdkConfig [none]
+[debug] [2023-03-23T15:24:36.131Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057/adminSdkConfig 200
+[debug] [2023-03-23T15:24:36.131Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057/adminSdkConfig {"projectId":"monapp-33057","storageBucket":"monapp-33057.appspot.com","locationId":"us-central"}
+[debug] [2023-03-23T15:24:36.133Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/monapp-33057/configs [none]
+[debug] [2023-03-23T15:24:37.007Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/monapp-33057/configs 200
+[debug] [2023-03-23T15:24:37.007Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/monapp-33057/configs {}
 [info] i  functions: preparing codebase default for deployment 
-[debug] [2023-03-18T15:30:38.323Z] Validating nodejs source
+[debug] [2023-03-23T15:24:37.033Z] Validating nodejs source
 [warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
 [warn] !  functions: Please note that there will be breaking changes when you upgrade. 
-[debug] [2023-03-18T15:30:58.677Z] > [functions] package.json contents: {
-  "name": "functions",
-  "description": "Cloud Functions for Firebase",
-  "scripts": {
-    "serve": "firebase emulators:start --only functions",
-    "shell": "firebase functions:shell",
-    "start": "npm run shell",
-    "deploy": "firebase deploy --only functions",
-    "logs": "firebase functions:log"
-  },
-  "engines": {
-    "node": "16"
-  },
-  "main": "index.js",
-  "dependencies": {
-    "api": "^5.0.7",
-    "cors": "^2.8.5",
-    "express": "^4.18.2",
-    "firebase-admin": "^10.0.2",
-    "firebase-functions": "^3.18.0",
-    "node-fetch": "^2.6.9"
-  },
-  "devDependencies": {
-    "firebase-functions-test": "^0.2.0"
-  },
-  "private": true
-}
-[debug] [2023-03-18T15:30:58.679Z] Building nodejs source
-[info] i  functions: Loaded environment variables from .env. 
-[debug] [2023-03-18T15:30:58.739Z] Could not find functions.yaml. Must use http discovery
-[debug] [2023-03-18T15:31:01.227Z] Serving at port 9005
-
-[debug] [2023-03-18T15:31:08.991Z] Got response from /__/functions.yaml {"endpoints":{"app":{"platform":"gcfv1","httpsTrigger":{},"entryPoint":"app"}},"specVersion":"v1alpha1","requiredAPIs":[]}
-[debug] [2023-03-18T15:31:09.021Z] shutdown requested via /__/quitquitquit
-
-[info] i  functions: preparing functions directory for uploading... 
-[info] i  functions: packaged C:\Users\Michael.i_FNGA0247\monapp\functions (105.17 KB) for uploading 
-[debug] [2023-03-18T15:31:09.226Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/-/functions [none]
-[debug] [2023-03-18T15:31:10.224Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/-/functions 200
-[debug] [2023-03-18T15:31:10.224Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/-/functions {"functions":[{"name":"projects/monapp-33057/locations/us-central1/functions/app","httpsTrigger":{"url":"https://us-central1-monapp-33057.cloudfunctions.net/app","securityLevel":"SECURE_ALWAYS"},"status":"ACTIVE","entryPoint":"app","timeout":"60s","availableMemoryMb":256,"serviceAccountEmail":"monapp-33057@appspot.gserviceaccount.com","updateTime":"2023-03-08T11:56:54.546Z","versionId":"8","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"6ece034db2f8ff26841e7022025c4fcc4b9d6ea0"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-423196917591.us-central1.cloudfunctions.appspot.com/66608165-3738-4f83-9a0c-46239474b3ea.zip","environmentVariables":{"FLW_PUBLIC_KEY":"FLWPUBK-4d63e098d60c1e7ae93fb1a75b0bbd05-X","FLW_SECRET_KEY":"FLWSECK-47dd89a473c13d16f249057eb7232b7c-X","TERMI_API_KEY":"TLMmAlkZCgYwGOxuaRUPI9mE83zNtHT2Rc6KkaRs44Eailq3zghhQnuB5MshUA","FIREBASE_CONFIG":"{\"projectId\":\"monapp-33057\",\"storageBucket\":\"monapp-33057.appspot.com\",\"locationId\":\"us-central\"}","GCLOUD_PROJECT":"monapp-33057"},"runtime":"nodejs16","ingressSettings":"ALLOW_ALL","buildId":"cb29ca8d-6af4-46ca-8c7f-fbc745b16e7f","buildName":"projects/322702698679/locations/us-central1/builds/cb29ca8d-6af4-46ca-8c7f-fbc745b16e7f","dockerRegistry":"ARTIFACT_REGISTRY"}]}
-[debug] [2023-03-18T15:31:10.230Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/monapp-33057/locations/-/functions filter=environment%3D%22GEN_2%22
-[debug] [2023-03-18T15:31:11.566Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/monapp-33057/locations/-/functions 200
-[debug] [2023-03-18T15:31:11.566Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/monapp-33057/locations/-/functions {}
-[debug] [2023-03-18T15:31:11.579Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057 [none]
-[debug] [2023-03-18T15:31:12.136Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057 200
-[debug] [2023-03-18T15:31:12.137Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057 {"projectId":"monapp-33057","projectNumber":"322702698679","displayName":"monapp","name":"projects/monapp-33057","resources":{"hostingSite":"monapp-33057","storageBucket":"monapp-33057.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_63a208ab-458d-466a-a972-52621eb5fb85"}
-[debug] [2023-03-18T15:31:12.145Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions:generateUploadUrl [none]
-[debug] [2023-03-18T15:31:12.145Z] >>> [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions:generateUploadUrl {}
-[debug] [2023-03-18T15:31:13.060Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions:generateUploadUrl 200
-[debug] [2023-03-18T15:31:13.060Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions:generateUploadUrl {"uploadUrl":"https://storage.googleapis.com/uploads-423196917591.us-central1.cloudfunctions.appspot.com/0ee00f91-dc3a-42c8-acc8-29bc11cf7d30.zip?GoogleAccessId=service-322702698679@gcf-admin-robot.iam.gserviceaccount.com&Expires=1679155272&Signature=isQB7cwYwy2A5l%2Bdx8oHg6moAkuQYLYtTJATf3yu0MAWFKPFOihOeDWQY0jsMHuyF62SU2iTGNjd6kgNmHqKveIOJuDV53od75CVYOch4TkndQP9WI0UXy19ayB4SWlohR0n22sYFuFr%2BGKpmlC%2B%2FWtTKnSKoJe6g3h3tnnc0uteHAxKL%2F4w%2F8Q6Uk4p5teB2aLPmSns86LVtuTVUE2fGBu6XWGK7P9ln5epm1EqCf6mN3TBvLBiuEl%2BfULmmBiETnfTBfScXIuJVHkdQkvBeaBRQEPwbwRhgfMWoQDeYn4jakRVRmhxLa7T7qoIWH0ZevkfMJOawzWT%2BJ%2BCFgDcvQ%3D%3D"}
-[debug] [2023-03-18T15:31:13.062Z] >>> [apiv2][query] PUT https://storage.googleapis.com/uploads-423196917591.us-central1.cloudfunctions.appspot.com/0ee00f91-dc3a-42c8-acc8-29bc11cf7d30.zip GoogleAccessId=service-322702698679%40gcf-admin-robot.iam.gserviceaccount.com&Expires=1679155272&Signature=isQB7cwYwy2A5l%2Bdx8oHg6moAkuQYLYtTJATf3yu0MAWFKPFOihOeDWQY0jsMHuyF62SU2iTGNjd6kgNmHqKveIOJuDV53od75CVYOch4TkndQP9WI0UXy19ayB4SWlohR0n22sYFuFr%2BGKpmlC%2B%2FWtTKnSKoJe6g3h3tnnc0uteHAxKL%2F4w%2F8Q6Uk4p5teB2aLPmSns86LVtuTVUE2fGBu6XWGK7P9ln5epm1EqCf6mN3TBvLBiuEl%2BfULmmBiETnfTBfScXIuJVHkdQkvBeaBRQEPwbwRhgfMWoQDeYn4jakRVRmhxLa7T7qoIWH0ZevkfMJOawzWT%2BJ%2BCFgDcvQ%3D%3D
-[debug] [2023-03-18T15:31:13.062Z] >>> [apiv2][body] PUT https://storage.googleapis.com/uploads-423196917591.us-central1.cloudfunctions.appspot.com/0ee00f91-dc3a-42c8-acc8-29bc11cf7d30.zip [stream]
-[debug] [2023-03-18T15:31:17.984Z] <<< [apiv2][status] PUT https://storage.googleapis.com/uploads-423196917591.us-central1.cloudfunctions.appspot.com/0ee00f91-dc3a-42c8-acc8-29bc11cf7d30.zip 200
-[debug] [2023-03-18T15:31:17.984Z] <<< [apiv2][body] PUT https://storage.googleapis.com/uploads-423196917591.us-central1.cloudfunctions.appspot.com/0ee00f91-dc3a-42c8-acc8-29bc11cf7d30.zip [omitted]
-[info] +  functions: functions folder uploaded successfully 
-[info] i  functions: updating Node.js 16 function app(us-central1)... 
-[debug] [2023-03-18T15:31:18.000Z] >>> [apiv2][query] PATCH https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions/app updateMask=name%2CsourceUploadUrl%2CentryPoint%2Cruntime%2CdockerRegistry%2Clabels%2ChttpsTrigger.securityLevel%2CenvironmentVariables%2CavailableMemoryMb%2CsourceToken
-[debug] [2023-03-18T15:31:18.001Z] >>> [apiv2][body] PATCH https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions/app {"name":"projects/monapp-33057/locations/us-central1/functions/app","sourceUploadUrl":"https://storage.googleapis.com/uploads-423196917591.us-central1.cloudfunctions.appspot.com/0ee00f91-dc3a-42c8-acc8-29bc11cf7d30.zip?GoogleAccessId=service-322702698679@gcf-admin-robot.iam.gserviceaccount.com&Expires=1679155272&Signature=isQB7cwYwy2A5l%2Bdx8oHg6moAkuQYLYtTJATf3yu0MAWFKPFOihOeDWQY0jsMHuyF62SU2iTGNjd6kgNmHqKveIOJuDV53od75CVYOch4TkndQP9WI0UXy19ayB4SWlohR0n22sYFuFr%2BGKpmlC%2B%2FWtTKnSKoJe6g3h3tnnc0uteHAxKL%2F4w%2F8Q6Uk4p5teB2aLPmSns86LVtuTVUE2fGBu6XWGK7P9ln5epm1EqCf6mN3TBvLBiuEl%2BfULmmBiETnfTBfScXIuJVHkdQkvBeaBRQEPwbwRhgfMWoQDeYn4jakRVRmhxLa7T7qoIWH0ZevkfMJOawzWT%2BJ%2BCFgDcvQ%3D%3D","entryPoint":"app","runtime":"nodejs16","dockerRegistry":"ARTIFACT_REGISTRY","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"da05bd160de686a25ca7434d3bae0218cc92a421"},"httpsTrigger":{"securityLevel":"SECURE_ALWAYS"},"environmentVariables":{"FLW_PUBLIC_KEY":"FLWPUBK-4d63e098d60c1e7ae93fb1a75b0bbd05-X","FLW_SECRET_KEY":"FLWSECK-47dd89a473c13d16f249057eb7232b7c-X","TERMI_API_KEY":"TLMmAlkZCgYwGOxuaRUPI9mE83zNtHT2Rc6KkaRs44Eailq3zghhQnuB5MshUA","QOREID_CLIENT":"N3KSF8CKCLRTP0UXRFD2","QOREID_SECRET":"442e215b170747e5a44f9220ad8aeac0","FIREBASE_CONFIG":"{\"projectId\":\"monapp-33057\",\"storageBucket\":\"monapp-33057.appspot.com\",\"locationId\":\"us-central\"}","GCLOUD_PROJECT":"monapp-33057"},"availableMemoryMb":256}
-[debug] [2023-03-18T15:31:18.715Z] <<< [apiv2][status] PATCH https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions/app 403
-[debug] [2023-03-18T15:31:18.715Z] <<< [apiv2][body] PATCH https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions/app {"error":{"code":403,"message":"Unable to retrieve the repository metadata for projects/monapp-33057/locations/us-central1/repositories/gcf-artifacts. Ensure that the Cloud Functions service account has 'artifactregistry.repositories.list' and 'artifactregistry.repositories.get' permissions. You can add the permissions by granting the role 'roles/artifactregistry.reader'.","status":"PERMISSION_DENIED"}}
-[warn] !  functions: failed to update function projects/monapp-33057/locations/us-central1/functions/app 
-[error] Failed to update function projects/monapp-33057/locations/us-central1/functions/app
-[debug] [2023-03-18T15:31:18.766Z] Total Function Deployment time: 734
-[debug] [2023-03-18T15:31:18.767Z] 1 Functions Deployed
-[debug] [2023-03-18T15:31:18.767Z] 1 Functions Errored
-[debug] [2023-03-18T15:31:18.767Z] 0 Function Deployments Aborted
-[debug] [2023-03-18T15:31:18.767Z] Average Function Deployment time: 730
-[info] 
-[info] Functions deploy had errors with the following functions:
-	app(us-central1)
-[debug] [2023-03-18T15:31:18.781Z] Not printing URL for HTTPS function. Typically this means it didn't match a filter or we failed deployment
-[info] i  functions: cleaning up build files... 
-[debug] [2023-03-18T15:31:18.787Z] >>> [apiv2][query] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/monapp-33057/locations/us-central1/repositories/gcf-artifacts/packages/app [none]
-[debug] [2023-03-18T15:31:18.789Z] >>> [apiv2][query] GET https://us.gcr.io/v2/monapp-33057/gcf/us-central1/tags/list [none]
-[debug] [2023-03-18T15:31:19.511Z] <<< [apiv2][status] GET https://us.gcr.io/v2/monapp-33057/gcf/us-central1/tags/list 200
-[debug] [2023-03-18T15:31:19.511Z] <<< [apiv2][body] GET https://us.gcr.io/v2/monapp-33057/gcf/us-central1/tags/list {"child":[],"manifest":{},"name":"monapp-33057/gcf/us-central1","tags":[]}
-[debug] [2023-03-18T15:31:19.511Z] Could not find image for function projects/monapp-33057/locations/us-central1/functions/app
-[debug] [2023-03-18T15:31:20.000Z] <<< [apiv2][status] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/monapp-33057/locations/us-central1/repositories/gcf-artifacts/packages/app 403
-[debug] [2023-03-18T15:31:20.001Z] <<< [apiv2][body] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/monapp-33057/locations/us-central1/repositories/gcf-artifacts/packages/app {"error":{"code":403,"message":"This API method requires billing to be enabled. Please enable billing on project #322702698679 by visiting https://console.developers.google.com/billing/enable?project=322702698679 then retry. If you enabled billing for this project recently, wait a few minutes for the action to propagate to our systems and retry.","status":"PERMISSION_DENIED","details":[{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Google developers console billing","url":"https://console.developers.google.com/billing/enable?project=322702698679"}]},{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"BILLING_DISABLED","domain":"googleapis.com","metadata":{"consumer":"projects/322702698679","service":"artifactregistry.googleapis.com"}}]}}
-[warn] !  functions: Unhandled error cleaning up build images. This could result in a small monthly bill if not corrected. You can attempt to delete these images by redeploying or you can delete them manually at https://console.cloud.google.com/artifacts/docker/monapp-33057/us-central1/gcf-artifacts 
-[debug] [2023-03-18T15:31:20.005Z] Functions deploy failed.
-[debug] [2023-03-18T15:31:20.006Z] {
-  "endpoint": {
-    "id": "app",
-    "project": "monapp-33057",
-    "region": "us-central1",
-    "entryPoint": "app",
-    "platform": "gcfv1",
-    "runtime": "nodejs16",
-    "httpsTrigger": {},
-    "environmentVariables": {
-      "FLW_PUBLIC_KEY": "FLWPUBK-4d63e098d60c1e7ae93fb1a75b0bbd05-X",
-      "FLW_SECRET_KEY": "FLWSECK-47dd89a473c13d16f249057eb7232b7c-X",
-      "TERMI_API_KEY": "TLMmAlkZCgYwGOxuaRUPI9mE83zNtHT2Rc6KkaRs44Eailq3zghhQnuB5MshUA",
-      "QOREID_CLIENT": "N3KSF8CKCLRTP0UXRFD2",
-      "QOREID_SECRET": "442e215b170747e5a44f9220ad8aeac0",
-      "FIREBASE_CONFIG": "{\"projectId\":\"monapp-33057\",\"storageBucket\":\"monapp-33057.appspot.com\",\"locationId\":\"us-central\"}",
-      "GCLOUD_PROJECT": "monapp-33057"
-    },
-    "codebase": "default",
-    "availableMemoryMb": 256,
-    "securityLevel": "SECURE_ALWAYS",
-    "targetedByOnly": false,
-    "hash": "da05bd160de686a25ca7434d3bae0218cc92a421",
-    "labels": {
-      "deployment-tool": "cli-firebase"
-    }
-  },
-  "op": "update",
-  "original": {
-    "name": "FirebaseError",
-    "children": [],
-    "context": {
-      "function": "projects/monapp-33057/locations/us-central1/functions/app"
-    },
-    "exit": 1,
-    "message": "Failed to update function projects/monapp-33057/locations/us-central1/functions/app",
-    "original": {
-      "name": "FirebaseError",
-      "children": [],
-      "context": {
-        "body": {
-          "error": {
-            "code": 403,
-            "message": "Unable to retrieve the repository metadata for projects/monapp-33057/locations/us-central1/repositories/gcf-artifacts. Ensure that the Cloud Functions service account has 'artifactregistry.repositories.list' and 'artifactregistry.repositories.get' permissions. You can add the permissions by granting the role 'roles/artifactregistry.reader'.",
-            "status": "PERMISSION_DENIED"
-          }
-        },
-        "response": {
-          "statusCode": 403
-        }
-      },
-      "exit": 1,
-      "message": "HTTP Error: 403, Unable to retrieve the repository metadata for projects/monapp-33057/locations/us-central1/repositories/gcf-artifacts. Ensure that the Cloud Functions service account has 'artifactregistry.repositories.list' and 'artifactregistry.repositories.get' permissions. You can add the permissions by granting the role 'roles/artifactregistry.reader'.",
-      "status": 403
-    },
-    "status": 500
-  }
-}
-[debug] [2023-03-18T15:31:20.027Z] Error: Failed to update function app in region us-central1
-    at C:\Users\Michael.i_FNGA0247\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:41:11
-    at runMicrotasks (<anonymous>)
-    at processTicksAndRejections (node:internal/process/task_queues:96:5)
-    at async Fabricator.updateV1Function (C:\Users\Michael.i_FNGA0247\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:305:32)
-    at async Fabricator.updateEndpoint (C:\Users\Michael.i_FNGA0247\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:140:13)
-    at async handle (C:\Users\Michael.i_FNGA0247\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:78:17)
-[error] 
-[error] Error: There was an error deploying functions
-[debug] [2023-03-22T12:20:35.918Z] ----------------------------------------------------------------------
-[debug] [2023-03-22T12:20:35.923Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Michael.i_FNGA0247\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only functions
-[debug] [2023-03-22T12:20:35.924Z] CLI Version:   11.15.0
-[debug] [2023-03-22T12:20:35.924Z] Platform:      win32
-[debug] [2023-03-22T12:20:35.924Z] Node Version:  v16.18.0
-[debug] [2023-03-22T12:20:35.933Z] Time:          Wed Mar 22 2023 13:20:35 GMT+0100 (West Africa Standard Time)
-[debug] [2023-03-22T12:20:35.933Z] ----------------------------------------------------------------------
-[debug] 
-[debug] [2023-03-22T12:20:36.152Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2023-03-22T12:20:36.153Z] > authorizing via signed-in user (leomyke4@gmail.com)
-[debug] [2023-03-22T12:20:36.154Z] [iam] checking project monapp-33057 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
-[debug] [2023-03-22T12:20:36.160Z] > refreshing access token with scopes: []
-[debug] [2023-03-22T12:20:36.164Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
-[debug] [2023-03-22T12:20:36.165Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
-[debug] [2023-03-22T12:20:39.073Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
-[debug] [2023-03-22T12:20:39.074Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
-[debug] [2023-03-22T12:20:39.182Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/monapp-33057:testIamPermissions [none]
-[debug] [2023-03-22T12:20:39.182Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/monapp-33057:testIamPermissions x-goog-quota-user=projects/monapp-33057
-[debug] [2023-03-22T12:20:39.184Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/monapp-33057:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
-[debug] [2023-03-22T12:20:41.295Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/monapp-33057:testIamPermissions 200
-[debug] [2023-03-22T12:20:41.295Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/monapp-33057:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
-[debug] [2023-03-22T12:20:41.297Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/monapp-33057/serviceAccounts/monapp-33057@appspot.gserviceaccount.com:testIamPermissions [none]
-[debug] [2023-03-22T12:20:41.297Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/monapp-33057/serviceAccounts/monapp-33057@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
-[debug] [2023-03-22T12:20:43.393Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/monapp-33057/serviceAccounts/monapp-33057@appspot.gserviceaccount.com:testIamPermissions 200
-[debug] [2023-03-22T12:20:43.393Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/monapp-33057/serviceAccounts/monapp-33057@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
-[info] 
-[info] === Deploying to 'monapp-33057'...
-[info] 
-[info] i  deploying functions 
-[debug] [2023-03-22T12:20:43.401Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057 [none]
-[debug] [2023-03-22T12:20:44.888Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057 200
-[debug] [2023-03-22T12:20:44.888Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057 {"projectId":"monapp-33057","projectNumber":"322702698679","displayName":"monapp","name":"projects/monapp-33057","resources":{"hostingSite":"monapp-33057","storageBucket":"monapp-33057.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_da035bd0-0647-4fbc-a51d-545bd04693f3"}
-[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
-[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
-[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
-[debug] [2023-03-22T12:20:44.896Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudfunctions.googleapis.com [none]
-[debug] [2023-03-22T12:20:44.896Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/monapp-33057
-[debug] [2023-03-22T12:20:44.897Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/runtimeconfig.googleapis.com [none]
-[debug] [2023-03-22T12:20:44.898Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/monapp-33057
-[debug] [2023-03-22T12:20:44.899Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudbuild.googleapis.com [none]
-[debug] [2023-03-22T12:20:44.900Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudbuild.googleapis.com x-goog-quota-user=projects/monapp-33057
-[debug] [2023-03-22T12:20:44.901Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/artifactregistry.googleapis.com [none]
-[debug] [2023-03-22T12:20:44.901Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/artifactregistry.googleapis.com x-goog-quota-user=projects/monapp-33057
-[debug] [2023-03-22T12:20:46.903Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/artifactregistry.googleapis.com 200
-[debug] [2023-03-22T12:20:46.904Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/artifactregistry.googleapis.com [omitted]
-[info] +  artifactregistry: required API artifactregistry.googleapis.com is enabled 
-[debug] [2023-03-22T12:20:46.908Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/runtimeconfig.googleapis.com 200
-[debug] [2023-03-22T12:20:46.908Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/runtimeconfig.googleapis.com [omitted]
-[debug] [2023-03-22T12:20:46.996Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudbuild.googleapis.com 200
-[debug] [2023-03-22T12:20:46.996Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudbuild.googleapis.com [omitted]
-[info] +  functions: required API cloudbuild.googleapis.com is enabled 
-[debug] [2023-03-22T12:20:47.003Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudfunctions.googleapis.com 200
-[debug] [2023-03-22T12:20:47.003Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudfunctions.googleapis.com [omitted]
-[info] +  functions: required API cloudfunctions.googleapis.com is enabled 
-[debug] [2023-03-22T12:20:47.005Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057/adminSdkConfig [none]
-[debug] [2023-03-22T12:20:47.693Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057/adminSdkConfig 200
-[debug] [2023-03-22T12:20:47.693Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057/adminSdkConfig {"projectId":"monapp-33057","storageBucket":"monapp-33057.appspot.com","locationId":"us-central"}
-[debug] [2023-03-22T12:20:47.695Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/monapp-33057/configs [none]
-[debug] [2023-03-22T12:20:49.257Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/monapp-33057/configs 200
-[debug] [2023-03-22T12:20:49.258Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/monapp-33057/configs {}
-[info] i  functions: preparing codebase default for deployment 
-[debug] [2023-03-22T12:20:49.296Z] Validating nodejs source
-[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
-[warn] !  functions: Please note that there will be breaking changes when you upgrade. 
-[debug] [2023-03-22T12:21:04.890Z] > [functions] package.json contents: {
+[debug] [2023-03-23T15:24:58.866Z] > [functions] package.json contents: {
   "name": "functions",
   "description": "Cloud Functions for Firebase",
   "scripts": {
@@ -305,61 +85,61 @@
   },
   "private": true
 }
-[debug] [2023-03-22T12:21:04.891Z] Building nodejs source
+[debug] [2023-03-23T15:24:58.868Z] Building nodejs source
 [info] i  functions: Loaded environment variables from .env. 
-[debug] [2023-03-22T12:21:04.904Z] Could not find functions.yaml. Must use http discovery
-[debug] [2023-03-22T12:21:09.908Z] Serving at port 9005
+[debug] [2023-03-23T15:24:58.876Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-03-23T15:25:02.198Z] Serving at port 9005
 
-[debug] [2023-03-22T12:21:23.089Z] Got response from /__/functions.yaml {"endpoints":{"app":{"platform":"gcfv1","httpsTrigger":{},"entryPoint":"app"}},"specVersion":"v1alpha1","requiredAPIs":[]}
-[debug] [2023-03-22T12:21:23.102Z] shutdown requested via /__/quitquitquit
+[debug] [2023-03-23T15:25:19.708Z] Got response from /__/functions.yaml {"endpoints":{"app":{"platform":"gcfv1","httpsTrigger":{},"entryPoint":"app"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2023-03-23T15:25:19.722Z] shutdown requested via /__/quitquitquit
 
 [info] i  functions: preparing functions directory for uploading... 
-[info] i  functions: packaged C:\Users\Michael.i_FNGA0247\monapp\functions (112.73 KB) for uploading 
-[debug] [2023-03-22T12:21:23.242Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/-/functions [none]
-[debug] [2023-03-22T12:21:25.239Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/-/functions 200
-[debug] [2023-03-22T12:21:25.240Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/-/functions {"functions":[{"name":"projects/monapp-33057/locations/us-central1/functions/app","httpsTrigger":{"url":"https://us-central1-monapp-33057.cloudfunctions.net/app","securityLevel":"SECURE_ALWAYS"},"status":"ACTIVE","entryPoint":"app","timeout":"60s","availableMemoryMb":256,"serviceAccountEmail":"monapp-33057@appspot.gserviceaccount.com","updateTime":"2023-03-08T11:56:54.546Z","versionId":"8","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"6ece034db2f8ff26841e7022025c4fcc4b9d6ea0"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-423196917591.us-central1.cloudfunctions.appspot.com/66608165-3738-4f83-9a0c-46239474b3ea.zip","environmentVariables":{"FLW_PUBLIC_KEY":"FLWPUBK-4d63e098d60c1e7ae93fb1a75b0bbd05-X","FLW_SECRET_KEY":"FLWSECK-47dd89a473c13d16f249057eb7232b7c-X","TERMI_API_KEY":"TLMmAlkZCgYwGOxuaRUPI9mE83zNtHT2Rc6KkaRs44Eailq3zghhQnuB5MshUA","FIREBASE_CONFIG":"{\"projectId\":\"monapp-33057\",\"storageBucket\":\"monapp-33057.appspot.com\",\"locationId\":\"us-central\"}","GCLOUD_PROJECT":"monapp-33057"},"runtime":"nodejs16","ingressSettings":"ALLOW_ALL","buildId":"cb29ca8d-6af4-46ca-8c7f-fbc745b16e7f","buildName":"projects/322702698679/locations/us-central1/builds/cb29ca8d-6af4-46ca-8c7f-fbc745b16e7f","dockerRegistry":"ARTIFACT_REGISTRY"}]}
-[debug] [2023-03-22T12:21:25.245Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/monapp-33057/locations/-/functions filter=environment%3D%22GEN_2%22
-[debug] [2023-03-22T12:21:26.702Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/monapp-33057/locations/-/functions 200
-[debug] [2023-03-22T12:21:26.702Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/monapp-33057/locations/-/functions {}
-[debug] [2023-03-22T12:21:26.714Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057 [none]
-[debug] [2023-03-22T12:21:27.420Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057 200
-[debug] [2023-03-22T12:21:27.420Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057 {"projectId":"monapp-33057","projectNumber":"322702698679","displayName":"monapp","name":"projects/monapp-33057","resources":{"hostingSite":"monapp-33057","storageBucket":"monapp-33057.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_da035bd0-0647-4fbc-a51d-545bd04693f3"}
-[debug] [2023-03-22T12:21:27.422Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions:generateUploadUrl [none]
-[debug] [2023-03-22T12:21:27.422Z] >>> [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions:generateUploadUrl {}
-[debug] [2023-03-22T12:21:28.555Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions:generateUploadUrl 200
-[debug] [2023-03-22T12:21:28.555Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions:generateUploadUrl {"uploadUrl":"https://storage.googleapis.com/uploads-423196917591.us-central1.cloudfunctions.appspot.com/1bec921e-99f2-4e81-b2c2-44c2bd078d7d.zip?GoogleAccessId=service-322702698679@gcf-admin-robot.iam.gserviceaccount.com&Expires=1679489500&Signature=lBJ5KNoLLUI11eTGOhNkvbPSm6m7NpAdmWN%2BPGRecIFqnCfTNmMpnpQvZkPTY7spwoYuS2EB0QZpyAZgHSwCIkKUon7fFadtgdf9uyVOQg%2F9uWYnOY7RYVRSSogC8lBt5OqjwfuUk8WsV6nJJKDws7q5TrnuPrgCkzQWt5SjZK5v6kAL2lBtwfBFgBJ%2B99gD3G3CaHjtEiaSeLsgyXqw43GlwvOcGup%2BbvTZ8lQS9vqhWtoisdmMQOpPlPBuFtATLVsfNNfrT51AXh0pnTsBJJylFZ1de%2FgrpYKMEE5Bitq3zjeR2VR8prCsdu885iu6PPiTetKQhIMjLm8%2FSVwSEg%3D%3D"}
-[debug] [2023-03-22T12:21:28.557Z] >>> [apiv2][query] PUT https://storage.googleapis.com/uploads-423196917591.us-central1.cloudfunctions.appspot.com/1bec921e-99f2-4e81-b2c2-44c2bd078d7d.zip GoogleAccessId=service-322702698679%40gcf-admin-robot.iam.gserviceaccount.com&Expires=1679489500&Signature=lBJ5KNoLLUI11eTGOhNkvbPSm6m7NpAdmWN%2BPGRecIFqnCfTNmMpnpQvZkPTY7spwoYuS2EB0QZpyAZgHSwCIkKUon7fFadtgdf9uyVOQg%2F9uWYnOY7RYVRSSogC8lBt5OqjwfuUk8WsV6nJJKDws7q5TrnuPrgCkzQWt5SjZK5v6kAL2lBtwfBFgBJ%2B99gD3G3CaHjtEiaSeLsgyXqw43GlwvOcGup%2BbvTZ8lQS9vqhWtoisdmMQOpPlPBuFtATLVsfNNfrT51AXh0pnTsBJJylFZ1de%2FgrpYKMEE5Bitq3zjeR2VR8prCsdu885iu6PPiTetKQhIMjLm8%2FSVwSEg%3D%3D
-[debug] [2023-03-22T12:21:28.557Z] >>> [apiv2][body] PUT https://storage.googleapis.com/uploads-423196917591.us-central1.cloudfunctions.appspot.com/1bec921e-99f2-4e81-b2c2-44c2bd078d7d.zip [stream]
-[debug] [2023-03-22T12:21:30.402Z] <<< [apiv2][status] PUT https://storage.googleapis.com/uploads-423196917591.us-central1.cloudfunctions.appspot.com/1bec921e-99f2-4e81-b2c2-44c2bd078d7d.zip 200
-[debug] [2023-03-22T12:21:30.403Z] <<< [apiv2][body] PUT https://storage.googleapis.com/uploads-423196917591.us-central1.cloudfunctions.appspot.com/1bec921e-99f2-4e81-b2c2-44c2bd078d7d.zip [omitted]
+[info] i  functions: packaged C:\Users\Michael.i_FNGA0247\monapp\functions (112.75 KB) for uploading 
+[debug] [2023-03-23T15:25:19.848Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/-/functions [none]
+[debug] [2023-03-23T15:25:23.508Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/-/functions 200
+[debug] [2023-03-23T15:25:23.509Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/-/functions {"functions":[{"name":"projects/monapp-33057/locations/us-central1/functions/app","httpsTrigger":{"url":"https://us-central1-monapp-33057.cloudfunctions.net/app","securityLevel":"SECURE_ALWAYS"},"status":"ACTIVE","entryPoint":"app","timeout":"60s","availableMemoryMb":256,"serviceAccountEmail":"monapp-33057@appspot.gserviceaccount.com","updateTime":"2023-03-08T11:56:54.546Z","versionId":"8","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"6ece034db2f8ff26841e7022025c4fcc4b9d6ea0"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-423196917591.us-central1.cloudfunctions.appspot.com/66608165-3738-4f83-9a0c-46239474b3ea.zip","environmentVariables":{"FLW_PUBLIC_KEY":"FLWPUBK-4d63e098d60c1e7ae93fb1a75b0bbd05-X","FLW_SECRET_KEY":"FLWSECK-47dd89a473c13d16f249057eb7232b7c-X","TERMI_API_KEY":"TLMmAlkZCgYwGOxuaRUPI9mE83zNtHT2Rc6KkaRs44Eailq3zghhQnuB5MshUA","FIREBASE_CONFIG":"{\"projectId\":\"monapp-33057\",\"storageBucket\":\"monapp-33057.appspot.com\",\"locationId\":\"us-central\"}","GCLOUD_PROJECT":"monapp-33057"},"runtime":"nodejs16","ingressSettings":"ALLOW_ALL","buildId":"cb29ca8d-6af4-46ca-8c7f-fbc745b16e7f","buildName":"projects/322702698679/locations/us-central1/builds/cb29ca8d-6af4-46ca-8c7f-fbc745b16e7f","dockerRegistry":"ARTIFACT_REGISTRY"}]}
+[debug] [2023-03-23T15:25:23.515Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/monapp-33057/locations/-/functions filter=environment%3D%22GEN_2%22
+[debug] [2023-03-23T15:25:25.816Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/monapp-33057/locations/-/functions 200
+[debug] [2023-03-23T15:25:25.816Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/monapp-33057/locations/-/functions {}
+[debug] [2023-03-23T15:25:25.831Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057 [none]
+[debug] [2023-03-23T15:25:26.700Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057 200
+[debug] [2023-03-23T15:25:26.701Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057 {"projectId":"monapp-33057","projectNumber":"322702698679","displayName":"monapp","name":"projects/monapp-33057","resources":{"hostingSite":"monapp-33057","storageBucket":"monapp-33057.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_4fbdcf4e-e25c-4446-8028-486f2560c6cd"}
+[debug] [2023-03-23T15:25:26.712Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions:generateUploadUrl [none]
+[debug] [2023-03-23T15:25:26.712Z] >>> [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions:generateUploadUrl {}
+[debug] [2023-03-23T15:25:28.140Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions:generateUploadUrl 200
+[debug] [2023-03-23T15:25:28.141Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions:generateUploadUrl {"uploadUrl":"https://storage.googleapis.com/uploads-423196917591.us-central1.cloudfunctions.appspot.com/ed60a3f3-876e-4f62-90db-1e56a922aa8d.zip?GoogleAccessId=service-322702698679@gcf-admin-robot.iam.gserviceaccount.com&Expires=1679587059&Signature=UvOq6Ss5dsSWXTZR%2Bws2bj5K43sR2FDdfhw96NvAXYHGf%2BJrYGfp8p%2FcGbCuWa%2BbQwglHnz2K%2Bb%2B0Bwtd2ScJdrHPqPh5eHZAOsm54aZejfC5xOP5uOhw1Z%2F8m1iDAtHC0%2BZKXfZCC1BKJQXGc2c%2BymQnek554uxTV%2FLITmdPf2E%2FlAUF1yspy8nQi2%2Ft1NjzcXN%2FBv7%2BXGT70Vr5xphN96p8iwNxlYzfL29Ip5zfEVWaiOqBjrTru2coaM1ffx7VHiZkKCsjXU%2FUGd%2BXo9RMv%2BsgjRs6EHYE0Sx8X8P1jgqDtGuFHluCewJP%2F%2F3sl8hlwkT6HpkrONbzgiIVW0wKA%3D%3D"}
+[debug] [2023-03-23T15:25:28.142Z] >>> [apiv2][query] PUT https://storage.googleapis.com/uploads-423196917591.us-central1.cloudfunctions.appspot.com/ed60a3f3-876e-4f62-90db-1e56a922aa8d.zip GoogleAccessId=service-322702698679%40gcf-admin-robot.iam.gserviceaccount.com&Expires=1679587059&Signature=UvOq6Ss5dsSWXTZR%2Bws2bj5K43sR2FDdfhw96NvAXYHGf%2BJrYGfp8p%2FcGbCuWa%2BbQwglHnz2K%2Bb%2B0Bwtd2ScJdrHPqPh5eHZAOsm54aZejfC5xOP5uOhw1Z%2F8m1iDAtHC0%2BZKXfZCC1BKJQXGc2c%2BymQnek554uxTV%2FLITmdPf2E%2FlAUF1yspy8nQi2%2Ft1NjzcXN%2FBv7%2BXGT70Vr5xphN96p8iwNxlYzfL29Ip5zfEVWaiOqBjrTru2coaM1ffx7VHiZkKCsjXU%2FUGd%2BXo9RMv%2BsgjRs6EHYE0Sx8X8P1jgqDtGuFHluCewJP%2F%2F3sl8hlwkT6HpkrONbzgiIVW0wKA%3D%3D
+[debug] [2023-03-23T15:25:28.142Z] >>> [apiv2][body] PUT https://storage.googleapis.com/uploads-423196917591.us-central1.cloudfunctions.appspot.com/ed60a3f3-876e-4f62-90db-1e56a922aa8d.zip [stream]
+[debug] [2023-03-23T15:25:31.033Z] <<< [apiv2][status] PUT https://storage.googleapis.com/uploads-423196917591.us-central1.cloudfunctions.appspot.com/ed60a3f3-876e-4f62-90db-1e56a922aa8d.zip 200
+[debug] [2023-03-23T15:25:31.034Z] <<< [apiv2][body] PUT https://storage.googleapis.com/uploads-423196917591.us-central1.cloudfunctions.appspot.com/ed60a3f3-876e-4f62-90db-1e56a922aa8d.zip [omitted]
 [info] +  functions: functions folder uploaded successfully 
 [info] i  functions: updating Node.js 16 function app(us-central1)... 
-[debug] [2023-03-22T12:21:30.410Z] >>> [apiv2][query] PATCH https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions/app updateMask=name%2CsourceUploadUrl%2CentryPoint%2Cruntime%2CdockerRegistry%2Clabels%2ChttpsTrigger.securityLevel%2CenvironmentVariables%2CavailableMemoryMb%2CsourceToken
-[debug] [2023-03-22T12:21:30.410Z] >>> [apiv2][body] PATCH https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions/app {"name":"projects/monapp-33057/locations/us-central1/functions/app","sourceUploadUrl":"https://storage.googleapis.com/uploads-423196917591.us-central1.cloudfunctions.appspot.com/1bec921e-99f2-4e81-b2c2-44c2bd078d7d.zip?GoogleAccessId=service-322702698679@gcf-admin-robot.iam.gserviceaccount.com&Expires=1679489500&Signature=lBJ5KNoLLUI11eTGOhNkvbPSm6m7NpAdmWN%2BPGRecIFqnCfTNmMpnpQvZkPTY7spwoYuS2EB0QZpyAZgHSwCIkKUon7fFadtgdf9uyVOQg%2F9uWYnOY7RYVRSSogC8lBt5OqjwfuUk8WsV6nJJKDws7q5TrnuPrgCkzQWt5SjZK5v6kAL2lBtwfBFgBJ%2B99gD3G3CaHjtEiaSeLsgyXqw43GlwvOcGup%2BbvTZ8lQS9vqhWtoisdmMQOpPlPBuFtATLVsfNNfrT51AXh0pnTsBJJylFZ1de%2FgrpYKMEE5Bitq3zjeR2VR8prCsdu885iu6PPiTetKQhIMjLm8%2FSVwSEg%3D%3D","entryPoint":"app","runtime":"nodejs16","dockerRegistry":"ARTIFACT_REGISTRY","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"d83cdab256c19037a1cf7e60ebff757534f28c8a"},"httpsTrigger":{"securityLevel":"SECURE_ALWAYS"},"environmentVariables":{"FLW_PUBLIC_KEY":"FLWPUBK-4d63e098d60c1e7ae93fb1a75b0bbd05-X","FLW_SECRET_KEY":"FLWSECK-47dd89a473c13d16f249057eb7232b7c-X","TERMI_API_KEY":"TLMmAlkZCgYwGOxuaRUPI9mE83zNtHT2Rc6KkaRs44Eailq3zghhQnuB5MshUA","QOREID_CLIENT":"N3KSF8CKCLRTP0UXRFD2","QOREID_SECRET":"442e215b170747e5a44f9220ad8aeac0","FIREBASE_CONFIG":"{\"projectId\":\"monapp-33057\",\"storageBucket\":\"monapp-33057.appspot.com\",\"locationId\":\"us-central\"}","GCLOUD_PROJECT":"monapp-33057"},"availableMemoryMb":256}
-[debug] [2023-03-22T12:21:31.122Z] <<< [apiv2][status] PATCH https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions/app 403
-[debug] [2023-03-22T12:21:31.122Z] <<< [apiv2][body] PATCH https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions/app {"error":{"code":403,"message":"Unable to retrieve the repository metadata for projects/monapp-33057/locations/us-central1/repositories/gcf-artifacts. Ensure that the Cloud Functions service account has 'artifactregistry.repositories.list' and 'artifactregistry.repositories.get' permissions. You can add the permissions by granting the role 'roles/artifactregistry.reader'.","status":"PERMISSION_DENIED"}}
+[debug] [2023-03-23T15:25:31.043Z] >>> [apiv2][query] PATCH https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions/app updateMask=name%2CsourceUploadUrl%2CentryPoint%2Cruntime%2CdockerRegistry%2Clabels%2ChttpsTrigger.securityLevel%2CenvironmentVariables%2CavailableMemoryMb%2CsourceToken
+[debug] [2023-03-23T15:25:31.043Z] >>> [apiv2][body] PATCH https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions/app {"name":"projects/monapp-33057/locations/us-central1/functions/app","sourceUploadUrl":"https://storage.googleapis.com/uploads-423196917591.us-central1.cloudfunctions.appspot.com/ed60a3f3-876e-4f62-90db-1e56a922aa8d.zip?GoogleAccessId=service-322702698679@gcf-admin-robot.iam.gserviceaccount.com&Expires=1679587059&Signature=UvOq6Ss5dsSWXTZR%2Bws2bj5K43sR2FDdfhw96NvAXYHGf%2BJrYGfp8p%2FcGbCuWa%2BbQwglHnz2K%2Bb%2B0Bwtd2ScJdrHPqPh5eHZAOsm54aZejfC5xOP5uOhw1Z%2F8m1iDAtHC0%2BZKXfZCC1BKJQXGc2c%2BymQnek554uxTV%2FLITmdPf2E%2FlAUF1yspy8nQi2%2Ft1NjzcXN%2FBv7%2BXGT70Vr5xphN96p8iwNxlYzfL29Ip5zfEVWaiOqBjrTru2coaM1ffx7VHiZkKCsjXU%2FUGd%2BXo9RMv%2BsgjRs6EHYE0Sx8X8P1jgqDtGuFHluCewJP%2F%2F3sl8hlwkT6HpkrONbzgiIVW0wKA%3D%3D","entryPoint":"app","runtime":"nodejs16","dockerRegistry":"ARTIFACT_REGISTRY","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"e8886f2a022786b7f09353adfe2de4d85f50a165"},"httpsTrigger":{"securityLevel":"SECURE_ALWAYS"},"environmentVariables":{"FLW_PUBLIC_KEY":"FLWPUBK-4d63e098d60c1e7ae93fb1a75b0bbd05-X","FLW_SECRET_KEY":"FLWSECK-47dd89a473c13d16f249057eb7232b7c-X","TERMI_API_KEY":"TLMmAlkZCgYwGOxuaRUPI9mE83zNtHT2Rc6KkaRs44Eailq3zghhQnuB5MshUA","QOREID_CLIENT":"N3KSF8CKCLRTP0UXRFD2","QOREID_SECRET":"442e215b170747e5a44f9220ad8aeac0","FIREBASE_CONFIG":"{\"projectId\":\"monapp-33057\",\"storageBucket\":\"monapp-33057.appspot.com\",\"locationId\":\"us-central\"}","GCLOUD_PROJECT":"monapp-33057"},"availableMemoryMb":256}
+[debug] [2023-03-23T15:25:32.267Z] <<< [apiv2][status] PATCH https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions/app 403
+[debug] [2023-03-23T15:25:32.267Z] <<< [apiv2][body] PATCH https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions/app {"error":{"code":403,"message":"Unable to retrieve the repository metadata for projects/monapp-33057/locations/us-central1/repositories/gcf-artifacts. Ensure that the Cloud Functions service account has 'artifactregistry.repositories.list' and 'artifactregistry.repositories.get' permissions. You can add the permissions by granting the role 'roles/artifactregistry.reader'.","status":"PERMISSION_DENIED"}}
 [warn] !  functions: failed to update function projects/monapp-33057/locations/us-central1/functions/app 
 [error] Failed to update function projects/monapp-33057/locations/us-central1/functions/app
-[debug] [2023-03-22T12:21:31.146Z] Total Function Deployment time: 725
-[debug] [2023-03-22T12:21:31.146Z] 1 Functions Deployed
-[debug] [2023-03-22T12:21:31.146Z] 1 Functions Errored
-[debug] [2023-03-22T12:21:31.147Z] 0 Function Deployments Aborted
-[debug] [2023-03-22T12:21:31.147Z] Average Function Deployment time: 723
+[debug] [2023-03-23T15:25:32.280Z] Total Function Deployment time: 1234
+[debug] [2023-03-23T15:25:32.281Z] 1 Functions Deployed
+[debug] [2023-03-23T15:25:32.281Z] 1 Functions Errored
+[debug] [2023-03-23T15:25:32.281Z] 0 Function Deployments Aborted
+[debug] [2023-03-23T15:25:32.281Z] Average Function Deployment time: 1233
 [info] 
 [info] Functions deploy had errors with the following functions:
 	app(us-central1)
-[debug] [2023-03-22T12:21:31.156Z] Not printing URL for HTTPS function. Typically this means it didn't match a filter or we failed deployment
+[debug] [2023-03-23T15:25:32.288Z] Not printing URL for HTTPS function. Typically this means it didn't match a filter or we failed deployment
 [info] i  functions: cleaning up build files... 
-[debug] [2023-03-22T12:21:31.161Z] >>> [apiv2][query] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/monapp-33057/locations/us-central1/repositories/gcf-artifacts/packages/app [none]
-[debug] [2023-03-22T12:21:31.164Z] >>> [apiv2][query] GET https://us.gcr.io/v2/monapp-33057/gcf/us-central1/tags/list [none]
-[debug] [2023-03-22T12:21:32.560Z] <<< [apiv2][status] GET https://us.gcr.io/v2/monapp-33057/gcf/us-central1/tags/list 200
-[debug] [2023-03-22T12:21:32.560Z] <<< [apiv2][body] GET https://us.gcr.io/v2/monapp-33057/gcf/us-central1/tags/list {"child":[],"manifest":{},"name":"monapp-33057/gcf/us-central1","tags":[]}
-[debug] [2023-03-22T12:21:32.560Z] Could not find image for function projects/monapp-33057/locations/us-central1/functions/app
-[debug] [2023-03-22T12:21:33.123Z] <<< [apiv2][status] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/monapp-33057/locations/us-central1/repositories/gcf-artifacts/packages/app 403
-[debug] [2023-03-22T12:21:33.124Z] <<< [apiv2][body] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/monapp-33057/locations/us-central1/repositories/gcf-artifacts/packages/app {"error":{"code":403,"message":"This API method requires billing to be enabled. Please enable billing on project #322702698679 by visiting https://console.developers.google.com/billing/enable?project=322702698679 then retry. If you enabled billing for this project recently, wait a few minutes for the action to propagate to our systems and retry.","status":"PERMISSION_DENIED","details":[{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Google developers console billing","url":"https://console.developers.google.com/billing/enable?project=322702698679"}]},{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"BILLING_DISABLED","domain":"googleapis.com","metadata":{"service":"artifactregistry.googleapis.com","consumer":"projects/322702698679"}}]}}
+[debug] [2023-03-23T15:25:32.292Z] >>> [apiv2][query] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/monapp-33057/locations/us-central1/repositories/gcf-artifacts/packages/app [none]
+[debug] [2023-03-23T15:25:32.294Z] >>> [apiv2][query] GET https://us.gcr.io/v2/monapp-33057/gcf/us-central1/tags/list [none]
+[debug] [2023-03-23T15:25:35.760Z] <<< [apiv2][status] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/monapp-33057/locations/us-central1/repositories/gcf-artifacts/packages/app 403
+[debug] [2023-03-23T15:25:35.760Z] <<< [apiv2][body] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/monapp-33057/locations/us-central1/repositories/gcf-artifacts/packages/app {"error":{"code":403,"message":"This API method requires billing to be enabled. Please enable billing on project #322702698679 by visiting https://console.developers.google.com/billing/enable?project=322702698679 then retry. If you enabled billing for this project recently, wait a few minutes for the action to propagate to our systems and retry.","status":"PERMISSION_DENIED","details":[{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Google developers console billing","url":"https://console.developers.google.com/billing/enable?project=322702698679"}]},{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"BILLING_DISABLED","domain":"googleapis.com","metadata":{"service":"artifactregistry.googleapis.com","consumer":"projects/322702698679"}}]}}
+[debug] [2023-03-23T15:25:36.459Z] <<< [apiv2][status] GET https://us.gcr.io/v2/monapp-33057/gcf/us-central1/tags/list 200
+[debug] [2023-03-23T15:25:36.460Z] <<< [apiv2][body] GET https://us.gcr.io/v2/monapp-33057/gcf/us-central1/tags/list {"child":[],"manifest":{},"name":"monapp-33057/gcf/us-central1","tags":[]}
+[debug] [2023-03-23T15:25:36.461Z] Could not find image for function projects/monapp-33057/locations/us-central1/functions/app
 [warn] !  functions: Unhandled error cleaning up build images. This could result in a small monthly bill if not corrected. You can attempt to delete these images by redeploying or you can delete them manually at https://console.cloud.google.com/artifacts/docker/monapp-33057/us-central1/gcf-artifacts 
-[debug] [2023-03-22T12:21:33.125Z] Functions deploy failed.
-[debug] [2023-03-22T12:21:33.125Z] {
+[debug] [2023-03-23T15:25:36.464Z] Functions deploy failed.
+[debug] [2023-03-23T15:25:36.465Z] {
   "endpoint": {
     "id": "app",
     "project": "monapp-33057",
@@ -381,7 +161,7 @@
     "availableMemoryMb": 256,
     "securityLevel": "SECURE_ALWAYS",
     "targetedByOnly": false,
-    "hash": "d83cdab256c19037a1cf7e60ebff757534f28c8a",
+    "hash": "e8886f2a022786b7f09353adfe2de4d85f50a165",
     "labels": {
       "deployment-tool": "cli-firebase"
     }
@@ -417,7 +197,7 @@
     "status": 500
   }
 }
-[debug] [2023-03-22T12:21:33.134Z] Error: Failed to update function app in region us-central1
+[debug] [2023-03-23T15:25:36.477Z] Error: Failed to update function app in region us-central1
     at C:\Users\Michael.i_FNGA0247\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:41:11
     at runMicrotasks (<anonymous>)
     at processTicksAndRejections (node:internal/process/task_queues:96:5)
@@ -426,66 +206,66 @@
     at async handle (C:\Users\Michael.i_FNGA0247\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:78:17)
 [error] 
 [error] Error: There was an error deploying functions
-[debug] [2023-03-22T12:22:13.165Z] ----------------------------------------------------------------------
-[debug] [2023-03-22T12:22:13.168Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Michael.i_FNGA0247\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only functions
-[debug] [2023-03-22T12:22:13.169Z] CLI Version:   11.15.0
-[debug] [2023-03-22T12:22:13.169Z] Platform:      win32
-[debug] [2023-03-22T12:22:13.169Z] Node Version:  v16.18.0
-[debug] [2023-03-22T12:22:13.175Z] Time:          Wed Mar 22 2023 13:22:13 GMT+0100 (West Africa Standard Time)
-[debug] [2023-03-22T12:22:13.175Z] ----------------------------------------------------------------------
+[debug] [2023-03-23T15:27:10.163Z] ----------------------------------------------------------------------
+[debug] [2023-03-23T15:27:10.167Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Michael.i_FNGA0247\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only functions
+[debug] [2023-03-23T15:27:10.168Z] CLI Version:   11.15.0
+[debug] [2023-03-23T15:27:10.169Z] Platform:      win32
+[debug] [2023-03-23T15:27:10.169Z] Node Version:  v16.18.0
+[debug] [2023-03-23T15:27:10.172Z] Time:          Thu Mar 23 2023 16:27:10 GMT+0100 (West Africa Standard Time)
+[debug] [2023-03-23T15:27:10.172Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2023-03-22T12:22:13.295Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2023-03-22T12:22:13.296Z] > authorizing via signed-in user (leomyke4@gmail.com)
-[debug] [2023-03-22T12:22:13.296Z] [iam] checking project monapp-33057 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
-[debug] [2023-03-22T12:22:13.300Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/monapp-33057:testIamPermissions [none]
-[debug] [2023-03-22T12:22:13.300Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/monapp-33057:testIamPermissions x-goog-quota-user=projects/monapp-33057
-[debug] [2023-03-22T12:22:13.301Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/monapp-33057:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
-[debug] [2023-03-22T12:22:15.529Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/monapp-33057:testIamPermissions 200
-[debug] [2023-03-22T12:22:15.530Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/monapp-33057:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
-[debug] [2023-03-22T12:22:15.532Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/monapp-33057/serviceAccounts/monapp-33057@appspot.gserviceaccount.com:testIamPermissions [none]
-[debug] [2023-03-22T12:22:15.532Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/monapp-33057/serviceAccounts/monapp-33057@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
-[debug] [2023-03-22T12:22:16.636Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/monapp-33057/serviceAccounts/monapp-33057@appspot.gserviceaccount.com:testIamPermissions 200
-[debug] [2023-03-22T12:22:16.637Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/monapp-33057/serviceAccounts/monapp-33057@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2023-03-23T15:27:10.369Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-03-23T15:27:10.370Z] > authorizing via signed-in user (leomyke4@gmail.com)
+[debug] [2023-03-23T15:27:10.371Z] [iam] checking project monapp-33057 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2023-03-23T15:27:10.376Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/monapp-33057:testIamPermissions [none]
+[debug] [2023-03-23T15:27:10.376Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/monapp-33057:testIamPermissions x-goog-quota-user=projects/monapp-33057
+[debug] [2023-03-23T15:27:10.377Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/monapp-33057:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2023-03-23T15:27:22.634Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/monapp-33057:testIamPermissions 200
+[debug] [2023-03-23T15:27:22.634Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/monapp-33057:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2023-03-23T15:27:22.636Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/monapp-33057/serviceAccounts/monapp-33057@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2023-03-23T15:27:22.636Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/monapp-33057/serviceAccounts/monapp-33057@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2023-03-23T15:27:23.760Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/monapp-33057/serviceAccounts/monapp-33057@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2023-03-23T15:27:23.760Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/monapp-33057/serviceAccounts/monapp-33057@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
 [info] 
 [info] === Deploying to 'monapp-33057'...
 [info] 
 [info] i  deploying functions 
-[debug] [2023-03-22T12:22:16.662Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057 [none]
-[debug] [2023-03-22T12:22:17.441Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057 200
-[debug] [2023-03-22T12:22:17.442Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057 {"projectId":"monapp-33057","projectNumber":"322702698679","displayName":"monapp","name":"projects/monapp-33057","resources":{"hostingSite":"monapp-33057","storageBucket":"monapp-33057.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_da035bd0-0647-4fbc-a51d-545bd04693f3"}
+[debug] [2023-03-23T15:27:23.782Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057 [none]
+[debug] [2023-03-23T15:27:24.613Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057 200
+[debug] [2023-03-23T15:27:24.614Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057 {"projectId":"monapp-33057","projectNumber":"322702698679","displayName":"monapp","name":"projects/monapp-33057","resources":{"hostingSite":"monapp-33057","storageBucket":"monapp-33057.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_4fbdcf4e-e25c-4446-8028-486f2560c6cd"}
 [info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
 [info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
 [info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
-[debug] [2023-03-22T12:22:17.455Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudfunctions.googleapis.com [none]
-[debug] [2023-03-22T12:22:17.455Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/monapp-33057
-[debug] [2023-03-22T12:22:17.462Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/runtimeconfig.googleapis.com [none]
-[debug] [2023-03-22T12:22:17.462Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/monapp-33057
-[debug] [2023-03-22T12:22:17.470Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudbuild.googleapis.com [none]
-[debug] [2023-03-22T12:22:17.471Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudbuild.googleapis.com x-goog-quota-user=projects/monapp-33057
-[debug] [2023-03-22T12:22:17.474Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/artifactregistry.googleapis.com [none]
-[debug] [2023-03-22T12:22:17.474Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/artifactregistry.googleapis.com x-goog-quota-user=projects/monapp-33057
-[debug] [2023-03-22T12:22:18.740Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudbuild.googleapis.com 200
-[debug] [2023-03-22T12:22:18.740Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudbuild.googleapis.com [omitted]
+[debug] [2023-03-23T15:27:24.628Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudfunctions.googleapis.com [none]
+[debug] [2023-03-23T15:27:24.628Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/monapp-33057
+[debug] [2023-03-23T15:27:24.636Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/runtimeconfig.googleapis.com [none]
+[debug] [2023-03-23T15:27:24.638Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/monapp-33057
+[debug] [2023-03-23T15:27:24.645Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudbuild.googleapis.com [none]
+[debug] [2023-03-23T15:27:24.645Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudbuild.googleapis.com x-goog-quota-user=projects/monapp-33057
+[debug] [2023-03-23T15:27:24.651Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/artifactregistry.googleapis.com [none]
+[debug] [2023-03-23T15:27:24.652Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/artifactregistry.googleapis.com x-goog-quota-user=projects/monapp-33057
+[debug] [2023-03-23T15:27:26.148Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/runtimeconfig.googleapis.com 200
+[debug] [2023-03-23T15:27:26.149Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2023-03-23T15:27:26.155Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudbuild.googleapis.com 200
+[debug] [2023-03-23T15:27:26.155Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudbuild.googleapis.com [omitted]
 [info] +  functions: required API cloudbuild.googleapis.com is enabled 
-[debug] [2023-03-22T12:22:18.744Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/artifactregistry.googleapis.com 200
-[debug] [2023-03-22T12:22:18.744Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/artifactregistry.googleapis.com [omitted]
-[info] +  artifactregistry: required API artifactregistry.googleapis.com is enabled 
-[debug] [2023-03-22T12:22:18.794Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/runtimeconfig.googleapis.com 200
-[debug] [2023-03-22T12:22:18.794Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/runtimeconfig.googleapis.com [omitted]
-[debug] [2023-03-22T12:22:18.871Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudfunctions.googleapis.com 200
-[debug] [2023-03-22T12:22:18.872Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2023-03-23T15:27:26.191Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudfunctions.googleapis.com 200
+[debug] [2023-03-23T15:27:26.191Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/cloudfunctions.googleapis.com [omitted]
 [info] +  functions: required API cloudfunctions.googleapis.com is enabled 
-[debug] [2023-03-22T12:22:18.874Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057/adminSdkConfig [none]
-[debug] [2023-03-22T12:22:19.606Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057/adminSdkConfig 200
-[debug] [2023-03-22T12:22:19.607Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057/adminSdkConfig {"projectId":"monapp-33057","storageBucket":"monapp-33057.appspot.com","locationId":"us-central"}
-[debug] [2023-03-22T12:22:19.609Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/monapp-33057/configs [none]
-[debug] [2023-03-22T12:22:20.374Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/monapp-33057/configs 200
-[debug] [2023-03-22T12:22:20.375Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/monapp-33057/configs {}
+[debug] [2023-03-23T15:27:26.335Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/artifactregistry.googleapis.com 200
+[debug] [2023-03-23T15:27:26.335Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/monapp-33057/services/artifactregistry.googleapis.com [omitted]
+[info] +  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2023-03-23T15:27:26.337Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057/adminSdkConfig [none]
+[debug] [2023-03-23T15:27:27.107Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057/adminSdkConfig 200
+[debug] [2023-03-23T15:27:27.108Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057/adminSdkConfig {"projectId":"monapp-33057","storageBucket":"monapp-33057.appspot.com","locationId":"us-central"}
+[debug] [2023-03-23T15:27:27.111Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/monapp-33057/configs [none]
+[debug] [2023-03-23T15:27:27.842Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/monapp-33057/configs 200
+[debug] [2023-03-23T15:27:27.842Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/monapp-33057/configs {}
 [info] i  functions: preparing codebase default for deployment 
-[debug] [2023-03-22T12:22:20.386Z] Validating nodejs source
+[debug] [2023-03-23T15:27:27.852Z] Validating nodejs source
 [warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
 [warn] !  functions: Please note that there will be breaking changes when you upgrade. 
-[debug] [2023-03-22T12:22:33.782Z] > [functions] package.json contents: {
+[debug] [2023-03-23T15:27:50.933Z] > [functions] package.json contents: {
   "name": "functions",
   "description": "Cloud Functions for Firebase",
   "scripts": {
@@ -513,61 +293,61 @@
   },
   "private": true
 }
-[debug] [2023-03-22T12:22:33.782Z] Building nodejs source
+[debug] [2023-03-23T15:27:50.934Z] Building nodejs source
 [info] i  functions: Loaded environment variables from .env. 
-[debug] [2023-03-22T12:22:33.823Z] Could not find functions.yaml. Must use http discovery
-[debug] [2023-03-22T12:22:35.848Z] Serving at port 9005
+[debug] [2023-03-23T15:27:50.944Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-03-23T15:27:52.160Z] Serving at port 9005
 
-[debug] [2023-03-22T12:22:44.323Z] Got response from /__/functions.yaml {"endpoints":{"app":{"platform":"gcfv1","httpsTrigger":{},"entryPoint":"app"}},"specVersion":"v1alpha1","requiredAPIs":[]}
-[debug] [2023-03-22T12:22:44.353Z] shutdown requested via /__/quitquitquit
+[debug] [2023-03-23T15:28:05.606Z] Got response from /__/functions.yaml {"endpoints":{"app":{"platform":"gcfv1","httpsTrigger":{},"entryPoint":"app"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2023-03-23T15:28:05.617Z] shutdown requested via /__/quitquitquit
 
 [info] i  functions: preparing functions directory for uploading... 
-[info] i  functions: packaged C:\Users\Michael.i_FNGA0247\monapp\functions (112.73 KB) for uploading 
-[debug] [2023-03-22T12:22:44.479Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/-/functions [none]
-[debug] [2023-03-22T12:22:46.312Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/-/functions 200
-[debug] [2023-03-22T12:22:46.315Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/-/functions {"functions":[{"name":"projects/monapp-33057/locations/us-central1/functions/app","httpsTrigger":{"url":"https://us-central1-monapp-33057.cloudfunctions.net/app","securityLevel":"SECURE_ALWAYS"},"status":"ACTIVE","entryPoint":"app","timeout":"60s","availableMemoryMb":256,"serviceAccountEmail":"monapp-33057@appspot.gserviceaccount.com","updateTime":"2023-03-08T11:56:54.546Z","versionId":"8","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"6ece034db2f8ff26841e7022025c4fcc4b9d6ea0"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-423196917591.us-central1.cloudfunctions.appspot.com/66608165-3738-4f83-9a0c-46239474b3ea.zip","environmentVariables":{"FLW_PUBLIC_KEY":"FLWPUBK-4d63e098d60c1e7ae93fb1a75b0bbd05-X","FLW_SECRET_KEY":"FLWSECK-47dd89a473c13d16f249057eb7232b7c-X","TERMI_API_KEY":"TLMmAlkZCgYwGOxuaRUPI9mE83zNtHT2Rc6KkaRs44Eailq3zghhQnuB5MshUA","FIREBASE_CONFIG":"{\"projectId\":\"monapp-33057\",\"storageBucket\":\"monapp-33057.appspot.com\",\"locationId\":\"us-central\"}","GCLOUD_PROJECT":"monapp-33057"},"runtime":"nodejs16","ingressSettings":"ALLOW_ALL","buildId":"cb29ca8d-6af4-46ca-8c7f-fbc745b16e7f","buildName":"projects/322702698679/locations/us-central1/builds/cb29ca8d-6af4-46ca-8c7f-fbc745b16e7f","dockerRegistry":"ARTIFACT_REGISTRY"}]}
-[debug] [2023-03-22T12:22:46.321Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/monapp-33057/locations/-/functions filter=environment%3D%22GEN_2%22
-[debug] [2023-03-22T12:22:47.785Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/monapp-33057/locations/-/functions 200
-[debug] [2023-03-22T12:22:47.785Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/monapp-33057/locations/-/functions {}
-[debug] [2023-03-22T12:22:47.809Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057 [none]
-[debug] [2023-03-22T12:22:48.634Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057 200
-[debug] [2023-03-22T12:22:48.634Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057 {"projectId":"monapp-33057","projectNumber":"322702698679","displayName":"monapp","name":"projects/monapp-33057","resources":{"hostingSite":"monapp-33057","storageBucket":"monapp-33057.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_da035bd0-0647-4fbc-a51d-545bd04693f3"}
-[debug] [2023-03-22T12:22:48.637Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions:generateUploadUrl [none]
-[debug] [2023-03-22T12:22:48.637Z] >>> [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions:generateUploadUrl {}
-[debug] [2023-03-22T12:22:49.727Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions:generateUploadUrl 200
-[debug] [2023-03-22T12:22:49.728Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions:generateUploadUrl {"uploadUrl":"https://storage.googleapis.com/uploads-423196917591.us-central1.cloudfunctions.appspot.com/14663b99-139b-43cf-8978-fae61ca3a756.zip?GoogleAccessId=service-322702698679@gcf-admin-robot.iam.gserviceaccount.com&Expires=1679489581&Signature=Ck7L2KhM8XpAzRlvuChI4qui%2BlBRdEPpjJyirUMz%2BNw44uExwqRslYUp081VjRW4DUQKN5ZGG93UYk3uDyTDpvOtLiccihEcVBKv0hDmwyLxTWEH2U2kNPkqiCPABP9lr6vemRZ9%2FUom6Z7L%2FBBh6hzruUK4slo4bgazcY0ZHCCzqLvw1UpjFqJnfpsl5j1JgYBaJJ1uGcX%2Bt9mUWZU6gAjei6w3TPLZAD98BYukYuXDl9m9o%2FcwgXc5%2FO4d%2B%2BQdt56OZ6ZqD5yWKgWtNAEAFbjoEaoSho8UbyPCQAYO%2B9ziV1jw%2Byld0ZAU5B%2Fy%2FCd3WX6fDNDQyzKAd4EOPqB4nw%3D%3D"}
-[debug] [2023-03-22T12:22:49.731Z] >>> [apiv2][query] PUT https://storage.googleapis.com/uploads-423196917591.us-central1.cloudfunctions.appspot.com/14663b99-139b-43cf-8978-fae61ca3a756.zip GoogleAccessId=service-322702698679%40gcf-admin-robot.iam.gserviceaccount.com&Expires=1679489581&Signature=Ck7L2KhM8XpAzRlvuChI4qui%2BlBRdEPpjJyirUMz%2BNw44uExwqRslYUp081VjRW4DUQKN5ZGG93UYk3uDyTDpvOtLiccihEcVBKv0hDmwyLxTWEH2U2kNPkqiCPABP9lr6vemRZ9%2FUom6Z7L%2FBBh6hzruUK4slo4bgazcY0ZHCCzqLvw1UpjFqJnfpsl5j1JgYBaJJ1uGcX%2Bt9mUWZU6gAjei6w3TPLZAD98BYukYuXDl9m9o%2FcwgXc5%2FO4d%2B%2BQdt56OZ6ZqD5yWKgWtNAEAFbjoEaoSho8UbyPCQAYO%2B9ziV1jw%2Byld0ZAU5B%2Fy%2FCd3WX6fDNDQyzKAd4EOPqB4nw%3D%3D
-[debug] [2023-03-22T12:22:49.731Z] >>> [apiv2][body] PUT https://storage.googleapis.com/uploads-423196917591.us-central1.cloudfunctions.appspot.com/14663b99-139b-43cf-8978-fae61ca3a756.zip [stream]
-[debug] [2023-03-22T12:22:51.170Z] <<< [apiv2][status] PUT https://storage.googleapis.com/uploads-423196917591.us-central1.cloudfunctions.appspot.com/14663b99-139b-43cf-8978-fae61ca3a756.zip 200
-[debug] [2023-03-22T12:22:51.170Z] <<< [apiv2][body] PUT https://storage.googleapis.com/uploads-423196917591.us-central1.cloudfunctions.appspot.com/14663b99-139b-43cf-8978-fae61ca3a756.zip [omitted]
+[info] i  functions: packaged C:\Users\Michael.i_FNGA0247\monapp\functions (112.74 KB) for uploading 
+[debug] [2023-03-23T15:28:05.732Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/-/functions [none]
+[debug] [2023-03-23T15:28:07.039Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/-/functions 200
+[debug] [2023-03-23T15:28:07.039Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/-/functions {"functions":[{"name":"projects/monapp-33057/locations/us-central1/functions/app","httpsTrigger":{"url":"https://us-central1-monapp-33057.cloudfunctions.net/app","securityLevel":"SECURE_ALWAYS"},"status":"ACTIVE","entryPoint":"app","timeout":"60s","availableMemoryMb":256,"serviceAccountEmail":"monapp-33057@appspot.gserviceaccount.com","updateTime":"2023-03-08T11:56:54.546Z","versionId":"8","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"6ece034db2f8ff26841e7022025c4fcc4b9d6ea0"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-423196917591.us-central1.cloudfunctions.appspot.com/66608165-3738-4f83-9a0c-46239474b3ea.zip","environmentVariables":{"FLW_PUBLIC_KEY":"FLWPUBK-4d63e098d60c1e7ae93fb1a75b0bbd05-X","FLW_SECRET_KEY":"FLWSECK-47dd89a473c13d16f249057eb7232b7c-X","TERMI_API_KEY":"TLMmAlkZCgYwGOxuaRUPI9mE83zNtHT2Rc6KkaRs44Eailq3zghhQnuB5MshUA","FIREBASE_CONFIG":"{\"projectId\":\"monapp-33057\",\"storageBucket\":\"monapp-33057.appspot.com\",\"locationId\":\"us-central\"}","GCLOUD_PROJECT":"monapp-33057"},"runtime":"nodejs16","ingressSettings":"ALLOW_ALL","buildId":"cb29ca8d-6af4-46ca-8c7f-fbc745b16e7f","buildName":"projects/322702698679/locations/us-central1/builds/cb29ca8d-6af4-46ca-8c7f-fbc745b16e7f","dockerRegistry":"ARTIFACT_REGISTRY"}]}
+[debug] [2023-03-23T15:28:07.044Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/monapp-33057/locations/-/functions filter=environment%3D%22GEN_2%22
+[debug] [2023-03-23T15:28:08.578Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/monapp-33057/locations/-/functions 200
+[debug] [2023-03-23T15:28:08.578Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/monapp-33057/locations/-/functions {}
+[debug] [2023-03-23T15:28:08.586Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057 [none]
+[debug] [2023-03-23T15:28:09.479Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057 200
+[debug] [2023-03-23T15:28:09.479Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057 {"projectId":"monapp-33057","projectNumber":"322702698679","displayName":"monapp","name":"projects/monapp-33057","resources":{"hostingSite":"monapp-33057","storageBucket":"monapp-33057.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_4fbdcf4e-e25c-4446-8028-486f2560c6cd"}
+[debug] [2023-03-23T15:28:09.481Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions:generateUploadUrl [none]
+[debug] [2023-03-23T15:28:09.481Z] >>> [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions:generateUploadUrl {}
+[debug] [2023-03-23T15:28:10.542Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions:generateUploadUrl 200
+[debug] [2023-03-23T15:28:10.542Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions:generateUploadUrl {"uploadUrl":"https://storage.googleapis.com/uploads-423196917591.us-central1.cloudfunctions.appspot.com/95b855e5-593e-4d7f-a72f-3fd9ff0500ef.zip?GoogleAccessId=service-322702698679@gcf-admin-robot.iam.gserviceaccount.com&Expires=1679587222&Signature=eOAdAUjCslXy1cbhv3vVln2OYSLJEW15nC1Z2TUFE2e9r68efdjhgmix5XLofkVbUFjKxFWHPcLZ8DVrr%2FXyAu%2BX%2BfgF8tR6FyCmSCu4pKTfUzbyHULFquYk4qEgNBzTCLYsRxO4lTnHf6UsGHppvRtSPiqKyisP%2F0Gln1yxJjSIno7jqQ9reNnfx5FPO3DsfIYGtc72tbC8m0Fy%2Bm9tClbcrEMg5oPEnwWHRmzOpu8kjS7HXh6gTfI5wKiqlFfFTQy8BwRqwHSdRHkWFgAP7%2BmmdP%2Fal2qJrz7jXM0zYy40NZp5KsLXLtSLjqphuG78z1yWK%2BFkrd0dCJwyGYDV8Q%3D%3D"}
+[debug] [2023-03-23T15:28:10.543Z] >>> [apiv2][query] PUT https://storage.googleapis.com/uploads-423196917591.us-central1.cloudfunctions.appspot.com/95b855e5-593e-4d7f-a72f-3fd9ff0500ef.zip GoogleAccessId=service-322702698679%40gcf-admin-robot.iam.gserviceaccount.com&Expires=1679587222&Signature=eOAdAUjCslXy1cbhv3vVln2OYSLJEW15nC1Z2TUFE2e9r68efdjhgmix5XLofkVbUFjKxFWHPcLZ8DVrr%2FXyAu%2BX%2BfgF8tR6FyCmSCu4pKTfUzbyHULFquYk4qEgNBzTCLYsRxO4lTnHf6UsGHppvRtSPiqKyisP%2F0Gln1yxJjSIno7jqQ9reNnfx5FPO3DsfIYGtc72tbC8m0Fy%2Bm9tClbcrEMg5oPEnwWHRmzOpu8kjS7HXh6gTfI5wKiqlFfFTQy8BwRqwHSdRHkWFgAP7%2BmmdP%2Fal2qJrz7jXM0zYy40NZp5KsLXLtSLjqphuG78z1yWK%2BFkrd0dCJwyGYDV8Q%3D%3D
+[debug] [2023-03-23T15:28:10.543Z] >>> [apiv2][body] PUT https://storage.googleapis.com/uploads-423196917591.us-central1.cloudfunctions.appspot.com/95b855e5-593e-4d7f-a72f-3fd9ff0500ef.zip [stream]
+[debug] [2023-03-23T15:28:11.947Z] <<< [apiv2][status] PUT https://storage.googleapis.com/uploads-423196917591.us-central1.cloudfunctions.appspot.com/95b855e5-593e-4d7f-a72f-3fd9ff0500ef.zip 200
+[debug] [2023-03-23T15:28:11.948Z] <<< [apiv2][body] PUT https://storage.googleapis.com/uploads-423196917591.us-central1.cloudfunctions.appspot.com/95b855e5-593e-4d7f-a72f-3fd9ff0500ef.zip [omitted]
 [info] +  functions: functions folder uploaded successfully 
 [info] i  functions: updating Node.js 16 function app(us-central1)... 
-[debug] [2023-03-22T12:22:51.177Z] >>> [apiv2][query] PATCH https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions/app updateMask=name%2CsourceUploadUrl%2CentryPoint%2Cruntime%2CdockerRegistry%2Clabels%2ChttpsTrigger.securityLevel%2CenvironmentVariables%2CavailableMemoryMb%2CsourceToken
-[debug] [2023-03-22T12:22:51.178Z] >>> [apiv2][body] PATCH https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions/app {"name":"projects/monapp-33057/locations/us-central1/functions/app","sourceUploadUrl":"https://storage.googleapis.com/uploads-423196917591.us-central1.cloudfunctions.appspot.com/14663b99-139b-43cf-8978-fae61ca3a756.zip?GoogleAccessId=service-322702698679@gcf-admin-robot.iam.gserviceaccount.com&Expires=1679489581&Signature=Ck7L2KhM8XpAzRlvuChI4qui%2BlBRdEPpjJyirUMz%2BNw44uExwqRslYUp081VjRW4DUQKN5ZGG93UYk3uDyTDpvOtLiccihEcVBKv0hDmwyLxTWEH2U2kNPkqiCPABP9lr6vemRZ9%2FUom6Z7L%2FBBh6hzruUK4slo4bgazcY0ZHCCzqLvw1UpjFqJnfpsl5j1JgYBaJJ1uGcX%2Bt9mUWZU6gAjei6w3TPLZAD98BYukYuXDl9m9o%2FcwgXc5%2FO4d%2B%2BQdt56OZ6ZqD5yWKgWtNAEAFbjoEaoSho8UbyPCQAYO%2B9ziV1jw%2Byld0ZAU5B%2Fy%2FCd3WX6fDNDQyzKAd4EOPqB4nw%3D%3D","entryPoint":"app","runtime":"nodejs16","dockerRegistry":"ARTIFACT_REGISTRY","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"d83cdab256c19037a1cf7e60ebff757534f28c8a"},"httpsTrigger":{"securityLevel":"SECURE_ALWAYS"},"environmentVariables":{"FLW_PUBLIC_KEY":"FLWPUBK-4d63e098d60c1e7ae93fb1a75b0bbd05-X","FLW_SECRET_KEY":"FLWSECK-47dd89a473c13d16f249057eb7232b7c-X","TERMI_API_KEY":"TLMmAlkZCgYwGOxuaRUPI9mE83zNtHT2Rc6KkaRs44Eailq3zghhQnuB5MshUA","QOREID_CLIENT":"N3KSF8CKCLRTP0UXRFD2","QOREID_SECRET":"442e215b170747e5a44f9220ad8aeac0","FIREBASE_CONFIG":"{\"projectId\":\"monapp-33057\",\"storageBucket\":\"monapp-33057.appspot.com\",\"locationId\":\"us-central\"}","GCLOUD_PROJECT":"monapp-33057"},"availableMemoryMb":256}
-[debug] [2023-03-22T12:22:51.982Z] <<< [apiv2][status] PATCH https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions/app 403
-[debug] [2023-03-22T12:22:51.982Z] <<< [apiv2][body] PATCH https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions/app {"error":{"code":403,"message":"Unable to retrieve the repository metadata for projects/monapp-33057/locations/us-central1/repositories/gcf-artifacts. Ensure that the Cloud Functions service account has 'artifactregistry.repositories.list' and 'artifactregistry.repositories.get' permissions. You can add the permissions by granting the role 'roles/artifactregistry.reader'.","status":"PERMISSION_DENIED"}}
+[debug] [2023-03-23T15:28:11.956Z] >>> [apiv2][query] PATCH https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions/app updateMask=name%2CsourceUploadUrl%2CentryPoint%2Cruntime%2CdockerRegistry%2Clabels%2ChttpsTrigger.securityLevel%2CenvironmentVariables%2CavailableMemoryMb%2CsourceToken
+[debug] [2023-03-23T15:28:11.957Z] >>> [apiv2][body] PATCH https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions/app {"name":"projects/monapp-33057/locations/us-central1/functions/app","sourceUploadUrl":"https://storage.googleapis.com/uploads-423196917591.us-central1.cloudfunctions.appspot.com/95b855e5-593e-4d7f-a72f-3fd9ff0500ef.zip?GoogleAccessId=service-322702698679@gcf-admin-robot.iam.gserviceaccount.com&Expires=1679587222&Signature=eOAdAUjCslXy1cbhv3vVln2OYSLJEW15nC1Z2TUFE2e9r68efdjhgmix5XLofkVbUFjKxFWHPcLZ8DVrr%2FXyAu%2BX%2BfgF8tR6FyCmSCu4pKTfUzbyHULFquYk4qEgNBzTCLYsRxO4lTnHf6UsGHppvRtSPiqKyisP%2F0Gln1yxJjSIno7jqQ9reNnfx5FPO3DsfIYGtc72tbC8m0Fy%2Bm9tClbcrEMg5oPEnwWHRmzOpu8kjS7HXh6gTfI5wKiqlFfFTQy8BwRqwHSdRHkWFgAP7%2BmmdP%2Fal2qJrz7jXM0zYy40NZp5KsLXLtSLjqphuG78z1yWK%2BFkrd0dCJwyGYDV8Q%3D%3D","entryPoint":"app","runtime":"nodejs16","dockerRegistry":"ARTIFACT_REGISTRY","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"c0db0770bae00533abc1358d7d28ad1bb4de74d5"},"httpsTrigger":{"securityLevel":"SECURE_ALWAYS"},"environmentVariables":{"FLW_PUBLIC_KEY":"FLWPUBK-4d63e098d60c1e7ae93fb1a75b0bbd05-X","FLW_SECRET_KEY":"FLWSECK-47dd89a473c13d16f249057eb7232b7c-X","TERMI_API_KEY":"TLMmAlkZCgYwGOxuaRUPI9mE83zNtHT2Rc6KkaRs44Eailq3zghhQnuB5MshUA","QOREID_CLIENT":"N3KSF8CKCLRTP0UXRFD2","QOREID_SECRET":"442e215b170747e5a44f9220ad8aeac0","FIREBASE_CONFIG":"{\"projectId\":\"monapp-33057\",\"storageBucket\":\"monapp-33057.appspot.com\",\"locationId\":\"us-central\"}","GCLOUD_PROJECT":"monapp-33057"},"availableMemoryMb":256}
+[debug] [2023-03-23T15:28:12.775Z] <<< [apiv2][status] PATCH https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions/app 403
+[debug] [2023-03-23T15:28:12.776Z] <<< [apiv2][body] PATCH https://cloudfunctions.googleapis.com/v1/projects/monapp-33057/locations/us-central1/functions/app {"error":{"code":403,"message":"Unable to retrieve the repository metadata for projects/monapp-33057/locations/us-central1/repositories/gcf-artifacts. Ensure that the Cloud Functions service account has 'artifactregistry.repositories.list' and 'artifactregistry.repositories.get' permissions. You can add the permissions by granting the role 'roles/artifactregistry.reader'.","status":"PERMISSION_DENIED"}}
 [warn] !  functions: failed to update function projects/monapp-33057/locations/us-central1/functions/app 
 [error] Failed to update function projects/monapp-33057/locations/us-central1/functions/app
-[debug] [2023-03-22T12:22:51.996Z] Total Function Deployment time: 812
-[debug] [2023-03-22T12:22:51.996Z] 1 Functions Deployed
-[debug] [2023-03-22T12:22:51.996Z] 1 Functions Errored
-[debug] [2023-03-22T12:22:51.996Z] 0 Function Deployments Aborted
-[debug] [2023-03-22T12:22:51.996Z] Average Function Deployment time: 810
+[debug] [2023-03-23T15:28:12.784Z] Total Function Deployment time: 827
+[debug] [2023-03-23T15:28:12.784Z] 1 Functions Deployed
+[debug] [2023-03-23T15:28:12.784Z] 1 Functions Errored
+[debug] [2023-03-23T15:28:12.784Z] 0 Function Deployments Aborted
+[debug] [2023-03-23T15:28:12.784Z] Average Function Deployment time: 825
 [info] 
 [info] Functions deploy had errors with the following functions:
 	app(us-central1)
-[debug] [2023-03-22T12:22:52.001Z] Not printing URL for HTTPS function. Typically this means it didn't match a filter or we failed deployment
+[debug] [2023-03-23T15:28:12.789Z] Not printing URL for HTTPS function. Typically this means it didn't match a filter or we failed deployment
 [info] i  functions: cleaning up build files... 
-[debug] [2023-03-22T12:22:52.005Z] >>> [apiv2][query] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/monapp-33057/locations/us-central1/repositories/gcf-artifacts/packages/app [none]
-[debug] [2023-03-22T12:22:52.006Z] >>> [apiv2][query] GET https://us.gcr.io/v2/monapp-33057/gcf/us-central1/tags/list [none]
-[debug] [2023-03-22T12:22:52.704Z] <<< [apiv2][status] GET https://us.gcr.io/v2/monapp-33057/gcf/us-central1/tags/list 200
-[debug] [2023-03-22T12:22:52.704Z] <<< [apiv2][body] GET https://us.gcr.io/v2/monapp-33057/gcf/us-central1/tags/list {"child":[],"manifest":{},"name":"monapp-33057/gcf/us-central1","tags":[]}
-[debug] [2023-03-22T12:22:52.705Z] Could not find image for function projects/monapp-33057/locations/us-central1/functions/app
-[debug] [2023-03-22T12:22:53.214Z] <<< [apiv2][status] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/monapp-33057/locations/us-central1/repositories/gcf-artifacts/packages/app 403
-[debug] [2023-03-22T12:22:53.214Z] <<< [apiv2][body] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/monapp-33057/locations/us-central1/repositories/gcf-artifacts/packages/app {"error":{"code":403,"message":"This API method requires billing to be enabled. Please enable billing on project #322702698679 by visiting https://console.developers.google.com/billing/enable?project=322702698679 then retry. If you enabled billing for this project recently, wait a few minutes for the action to propagate to our systems and retry.","status":"PERMISSION_DENIED","details":[{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Google developers console billing","url":"https://console.developers.google.com/billing/enable?project=322702698679"}]},{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"BILLING_DISABLED","domain":"googleapis.com","metadata":{"service":"artifactregistry.googleapis.com","consumer":"projects/322702698679"}}]}}
+[debug] [2023-03-23T15:28:12.792Z] >>> [apiv2][query] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/monapp-33057/locations/us-central1/repositories/gcf-artifacts/packages/app [none]
+[debug] [2023-03-23T15:28:12.794Z] >>> [apiv2][query] GET https://us.gcr.io/v2/monapp-33057/gcf/us-central1/tags/list [none]
+[debug] [2023-03-23T15:28:13.471Z] <<< [apiv2][status] GET https://us.gcr.io/v2/monapp-33057/gcf/us-central1/tags/list 200
+[debug] [2023-03-23T15:28:13.471Z] <<< [apiv2][body] GET https://us.gcr.io/v2/monapp-33057/gcf/us-central1/tags/list {"child":[],"manifest":{},"name":"monapp-33057/gcf/us-central1","tags":[]}
+[debug] [2023-03-23T15:28:13.471Z] Could not find image for function projects/monapp-33057/locations/us-central1/functions/app
+[debug] [2023-03-23T15:28:14.061Z] <<< [apiv2][status] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/monapp-33057/locations/us-central1/repositories/gcf-artifacts/packages/app 403
+[debug] [2023-03-23T15:28:14.061Z] <<< [apiv2][body] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/monapp-33057/locations/us-central1/repositories/gcf-artifacts/packages/app {"error":{"code":403,"message":"This API method requires billing to be enabled. Please enable billing on project #322702698679 by visiting https://console.developers.google.com/billing/enable?project=322702698679 then retry. If you enabled billing for this project recently, wait a few minutes for the action to propagate to our systems and retry.","status":"PERMISSION_DENIED","details":[{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Google developers console billing","url":"https://console.developers.google.com/billing/enable?project=322702698679"}]},{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"BILLING_DISABLED","domain":"googleapis.com","metadata":{"service":"artifactregistry.googleapis.com","consumer":"projects/322702698679"}}]}}
 [warn] !  functions: Unhandled error cleaning up build images. This could result in a small monthly bill if not corrected. You can attempt to delete these images by redeploying or you can delete them manually at https://console.cloud.google.com/artifacts/docker/monapp-33057/us-central1/gcf-artifacts 
-[debug] [2023-03-22T12:22:53.216Z] Functions deploy failed.
-[debug] [2023-03-22T12:22:53.216Z] {
+[debug] [2023-03-23T15:28:14.062Z] Functions deploy failed.
+[debug] [2023-03-23T15:28:14.062Z] {
   "endpoint": {
     "id": "app",
     "project": "monapp-33057",
@@ -589,7 +369,7 @@
     "availableMemoryMb": 256,
     "securityLevel": "SECURE_ALWAYS",
     "targetedByOnly": false,
-    "hash": "d83cdab256c19037a1cf7e60ebff757534f28c8a",
+    "hash": "c0db0770bae00533abc1358d7d28ad1bb4de74d5",
     "labels": {
       "deployment-tool": "cli-firebase"
     }
@@ -625,7 +405,7 @@
     "status": 500
   }
 }
-[debug] [2023-03-22T12:22:53.226Z] Error: Failed to update function app in region us-central1
+[debug] [2023-03-23T15:28:14.066Z] Error: Failed to update function app in region us-central1
     at C:\Users\Michael.i_FNGA0247\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\release\fabricator.js:41:11
     at runMicrotasks (<anonymous>)
     at processTicksAndRejections (node:internal/process/task_queues:96:5)

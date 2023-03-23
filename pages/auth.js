@@ -22,6 +22,7 @@ import {
     InputGroup,
     InputLeftElement,
     InputRightElement,
+    useToast,
 } from '@chakra-ui/react';
 import { Bree_Serif, DM_Sans, Roboto_Slab } from '@next/font/google';
 import { useEffect, useState } from 'react';
@@ -32,6 +33,7 @@ import { useRouter } from 'next/router'
 import { auth, createUserWithEmailAndPassword, db, doc, serverTimestamp, setDoc, signInWithEmailAndPassword } from '@/services/firebase';
 import { AuthAction, withAuthUser } from 'next-firebase-auth';
 import PageSeo from '@/Seo/pageSeo';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 
 const dmsansBold = DM_Sans({ weight: '500', subsets: ['latin'] })
 const bree = Bree_Serif({ weight: '400', subsets: ['latin'] })
@@ -316,41 +318,57 @@ export const Signup = () => {
     const [loadingState, setLoadingState] = useState(false);
     const [show, setShow] = useState(false)
     const handleClick = () => setShow(!show)
-
+    const toast = useToast()
     const verifyUser = () => {
         router.push('/VerifyUser')
     }
 
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         setLoadingState(true)
+        const q = query(collection(db, "users"), where("phoneNumber", "==", `${data.phoneNumber}`));
 
-        createUserWithEmailAndPassword(auth, data.email, data.pwd)
-            .then(async (userCredential) => {
-                // Signed in 
-                const user = userCredential.user;
-                console.log(user)
+        const querySnapshot = await getDocs(q);
+        if (querySnapshot.empty) {
+            createUserWithEmailAndPassword(auth, data.email, data.pwd)
+                .then(async (userCredential) => {
+                    // Signed in 
+                    const user = userCredential.user;
+                    console.log(user)
 
-                await setDoc(doc(db, "users", `${user.uid}`), {
-                    userID: `${user.uid}`,
-                    firstName: `${data.firstName}`,
-                    lastName: `${data.lastName}`,
-                    email: `${data.email}`,
-                    phoneNumber: `${data.phoneNumber}`,
-                    createdAt: serverTimestamp()
+                    await setDoc(doc(db, "users", `${user.uid}`), {
+                        userID: `${user.uid}`,
+                        firstName: `${data.firstName}`,
+                        lastName: `${data.lastName}`,
+                        email: `${data.email}`,
+                        phoneNumber: `${data.phoneNumber}`,
+                        createdAt: serverTimestamp()
+                    })
+                    verifyUser()
+                    setLoadingState(false)
                 })
-                verifyUser()
-                setLoadingState(false)
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
 
-                console.log(errorCode)
-                console.log(errorMessage)
-                // ..
-                setLoadingState(false)
-            });
+                    console.log(errorCode)
+                    console.log(errorMessage)
+                    // ..
+                    setLoadingState(false)
+                });
+        } else {
+            setLoadingState(false)
+            toast({
+                title: 'Signup failed',
+                description: 'User already exists',
+                status: 'error',
+                duration: 9000,
+                isClosable: true,
+                position: 'top',
+            })
+        }
+
+
     }
 
 

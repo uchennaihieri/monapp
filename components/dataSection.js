@@ -63,7 +63,7 @@ export default function DataSection() {
                             fontWeight={400}
                             fontSize={{ base: '1.75rem', md: '2.5rem' }}
                             className={bree.className}
-                        >Sleek, luxurious card to rule them all. Experience next gen cashless. </Text>
+                        >Sleek, luxurious card to rule them all. Experience next generation cashless. </Text>
                         <Text
                             mb={{ base: '0.87rem', md: '1rem' }}
                             color={'#02073E'}

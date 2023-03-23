@@ -1,10 +1,11 @@
-import { businessCat, bvnN, myLocation, pinID, seller } from '@/recoil/atoms';
-import { Box, Center, Heading, Image } from '@chakra-ui/react';
+
+import { Box, Center, Heading, Image, Link } from '@chakra-ui/react';
 import {
     Button,
     FormControl,
     Flex,
     Input,
+    useToast,
     Stack,
     useColorModeValue,
     HStack,
@@ -14,6 +15,7 @@ import { useAuthUser, withAuthUser } from 'next-firebase-auth';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRecoilState } from 'recoil';
+import { businessCat, bvnN, myLocation, pinID, seller } from '@/recoil/atoms';
 import QRCode from 'qrcode'
 import { doc, setDoc, updateDoc } from 'firebase/firestore';
 import { getDownloadURL, getStorage, ref, uploadString } from "firebase/storage";
@@ -27,18 +29,18 @@ function ConfirmOtp() {
     const [src, setSrc] = useState('')
     const [srcUrl, setSrcUrl] = useState('')
     const [loadingState, setLoadingState] = useState(false);
-    const [location, setLocation] = useState(myLocation)
+    const [location, setLocation] = useRecoilState(myLocation)
     const [merchantName, setMerchantName] = useRecoilState(seller)
-    const [myBusiness, setMyBusiness] = useState(businessCat)
+    const [myBusiness, setMyBusiness] = useRecoilState(businessCat)
     const [personalBalance, setPersonalBalance] = useState(0);
     const [merchantBalance, setMerchantBalance] = useState(0);
     const [tokenPin, setTokenPin] = useRecoilState(pinID);
     const [otp, setOtp] = useState('')
     const [verificationNumber, setVerificationNumber] = useRecoilState(bvnN);
 
+    const toast = useToast()
 
-
-    const url = "https://us-central1-monapp-33057.cloudfunctions.net/app/api/verifyOtp";
+    const url = "http://127.0.0.1:5001/monapp-33057/us-central1/app/api/verifyOtp";
     var info = {
         "pinId": tokenPin,
         "pin": otp,
@@ -48,8 +50,10 @@ function ConfirmOtp() {
     const storageRef = ref(storage, `${AuthUser.id}`);
 
 
-    const num = verificationNumber.substring(3)
 
+    const num = verificationNumber.substring(3)
+    console.log(personalBalance, merchantBalance, num, AuthUser.id, location, merchantName, myBusiness)
+    console.log(num)
 
     const submitOtp = () => {
         setLoadingState(true)
@@ -79,6 +83,8 @@ function ConfirmOtp() {
 
                 if (res.verified == true) {
 
+
+
                     await QRCode.toDataURL(`monapp${num}`, { errorCorrectionLevel: 'M' }).then(async (val) => {
                         await uploadString(storageRef, `${val}`, 'data_url').then((snapshot) => {
                             getDownloadURL(snapshot.ref).then(async (downloadURL) => {
@@ -104,6 +110,16 @@ function ConfirmOtp() {
 
                     router.push('/Dashboard')
 
+                } else if (res.verified == 'Expired') {
+                    setLoadingState(false)
+                    toast({
+                        title: 'Verification failed',
+                        description: 'OTP expired. Please resend code',
+                        status: 'error',
+                        duration: 9000,
+                        isClosable: true,
+                        position: 'top',
+                    })
                 }
 
                 setLoadingState(false)
@@ -113,6 +129,44 @@ function ConfirmOtp() {
                 setLoadingState(false)
                 console.log(error);
             })
+
+    }
+
+
+
+    const verifyUser = async () => {
+
+
+        await fetch("https://us-central1-monapp-33057.cloudfunctions.net/app/api/verifyBvn", {
+
+            // Adding method type
+            method: "POST",
+
+            // Adding body or contents to send
+            body: JSON.stringify({
+                "phoneNumber": verificationNumber
+            }),
+
+            // Adding headers to the request
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        }).then(function (res) {
+            return res.json();
+        })
+            // Converting to JSON
+            .then(function (data) {
+
+                setTokenPin(data.pinId)
+                setVerificationNumber(data.to)
+
+            })
+            .catch(function (error) {
+
+                console.log(error);
+            })
+
 
     }
 
@@ -146,7 +200,7 @@ function ConfirmOtp() {
                 <Center
                     fontSize={{ base: 'sm', sm: 'md' }}
                     color={useColorModeValue('gray.800', 'gray.400')}>
-                    We have sent a code to your BVN linked number
+                    We have sent a code to your phone number
                 </Center>
                 <Center
                     fontSize={{ base: 'sm', sm: 'md' }}
@@ -168,6 +222,14 @@ function ConfirmOtp() {
                         </HStack>
                     </Center>
                 </FormControl>
+                <Stack
+
+                    direction={{ base: 'row' }}
+                    align={'start'}
+                    justify={'left'}>
+                    <Button mt="2rem" variant="link" disabled color={'#000000'} onClick={verifyUser}>Resend link</Button>
+                </Stack>
+
                 <Stack spacing={6}>
                     <Button
                         mt={'1rem'}
