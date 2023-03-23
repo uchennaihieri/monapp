@@ -746,7 +746,7 @@ export const getServerSideProps = withAuthUserTokenSSR({
     // Optionally, get other props.
     const token = await AuthUser.getIdToken()
     const UID = AuthUser.id
-    const response = await fetch(`http://127.0.0.1:5001/monapp-33057/us-central1/app/api/user/${UID}`, {
+    const response = await fetch(`https://us-central1-monapp-33057.cloudfunctions.net/app/api/user/${UID}`, {
         method: 'GET',
         headers: {
             Authorization: token,

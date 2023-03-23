@@ -40,7 +40,7 @@ function ConfirmOtp() {
 
     const toast = useToast()
 
-    const url = "http://127.0.0.1:5001/monapp-33057/us-central1/app/api/verifyOtp";
+    const url = "https://us-central1-monapp-33057.cloudfunctions.net/app/api/verifyOtp";
     var info = {
         "pinId": tokenPin,
         "pin": otp,

@@ -4,12 +4,18 @@ import { BsFacebook, BsTwitter } from 'react-icons/bs';
 import { AiFillInstagram, AiFillLinkedin } from 'react-icons/ai';
 import { FcAssistant, FcDonate, FcInTransit } from 'react-icons/fc';
 import { Bree_Serif, DM_Sans, Poppins } from '@next/font/google'
+import { useRouter } from 'next/router';
 
 const bree = Bree_Serif({ weight: '400', subsets: ['latin'] })
 const dmsans = DM_Sans({ weight: '400', subsets: ['latin'] })
 
 
 export default function FooterSection() {
+    const router = useRouter()
+    const goIssues = () => {
+        router.push('/issues')
+    }
+
     return (
         <Box bgColor="#F9FAFC" h={{ base: '24.93em', md: '24.7em' }} color="#000000" >
             <Center>
@@ -75,6 +81,7 @@ export default function FooterSection() {
                     }} color={'#000000'} fontSize="0.875rem"
                         fontWeight={400}
                         className={dmsans.className}
+                        onClick={goIssues}
                     >Issues</Button>
 
 
