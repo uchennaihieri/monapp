@@ -753,7 +753,14 @@ export const getServerSideProps = withAuthUserTokenSSR({
         },
     })
     const data = await response.json()
-
+    if (!data.verified) {
+        return {
+            redirect: {
+                destination: '/verifyUser',
+                permanent: false,
+            },
+        }
+    }
 
     return {
         props: {
