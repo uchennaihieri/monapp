@@ -40,7 +40,8 @@ import {
     StatLabel,
     StatNumber,
     ButtonGroup,
-    Select
+    Select,
+    Stack
 } from '@chakra-ui/react'
 import _ from 'lodash';
 import {
@@ -72,6 +73,7 @@ import { addDoc, collection, query, where } from 'firebase/firestore';
 import MyChart from '@/components/myChart';
 import { Bree_Serif } from '@next/font/google';
 import dayjs from 'dayjs';
+import { usePaystackPayment } from 'react-paystack';
 
 const bree = Bree_Serif({ weight: '400', subsets: ['latin'] })
 
@@ -198,6 +200,10 @@ function Dashboard({ person }) {
 
     }
 
+    const fundAccount = () => {
+        alert('hello')
+    }
+
 
     let Naira = new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -210,6 +216,21 @@ function Dashboard({ person }) {
     const goToLogin = () => {
         router.push('/auth')
     }
+
+    const goToMerchants = () => {
+        toast({
+            title: 'Still under development',
+            description: 'Sorry, you cannot navigate here at this time.',
+            status: 'error',
+            duration: 9000,
+            isClosable: true,
+            position: 'top',
+        })
+    }
+    const goToDashboard = () => {
+        router.push('/Dashboard')
+    }
+
 
 
     const signMeOut = () => {
@@ -301,9 +322,46 @@ function Dashboard({ person }) {
     }
 
 
+    const config = {
+        reference: (new Date()).getTime().toString(),
+        email: "uchennaihieri@yahoo.com",
+        amount: 20000, //Amount is in the country's lowest currency. E.g Kobo, so 20000 kobo = N200
+        publicKey: process.env.NEXT_PUBLIC_FUND_KEY,
+    };
+
+    const onSuccess = (reference) => {
+        // Implementation for whatever you want to do with reference and after success call.
 
 
+        fetch("http://127.0.0.1:5001/monapp-33057/us-central1/app/api/fundAccount", {
 
+            // Adding method type
+            method: "POST",
+            body: JSON.stringify({
+                reference: reference.reference,
+            })
+        }).then(function (res) {
+            return res.json();
+        })
+            // Converting to JSON
+            .then(function (data) {
+                console.log(data)
+            })
+            .catch(function (error) {
+
+                console.log(error);
+            })
+
+        console.log(reference);
+    };
+
+    // you can call this function anything
+    const CloseModal = () => {
+        // implementation for  whatever you want to do when the Paystack dialog closed.
+        console.log('closed')
+    }
+
+    const initializePayment = usePaystackPayment(config);
 
     return (
         <Flex
@@ -330,12 +388,14 @@ function Dashboard({ person }) {
                         as="nav"
                     >
                         <Image src={'/logo.png'} width={{ base: '8.625rem', md: "14.4275rem" }} height={{ base: '1.569rem', md: "2.625rem" }} mt={50}
-                            mb={{ base: 5, md: 100 }} alignSelf="center" />
+                            mb={{ base: 5, md: 100 }} alignSelf="center" onClick={goToDashboard} _hover={{
+                                cursor: "pointer"
+                            }} />
 
 
                     </Flex>
                     <Flex flexDir="column" alignItems="center" mb={10} mt={5} display={{ base: 'none', md: "flex" }}>
-                        <Flex flexDir="column" align="center" justify="center" bg="#ffffff" w="80%" borderRadius={'12px'} color="#000000" p="10px" mb="20px" position={'relative'} _hover={{
+                        <Flex flexDir="column" align="center" justify="center" bg="#ffffff" w="80%" borderRadius={'12px'} color="#000000" p="10px" mb="20px" position={'relative'} onClick={goToMerchants} _hover={{
                             bg: "gray.200",
                             cursor: "pointer"
                         }}>
@@ -354,7 +414,7 @@ function Dashboard({ person }) {
                     </Flex>
 
                     <Flex flexDir="row" alignItems="center" my="20px" display={{ base: 'flex', md: "none" }} >
-                        <Button colorScheme='gray' fontWeight={600} variant={'link'} color='white' mr="30px" >
+                        <Button colorScheme='gray' fontWeight={600} variant={'link'} color='white' mr="30px" onClick={goToMerchants} >
                             Merchants
                         </Button>
                         <Button fontWeight={600} variant={'link'} color='white' onClick={signMeOut}>logout</Button>
@@ -381,9 +441,14 @@ function Dashboard({ person }) {
                     Welcome back, <Flex display="inline-flex" fontWeight="bold">{person.firstName}</Flex>
                 </Heading>
                 <Text color="gray" fontSize="sm">My Balance</Text>
-                <Text fontWeight="bold" fontSize="2xl">{Naira.format(amount)}</Text>
-
-
+                <Flex flexDirection={'row'} align="center" justify={'space-between'}>
+                    <Text fontWeight="bold" fontSize="2xl">{Naira.format(amount)}</Text>
+                    <Stack ml={3}>
+                        <Button variant={'link'} color={'#000000'} onClick={() => {
+                            initializePayment(onSuccess, CloseModal)
+                        }}>fund account</Button>
+                    </Stack>
+                </Flex>
                 {myTransactions && <>
 
                     <Flex justifyContent="space-between" mt={8}>
@@ -744,7 +809,8 @@ export const getServerSideProps = withAuthUserTokenSSR({
     whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
 })(async ({ AuthUser }) => {
     // Optionally, get other props.
-    const token = await AuthUser.getIdToken()
+    const token = await AuthUser.getIdToken(true)
+
     const UID = AuthUser.id
     const response = await fetch(`https://us-central1-monapp-33057.cloudfunctions.net/app/api/user/${UID}`, {
         method: 'GET',

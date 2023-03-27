@@ -27,3 +27,15 @@ export const businessCat = atom({
     key: "businessCat",
     default: "",
 });
+
+
+
+export const sellerType = atom({
+    key: "sellerType",
+    default: "",
+});
+
+export const businessReg = atom({
+    key: "businessReg",
+    default: "",
+});

@@ -300,6 +300,10 @@ function Merchants({ person }) {
         }
     }
 
+    const goToDashboard = () => {
+        router.push('/Dashboard')
+    }
+
 
 
 
@@ -330,7 +334,9 @@ function Merchants({ person }) {
                         as="nav"
                     >
                         <Image src={'/logo.png'} width={{ base: '8.625rem', md: "14.4275rem" }} height={{ base: '1.569rem', md: "2.625rem" }} mt={50}
-                            mb={{ base: 5, md: 100 }} alignSelf="center" />
+                            mb={{ base: 5, md: 100 }} alignSelf="center" onClick={goToDashboard} _hover={{
+                                cursor: "pointer"
+                            }} />
 
 
                     </Flex>
@@ -364,8 +370,29 @@ function Merchants({ person }) {
 
                 </Flex>
             </Flex>
-            <Box>
+            <Box m={50} >
+                <Flex flexDir="column" align="center" justify="center">
 
+                    <Image src={'/giftCard.png'}
+                        alignSelf="center" w="8rem" h="auto" />
+                    <Box ml="20px">
+                        <Text
+                            fontWeight="700"
+                            fontSize={{ base: "16px", md: "24px" }}
+                            lineHeight="38px"
+                            marginBottom="4px"
+                            overflow="hidden"
+                            textOverflow="ellipsis"
+                            textAlign="left"
+                            wordBreak="break-word"
+
+
+                        >Merchants</Text>
+
+                    </Box>
+
+
+                </Flex>
             </Box>
 
 

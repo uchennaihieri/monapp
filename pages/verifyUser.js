@@ -35,6 +35,10 @@ import {
     ModalBody,
     ModalContent,
     ModalFooter,
+    CheckboxGroup,
+    RadioGroup,
+    Radio,
+    FormHelperText,
 } from '@chakra-ui/react';
 import { AuthAction, withAuthUser, withAuthUserTokenSSR } from 'next-firebase-auth';
 import { useRouter } from 'next/router';
@@ -44,7 +48,7 @@ import { Bree_Serif, DM_Sans, Roboto_Slab } from '@next/font/google';
 import { useEffect, useState } from 'react';
 import { AiOutlineLeft } from 'react-icons/ai';
 import { RiEyeCloseFill, RiEyeFill } from 'react-icons/ri';
-import { businessCat, bvnN, myLocation, pinID, seller } from '@/recoil/atoms';
+import { businessCat, businessReg, bvnN, myLocation, pinID, seller, sellerType } from '@/recoil/atoms';
 import { useForm } from "react-hook-form";
 import { auth, createUserWithEmailAndPassword, db, deleteDoc, doc, deleteUser, serverTimestamp, setDoc, signInWithEmailAndPassword } from '@/services/firebase';
 import { reauthenticateWithCredential } from 'firebase/auth';
@@ -267,31 +271,34 @@ export const Verify = ({ person }) => {
     const [location, setLocation] = useRecoilState(myLocation)
     const [merchantName, setMerchantName] = useRecoilState(seller)
     const [myBusiness, setMyBusiness] = useRecoilState(businessCat)
+    const [merchantType, setMerchantType] = useState('1')
+    const [merch, setMerch] = useRecoilState(sellerType)
+    const [regNum, setRegNum] = useRecoilState(businessReg)
     const [account, setAccount] = useState('')
     const [myBank, setMyBank] = useState("")
     const [errorFetchedChecker, setErrorFetchedChecker] = useState(false);
 
 
-    const config = {
-        first_name: person.firstName,
-        last_name: person.lastName,
-        email: person.email,
-        merchant_key: `${process.env.NEXT_PUBLIC_IDENTITY_API_KEY}`,
-        user_ref: person.id,
-        is_test: false,  //set this to through for a test
-        callback: (response) => {
-            if (response.code == "00") {
+    // const config = {
+    //     first_name: person.firstName,
+    //     last_name: person.lastName,
+    //     email: person.email,
+    //     merchant_key: `${process.env.NEXT_PUBLIC_IDENTITY_API_KEY}`,
+    //     user_ref: person.id,
+    //     is_test: false,  //set this to through for a test
+    //     callback: (response) => {
+    //         if (response.code == "00") {
 
 
 
 
-            } else if (response.code == "01") {
+    //         } else if (response.code == "01") {
 
-            } else if (response.code == "02") {
+    //         } else if (response.code == "02") {
 
-            } else null
-        }
-    }
+    //         } else null
+    //     }
+    // }
 
 
 
@@ -301,6 +308,13 @@ export const Verify = ({ person }) => {
 
     const verifyUser = async () => {
         setLoadingState(true)
+
+        if (merchantType == '1') {
+            setMerch('personal')
+            setMerchantName(`${person.firstName + " " + person.lastName}`)
+        } else if (merchantType == '2') {
+            setMerch('registered business')
+        }
 
         await fetch("https://us-central1-monapp-33057.cloudfunctions.net/app/api/verifyBvn", {
 
@@ -371,27 +385,88 @@ export const Verify = ({ person }) => {
 
                 {merchant &&
                     <>
-
                         <Box >
-                            <FormControl id="email" >
-                                <FormLabel className={roboto.className}>Merchant Name</FormLabel>
 
-                                <Input
-                                    onChange={(e) => setMerchantName(e.target.value)} mb="1.6rem" h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'} type="text" placeholder='Business name' />
+                            <RadioGroup colorScheme='green' onChange={setMerchantType} value={merchantType} >
+                                <Stack mb="1.6rem" spacing={4} direction='row'>
+                                    <Radio value='1'>Personal</Radio>
+                                    <Radio value='2'>Registered Business</Radio>
+                                </Stack>
+                            </RadioGroup>
+                            {/* <CheckboxGroup colorScheme='green' defaultValue={['naruto', 'kakashi']}>
 
-                            </FormControl>
+                                <HStack > <Checkbox value='personal'></Checkbox>
+                                    <Checkbox value='registered_business'></Checkbox></HStack>
+                            </CheckboxGroup> */}
                         </Box>
-                        <Box >
-                            <FormControl id="email" >
-                                <FormLabel className={roboto.className}>Select Business Category</FormLabel>
 
-                                <Select placeholder='Select option' value={myBusiness}
-                                    onChange={(e) => setMyBusiness(e.target.value)} variant='outline' mb="1.6rem" h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'}>
-                                    {business?.map((loc, index) => <option key={index} value={loc}>{loc}</option>)}
-                                </Select>
+                        {merchantType == '1' && <>
+                            <Box  >
+                                <FormControl id="email" isDisabled >
+                                    <FormLabel className={roboto.className}>Merchant Name</FormLabel>
+                                    <FormHelperText mb='0.3em' >Name must be the same with your bank account name.</FormHelperText>
+                                    <Input
+                                        value={merchantName}
+                                        onChange={(e) => setMerchantName(e.target.value)} mb="1.6rem" h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'} type="text" placeholder='Business name' />
 
-                            </FormControl>
-                        </Box>
+                                </FormControl>
+                            </Box>
+                            <Box >
+                                <FormControl id="email" >
+                                    <FormLabel className={roboto.className}>Select Business Category</FormLabel>
+
+                                    <Select placeholder='Select option' value={myBusiness}
+                                        onChange={(e) => setMyBusiness(e.target.value)} variant='outline' mb="1.6rem" h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'}>
+                                        {business?.map((loc, index) => <option key={index} value={loc}>{loc}</option>)}
+                                    </Select>
+
+                                </FormControl>
+                            </Box>
+
+
+                        </>}
+
+
+
+
+                        {merchantType == '2' && <>
+                            <Box  >
+                                <FormControl id="email" >
+                                    <FormLabel className={roboto.className}>Merchant Name</FormLabel>
+                                    <FormHelperText mb='0.3em'>Name must be the same with your bank account name.</FormHelperText>
+                                    <Input
+                                        onChange={(e) => setMerchantName(e.target.value)} mb="1.6rem" h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'} type="text" placeholder='Business name' />
+
+                                </FormControl>
+
+                            </Box>
+                            <Box >
+                                <FormControl id="email" >
+                                    <FormLabel className={roboto.className}>Select Business Category</FormLabel>
+
+                                    <Select placeholder='Select option' value={myBusiness}
+                                        onChange={(e) => setMyBusiness(e.target.value)} variant='outline' mb="1.6rem" h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'}>
+                                        {business?.map((loc, index) => <option key={index} value={loc}>{loc}</option>)}
+                                    </Select>
+
+                                </FormControl>
+                            </Box>
+                            <Box >
+                                <FormControl id="email" >
+                                    <FormLabel className={roboto.className}>Registered Number</FormLabel>
+
+                                    <Input
+                                        value={regNum}
+                                        onChange={(e) => setRegNum(e.target.value)} mb="1.6rem" h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'} type="text" placeholder='CAC Registration Number' />
+
+
+                                </FormControl>
+                            </Box>
+
+
+                        </>}
+
+
 
                     </>
                 }
@@ -430,7 +505,7 @@ export const getServerSideProps = withAuthUserTokenSSR({
     whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
 })(async ({ AuthUser }) => {
     // Optionally, get other props.
-    const token = await AuthUser.getIdToken()
+    const token = await AuthUser.getIdToken(true)
     const UID = AuthUser.id
     const response = await fetch(`https://us-central1-monapp-33057.cloudfunctions.net/app/api/user/${UID}`, {
         method: 'GET',

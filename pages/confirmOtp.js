@@ -15,9 +15,9 @@ import { useAuthUser, withAuthUser } from 'next-firebase-auth';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRecoilState } from 'recoil';
-import { businessCat, bvnN, myLocation, pinID, seller } from '@/recoil/atoms';
+import { businessCat, businessReg, bvnN, myLocation, pinID, seller, sellerType } from '@/recoil/atoms';
 import QRCode from 'qrcode'
-import { doc, setDoc, updateDoc } from 'firebase/firestore';
+import { addDoc, collection, doc, setDoc, updateDoc } from 'firebase/firestore';
 import { getDownloadURL, getStorage, ref, uploadString } from "firebase/storage";
 import { db } from '@/services/firebase';
 import { useRouter } from 'next/router';
@@ -32,6 +32,8 @@ function ConfirmOtp() {
     const [location, setLocation] = useRecoilState(myLocation)
     const [merchantName, setMerchantName] = useRecoilState(seller)
     const [myBusiness, setMyBusiness] = useRecoilState(businessCat)
+    const [merch, setMerch] = useRecoilState(sellerType)
+    const [regNum, setRegNum] = useRecoilState(businessReg)
     const [personalBalance, setPersonalBalance] = useState(0);
     const [merchantBalance, setMerchantBalance] = useState(0);
     const [tokenPin, setTokenPin] = useRecoilState(pinID);
@@ -98,14 +100,22 @@ function ConfirmOtp() {
                             });
                         })
                     })
+                    const me = await addDoc(collection(db, "merchant"), {
+                        createdBy: `${AuthUser.id}`,
+                        merchantType: merch,
+                        merchantName: merchantName,
+                        businessCategory: myBusiness,
+                        businessLocation: location,
+                        CACNumber: regNum,
+                        accountNumber: `${num}`,
+                    });
 
                     const updateUser = await updateDoc(doc(db, "users", `${AuthUser.id}`), {
                         id: `${AuthUser.id}`,
                         verified: true,
                         verificationNumber: verificationNumber,
                         location: location,
-                        merchantName: merchantName,
-                        businessCategory: myBusiness
+                        merchantBusinesses: merchantName,
                     });
 
                     router.push('/Dashboard')
