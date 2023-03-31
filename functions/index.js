@@ -2,9 +2,13 @@ const functions = require("firebase-functions");
 const admin = require('firebase-admin');
 const fetch = require('node-fetch');
 const https = require('https')
-const paystack = require("paystack-api")(process.env.PAYSTACK_SECRET_KEY);
+var paystack = require("paystack-api")("sk_test_1fbf46ff165d68ab2c5a7ac01f12109fb4073d00");
 const sdk = require('api')('@qoreid/v1.0#79ra32ll9x7kn58');
-var serviceAccount = require("./permissions.json"); const bcrypt = require('bcrypt');
+var serviceAccount = require("./permissions.json");
+const bcrypt = require('bcrypt');
+var crypto = require('crypto');
+
+
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
 })
@@ -14,7 +18,9 @@ const app = express();
 const db = admin.firestore();
 const saltRounds = 10;
 const cors = require('cors');
-
+const helper = new paystack.FeeHelper();
+const events = paystack.Events;
+var secret = "sk_test_1fbf46ff165d68ab2c5a7ac01f12109fb4073d00";
 app.use(cors({ origin: true }))
 
 
@@ -162,6 +168,7 @@ app.post('/api/crypt', (req, res) => {
 
 
         } catch (error) {
+
             console.log(error)
             return res.send(error)
         }
@@ -171,21 +178,53 @@ app.post('/api/crypt', (req, res) => {
 
 
 
-app.post('/api/fundAccount', (req, res) => {
-
-    const refData = JSON.parse(req.body);
+function access(req, res, next) {
 
     (async () => {
         try {
-            paystack.transaction
-                .verify({
-                    reference: refData.reference
-                })
-                .then(function (error, body) {
-                    console.log(error);
-                    console.log(body);
-                    return res.send(body)
-                });
+
+
+
+            const hash = crypto.createHmac('sha512', secret).update(JSON.stringify(req.body)).digest('hex');
+            if (hash == req.headers['x-paystack-signature']) {
+                // Retrieve the request's body
+                const event = req.body;
+                if (event.event == 'charge.success') {
+
+
+                    const receiverWallet = db.collection('wallet').doc(event.data.metadata.user_id);
+
+                    let receiverWalletInfo2 = await receiverWallet.get()
+
+                    let receiverWalletInfo = receiverWalletInfo2.data()
+
+                    const creditamount = event.data.metadata.creditAmount * 100
+                    const receiveramount = receiverWalletInfo.personalBalance * 100;
+
+                    await receiverWallet.update({
+                        personalBalance: (receiveramount + creditamount) / 100
+                    });
+
+                    await db.collection('transactions').add({
+                        createdAt: new Date().toLocaleDateString(),
+                        amount: event.data.metadata.creditAmount,
+                        transactionStatus: "Success",
+                        senderId: "",
+                        receiverId: event.data.metadata.user_id,
+                        sendername: "",
+                        users: [
+                            "",
+                            event.data.metadata.user_id
+                        ],
+                        transactionType: "CR"
+                    });
+
+                }
+
+            }
+
+
+            return res.sendStatus(200)
 
         } catch (error) {
             console.log(error)
@@ -193,7 +232,37 @@ app.post('/api/fundAccount', (req, res) => {
         }
     })();
 
+}
+
+
+
+
+app.post('/api/fundAccount', access)
+
+
+app.post('/api/getFee', (req, res) => {
+
+    const payData = JSON.parse(req.body);
+
+    (async () => {
+        try {
+            const newFees = helper.addFeesTo(payData.topUpAmount)
+            return res.status(200).send({
+                "successful": true,
+                newFees: newFees
+            })
+        } catch (error) {
+            console.log(error)
+            return res.send(error)
+        }
+    })();
+
 })
+
+
+
+
+
 
 
 // app.post('/api/fundAccount', (req, res) => {
@@ -235,12 +304,75 @@ app.post('/api/fundAccount', (req, res) => {
 
 // })
 
+// app.post('/api/wallet/add', (req, res) => {
+
+//     (async () => {
+
+//         try {
+//             const senderWallet = db.collection('wallet').doc(req.body.senderId);
+//             const receiverWallet = db.collection('wallet').doc(req.body.receiverId);
+//             const security = db.collection('security').doc(req.body.senderId);
+
+
+//             let senderWalletInfo2 = await senderWallet.get()
+//             let receiverWalletInfo2 = await receiverWallet.get()
+//             let hashPin2 = await security.get()
+
+//             let senderWalletInfo = senderWalletInfo2.data()
+//             let receiverWalletInfo = receiverWalletInfo2.data()
+//             let hashPinData = hashPin2.data()
+
+//             var receiveramount = receiverWalletInfo.personalBalance;
+//             var senderamount = senderWalletInfo.personalBalance;
+//             var hashPin = hashPinData.pin
+
+
+//             bcrypt.compare(req.body.pin, hashPin).then(async function (result) {
+//                 if (result) {
+//                     if (senderamount > req.body.amount) {
+//                         await senderWallet.update({
+//                             personalBalance: senderamount - req.body.amount
+//                         });
+//                         await receiverWallet.update({
+//                             personalBalance: receiveramount + req.body.amount
+//                         });
+//                         return res.status(200).send({
+//                             'status': true,
+//                             'messege': "transaction sucessful"
+//                         });
+
+//                     } else {
+//                         return res.status(404).send({
+//                             'status': false,
+//                             'messege': "Insuficient funds"
+//                         });
+//                     }
+//                 } else {
+//                     return res.status(404).send({
+//                         'status': false,
+//                         'messege': "incorrect pin"
+//                     });
+//                 }
+//             });
+
+//         } catch (error) {
+//             return res.status(404).send({
+//                 'status': false,
+//                 'messege': "something went wrong"
+//             });
+//         }
+//     })();
+
+// })
+
+
 app.post('/api/wallet/add', (req, res) => {
 
     (async () => {
 
         try {
             const senderWallet = db.collection('wallet').doc(req.body.senderId);
+            const senderInfo = db.collection('users').doc(req.body.senderId);
             const receiverWallet = db.collection('wallet').doc(req.body.receiverId);
             const security = db.collection('security').doc(req.body.senderId);
 
@@ -248,24 +380,39 @@ app.post('/api/wallet/add', (req, res) => {
             let senderWalletInfo2 = await senderWallet.get()
             let receiverWalletInfo2 = await receiverWallet.get()
             let hashPin2 = await security.get()
+            let sender = await senderInfo.get();
 
             let senderWalletInfo = senderWalletInfo2.data()
             let receiverWalletInfo = receiverWalletInfo2.data()
+            let senderInfoData = sender.data()
             let hashPinData = hashPin2.data()
-
-            var receiveramount = receiverWalletInfo.personalBalance;
-            var senderamount = senderWalletInfo.personalBalance;
+            var transactionamount = req.body.amount * 100
+            var receiveramount = receiverWalletInfo.personalBalance * 100;
+            var senderamount = senderWalletInfo.personalBalance * 100;
             var hashPin = hashPinData.pin
 
 
             bcrypt.compare(req.body.pin, hashPin).then(async function (result) {
                 if (result) {
-                    if (senderamount > req.body.amount) {
+                    if (senderamount > transactionamount) {
                         await senderWallet.update({
-                            personalBalance: senderamount - req.body.amount
+                            personalBalance: (senderamount - transactionamount) / 100
                         });
                         await receiverWallet.update({
-                            personalBalance: receiveramount + req.body.amount
+                            personalBalance: (receiveramount + transactionamount) / 100
+                        });
+                        await db.collection('transactions').add({
+                            createdAt: new Date().toLocaleDateString(),
+                            amount: req.body.amount.toString(),
+                            transactionStatus: "Success",
+                            senderId: req.body.senderId,
+                            receiverId: req.body.receiverId,
+                            sendername: senderInfoData.firstName + " " + senderInfoData.lastName,
+                            users: [
+                                req.body.senderId,
+                                req.body.receiverId
+                            ],
+                            transactionType: "TR"
                         });
                         return res.status(200).send({
                             'status': true,

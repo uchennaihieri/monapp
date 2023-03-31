@@ -41,7 +41,9 @@ import {
     StatNumber,
     ButtonGroup,
     Select,
-    Stack
+    Stack,
+    NumberInput,
+    NumberInputField
 } from '@chakra-ui/react'
 import _ from 'lodash';
 import {
@@ -68,12 +70,13 @@ import { useRouter } from 'next/router';
 import { RiMailSendFill } from 'react-icons/ri';
 import { GiShop } from 'react-icons/gi';
 import { MdBlock, MdFiberPin, MdPin } from 'react-icons/md';
-import { BsDot } from 'react-icons/bs';
+import { BsDot, BsFillPlusCircleFill } from 'react-icons/bs';
 import { addDoc, collection, query, where } from 'firebase/firestore';
 import MyChart from '@/components/myChart';
 import { Bree_Serif } from '@next/font/google';
 import dayjs from 'dayjs';
 import { usePaystackPayment } from 'react-paystack';
+import { TbCurrencyNaira } from 'react-icons/tb'
 
 const bree = Bree_Serif({ weight: '400', subsets: ['latin'] })
 
@@ -99,7 +102,10 @@ function Dashboard({ person }) {
     const [deliveryContact, setDeliveryContact] = useState('')
     const [pin, setPin] = useState('')
     const [confirmPin, setConfirmPin] = useState('')
+    const [topUpAmount, setTopUpAmount] = useState(0)
     const [view, setView] = useState('')
+    const [amountFees, setAmountFees] = useState(0)
+    const [amountWithFees, setAmountWithFees] = useState(0)
 
     const now = dayjs()
 
@@ -177,7 +183,7 @@ function Dashboard({ person }) {
     const getTransactions = () => {
 
 
-        const q = query(collection(db, "transactions"), where("walletRef", "==", `${person.id}`));
+        const q = query(collection(db, "transactions"), where("user", "array-contains", `${person.id}`));
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
 
             if (querySnapshot.empty) {
@@ -242,6 +248,12 @@ function Dashboard({ person }) {
     }
 
 
+    const handleTopUp = () => {
+        onOpen()
+        setPaymentDialog(3)
+    }
+
+
     const openDelivery = () => {
         onOpen()
         setView('delivery')
@@ -257,6 +269,7 @@ function Dashboard({ person }) {
         setDeliveryAddress('')
         setDeliveryContact('')
         setLoanTenor('')
+        setTopUpAmount(0)
         setPaymentDialog(1)
         onClose()
     }
@@ -324,44 +337,70 @@ function Dashboard({ person }) {
 
     const config = {
         reference: (new Date()).getTime().toString(),
-        email: "uchennaihieri@yahoo.com",
-        amount: 20000, //Amount is in the country's lowest currency. E.g Kobo, so 20000 kobo = N200
+        email: person.email,
+        amount: amountWithFees * 100, //Amount is in the country's lowest currency. E.g Kobo, so 20000 kobo = N200
         publicKey: process.env.NEXT_PUBLIC_FUND_KEY,
+        metadata: {
+            "user_id": person.id,
+            "creditAmount": topUpAmount,
+            "custom_fields": [
+                {
+                    "display_name": person.firstName + " " + person.lastName,
+                    "variable_name": person.id,
+                    "value": topUpAmount
+                }]
+        }
     };
 
-    const onSuccess = (reference) => {
-        // Implementation for whatever you want to do with reference and after success call.
 
 
-        fetch("http://127.0.0.1:5001/monapp-33057/us-central1/app/api/fundAccount", {
+    const CloseModal = () => {
+        console.log('closed')
+    }
+
+    const initializePayment = usePaystackPayment(config);
+
+
+
+    const getFee = async () => {
+
+
+        await fetch("http://127.0.0.1:5001/monapp-33057/us-central1/app/api/getFee", {
 
             // Adding method type
             method: "POST",
             body: JSON.stringify({
-                reference: reference.reference,
+                topUpAmount: topUpAmount * 100,
             })
         }).then(function (res) {
             return res.json();
         })
             // Converting to JSON
             .then(function (data) {
-                console.log(data)
+                if (data.successful) {
+                    setAmountWithFees(data.newFees / 100)
+                    setAmountFees((data.newFees / 100) - topUpAmount)
+                    setLoadingState(false)
+                    setPaymentDialog(4)
+
+                } else {
+                    setLoadingState(false)
+
+                }
             })
             .catch(function (error) {
-
+                setLoadingState(false)
                 console.log(error);
             })
 
-        console.log(reference);
-    };
-
-    // you can call this function anything
-    const CloseModal = () => {
-        // implementation for  whatever you want to do when the Paystack dialog closed.
-        console.log('closed')
     }
 
-    const initializePayment = usePaystackPayment(config);
+
+    const pay = () => {
+        closeModal()
+        initializePayment(CloseModal)
+    }
+
 
     return (
         <Flex
@@ -444,9 +483,7 @@ function Dashboard({ person }) {
                 <Flex flexDirection={'row'} align="center" justify={'space-between'}>
                     <Text fontWeight="bold" fontSize="2xl">{Naira.format(amount)}</Text>
                     <Stack ml={3}>
-                        <Button variant={'link'} color={'#000000'} onClick={() => {
-                            initializePayment(onSuccess, CloseModal)
-                        }}>fund account</Button>
+                        <Button variant={'link'} color={'#000000'} rightIcon={<Icon as={BsFillPlusCircleFill} />} onClick={handleTopUp}>Top up</Button>
                     </Stack>
                 </Flex>
                 {myTransactions && <>
@@ -715,11 +752,12 @@ function Dashboard({ person }) {
                 <Modal isOpen={isOpen} onClose={closeModal}>
                     <ModalOverlay />
                     <ModalContent align="center">
-                        <ModalHeader>Monapp Card</ModalHeader>
-                        <ModalCloseButton />
-                        <ModalBody align="left">
-                            <Box>
-                                {paymentDialog == 1 && <>
+
+                        {paymentDialog == 1 && <>
+                            <ModalHeader>Monapp Card</ModalHeader>
+                            <ModalCloseButton />
+                            <ModalBody align="left">
+                                <Box>
                                     <Stat mb="10px">
                                         <StatLabel>Name on card</StatLabel>
                                         <StatNumber>{person.firstName + " " + person.lastName}</StatNumber>
@@ -751,10 +789,15 @@ function Dashboard({ person }) {
                                             <Button bgColor="blackAlpha.900" _hover={{ bgColor: "blackAlpha.700" }} color="#fff" onClick={() => setPaymentDialog(2)}>Pay Later</Button>
                                         </ButtonGroup>
                                     </Box>
-                                </>}
+                                </Box>
+                            </ModalBody>
+                        </>}
 
-                                {paymentDialog == 2 && <>
-
+                        {paymentDialog == 2 && <>
+                            <ModalHeader>Monapp Card</ModalHeader>
+                            <ModalCloseButton />
+                            <ModalBody align="left">
+                                <Box>
                                     <Box>
                                         <Text mb="5px">Loan amount: {loanAmount}</Text>
 
@@ -794,9 +837,86 @@ function Dashboard({ person }) {
                                         py={12}>
                                         <Button bgColor="blackAlpha.900" _hover={{ bgColor: "blackAlpha.700" }} color="#fff" onClick={submitLoan}>Proceed</Button>
                                     </Box>
-                                </>}
-                            </Box>
-                        </ModalBody>
+                                </Box>
+                            </ModalBody>
+                        </>}
+
+                        {paymentDialog == 3 && <>
+                            <ModalHeader>Top up balance</ModalHeader>
+                            <ModalCloseButton />
+                            <ModalBody align="left">
+                                <Box>
+                                    <Box>
+                                        <Text mb="5px">Top up amount:</Text>
+
+                                        <InputGroup>
+
+                                            <NumberInput
+                                                value={topUpAmount}
+
+                                                variant="flushed"
+                                                w="100%"
+                                            >
+                                                <NumberInputField placeholder="how much are you topping? "
+                                                    _placeholder={{ paddingLeft: "10px", opacity: 0.5, color: 'gray.500', fontSize: "14px" }}
+                                                    onChange={(e) => setTopUpAmount(e.target.value)}
+                                                />
+                                            </NumberInput>
+                                        </InputGroup>
+
+
+                                    </Box>
+
+
+                                    <Box display='flex'
+                                        alignItems='center'
+                                        justifyContent='center'
+                                        width='100%'
+                                        py={12}>
+                                        <Button bgColor="blackAlpha.900" _hover={{ bgColor: "blackAlpha.700" }} color="#fff" onClick={getFee}>Next</Button>
+                                    </Box>
+                                </Box>
+                            </ModalBody>
+                        </>}
+                        {paymentDialog == 4 && <>
+                            <ModalHeader>Top up balance</ModalHeader>
+                            <ModalCloseButton />
+                            <ModalBody align="left">
+                                <Box>
+                                    <Card
+                                        direction={{ base: 'column', sm: 'row' }}
+                                        overflow='hidden'
+                                        variant='outline'
+                                    >
+
+
+                                        <CardBody align="left">
+                                            <Heading size='md'>Your payment</Heading>
+
+                                            <Text py='2'>
+                                                Amount: &#x20A6; {topUpAmount.toLocaleString()}
+                                            </Text>
+                                            <Text py='2'>
+                                                Fee: &#x20A6; {amountFees.toLocaleString()}
+                                            </Text>
+                                            <Text py='2'>
+                                                Total: &#x20A6; {amountWithFees.toLocaleString()}
+                                            </Text>
+                                        </CardBody>
+                                    </Card>
+
+
+                                    <Box display='flex'
+                                        alignItems='center'
+                                        justifyContent='center'
+                                        width='100%'
+                                        py={12}>
+                                        <Button bgColor="blackAlpha.900" _hover={{ bgColor: "blackAlpha.700" }} color="#fff" onClick={pay}>Proceed</Button>
+                                    </Box>
+                                </Box>
+                            </ModalBody>
+                        </>}
+
                     </ModalContent>
                 </Modal>
             </Flex>

@@ -16,6 +16,14 @@ export default function FooterSection() {
         router.push('/issues')
     }
 
+    const goPrivacy = () => {
+        router.push('/privacyPolicy')
+    }
+
+    const goTerms = () => {
+        router.push('/termsofuse')
+    }
+
     return (
         <Box bgColor="#F9FAFC" h={{ base: '24.93em', md: '24.7em' }} color="#000000" >
             <Center>
@@ -68,6 +76,7 @@ export default function FooterSection() {
                     }} color={'#000000'} fontSize="0.875rem"
                         fontWeight={400}
                         className={dmsans.className}
+                        onClick={goTerms}
                     >Terms of use</Button>
 
                     <Button m="0" p="0" variant={'ghost'} _hover={{
@@ -75,6 +84,7 @@ export default function FooterSection() {
                     }} color={'#000000'} fontSize="0.875rem"
                         fontWeight={400}
                         className={dmsans.className}
+                        onClick={goPrivacy}
                     >Privacy</Button>
                     <Button m="0" p="0" variant={'ghost'} _hover={{
                         backgroundColor: 'none'

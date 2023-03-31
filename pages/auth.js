@@ -111,7 +111,7 @@ const Auth = () => {
                     }} color={'#000000'} fontSize={{ base: '0.75rem', md: "1rem" }}
                         fontWeight={500}
                         className={dmsansBold.className}
-                    >Support</Button>
+                    >Work with us</Button>
                 </Flex>
                 <Box mb={{ base: '2.75rem', md: "5.06rem" }}>
                     <Image src={'/footerlogo.png'} w={'14.17rem'} h={'3.06rem'} />
@@ -160,16 +160,14 @@ const Auth = () => {
 
 
 export const Signin = () => {
-
+    const toast = useToast()
 
     const [show, setShow] = useState(false)
     const handleClick = () => setShow(!show)
     const { register, handleSubmit } = useForm();
     const [loadingState, setLoadingState] = useState(false);
 
-    const verifyUser = () => {
-        router.push('/VerifyUser')
-    }
+
 
 
     const onSubmit = (data) => {
@@ -183,11 +181,41 @@ export const Signin = () => {
                 setLoadingState(false)
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
 
-                console.log(errorCode)
-                console.log(errorMessage)
+                if (error.code == 'auth/wrong-password') {
+                    toast({
+                        title: 'Sign in failed',
+                        description: 'Incorrect password',
+                        status: 'error',
+                        duration: 9000,
+                        isClosable: true,
+                        position: 'top',
+                    })
+                }
+
+                if (error.code == 'auth/user-not-found') {
+                    toast({
+                        title: 'Sign in failed',
+                        description: 'User does not exist',
+                        status: 'error',
+                        duration: 9000,
+                        isClosable: true,
+                        position: 'top',
+                    })
+                }
+
+
+                if (error.code == 'auth/invalid-email') {
+                    toast({
+                        title: 'Sign in failed',
+                        description: 'Invalid email input',
+                        status: 'error',
+                        duration: 9000,
+                        isClosable: true,
+                        position: 'top',
+                    })
+                }
+
                 // ..
                 setLoadingState(false)
             });

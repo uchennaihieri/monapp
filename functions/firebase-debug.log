@@ -1,0 +1,747 @@
+[debug] [2023-03-29T14:56:04.495Z] ----------------------------------------------------------------------
+[debug] [2023-03-29T14:56:04.500Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Michael.i_FNGA0247\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js emulators:start --only functions
+[debug] [2023-03-29T14:56:04.501Z] CLI Version:   11.15.0
+[debug] [2023-03-29T14:56:04.501Z] Platform:      win32
+[debug] [2023-03-29T14:56:04.502Z] Node Version:  v16.18.0
+[debug] [2023-03-29T14:56:04.518Z] Time:          Wed Mar 29 2023 15:56:04 GMT+0100 (West Africa Standard Time)
+[debug] [2023-03-29T14:56:04.519Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-03-29T14:56:04.727Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-03-29T14:56:04.728Z] > authorizing via signed-in user (leomyke4@gmail.com)
+[info] i  emulators: Starting emulators: functions {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions"}}
+[debug] [2023-03-29T14:56:06.692Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-29T14:56:06.693Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2023-03-29T14:56:06.715Z] [hub] writing locator at C:\Users\MICHAE~1.I_F\AppData\Local\Temp\hub-monapp-33057.json
+[debug] [2023-03-29T14:56:06.823Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-29T14:56:06.824Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-29T14:56:06.824Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
+[warn] !  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: auth, firestore, database, hosting, pubsub, storage {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mauth, firestore, database, hosting, pubsub, storage\u001b[22m"}}
+[info] +  functions: Using node@16 from host. {"metadata":{"emulator":{"name":"functions"},"message":"Using node@16 from host."}}
+[debug] [2023-03-29T14:56:07.141Z] defaultcredentials: writing to file C:\Users\Michael.i_FNGA0247\AppData\Roaming\firebase\leomyke4_gmail_com_application_default_credentials.json
+[debug] [2023-03-29T14:56:07.232Z] Setting GAC to C:\Users\Michael.i_FNGA0247\AppData\Roaming\firebase\leomyke4_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\Michael.i_FNGA0247\\AppData\\Roaming\\firebase\\leomyke4_gmail_com_application_default_credentials.json"}}
+[debug] [2023-03-29T14:56:07.247Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057/adminSdkConfig [none]
+[debug] [2023-03-29T14:56:08.007Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057/adminSdkConfig 200
+[debug] [2023-03-29T14:56:08.007Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/monapp-33057/adminSdkConfig {"projectId":"monapp-33057","storageBucket":"monapp-33057.appspot.com","locationId":"us-central"}
+[debug] [2023-03-29T14:56:08.164Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2023-03-29T14:56:08.164Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2023-03-29T14:56:08.164Z] Starting Emulator UI with command {"binary":"node","args":["C:\\Users\\Michael.i_FNGA0247\\.cache\\firebase\\emulators\\ui-v1.11.1\\server\\server.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\.cache\\\\firebase\\\\emulators\\\\ui-v1.11.1\\\\server\\\\server.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2023-03-29T14:56:10.629Z] Web / API server started at 127.0.0.1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at 127.0.0.1:4000\n"}}
+[debug] [2023-03-29T14:56:10.630Z] Web / API server started at ::1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at ::1:4000\n"}}
+[info] i  functions: Watching "C:\Users\Michael.i_FNGA0247\monapp\functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\" for Cloud Functions..."}}
+[debug] [2023-03-29T14:56:10.819Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] !  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2023-03-29T14:56:26.380Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "api": "^5.0.7",
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.18.0",
+    "node-fetch": "^2.6.9",
+    "paystack-api": "^2.0.6"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2023-03-29T14:56:26.382Z] Building nodejs source
+[debug] [2023-03-29T14:56:26.382Z] Analyzing nodejs backend spec
+[debug] [2023-03-29T14:56:26.391Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-03-29T14:56:28.605Z] Serving at port 9005
+
+[debug] [2023-03-29T14:56:42.289Z] Got response from /__/functions.yaml {"endpoints":{"app":{"platform":"gcfv1","httpsTrigger":{},"entryPoint":"app"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2023-03-29T14:56:42.326Z] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: app. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: app."}}
+[info] +  functions[us-central1-app]: http function initialized (http://127.0.0.1:5001/monapp-33057/us-central1/app). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://127.0.0.1:5001/monapp-33057/us-central1/app)."}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌───────────┬────────────────┬─────────────────────────────────┐
+│ Emulator  │ Host:Port      │ View in Emulator UI             │
+├───────────┼────────────────┼─────────────────────────────────┤
+│ Functions │ 127.0.0.1:5001 │ http://127.0.0.1:4000/functions │
+└───────────┴────────────────┴─────────────────────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2023-03-29T14:57:11.247Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2023-03-29T14:57:11.248Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2023-03-29T14:57:11.249Z] Accepted request POST /monapp-33057/us-central1/app/api/getFee --> us-central1-app
+[debug] [2023-03-29T14:57:11.254Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2023-03-29T14:57:11.256Z] [functions] Got req.url=/monapp-33057/us-central1/app/api/getFee, mapping to path=/api/getFee {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/monapp-33057/us-central1/app/api/getFee, mapping to path=/api/getFee"}}
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2023-03-29T14:57:11.496Z] [worker-pool] addWorker(us-central1-app) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-app)"}}
+[debug] [2023-03-29T14:57:11.496Z] [worker-pool] Adding worker with key us-central1-app, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-app, total=1"}}
+[debug] [2023-03-29T14:57:27.599Z] [runtime-status] [6572] Resolved module firebase-admin {"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [6572] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2023-03-29T14:57:27.610Z] [runtime-status] [6572] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.24.1","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [6572] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.24.1\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2023-03-29T14:57:27.612Z] [runtime-status] [6572] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [6572] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2023-03-29T14:57:27.618Z] [runtime-status] [6572] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.24.1","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [6572] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.24.1\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2023-03-29T14:57:27.826Z] [runtime-status] [6572] Checked functions.config() {"config":{}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [6572] Checked functions.config() {\"config\":{}}"}}
+[debug] [2023-03-29T14:57:27.826Z] [runtime-status] [6572] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"3.24.1","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-functions\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [6572] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"3.24.1\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}}"}}
+[debug] [2023-03-29T14:57:27.833Z] [runtime-status] [6572] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.24.1","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [6572] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.24.1\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2023-03-29T14:57:27.842Z] [runtime-status] [6572] Resolved module firebase-admin {"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [6572] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2023-03-29T14:57:27.848Z] [runtime-status] [6572] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.24.1","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [6572] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.24.1\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2023-03-29T14:57:27.848Z] [runtime-status] [6572] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-admin\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [6572] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}}"}}
+[debug] [2023-03-29T14:57:31.857Z] [runtime-status] [6572] initializeApp(DEFAULT) {"credential":{"implicit":false,"projectId":"monapp-33057","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCRqgn+GmQt7M1M\nAaJQeh3YzMPFZYi/9mPI30RSymmsPaALytP49I6wcgIpvaAqSa7cjnuZAMAwvuIH\ny0Ga4ZFeEeVqnzFsmAQwkgl6gi6g1Hgty9czina8vFqjUP+sAyYkhiqeiHslrTb3\nHDCFCmRxOFEaCLtlpPx4mmdOxPrCRuKXoeiogOHxGuvdyoNZWwNiq/cS8J3rZqZE\nXFaC8UE/IWVds45KohDyewwyiP/T9j1K8Q3BkSaxp0o/txPOF4R3LszSnOQ3IlmK\ns6FRGeqAGeum9SMn0nl4NInfc/9WLD3VqoYa0HbXdqCgjjXShkzTUdEK3retI0+d\nIGdKsFQRAgMBAAECggEAA4j7ZhnQ3ZZ2IwaVIFveVpEdnTBKIdKCeHEGsPWtm9sB\nA9g/zbZtshWKPOYXuX8BSeQBVuTARU6UoLjLlk0sIHrRtQU5B1gnHeClbz4ykH+n\njQD574vINuthTb5c/hkzd0Z0SVWpm2/5OgUKnmfyqRbDTRzyI1TeNbUVlcFNDqLt\nYITA1LTPACbU7lY5s3hJ/WhXLjQE0gvupVFRJFSeT9V/D/v8ZvK9ow7czwWW/+sJ\nIvw/sXcbycOGOqSPV+NWYL++VdQmyk1oOznNqERaelTy1VUpiX+YxXxCZ184UP6H\nPvFzS+rn91asRqAjKJNI3hxPQVm07Vr8gVT1TbnP2QKBgQDMXGvhz5+rqfyKlOb7\nx6Ee8pDLjO2kBFG1rdKqyrOsvK6go9/DhgYQ4465ObmIITQP+nvTH7fDZP9xdJcr\n9k035XNHdJuAx8hHqWxFtLgpG1F5JJLP2K60x11ouv3wPu8acr+7ye9ipMMeCdRp\nZuDOByx18O6lUh1U4a47rtXq3QKBgQC2eKzWFYmebCpbn8eZAGJ/+E1LJOxbrDY6\nBiqiCeI3AIHqO07xAW14Z7C2I6QWKGlSFtquzsmnZ3wmBniDk296L7DiY1Gvp6eQ\nh9y+WImNdKYjHOb5Tx5AnQmv+C2t1s0TDdILhjQR/Fs1Hv0c3TW4hFTHZhNv8Pet\nQuVkjrd4xQKBgHa3Dbicux2m3tzGSTRkMHXg5TpJwNbx52GJ+4JZxGyJI0yQRfG4\nTpfLCWMSZHPvDeZmVT49A6xPZJDM8PCJ4SuicAhHdfomlHMEua/4nq7KftbH5z00\nm7DKy7mGPvQsKwwLMtRtJ1H/cpVlkm40ZE1rH2nYL1n8TKu9elCTbRNFAoGAIKgO\nPq5SF+FB324EGdTgzAhTRPyRtIJong/Wd3OPYcqcdaAxq55WyjK8hIxyZGjNGJzw\nfFKT8nrp1CBaVyn+zH5WiN2/k9FMguhd0E8mJwPWa/hTOhE319aDElQ3UKJdx2g0\nzE0zanigliw6nnzUjXZZeepB1kno+cA8L7f/DAUCgYEAriqY5g/WiARrH6qFOrP6\nxNPhNiM/vn+ibD+vD7N0C3NUxlvkFAuzwshqkQlVF0Z7C4pXxXtHsqKc0ZdyXTmU\nZOkkhsrZRLh36RRPktFfzwn7iPmjCcGaJpyWDxQ+1BAUHRgBRN0Uz6KQ6L+JBafp\nofQ4qD10mr23gsW3qDlNX1k=\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-m6g22@monapp-33057.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [6572] initializeApp(DEFAULT) {\"credential\":{\"implicit\":false,\"projectId\":\"monapp-33057\",\"privateKey\":\"-----BEGIN PRIVATE KEY-----\\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCRqgn+GmQt7M1M\\nAaJQeh3YzMPFZYi/9mPI30RSymmsPaALytP49I6wcgIpvaAqSa7cjnuZAMAwvuIH\\ny0Ga4ZFeEeVqnzFsmAQwkgl6gi6g1Hgty9czina8vFqjUP+sAyYkhiqeiHslrTb3\\nHDCFCmRxOFEaCLtlpPx4mmdOxPrCRuKXoeiogOHxGuvdyoNZWwNiq/cS8J3rZqZE\\nXFaC8UE/IWVds45KohDyewwyiP/T9j1K8Q3BkSaxp0o/txPOF4R3LszSnOQ3IlmK\\ns6FRGeqAGeum9SMn0nl4NInfc/9WLD3VqoYa0HbXdqCgjjXShkzTUdEK3retI0+d\\nIGdKsFQRAgMBAAECggEAA4j7ZhnQ3ZZ2IwaVIFveVpEdnTBKIdKCeHEGsPWtm9sB\\nA9g/zbZtshWKPOYXuX8BSeQBVuTARU6UoLjLlk0sIHrRtQU5B1gnHeClbz4ykH+n\\njQD574vINuthTb5c/hkzd0Z0SVWpm2/5OgUKnmfyqRbDTRzyI1TeNbUVlcFNDqLt\\nYITA1LTPACbU7lY5s3hJ/WhXLjQE0gvupVFRJFSeT9V/D/v8ZvK9ow7czwWW/+sJ\\nIvw/sXcbycOGOqSPV+NWYL++VdQmyk1oOznNqERaelTy1VUpiX+YxXxCZ184UP6H\\nPvFzS+rn91asRqAjKJNI3hxPQVm07Vr8gVT1TbnP2QKBgQDMXGvhz5+rqfyKlOb7\\nx6Ee8pDLjO2kBFG1rdKqyrOsvK6go9/DhgYQ4465ObmIITQP+nvTH7fDZP9xdJcr\\n9k035XNHdJuAx8hHqWxFtLgpG1F5JJLP2K60x11ouv3wPu8acr+7ye9ipMMeCdRp\\nZuDOByx18O6lUh1U4a47rtXq3QKBgQC2eKzWFYmebCpbn8eZAGJ/+E1LJOxbrDY6\\nBiqiCeI3AIHqO07xAW14Z7C2I6QWKGlSFtquzsmnZ3wmBniDk296L7DiY1Gvp6eQ\\nh9y+WImNdKYjHOb5Tx5AnQmv+C2t1s0TDdILhjQR/Fs1Hv0c3TW4hFTHZhNv8Pet\\nQuVkjrd4xQKBgHa3Dbicux2m3tzGSTRkMHXg5TpJwNbx52GJ+4JZxGyJI0yQRfG4\\nTpfLCWMSZHPvDeZmVT49A6xPZJDM8PCJ4SuicAhHdfomlHMEua/4nq7KftbH5z00\\nm7DKy7mGPvQsKwwLMtRtJ1H/cpVlkm40ZE1rH2nYL1n8TKu9elCTbRNFAoGAIKgO\\nPq5SF+FB324EGdTgzAhTRPyRtIJong/Wd3OPYcqcdaAxq55WyjK8hIxyZGjNGJzw\\nfFKT8nrp1CBaVyn+zH5WiN2/k9FMguhd0E8mJwPWa/hTOhE319aDElQ3UKJdx2g0\\nzE0zanigliw6nnzUjXZZeepB1kno+cA8L7f/DAUCgYEAriqY5g/WiARrH6qFOrP6\\nxNPhNiM/vn+ibD+vD7N0C3NUxlvkFAuzwshqkQlVF0Z7C4pXxXtHsqKc0ZdyXTmU\\nZOkkhsrZRLh36RRPktFfzwn7iPmjCcGaJpyWDxQ+1BAUHRgBRN0Uz6KQ6L+JBafp\\nofQ4qD10mr23gsW3qDlNX1k=\\n-----END PRIVATE KEY-----\\n\",\"clientEmail\":\"firebase-adminsdk-m6g22@monapp-33057.iam.gserviceaccount.com\",\"httpClient\":{\"retry\":{\"maxRetries\":4,\"statusCodes\":[503],\"ioErrorCodes\":[\"ECONNRESET\",\"ETIMEDOUT\"],\"backOffFactor\":0.5,\"maxDelayInMillis\":60000}}}}"}}
+[warn] !  functions: The Cloud Firestore emulator is not running, so calls to Firestore will affect production. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"The Cloud Firestore emulator is not running, so calls to Firestore will affect production."}}
+[debug] [2023-03-29T14:57:32.538Z] [runtime-status] [6572] Functions runtime initialized. {"cwd":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions","node_version":"16.18.0"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [6572] Functions runtime initialized. {\"cwd\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\",\"node_version\":\"16.18.0\"}"}}
+[debug] [2023-03-29T14:57:32.539Z] [runtime-status] [6572] Listening to port: \\?\pipe\fire_emu_60a647f6294fb33e {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [6572] Listening to port: \\\\?\\pipe\\fire_emu_60a647f6294fb33e"}}
+[debug] [2023-03-29T14:57:32.627Z] [worker-pool] submitRequest(triggerId=us-central1-app) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-app)"}}
+[debug] [2023-03-29T14:57:32.628Z] [worker-us-central1-app-bafcb741-0f6c-47f3-b80b-eb06d2f61f5d]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-bafcb741-0f6c-47f3-b80b-eb06d2f61f5d]: BUSY"}}
+[info] i  functions: Beginning execution of "app" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"Beginning execution of \"app\""}}
+[debug] [2023-03-29T14:57:32.761Z] [worker-us-central1-app-bafcb741-0f6c-47f3-b80b-eb06d2f61f5d]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-bafcb741-0f6c-47f3-b80b-eb06d2f61f5d]: IDLE"}}
+[debug] [2023-03-29T14:57:32.762Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[info] i  functions: Finished "app" in 14.8466ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"Finished \"app\" in 14.8466ms"}}
+[debug] [2023-03-29T15:07:54.194Z] File C:\Users\Michael.i_FNGA0247\monapp\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\index.js changed, reloading triggers"}}
+[debug] [2023-03-29T15:07:55.237Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] !  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2023-03-29T15:08:14.859Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "api": "^5.0.7",
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.18.0",
+    "node-fetch": "^2.6.9",
+    "paystack-api": "^2.0.6"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2023-03-29T15:08:14.864Z] Building nodejs source
+[debug] [2023-03-29T15:08:14.865Z] Analyzing nodejs backend spec
+[debug] [2023-03-29T15:08:14.873Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-03-29T15:08:16.924Z] Serving at port 9005
+
+[debug] [2023-03-29T15:08:31.879Z] Got response from /__/functions.yaml {"endpoints":{"app":{"platform":"gcfv1","httpsTrigger":{},"entryPoint":"app"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2023-03-29T15:08:31.931Z] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: app. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: app."}}
+[debug] [2023-03-29T15:08:31.971Z] [worker-pool] Shutting down IDLE worker (us-central1-app) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Shutting down IDLE worker (us-central1-app)"}}
+[debug] [2023-03-29T15:08:31.971Z] [worker-us-central1-app-bafcb741-0f6c-47f3-b80b-eb06d2f61f5d]: FINISHING {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-bafcb741-0f6c-47f3-b80b-eb06d2f61f5d]: FINISHING"}}
+[debug] [2023-03-29T15:08:31.988Z] [worker-us-central1-app-bafcb741-0f6c-47f3-b80b-eb06d2f61f5d]: exited {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-bafcb741-0f6c-47f3-b80b-eb06d2f61f5d]: exited"}}
+[debug] [2023-03-29T15:08:31.988Z] [worker-us-central1-app-bafcb741-0f6c-47f3-b80b-eb06d2f61f5d]: FINISHED {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-bafcb741-0f6c-47f3-b80b-eb06d2f61f5d]: FINISHED"}}
+[debug] [2023-03-29T15:11:43.710Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2023-03-29T15:11:43.710Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2023-03-29T15:11:43.711Z] Accepted request POST /monapp-33057/us-central1/app/api/getFee --> us-central1-app
+[debug] [2023-03-29T15:11:43.715Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2023-03-29T15:11:43.715Z] [functions] Got req.url=/monapp-33057/us-central1/app/api/getFee, mapping to path=/api/getFee {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/monapp-33057/us-central1/app/api/getFee, mapping to path=/api/getFee"}}
+[debug] [2023-03-29T15:11:43.716Z] [worker-pool] Cleaned up workers for us-central1-app: 1 --> 0 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Cleaned up workers for us-central1-app: 1 --> 0"}}
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2023-03-29T15:11:43.985Z] [worker-pool] addWorker(us-central1-app) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-app)"}}
+[debug] [2023-03-29T15:11:43.985Z] [worker-pool] Adding worker with key us-central1-app, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-app, total=1"}}
+[debug] [2023-03-29T15:12:01.997Z] [runtime-status] [12500] Resolved module firebase-admin {"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [12500] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2023-03-29T15:12:02.009Z] [runtime-status] [12500] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.24.1","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [12500] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.24.1\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2023-03-29T15:12:02.011Z] [runtime-status] [12500] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [12500] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2023-03-29T15:12:02.016Z] [runtime-status] [12500] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.24.1","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [12500] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.24.1\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2023-03-29T15:12:02.259Z] [runtime-status] [12500] Checked functions.config() {"config":{}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [12500] Checked functions.config() {\"config\":{}}"}}
+[debug] [2023-03-29T15:12:02.260Z] [runtime-status] [12500] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"3.24.1","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-functions\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [12500] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"3.24.1\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}}"}}
+[debug] [2023-03-29T15:12:02.265Z] [runtime-status] [12500] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.24.1","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [12500] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.24.1\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2023-03-29T15:12:02.274Z] [runtime-status] [12500] Resolved module firebase-admin {"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [12500] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2023-03-29T15:12:02.280Z] [runtime-status] [12500] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.24.1","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [12500] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.24.1\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2023-03-29T15:12:02.281Z] [runtime-status] [12500] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-admin\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [12500] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}}"}}
+[debug] [2023-03-29T15:12:06.490Z] [runtime-status] [12500] initializeApp(DEFAULT) {"credential":{"implicit":false,"projectId":"monapp-33057","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCRqgn+GmQt7M1M\nAaJQeh3YzMPFZYi/9mPI30RSymmsPaALytP49I6wcgIpvaAqSa7cjnuZAMAwvuIH\ny0Ga4ZFeEeVqnzFsmAQwkgl6gi6g1Hgty9czina8vFqjUP+sAyYkhiqeiHslrTb3\nHDCFCmRxOFEaCLtlpPx4mmdOxPrCRuKXoeiogOHxGuvdyoNZWwNiq/cS8J3rZqZE\nXFaC8UE/IWVds45KohDyewwyiP/T9j1K8Q3BkSaxp0o/txPOF4R3LszSnOQ3IlmK\ns6FRGeqAGeum9SMn0nl4NInfc/9WLD3VqoYa0HbXdqCgjjXShkzTUdEK3retI0+d\nIGdKsFQRAgMBAAECggEAA4j7ZhnQ3ZZ2IwaVIFveVpEdnTBKIdKCeHEGsPWtm9sB\nA9g/zbZtshWKPOYXuX8BSeQBVuTARU6UoLjLlk0sIHrRtQU5B1gnHeClbz4ykH+n\njQD574vINuthTb5c/hkzd0Z0SVWpm2/5OgUKnmfyqRbDTRzyI1TeNbUVlcFNDqLt\nYITA1LTPACbU7lY5s3hJ/WhXLjQE0gvupVFRJFSeT9V/D/v8ZvK9ow7czwWW/+sJ\nIvw/sXcbycOGOqSPV+NWYL++VdQmyk1oOznNqERaelTy1VUpiX+YxXxCZ184UP6H\nPvFzS+rn91asRqAjKJNI3hxPQVm07Vr8gVT1TbnP2QKBgQDMXGvhz5+rqfyKlOb7\nx6Ee8pDLjO2kBFG1rdKqyrOsvK6go9/DhgYQ4465ObmIITQP+nvTH7fDZP9xdJcr\n9k035XNHdJuAx8hHqWxFtLgpG1F5JJLP2K60x11ouv3wPu8acr+7ye9ipMMeCdRp\nZuDOByx18O6lUh1U4a47rtXq3QKBgQC2eKzWFYmebCpbn8eZAGJ/+E1LJOxbrDY6\nBiqiCeI3AIHqO07xAW14Z7C2I6QWKGlSFtquzsmnZ3wmBniDk296L7DiY1Gvp6eQ\nh9y+WImNdKYjHOb5Tx5AnQmv+C2t1s0TDdILhjQR/Fs1Hv0c3TW4hFTHZhNv8Pet\nQuVkjrd4xQKBgHa3Dbicux2m3tzGSTRkMHXg5TpJwNbx52GJ+4JZxGyJI0yQRfG4\nTpfLCWMSZHPvDeZmVT49A6xPZJDM8PCJ4SuicAhHdfomlHMEua/4nq7KftbH5z00\nm7DKy7mGPvQsKwwLMtRtJ1H/cpVlkm40ZE1rH2nYL1n8TKu9elCTbRNFAoGAIKgO\nPq5SF+FB324EGdTgzAhTRPyRtIJong/Wd3OPYcqcdaAxq55WyjK8hIxyZGjNGJzw\nfFKT8nrp1CBaVyn+zH5WiN2/k9FMguhd0E8mJwPWa/hTOhE319aDElQ3UKJdx2g0\nzE0zanigliw6nnzUjXZZeepB1kno+cA8L7f/DAUCgYEAriqY5g/WiARrH6qFOrP6\nxNPhNiM/vn+ibD+vD7N0C3NUxlvkFAuzwshqkQlVF0Z7C4pXxXtHsqKc0ZdyXTmU\nZOkkhsrZRLh36RRPktFfzwn7iPmjCcGaJpyWDxQ+1BAUHRgBRN0Uz6KQ6L+JBafp\nofQ4qD10mr23gsW3qDlNX1k=\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-m6g22@monapp-33057.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [12500] initializeApp(DEFAULT) {\"credential\":{\"implicit\":false,\"projectId\":\"monapp-33057\",\"privateKey\":\"-----BEGIN PRIVATE KEY-----\\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCRqgn+GmQt7M1M\\nAaJQeh3YzMPFZYi/9mPI30RSymmsPaALytP49I6wcgIpvaAqSa7cjnuZAMAwvuIH\\ny0Ga4ZFeEeVqnzFsmAQwkgl6gi6g1Hgty9czina8vFqjUP+sAyYkhiqeiHslrTb3\\nHDCFCmRxOFEaCLtlpPx4mmdOxPrCRuKXoeiogOHxGuvdyoNZWwNiq/cS8J3rZqZE\\nXFaC8UE/IWVds45KohDyewwyiP/T9j1K8Q3BkSaxp0o/txPOF4R3LszSnOQ3IlmK\\ns6FRGeqAGeum9SMn0nl4NInfc/9WLD3VqoYa0HbXdqCgjjXShkzTUdEK3retI0+d\\nIGdKsFQRAgMBAAECggEAA4j7ZhnQ3ZZ2IwaVIFveVpEdnTBKIdKCeHEGsPWtm9sB\\nA9g/zbZtshWKPOYXuX8BSeQBVuTARU6UoLjLlk0sIHrRtQU5B1gnHeClbz4ykH+n\\njQD574vINuthTb5c/hkzd0Z0SVWpm2/5OgUKnmfyqRbDTRzyI1TeNbUVlcFNDqLt\\nYITA1LTPACbU7lY5s3hJ/WhXLjQE0gvupVFRJFSeT9V/D/v8ZvK9ow7czwWW/+sJ\\nIvw/sXcbycOGOqSPV+NWYL++VdQmyk1oOznNqERaelTy1VUpiX+YxXxCZ184UP6H\\nPvFzS+rn91asRqAjKJNI3hxPQVm07Vr8gVT1TbnP2QKBgQDMXGvhz5+rqfyKlOb7\\nx6Ee8pDLjO2kBFG1rdKqyrOsvK6go9/DhgYQ4465ObmIITQP+nvTH7fDZP9xdJcr\\n9k035XNHdJuAx8hHqWxFtLgpG1F5JJLP2K60x11ouv3wPu8acr+7ye9ipMMeCdRp\\nZuDOByx18O6lUh1U4a47rtXq3QKBgQC2eKzWFYmebCpbn8eZAGJ/+E1LJOxbrDY6\\nBiqiCeI3AIHqO07xAW14Z7C2I6QWKGlSFtquzsmnZ3wmBniDk296L7DiY1Gvp6eQ\\nh9y+WImNdKYjHOb5Tx5AnQmv+C2t1s0TDdILhjQR/Fs1Hv0c3TW4hFTHZhNv8Pet\\nQuVkjrd4xQKBgHa3Dbicux2m3tzGSTRkMHXg5TpJwNbx52GJ+4JZxGyJI0yQRfG4\\nTpfLCWMSZHPvDeZmVT49A6xPZJDM8PCJ4SuicAhHdfomlHMEua/4nq7KftbH5z00\\nm7DKy7mGPvQsKwwLMtRtJ1H/cpVlkm40ZE1rH2nYL1n8TKu9elCTbRNFAoGAIKgO\\nPq5SF+FB324EGdTgzAhTRPyRtIJong/Wd3OPYcqcdaAxq55WyjK8hIxyZGjNGJzw\\nfFKT8nrp1CBaVyn+zH5WiN2/k9FMguhd0E8mJwPWa/hTOhE319aDElQ3UKJdx2g0\\nzE0zanigliw6nnzUjXZZeepB1kno+cA8L7f/DAUCgYEAriqY5g/WiARrH6qFOrP6\\nxNPhNiM/vn+ibD+vD7N0C3NUxlvkFAuzwshqkQlVF0Z7C4pXxXtHsqKc0ZdyXTmU\\nZOkkhsrZRLh36RRPktFfzwn7iPmjCcGaJpyWDxQ+1BAUHRgBRN0Uz6KQ6L+JBafp\\nofQ4qD10mr23gsW3qDlNX1k=\\n-----END PRIVATE KEY-----\\n\",\"clientEmail\":\"firebase-adminsdk-m6g22@monapp-33057.iam.gserviceaccount.com\",\"httpClient\":{\"retry\":{\"maxRetries\":4,\"statusCodes\":[503],\"ioErrorCodes\":[\"ECONNRESET\",\"ETIMEDOUT\"],\"backOffFactor\":0.5,\"maxDelayInMillis\":60000}}}}"}}
+[debug] [2023-03-29T15:12:07.112Z] [runtime-status] [12500] Functions runtime initialized. {"cwd":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions","node_version":"16.18.0"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [12500] Functions runtime initialized. {\"cwd\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\",\"node_version\":\"16.18.0\"}"}}
+[debug] [2023-03-29T15:12:07.113Z] [runtime-status] [12500] Listening to port: \\?\pipe\fire_emu_bb631fa781761f1f {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [12500] Listening to port: \\\\?\\pipe\\fire_emu_bb631fa781761f1f"}}
+[debug] [2023-03-29T15:12:07.132Z] [worker-pool] submitRequest(triggerId=us-central1-app) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-app)"}}
+[debug] [2023-03-29T15:12:07.133Z] [worker-us-central1-app-4a3e5e9d-5414-49d6-aa7a-8611288015c3]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-4a3e5e9d-5414-49d6-aa7a-8611288015c3]: BUSY"}}
+[info] i  functions: Beginning execution of "app" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"Beginning execution of \"app\""}}
+[debug] [2023-03-29T15:12:07.263Z] [worker-us-central1-app-4a3e5e9d-5414-49d6-aa7a-8611288015c3]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-4a3e5e9d-5414-49d6-aa7a-8611288015c3]: IDLE"}}
+[debug] [2023-03-29T15:12:07.263Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[info] i  functions: Finished "app" in 15.8773ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"Finished \"app\" in 15.8773ms"}}
+[debug] [2023-03-29T15:14:25.297Z] File C:\Users\Michael.i_FNGA0247\monapp\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\index.js changed, reloading triggers"}}
+[debug] [2023-03-29T15:14:26.321Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] !  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2023-03-29T15:14:42.487Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "api": "^5.0.7",
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.18.0",
+    "node-fetch": "^2.6.9",
+    "paystack-api": "^2.0.6"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2023-03-29T15:14:42.488Z] Building nodejs source
+[debug] [2023-03-29T15:14:42.488Z] Analyzing nodejs backend spec
+[debug] [2023-03-29T15:14:42.489Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-03-29T15:14:43.973Z] Serving at port 9005
+
+[debug] [2023-03-29T15:14:56.552Z] Got response from /__/functions.yaml {"endpoints":{"app":{"platform":"gcfv1","httpsTrigger":{},"entryPoint":"app"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2023-03-29T15:14:56.600Z] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: app. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: app."}}
+[debug] [2023-03-29T15:14:56.645Z] [worker-pool] Shutting down IDLE worker (us-central1-app) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Shutting down IDLE worker (us-central1-app)"}}
+[debug] [2023-03-29T15:14:56.646Z] [worker-us-central1-app-4a3e5e9d-5414-49d6-aa7a-8611288015c3]: FINISHING {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-4a3e5e9d-5414-49d6-aa7a-8611288015c3]: FINISHING"}}
+[debug] [2023-03-29T15:14:56.666Z] [worker-us-central1-app-4a3e5e9d-5414-49d6-aa7a-8611288015c3]: exited {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-4a3e5e9d-5414-49d6-aa7a-8611288015c3]: exited"}}
+[debug] [2023-03-29T15:14:56.666Z] [worker-us-central1-app-4a3e5e9d-5414-49d6-aa7a-8611288015c3]: FINISHED {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-4a3e5e9d-5414-49d6-aa7a-8611288015c3]: FINISHED"}}
+[debug] [2023-03-29T15:17:23.018Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2023-03-29T15:17:23.019Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2023-03-29T15:17:23.019Z] Accepted request POST /monapp-33057/us-central1/app/api/getFee --> us-central1-app
+[debug] [2023-03-29T15:17:23.034Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2023-03-29T15:17:23.035Z] [functions] Got req.url=/monapp-33057/us-central1/app/api/getFee, mapping to path=/api/getFee {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/monapp-33057/us-central1/app/api/getFee, mapping to path=/api/getFee"}}
+[debug] [2023-03-29T15:17:23.035Z] [worker-pool] Cleaned up workers for us-central1-app: 1 --> 0 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Cleaned up workers for us-central1-app: 1 --> 0"}}
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2023-03-29T15:17:23.256Z] [worker-pool] addWorker(us-central1-app) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-app)"}}
+[debug] [2023-03-29T15:17:23.256Z] [worker-pool] Adding worker with key us-central1-app, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-app, total=1"}}
+[debug] [2023-03-29T15:17:38.467Z] [runtime-status] [23512] Resolved module firebase-admin {"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [23512] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2023-03-29T15:17:38.482Z] [runtime-status] [23512] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.24.1","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [23512] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.24.1\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2023-03-29T15:17:38.484Z] [runtime-status] [23512] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [23512] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2023-03-29T15:17:38.490Z] [runtime-status] [23512] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.24.1","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [23512] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.24.1\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2023-03-29T15:17:38.773Z] [runtime-status] [23512] Checked functions.config() {"config":{}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [23512] Checked functions.config() {\"config\":{}}"}}
+[debug] [2023-03-29T15:17:38.773Z] [runtime-status] [23512] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"3.24.1","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-functions\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [23512] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"3.24.1\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}}"}}
+[debug] [2023-03-29T15:17:38.779Z] [runtime-status] [23512] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.24.1","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [23512] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.24.1\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2023-03-29T15:17:38.790Z] [runtime-status] [23512] Resolved module firebase-admin {"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [23512] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2023-03-29T15:17:38.795Z] [runtime-status] [23512] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.24.1","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [23512] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.24.1\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2023-03-29T15:17:38.795Z] [runtime-status] [23512] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-admin\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [23512] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}}"}}
+[debug] [2023-03-29T15:17:43.456Z] [runtime-status] [23512] initializeApp(DEFAULT) {"credential":{"implicit":false,"projectId":"monapp-33057","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCRqgn+GmQt7M1M\nAaJQeh3YzMPFZYi/9mPI30RSymmsPaALytP49I6wcgIpvaAqSa7cjnuZAMAwvuIH\ny0Ga4ZFeEeVqnzFsmAQwkgl6gi6g1Hgty9czina8vFqjUP+sAyYkhiqeiHslrTb3\nHDCFCmRxOFEaCLtlpPx4mmdOxPrCRuKXoeiogOHxGuvdyoNZWwNiq/cS8J3rZqZE\nXFaC8UE/IWVds45KohDyewwyiP/T9j1K8Q3BkSaxp0o/txPOF4R3LszSnOQ3IlmK\ns6FRGeqAGeum9SMn0nl4NInfc/9WLD3VqoYa0HbXdqCgjjXShkzTUdEK3retI0+d\nIGdKsFQRAgMBAAECggEAA4j7ZhnQ3ZZ2IwaVIFveVpEdnTBKIdKCeHEGsPWtm9sB\nA9g/zbZtshWKPOYXuX8BSeQBVuTARU6UoLjLlk0sIHrRtQU5B1gnHeClbz4ykH+n\njQD574vINuthTb5c/hkzd0Z0SVWpm2/5OgUKnmfyqRbDTRzyI1TeNbUVlcFNDqLt\nYITA1LTPACbU7lY5s3hJ/WhXLjQE0gvupVFRJFSeT9V/D/v8ZvK9ow7czwWW/+sJ\nIvw/sXcbycOGOqSPV+NWYL++VdQmyk1oOznNqERaelTy1VUpiX+YxXxCZ184UP6H\nPvFzS+rn91asRqAjKJNI3hxPQVm07Vr8gVT1TbnP2QKBgQDMXGvhz5+rqfyKlOb7\nx6Ee8pDLjO2kBFG1rdKqyrOsvK6go9/DhgYQ4465ObmIITQP+nvTH7fDZP9xdJcr\n9k035XNHdJuAx8hHqWxFtLgpG1F5JJLP2K60x11ouv3wPu8acr+7ye9ipMMeCdRp\nZuDOByx18O6lUh1U4a47rtXq3QKBgQC2eKzWFYmebCpbn8eZAGJ/+E1LJOxbrDY6\nBiqiCeI3AIHqO07xAW14Z7C2I6QWKGlSFtquzsmnZ3wmBniDk296L7DiY1Gvp6eQ\nh9y+WImNdKYjHOb5Tx5AnQmv+C2t1s0TDdILhjQR/Fs1Hv0c3TW4hFTHZhNv8Pet\nQuVkjrd4xQKBgHa3Dbicux2m3tzGSTRkMHXg5TpJwNbx52GJ+4JZxGyJI0yQRfG4\nTpfLCWMSZHPvDeZmVT49A6xPZJDM8PCJ4SuicAhHdfomlHMEua/4nq7KftbH5z00\nm7DKy7mGPvQsKwwLMtRtJ1H/cpVlkm40ZE1rH2nYL1n8TKu9elCTbRNFAoGAIKgO\nPq5SF+FB324EGdTgzAhTRPyRtIJong/Wd3OPYcqcdaAxq55WyjK8hIxyZGjNGJzw\nfFKT8nrp1CBaVyn+zH5WiN2/k9FMguhd0E8mJwPWa/hTOhE319aDElQ3UKJdx2g0\nzE0zanigliw6nnzUjXZZeepB1kno+cA8L7f/DAUCgYEAriqY5g/WiARrH6qFOrP6\nxNPhNiM/vn+ibD+vD7N0C3NUxlvkFAuzwshqkQlVF0Z7C4pXxXtHsqKc0ZdyXTmU\nZOkkhsrZRLh36RRPktFfzwn7iPmjCcGaJpyWDxQ+1BAUHRgBRN0Uz6KQ6L+JBafp\nofQ4qD10mr23gsW3qDlNX1k=\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-m6g22@monapp-33057.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [23512] initializeApp(DEFAULT) {\"credential\":{\"implicit\":false,\"projectId\":\"monapp-33057\",\"privateKey\":\"-----BEGIN PRIVATE KEY-----\\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCRqgn+GmQt7M1M\\nAaJQeh3YzMPFZYi/9mPI30RSymmsPaALytP49I6wcgIpvaAqSa7cjnuZAMAwvuIH\\ny0Ga4ZFeEeVqnzFsmAQwkgl6gi6g1Hgty9czina8vFqjUP+sAyYkhiqeiHslrTb3\\nHDCFCmRxOFEaCLtlpPx4mmdOxPrCRuKXoeiogOHxGuvdyoNZWwNiq/cS8J3rZqZE\\nXFaC8UE/IWVds45KohDyewwyiP/T9j1K8Q3BkSaxp0o/txPOF4R3LszSnOQ3IlmK\\ns6FRGeqAGeum9SMn0nl4NInfc/9WLD3VqoYa0HbXdqCgjjXShkzTUdEK3retI0+d\\nIGdKsFQRAgMBAAECggEAA4j7ZhnQ3ZZ2IwaVIFveVpEdnTBKIdKCeHEGsPWtm9sB\\nA9g/zbZtshWKPOYXuX8BSeQBVuTARU6UoLjLlk0sIHrRtQU5B1gnHeClbz4ykH+n\\njQD574vINuthTb5c/hkzd0Z0SVWpm2/5OgUKnmfyqRbDTRzyI1TeNbUVlcFNDqLt\\nYITA1LTPACbU7lY5s3hJ/WhXLjQE0gvupVFRJFSeT9V/D/v8ZvK9ow7czwWW/+sJ\\nIvw/sXcbycOGOqSPV+NWYL++VdQmyk1oOznNqERaelTy1VUpiX+YxXxCZ184UP6H\\nPvFzS+rn91asRqAjKJNI3hxPQVm07Vr8gVT1TbnP2QKBgQDMXGvhz5+rqfyKlOb7\\nx6Ee8pDLjO2kBFG1rdKqyrOsvK6go9/DhgYQ4465ObmIITQP+nvTH7fDZP9xdJcr\\n9k035XNHdJuAx8hHqWxFtLgpG1F5JJLP2K60x11ouv3wPu8acr+7ye9ipMMeCdRp\\nZuDOByx18O6lUh1U4a47rtXq3QKBgQC2eKzWFYmebCpbn8eZAGJ/+E1LJOxbrDY6\\nBiqiCeI3AIHqO07xAW14Z7C2I6QWKGlSFtquzsmnZ3wmBniDk296L7DiY1Gvp6eQ\\nh9y+WImNdKYjHOb5Tx5AnQmv+C2t1s0TDdILhjQR/Fs1Hv0c3TW4hFTHZhNv8Pet\\nQuVkjrd4xQKBgHa3Dbicux2m3tzGSTRkMHXg5TpJwNbx52GJ+4JZxGyJI0yQRfG4\\nTpfLCWMSZHPvDeZmVT49A6xPZJDM8PCJ4SuicAhHdfomlHMEua/4nq7KftbH5z00\\nm7DKy7mGPvQsKwwLMtRtJ1H/cpVlkm40ZE1rH2nYL1n8TKu9elCTbRNFAoGAIKgO\\nPq5SF+FB324EGdTgzAhTRPyRtIJong/Wd3OPYcqcdaAxq55WyjK8hIxyZGjNGJzw\\nfFKT8nrp1CBaVyn+zH5WiN2/k9FMguhd0E8mJwPWa/hTOhE319aDElQ3UKJdx2g0\\nzE0zanigliw6nnzUjXZZeepB1kno+cA8L7f/DAUCgYEAriqY5g/WiARrH6qFOrP6\\nxNPhNiM/vn+ibD+vD7N0C3NUxlvkFAuzwshqkQlVF0Z7C4pXxXtHsqKc0ZdyXTmU\\nZOkkhsrZRLh36RRPktFfzwn7iPmjCcGaJpyWDxQ+1BAUHRgBRN0Uz6KQ6L+JBafp\\nofQ4qD10mr23gsW3qDlNX1k=\\n-----END PRIVATE KEY-----\\n\",\"clientEmail\":\"firebase-adminsdk-m6g22@monapp-33057.iam.gserviceaccount.com\",\"httpClient\":{\"retry\":{\"maxRetries\":4,\"statusCodes\":[503],\"ioErrorCodes\":[\"ECONNRESET\",\"ETIMEDOUT\"],\"backOffFactor\":0.5,\"maxDelayInMillis\":60000}}}}"}}
+[debug] [2023-03-29T15:17:44.217Z] [runtime-status] [23512] Functions runtime initialized. {"cwd":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions","node_version":"16.18.0"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [23512] Functions runtime initialized. {\"cwd\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\",\"node_version\":\"16.18.0\"}"}}
+[debug] [2023-03-29T15:17:44.218Z] [runtime-status] [23512] Listening to port: \\?\pipe\fire_emu_88bf211ee596f710 {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [23512] Listening to port: \\\\?\\pipe\\fire_emu_88bf211ee596f710"}}
+[debug] [2023-03-29T15:17:44.325Z] [worker-pool] submitRequest(triggerId=us-central1-app) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-app)"}}
+[debug] [2023-03-29T15:17:44.325Z] [worker-us-central1-app-307f670b-cf74-499b-a470-045bdc611ff2]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-307f670b-cf74-499b-a470-045bdc611ff2]: BUSY"}}
+[info] i  functions: Beginning execution of "app" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"Beginning execution of \"app\""}}
+[debug] [2023-03-29T15:17:44.463Z] [worker-us-central1-app-307f670b-cf74-499b-a470-045bdc611ff2]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-307f670b-cf74-499b-a470-045bdc611ff2]: IDLE"}}
+[debug] [2023-03-29T15:17:44.464Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[info] i  functions: Finished "app" in 13.3574ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"Finished \"app\" in 13.3574ms"}}
+[debug] [2023-03-29T15:21:16.063Z] File C:\Users\Michael.i_FNGA0247\monapp\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\index.js changed, reloading triggers"}}
+[debug] [2023-03-29T15:21:17.083Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] !  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2023-03-29T15:21:33.983Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "api": "^5.0.7",
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.18.0",
+    "node-fetch": "^2.6.9",
+    "paystack-api": "^2.0.6"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2023-03-29T15:21:33.984Z] Building nodejs source
+[debug] [2023-03-29T15:21:33.984Z] Analyzing nodejs backend spec
+[debug] [2023-03-29T15:21:33.986Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-03-29T15:21:35.412Z] Serving at port 9005
+
+[debug] [2023-03-29T15:21:51.165Z] Got response from /__/functions.yaml {"endpoints":{"app":{"platform":"gcfv1","httpsTrigger":{},"entryPoint":"app"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2023-03-29T15:21:51.209Z] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: app. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: app."}}
+[debug] [2023-03-29T15:21:51.241Z] [worker-pool] Shutting down IDLE worker (us-central1-app) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Shutting down IDLE worker (us-central1-app)"}}
+[debug] [2023-03-29T15:21:51.241Z] [worker-us-central1-app-307f670b-cf74-499b-a470-045bdc611ff2]: FINISHING {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-307f670b-cf74-499b-a470-045bdc611ff2]: FINISHING"}}
+[debug] [2023-03-29T15:21:51.270Z] [worker-us-central1-app-307f670b-cf74-499b-a470-045bdc611ff2]: exited {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-307f670b-cf74-499b-a470-045bdc611ff2]: exited"}}
+[debug] [2023-03-29T15:21:51.271Z] [worker-us-central1-app-307f670b-cf74-499b-a470-045bdc611ff2]: FINISHED {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-307f670b-cf74-499b-a470-045bdc611ff2]: FINISHED"}}
+[debug] [2023-03-29T15:25:16.153Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2023-03-29T15:25:16.154Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2023-03-29T15:25:16.154Z] Accepted request POST /monapp-33057/us-central1/app/api/getFee --> us-central1-app
+[debug] [2023-03-29T15:25:16.159Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2023-03-29T15:25:16.159Z] [functions] Got req.url=/monapp-33057/us-central1/app/api/getFee, mapping to path=/api/getFee {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/monapp-33057/us-central1/app/api/getFee, mapping to path=/api/getFee"}}
+[debug] [2023-03-29T15:25:16.159Z] [worker-pool] Cleaned up workers for us-central1-app: 1 --> 0 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Cleaned up workers for us-central1-app: 1 --> 0"}}
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2023-03-29T15:25:16.371Z] [worker-pool] addWorker(us-central1-app) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-app)"}}
+[debug] [2023-03-29T15:25:16.371Z] [worker-pool] Adding worker with key us-central1-app, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-app, total=1"}}
+[debug] [2023-03-29T15:25:30.329Z] [runtime-status] [10252] Resolved module firebase-admin {"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [10252] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2023-03-29T15:25:30.338Z] [runtime-status] [10252] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.24.1","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [10252] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.24.1\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2023-03-29T15:25:30.340Z] [runtime-status] [10252] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [10252] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2023-03-29T15:25:30.345Z] [runtime-status] [10252] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.24.1","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [10252] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.24.1\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2023-03-29T15:25:30.533Z] [runtime-status] [10252] Checked functions.config() {"config":{}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [10252] Checked functions.config() {\"config\":{}}"}}
+[debug] [2023-03-29T15:25:30.534Z] [runtime-status] [10252] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"3.24.1","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-functions\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [10252] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"3.24.1\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}}"}}
+[debug] [2023-03-29T15:25:30.538Z] [runtime-status] [10252] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.24.1","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [10252] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.24.1\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2023-03-29T15:25:30.546Z] [runtime-status] [10252] Resolved module firebase-admin {"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [10252] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2023-03-29T15:25:30.551Z] [runtime-status] [10252] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.24.1","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [10252] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.24.1\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2023-03-29T15:25:30.551Z] [runtime-status] [10252] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-admin\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [10252] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}}"}}
+[debug] [2023-03-29T15:25:34.019Z] [runtime-status] [10252] initializeApp(DEFAULT) {"credential":{"implicit":false,"projectId":"monapp-33057","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCRqgn+GmQt7M1M\nAaJQeh3YzMPFZYi/9mPI30RSymmsPaALytP49I6wcgIpvaAqSa7cjnuZAMAwvuIH\ny0Ga4ZFeEeVqnzFsmAQwkgl6gi6g1Hgty9czina8vFqjUP+sAyYkhiqeiHslrTb3\nHDCFCmRxOFEaCLtlpPx4mmdOxPrCRuKXoeiogOHxGuvdyoNZWwNiq/cS8J3rZqZE\nXFaC8UE/IWVds45KohDyewwyiP/T9j1K8Q3BkSaxp0o/txPOF4R3LszSnOQ3IlmK\ns6FRGeqAGeum9SMn0nl4NInfc/9WLD3VqoYa0HbXdqCgjjXShkzTUdEK3retI0+d\nIGdKsFQRAgMBAAECggEAA4j7ZhnQ3ZZ2IwaVIFveVpEdnTBKIdKCeHEGsPWtm9sB\nA9g/zbZtshWKPOYXuX8BSeQBVuTARU6UoLjLlk0sIHrRtQU5B1gnHeClbz4ykH+n\njQD574vINuthTb5c/hkzd0Z0SVWpm2/5OgUKnmfyqRbDTRzyI1TeNbUVlcFNDqLt\nYITA1LTPACbU7lY5s3hJ/WhXLjQE0gvupVFRJFSeT9V/D/v8ZvK9ow7czwWW/+sJ\nIvw/sXcbycOGOqSPV+NWYL++VdQmyk1oOznNqERaelTy1VUpiX+YxXxCZ184UP6H\nPvFzS+rn91asRqAjKJNI3hxPQVm07Vr8gVT1TbnP2QKBgQDMXGvhz5+rqfyKlOb7\nx6Ee8pDLjO2kBFG1rdKqyrOsvK6go9/DhgYQ4465ObmIITQP+nvTH7fDZP9xdJcr\n9k035XNHdJuAx8hHqWxFtLgpG1F5JJLP2K60x11ouv3wPu8acr+7ye9ipMMeCdRp\nZuDOByx18O6lUh1U4a47rtXq3QKBgQC2eKzWFYmebCpbn8eZAGJ/+E1LJOxbrDY6\nBiqiCeI3AIHqO07xAW14Z7C2I6QWKGlSFtquzsmnZ3wmBniDk296L7DiY1Gvp6eQ\nh9y+WImNdKYjHOb5Tx5AnQmv+C2t1s0TDdILhjQR/Fs1Hv0c3TW4hFTHZhNv8Pet\nQuVkjrd4xQKBgHa3Dbicux2m3tzGSTRkMHXg5TpJwNbx52GJ+4JZxGyJI0yQRfG4\nTpfLCWMSZHPvDeZmVT49A6xPZJDM8PCJ4SuicAhHdfomlHMEua/4nq7KftbH5z00\nm7DKy7mGPvQsKwwLMtRtJ1H/cpVlkm40ZE1rH2nYL1n8TKu9elCTbRNFAoGAIKgO\nPq5SF+FB324EGdTgzAhTRPyRtIJong/Wd3OPYcqcdaAxq55WyjK8hIxyZGjNGJzw\nfFKT8nrp1CBaVyn+zH5WiN2/k9FMguhd0E8mJwPWa/hTOhE319aDElQ3UKJdx2g0\nzE0zanigliw6nnzUjXZZeepB1kno+cA8L7f/DAUCgYEAriqY5g/WiARrH6qFOrP6\nxNPhNiM/vn+ibD+vD7N0C3NUxlvkFAuzwshqkQlVF0Z7C4pXxXtHsqKc0ZdyXTmU\nZOkkhsrZRLh36RRPktFfzwn7iPmjCcGaJpyWDxQ+1BAUHRgBRN0Uz6KQ6L+JBafp\nofQ4qD10mr23gsW3qDlNX1k=\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-m6g22@monapp-33057.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [10252] initializeApp(DEFAULT) {\"credential\":{\"implicit\":false,\"projectId\":\"monapp-33057\",\"privateKey\":\"-----BEGIN PRIVATE KEY-----\\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCRqgn+GmQt7M1M\\nAaJQeh3YzMPFZYi/9mPI30RSymmsPaALytP49I6wcgIpvaAqSa7cjnuZAMAwvuIH\\ny0Ga4ZFeEeVqnzFsmAQwkgl6gi6g1Hgty9czina8vFqjUP+sAyYkhiqeiHslrTb3\\nHDCFCmRxOFEaCLtlpPx4mmdOxPrCRuKXoeiogOHxGuvdyoNZWwNiq/cS8J3rZqZE\\nXFaC8UE/IWVds45KohDyewwyiP/T9j1K8Q3BkSaxp0o/txPOF4R3LszSnOQ3IlmK\\ns6FRGeqAGeum9SMn0nl4NInfc/9WLD3VqoYa0HbXdqCgjjXShkzTUdEK3retI0+d\\nIGdKsFQRAgMBAAECggEAA4j7ZhnQ3ZZ2IwaVIFveVpEdnTBKIdKCeHEGsPWtm9sB\\nA9g/zbZtshWKPOYXuX8BSeQBVuTARU6UoLjLlk0sIHrRtQU5B1gnHeClbz4ykH+n\\njQD574vINuthTb5c/hkzd0Z0SVWpm2/5OgUKnmfyqRbDTRzyI1TeNbUVlcFNDqLt\\nYITA1LTPACbU7lY5s3hJ/WhXLjQE0gvupVFRJFSeT9V/D/v8ZvK9ow7czwWW/+sJ\\nIvw/sXcbycOGOqSPV+NWYL++VdQmyk1oOznNqERaelTy1VUpiX+YxXxCZ184UP6H\\nPvFzS+rn91asRqAjKJNI3hxPQVm07Vr8gVT1TbnP2QKBgQDMXGvhz5+rqfyKlOb7\\nx6Ee8pDLjO2kBFG1rdKqyrOsvK6go9/DhgYQ4465ObmIITQP+nvTH7fDZP9xdJcr\\n9k035XNHdJuAx8hHqWxFtLgpG1F5JJLP2K60x11ouv3wPu8acr+7ye9ipMMeCdRp\\nZuDOByx18O6lUh1U4a47rtXq3QKBgQC2eKzWFYmebCpbn8eZAGJ/+E1LJOxbrDY6\\nBiqiCeI3AIHqO07xAW14Z7C2I6QWKGlSFtquzsmnZ3wmBniDk296L7DiY1Gvp6eQ\\nh9y+WImNdKYjHOb5Tx5AnQmv+C2t1s0TDdILhjQR/Fs1Hv0c3TW4hFTHZhNv8Pet\\nQuVkjrd4xQKBgHa3Dbicux2m3tzGSTRkMHXg5TpJwNbx52GJ+4JZxGyJI0yQRfG4\\nTpfLCWMSZHPvDeZmVT49A6xPZJDM8PCJ4SuicAhHdfomlHMEua/4nq7KftbH5z00\\nm7DKy7mGPvQsKwwLMtRtJ1H/cpVlkm40ZE1rH2nYL1n8TKu9elCTbRNFAoGAIKgO\\nPq5SF+FB324EGdTgzAhTRPyRtIJong/Wd3OPYcqcdaAxq55WyjK8hIxyZGjNGJzw\\nfFKT8nrp1CBaVyn+zH5WiN2/k9FMguhd0E8mJwPWa/hTOhE319aDElQ3UKJdx2g0\\nzE0zanigliw6nnzUjXZZeepB1kno+cA8L7f/DAUCgYEAriqY5g/WiARrH6qFOrP6\\nxNPhNiM/vn+ibD+vD7N0C3NUxlvkFAuzwshqkQlVF0Z7C4pXxXtHsqKc0ZdyXTmU\\nZOkkhsrZRLh36RRPktFfzwn7iPmjCcGaJpyWDxQ+1BAUHRgBRN0Uz6KQ6L+JBafp\\nofQ4qD10mr23gsW3qDlNX1k=\\n-----END PRIVATE KEY-----\\n\",\"clientEmail\":\"firebase-adminsdk-m6g22@monapp-33057.iam.gserviceaccount.com\",\"httpClient\":{\"retry\":{\"maxRetries\":4,\"statusCodes\":[503],\"ioErrorCodes\":[\"ECONNRESET\",\"ETIMEDOUT\"],\"backOffFactor\":0.5,\"maxDelayInMillis\":60000}}}}"}}
+[debug] [2023-03-29T15:25:34.468Z] [runtime-status] [10252] Functions runtime initialized. {"cwd":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions","node_version":"16.18.0"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [10252] Functions runtime initialized. {\"cwd\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\",\"node_version\":\"16.18.0\"}"}}
+[debug] [2023-03-29T15:25:34.469Z] [runtime-status] [10252] Listening to port: \\?\pipe\fire_emu_c612d8fbaa102368 {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [10252] Listening to port: \\\\?\\pipe\\fire_emu_c612d8fbaa102368"}}
+[debug] [2023-03-29T15:25:34.577Z] [worker-pool] submitRequest(triggerId=us-central1-app) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-app)"}}
+[debug] [2023-03-29T15:25:34.577Z] [worker-us-central1-app-91f5c111-15cc-4a90-8f13-e392e6b305dd]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-91f5c111-15cc-4a90-8f13-e392e6b305dd]: BUSY"}}
+[info] i  functions: Beginning execution of "app" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"Beginning execution of \"app\""}}
+[debug] [2023-03-29T15:25:34.685Z] [worker-us-central1-app-91f5c111-15cc-4a90-8f13-e392e6b305dd]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-91f5c111-15cc-4a90-8f13-e392e6b305dd]: IDLE"}}
+[debug] [2023-03-29T15:25:34.685Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[info] i  functions: Finished "app" in 6.0267ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"Finished \"app\" in 6.0267ms"}}
+[debug] [2023-03-29T15:28:59.540Z] File C:\Users\Michael.i_FNGA0247\monapp\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\index.js changed, reloading triggers"}}
+[debug] [2023-03-29T15:29:00.563Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] !  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2023-03-29T15:29:18.840Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "api": "^5.0.7",
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.18.0",
+    "node-fetch": "^2.6.9",
+    "paystack-api": "^2.0.6"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2023-03-29T15:29:18.840Z] Building nodejs source
+[debug] [2023-03-29T15:29:18.840Z] Analyzing nodejs backend spec
+[debug] [2023-03-29T15:29:18.846Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-03-29T15:29:20.021Z] Serving at port 9005
+
+[debug] [2023-03-29T15:29:24.934Z] Got response from /__/functions.yaml {"endpoints":{"app":{"platform":"gcfv1","httpsTrigger":{},"entryPoint":"app"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2023-03-29T15:29:24.958Z] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: app. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: app."}}
+[debug] [2023-03-29T15:29:25.091Z] [worker-pool] Shutting down IDLE worker (us-central1-app) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Shutting down IDLE worker (us-central1-app)"}}
+[debug] [2023-03-29T15:29:25.091Z] [worker-us-central1-app-91f5c111-15cc-4a90-8f13-e392e6b305dd]: FINISHING {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-91f5c111-15cc-4a90-8f13-e392e6b305dd]: FINISHING"}}
+[debug] [2023-03-29T15:29:25.106Z] [worker-us-central1-app-91f5c111-15cc-4a90-8f13-e392e6b305dd]: exited {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-91f5c111-15cc-4a90-8f13-e392e6b305dd]: exited"}}
+[debug] [2023-03-29T15:29:25.106Z] [worker-us-central1-app-91f5c111-15cc-4a90-8f13-e392e6b305dd]: FINISHED {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-91f5c111-15cc-4a90-8f13-e392e6b305dd]: FINISHED"}}
+[debug] [2023-03-29T15:51:44.127Z] File C:\Users\Michael.i_FNGA0247\monapp\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\index.js changed, reloading triggers"}}
+[debug] [2023-03-29T15:51:45.197Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] !  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2023-03-29T15:52:03.341Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "api": "^5.0.7",
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.18.0",
+    "node-fetch": "^2.6.9",
+    "paystack-api": "^2.0.6"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2023-03-29T15:52:03.342Z] Building nodejs source
+[debug] [2023-03-29T15:52:03.342Z] Analyzing nodejs backend spec
+[debug] [2023-03-29T15:52:03.423Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-03-29T15:52:04.515Z] Serving at port 9005
+
+[debug] [2023-03-29T15:52:10.155Z] Got response from /__/functions.yaml {"endpoints":{"app":{"platform":"gcfv1","httpsTrigger":{},"entryPoint":"app"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2023-03-29T15:52:10.165Z] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: app. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: app."}}
+[debug] [2023-03-29T16:10:31.188Z] File C:\Users\Michael.i_FNGA0247\monapp\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\index.js changed, reloading triggers"}}
+[debug] [2023-03-29T16:10:32.284Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] !  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2023-03-29T16:10:48.267Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "api": "^5.0.7",
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.18.0",
+    "node-fetch": "^2.6.9",
+    "paystack-api": "^2.0.6"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2023-03-29T16:10:48.267Z] Building nodejs source
+[debug] [2023-03-29T16:10:48.267Z] Analyzing nodejs backend spec
+[debug] [2023-03-29T16:10:48.297Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-03-29T16:10:50.186Z] Serving at port 9005
+
+[debug] [2023-03-29T16:11:03.180Z] Got response from /__/functions.yaml {"endpoints":{"app":{"platform":"gcfv1","httpsTrigger":{},"entryPoint":"app"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2023-03-29T16:11:03.210Z] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: app. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: app."}}
+[debug] [2023-03-30T15:09:57.473Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2023-03-30T15:09:57.493Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2023-03-30T15:09:57.498Z] Accepted request POST /monapp-33057/us-central1/app/api/getFee --> us-central1-app
+[debug] [2023-03-30T15:09:57.527Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2023-03-30T15:09:57.536Z] [functions] Got req.url=/monapp-33057/us-central1/app/api/getFee, mapping to path=/api/getFee {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/monapp-33057/us-central1/app/api/getFee, mapping to path=/api/getFee"}}
+[debug] [2023-03-30T15:09:57.539Z] [worker-pool] Cleaned up workers for us-central1-app: 1 --> 0 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Cleaned up workers for us-central1-app: 1 --> 0"}}
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2023-03-30T15:09:58.093Z] [worker-pool] addWorker(us-central1-app) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-app)"}}
+[debug] [2023-03-30T15:09:58.095Z] [worker-pool] Adding worker with key us-central1-app, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-app, total=1"}}
+[debug] [2023-03-30T15:10:08.182Z] [work-queue] {"queueLength":1,"workRunningCount":1}
+[debug] [2023-03-30T15:10:08.182Z] [work-queue] {"queueLength":0,"workRunningCount":2}
+[debug] [2023-03-30T15:10:08.182Z] Accepted request POST /monapp-33057/us-central1/app/api/getFee --> us-central1-app
+[debug] [2023-03-30T15:10:08.186Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2023-03-30T15:10:08.186Z] [functions] Got req.url=/monapp-33057/us-central1/app/api/getFee, mapping to path=/api/getFee {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/monapp-33057/us-central1/app/api/getFee, mapping to path=/api/getFee"}}
+[debug] [2023-03-30T15:10:08.187Z] [worker-pool] submitRequest(triggerId=us-central1-app) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-app)"}}
+[debug] [2023-03-30T15:10:08.187Z] [worker-us-central1-app-2cd8e977-2796-4c00-87d4-ac009d5cfc90]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-2cd8e977-2796-4c00-87d4-ac009d5cfc90]: BUSY"}}
+[debug] [2023-03-30T15:10:08.198Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2023-03-30T15:10:08.214Z] [worker-us-central1-app-2cd8e977-2796-4c00-87d4-ac009d5cfc90]: exited {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-2cd8e977-2796-4c00-87d4-ac009d5cfc90]: exited"}}
+[debug] [2023-03-30T15:10:08.216Z] [worker-us-central1-app-2cd8e977-2796-4c00-87d4-ac009d5cfc90]: FINISHED {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-2cd8e977-2796-4c00-87d4-ac009d5cfc90]: FINISHED"}}
+[debug] FirebaseError: Failed to load function.
+    at Timeout._onTimeout (C:\Users\Michael.i_FNGA0247\AppData\Roaming\npm\node_modules\firebase-tools\lib\emulator\functionsRuntimeWorker.js:152:24)
+    at listOnTimeout (node:internal/timers:559:17)
+    at processTimers (node:internal/timers:502:7) {"metadata":{"emulator":{"name":"functions"},"message":{"name":"FirebaseError","children":[],"exit":1,"message":"Failed to load function.","status":500}}}
+[debug] [2023-03-30T15:10:28.113Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2023-03-30T15:10:38.220Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2023-03-30T15:10:38.220Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2023-03-30T15:10:38.220Z] Accepted request POST /monapp-33057/us-central1/app/api/getFee --> us-central1-app
+[debug] [2023-03-30T15:10:38.224Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2023-03-30T15:10:38.224Z] [functions] Got req.url=/monapp-33057/us-central1/app/api/getFee, mapping to path=/api/getFee {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/monapp-33057/us-central1/app/api/getFee, mapping to path=/api/getFee"}}
+[debug] [2023-03-30T15:10:38.224Z] [worker-pool] Cleaned up workers for us-central1-app: 1 --> 0 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Cleaned up workers for us-central1-app: 1 --> 0"}}
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2023-03-30T15:10:38.362Z] [worker-pool] addWorker(us-central1-app) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-app)"}}
+[debug] [2023-03-30T15:10:38.362Z] [worker-pool] Adding worker with key us-central1-app, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-app, total=1"}}
+[debug] [2023-03-30T15:10:47.137Z] [runtime-status] [24336] Resolved module firebase-admin {"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [24336] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2023-03-30T15:10:47.149Z] [runtime-status] [24336] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.24.1","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [24336] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.24.1\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2023-03-30T15:10:47.154Z] [runtime-status] [24336] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [24336] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2023-03-30T15:10:47.158Z] [runtime-status] [24336] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.24.1","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [24336] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.24.1\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2023-03-30T15:10:48.660Z] [runtime-status] [24336] Checked functions.config() {"config":{}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [24336] Checked functions.config() {\"config\":{}}"}}
+[debug] [2023-03-30T15:10:48.661Z] [runtime-status] [24336] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"3.24.1","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-functions\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [24336] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"3.24.1\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}}"}}
+[debug] [2023-03-30T15:10:48.669Z] [runtime-status] [24336] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.24.1","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [24336] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.24.1\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2023-03-30T15:10:48.690Z] [runtime-status] [24336] Resolved module firebase-admin {"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [24336] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2023-03-30T15:10:48.699Z] [runtime-status] [24336] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.24.1","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [24336] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.24.1\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2023-03-30T15:10:48.699Z] [runtime-status] [24336] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-admin\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [24336] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}}"}}
+[debug] [2023-03-30T15:11:04.610Z] [runtime-status] [24336] initializeApp(DEFAULT) {"credential":{"implicit":false,"projectId":"monapp-33057","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCRqgn+GmQt7M1M\nAaJQeh3YzMPFZYi/9mPI30RSymmsPaALytP49I6wcgIpvaAqSa7cjnuZAMAwvuIH\ny0Ga4ZFeEeVqnzFsmAQwkgl6gi6g1Hgty9czina8vFqjUP+sAyYkhiqeiHslrTb3\nHDCFCmRxOFEaCLtlpPx4mmdOxPrCRuKXoeiogOHxGuvdyoNZWwNiq/cS8J3rZqZE\nXFaC8UE/IWVds45KohDyewwyiP/T9j1K8Q3BkSaxp0o/txPOF4R3LszSnOQ3IlmK\ns6FRGeqAGeum9SMn0nl4NInfc/9WLD3VqoYa0HbXdqCgjjXShkzTUdEK3retI0+d\nIGdKsFQRAgMBAAECggEAA4j7ZhnQ3ZZ2IwaVIFveVpEdnTBKIdKCeHEGsPWtm9sB\nA9g/zbZtshWKPOYXuX8BSeQBVuTARU6UoLjLlk0sIHrRtQU5B1gnHeClbz4ykH+n\njQD574vINuthTb5c/hkzd0Z0SVWpm2/5OgUKnmfyqRbDTRzyI1TeNbUVlcFNDqLt\nYITA1LTPACbU7lY5s3hJ/WhXLjQE0gvupVFRJFSeT9V/D/v8ZvK9ow7czwWW/+sJ\nIvw/sXcbycOGOqSPV+NWYL++VdQmyk1oOznNqERaelTy1VUpiX+YxXxCZ184UP6H\nPvFzS+rn91asRqAjKJNI3hxPQVm07Vr8gVT1TbnP2QKBgQDMXGvhz5+rqfyKlOb7\nx6Ee8pDLjO2kBFG1rdKqyrOsvK6go9/DhgYQ4465ObmIITQP+nvTH7fDZP9xdJcr\n9k035XNHdJuAx8hHqWxFtLgpG1F5JJLP2K60x11ouv3wPu8acr+7ye9ipMMeCdRp\nZuDOByx18O6lUh1U4a47rtXq3QKBgQC2eKzWFYmebCpbn8eZAGJ/+E1LJOxbrDY6\nBiqiCeI3AIHqO07xAW14Z7C2I6QWKGlSFtquzsmnZ3wmBniDk296L7DiY1Gvp6eQ\nh9y+WImNdKYjHOb5Tx5AnQmv+C2t1s0TDdILhjQR/Fs1Hv0c3TW4hFTHZhNv8Pet\nQuVkjrd4xQKBgHa3Dbicux2m3tzGSTRkMHXg5TpJwNbx52GJ+4JZxGyJI0yQRfG4\nTpfLCWMSZHPvDeZmVT49A6xPZJDM8PCJ4SuicAhHdfomlHMEua/4nq7KftbH5z00\nm7DKy7mGPvQsKwwLMtRtJ1H/cpVlkm40ZE1rH2nYL1n8TKu9elCTbRNFAoGAIKgO\nPq5SF+FB324EGdTgzAhTRPyRtIJong/Wd3OPYcqcdaAxq55WyjK8hIxyZGjNGJzw\nfFKT8nrp1CBaVyn+zH5WiN2/k9FMguhd0E8mJwPWa/hTOhE319aDElQ3UKJdx2g0\nzE0zanigliw6nnzUjXZZeepB1kno+cA8L7f/DAUCgYEAriqY5g/WiARrH6qFOrP6\nxNPhNiM/vn+ibD+vD7N0C3NUxlvkFAuzwshqkQlVF0Z7C4pXxXtHsqKc0ZdyXTmU\nZOkkhsrZRLh36RRPktFfzwn7iPmjCcGaJpyWDxQ+1BAUHRgBRN0Uz6KQ6L+JBafp\nofQ4qD10mr23gsW3qDlNX1k=\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-m6g22@monapp-33057.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [24336] initializeApp(DEFAULT) {\"credential\":{\"implicit\":false,\"projectId\":\"monapp-33057\",\"privateKey\":\"-----BEGIN PRIVATE KEY-----\\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCRqgn+GmQt7M1M\\nAaJQeh3YzMPFZYi/9mPI30RSymmsPaALytP49I6wcgIpvaAqSa7cjnuZAMAwvuIH\\ny0Ga4ZFeEeVqnzFsmAQwkgl6gi6g1Hgty9czina8vFqjUP+sAyYkhiqeiHslrTb3\\nHDCFCmRxOFEaCLtlpPx4mmdOxPrCRuKXoeiogOHxGuvdyoNZWwNiq/cS8J3rZqZE\\nXFaC8UE/IWVds45KohDyewwyiP/T9j1K8Q3BkSaxp0o/txPOF4R3LszSnOQ3IlmK\\ns6FRGeqAGeum9SMn0nl4NInfc/9WLD3VqoYa0HbXdqCgjjXShkzTUdEK3retI0+d\\nIGdKsFQRAgMBAAECggEAA4j7ZhnQ3ZZ2IwaVIFveVpEdnTBKIdKCeHEGsPWtm9sB\\nA9g/zbZtshWKPOYXuX8BSeQBVuTARU6UoLjLlk0sIHrRtQU5B1gnHeClbz4ykH+n\\njQD574vINuthTb5c/hkzd0Z0SVWpm2/5OgUKnmfyqRbDTRzyI1TeNbUVlcFNDqLt\\nYITA1LTPACbU7lY5s3hJ/WhXLjQE0gvupVFRJFSeT9V/D/v8ZvK9ow7czwWW/+sJ\\nIvw/sXcbycOGOqSPV+NWYL++VdQmyk1oOznNqERaelTy1VUpiX+YxXxCZ184UP6H\\nPvFzS+rn91asRqAjKJNI3hxPQVm07Vr8gVT1TbnP2QKBgQDMXGvhz5+rqfyKlOb7\\nx6Ee8pDLjO2kBFG1rdKqyrOsvK6go9/DhgYQ4465ObmIITQP+nvTH7fDZP9xdJcr\\n9k035XNHdJuAx8hHqWxFtLgpG1F5JJLP2K60x11ouv3wPu8acr+7ye9ipMMeCdRp\\nZuDOByx18O6lUh1U4a47rtXq3QKBgQC2eKzWFYmebCpbn8eZAGJ/+E1LJOxbrDY6\\nBiqiCeI3AIHqO07xAW14Z7C2I6QWKGlSFtquzsmnZ3wmBniDk296L7DiY1Gvp6eQ\\nh9y+WImNdKYjHOb5Tx5AnQmv+C2t1s0TDdILhjQR/Fs1Hv0c3TW4hFTHZhNv8Pet\\nQuVkjrd4xQKBgHa3Dbicux2m3tzGSTRkMHXg5TpJwNbx52GJ+4JZxGyJI0yQRfG4\\nTpfLCWMSZHPvDeZmVT49A6xPZJDM8PCJ4SuicAhHdfomlHMEua/4nq7KftbH5z00\\nm7DKy7mGPvQsKwwLMtRtJ1H/cpVlkm40ZE1rH2nYL1n8TKu9elCTbRNFAoGAIKgO\\nPq5SF+FB324EGdTgzAhTRPyRtIJong/Wd3OPYcqcdaAxq55WyjK8hIxyZGjNGJzw\\nfFKT8nrp1CBaVyn+zH5WiN2/k9FMguhd0E8mJwPWa/hTOhE319aDElQ3UKJdx2g0\\nzE0zanigliw6nnzUjXZZeepB1kno+cA8L7f/DAUCgYEAriqY5g/WiARrH6qFOrP6\\nxNPhNiM/vn+ibD+vD7N0C3NUxlvkFAuzwshqkQlVF0Z7C4pXxXtHsqKc0ZdyXTmU\\nZOkkhsrZRLh36RRPktFfzwn7iPmjCcGaJpyWDxQ+1BAUHRgBRN0Uz6KQ6L+JBafp\\nofQ4qD10mr23gsW3qDlNX1k=\\n-----END PRIVATE KEY-----\\n\",\"clientEmail\":\"firebase-adminsdk-m6g22@monapp-33057.iam.gserviceaccount.com\",\"httpClient\":{\"retry\":{\"maxRetries\":4,\"statusCodes\":[503],\"ioErrorCodes\":[\"ECONNRESET\",\"ETIMEDOUT\"],\"backOffFactor\":0.5,\"maxDelayInMillis\":60000}}}}"}}
+[debug] [2023-03-30T15:11:06.740Z] [runtime-status] [24336] Functions runtime initialized. {"cwd":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions","node_version":"16.18.0"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [24336] Functions runtime initialized. {\"cwd\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\",\"node_version\":\"16.18.0\"}"}}
+[debug] [2023-03-30T15:11:06.740Z] [runtime-status] [24336] Listening to port: \\?\pipe\fire_emu_02cd64e237cca1cb {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [24336] Listening to port: \\\\?\\pipe\\fire_emu_02cd64e237cca1cb"}}
+[debug] [2023-03-30T15:11:06.816Z] [worker-pool] submitRequest(triggerId=us-central1-app) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-app)"}}
+[debug] [2023-03-30T15:11:06.816Z] [worker-us-central1-app-d7db265a-9365-4bc3-b5cb-cd350425452c]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-d7db265a-9365-4bc3-b5cb-cd350425452c]: BUSY"}}
+[info] i  functions: Beginning execution of "app" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"Beginning execution of \"app\""}}
+[debug] [2023-03-30T15:11:06.933Z] [worker-us-central1-app-d7db265a-9365-4bc3-b5cb-cd350425452c]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-d7db265a-9365-4bc3-b5cb-cd350425452c]: IDLE"}}
+[debug] [2023-03-30T15:11:06.934Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[info] i  functions: Finished "app" in 7.3239ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"Finished \"app\" in 7.3239ms"}}
+[debug] [2023-03-30T15:11:24.974Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2023-03-30T15:11:24.974Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2023-03-30T15:11:24.974Z] Accepted request POST /monapp-33057/us-central1/app/api/getFee --> us-central1-app
+[debug] [2023-03-30T15:11:24.978Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2023-03-30T15:11:24.978Z] [functions] Got req.url=/monapp-33057/us-central1/app/api/getFee, mapping to path=/api/getFee {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/monapp-33057/us-central1/app/api/getFee, mapping to path=/api/getFee"}}
+[debug] [2023-03-30T15:11:24.978Z] [worker-pool] submitRequest(triggerId=us-central1-app) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-app)"}}
+[debug] [2023-03-30T15:11:24.978Z] [worker-us-central1-app-d7db265a-9365-4bc3-b5cb-cd350425452c]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-d7db265a-9365-4bc3-b5cb-cd350425452c]: BUSY"}}
+[info] i  functions: Beginning execution of "app" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"Beginning execution of \"app\""}}
+[debug] [2023-03-30T15:11:24.995Z] [worker-us-central1-app-d7db265a-9365-4bc3-b5cb-cd350425452c]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-d7db265a-9365-4bc3-b5cb-cd350425452c]: IDLE"}}
+[debug] [2023-03-30T15:11:24.996Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[info] i  functions: Finished "app" in 2.3979ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"Finished \"app\" in 2.3979ms"}}
+[debug] [2023-03-30T15:17:32.887Z] File C:\Users\Michael.i_FNGA0247\monapp\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\index.js changed, reloading triggers"}}
+[debug] [2023-03-30T15:17:33.934Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] !  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2023-03-30T15:17:53.394Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "api": "^5.0.7",
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.18.0",
+    "node-fetch": "^2.6.9",
+    "paystack-api": "^2.0.6"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2023-03-30T15:17:53.395Z] Building nodejs source
+[debug] [2023-03-30T15:17:53.395Z] Analyzing nodejs backend spec
+[debug] [2023-03-30T15:17:53.400Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-03-30T15:17:53.511Z] File C:\Users\Michael.i_FNGA0247\monapp\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\index.js changed, reloading triggers"}}
+[debug] [2023-03-30T15:17:54.514Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] !  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2023-03-30T15:18:11.308Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "api": "^5.0.7",
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.18.0",
+    "node-fetch": "^2.6.9",
+    "paystack-api": "^2.0.6"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2023-03-30T15:18:11.308Z] Building nodejs source
+[debug] [2023-03-30T15:18:11.309Z] Analyzing nodejs backend spec
+[debug] [2023-03-30T15:18:11.311Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-03-30T15:18:11.377Z] Serving at port 9005
+
+[debug] [2023-03-30T15:18:14.066Z] Serving at port 9006
+
+[debug] [2023-03-30T15:18:23.916Z] Got response from /__/functions.yaml {"endpoints":{"app":{"platform":"gcfv1","httpsTrigger":{},"entryPoint":"app"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2023-03-30T15:18:23.924Z] shutdown requested via /__/quitquitquit
+
+[debug] [2023-03-30T15:18:23.942Z] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: app. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: app."}}
+[debug] [2023-03-30T15:18:23.981Z] [worker-pool] Shutting down IDLE worker (us-central1-app) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Shutting down IDLE worker (us-central1-app)"}}
+[debug] [2023-03-30T15:18:23.982Z] [worker-us-central1-app-d7db265a-9365-4bc3-b5cb-cd350425452c]: FINISHING {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-d7db265a-9365-4bc3-b5cb-cd350425452c]: FINISHING"}}
+[error] !!  functions: Failed to load function definition from source: FirebaseError: User code failed to load. Cannot determine backend specification {"metadata":{"emulator":{"name":"functions"},"message":"Failed to load function definition from source: FirebaseError: User code failed to load. Cannot determine backend specification"}}
+[debug] [2023-03-30T15:18:24.012Z] [worker-us-central1-app-d7db265a-9365-4bc3-b5cb-cd350425452c]: exited {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-d7db265a-9365-4bc3-b5cb-cd350425452c]: exited"}}
+[debug] [2023-03-30T15:18:24.012Z] [worker-us-central1-app-d7db265a-9365-4bc3-b5cb-cd350425452c]: FINISHED {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-d7db265a-9365-4bc3-b5cb-cd350425452c]: FINISHED"}}
+[debug] [2023-03-30T15:28:04.608Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2023-03-30T15:28:04.620Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2023-03-30T15:28:04.622Z] Accepted request POST /monapp-33057/us-central1/app/api/getFee --> us-central1-app
+[debug] [2023-03-30T15:28:04.637Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2023-03-30T15:28:04.641Z] [functions] Got req.url=/monapp-33057/us-central1/app/api/getFee, mapping to path=/api/getFee {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/monapp-33057/us-central1/app/api/getFee, mapping to path=/api/getFee"}}
+[debug] [2023-03-30T15:28:04.641Z] [worker-pool] Cleaned up workers for us-central1-app: 1 --> 0 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Cleaned up workers for us-central1-app: 1 --> 0"}}
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2023-03-30T15:28:04.871Z] [worker-pool] addWorker(us-central1-app) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-app)"}}
+[debug] [2023-03-30T15:28:04.871Z] [worker-pool] Adding worker with key us-central1-app, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-app, total=1"}}
+[debug] [2023-03-30T15:28:19.780Z] [runtime-status] [19196] Resolved module firebase-admin {"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [19196] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2023-03-30T15:28:19.795Z] [runtime-status] [19196] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.24.1","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [19196] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.24.1\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2023-03-30T15:28:19.797Z] [runtime-status] [19196] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [19196] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2023-03-30T15:28:19.804Z] [runtime-status] [19196] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.24.1","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [19196] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.24.1\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2023-03-30T15:28:20.068Z] [runtime-status] [19196] Checked functions.config() {"config":{}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [19196] Checked functions.config() {\"config\":{}}"}}
+[debug] [2023-03-30T15:28:20.069Z] [runtime-status] [19196] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"3.24.1","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-functions\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [19196] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"3.24.1\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}}"}}
+[debug] [2023-03-30T15:28:20.074Z] [runtime-status] [19196] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.24.1","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [19196] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.24.1\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2023-03-30T15:28:20.082Z] [runtime-status] [19196] Resolved module firebase-admin {"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [19196] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2023-03-30T15:28:20.091Z] [runtime-status] [19196] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.24.1","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-functions\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [19196] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.24.1\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\index.js\"}"}}
+[debug] [2023-03-30T15:28:20.091Z] [runtime-status] [19196] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"10.3.0","resolution":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\node_modules\\firebase-admin\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [19196] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"10.3.0\",\"resolution\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}}"}}
+[debug] [2023-03-30T15:28:23.683Z] [runtime-status] [19196] initializeApp(DEFAULT) {"credential":{"implicit":false,"projectId":"monapp-33057","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCRqgn+GmQt7M1M\nAaJQeh3YzMPFZYi/9mPI30RSymmsPaALytP49I6wcgIpvaAqSa7cjnuZAMAwvuIH\ny0Ga4ZFeEeVqnzFsmAQwkgl6gi6g1Hgty9czina8vFqjUP+sAyYkhiqeiHslrTb3\nHDCFCmRxOFEaCLtlpPx4mmdOxPrCRuKXoeiogOHxGuvdyoNZWwNiq/cS8J3rZqZE\nXFaC8UE/IWVds45KohDyewwyiP/T9j1K8Q3BkSaxp0o/txPOF4R3LszSnOQ3IlmK\ns6FRGeqAGeum9SMn0nl4NInfc/9WLD3VqoYa0HbXdqCgjjXShkzTUdEK3retI0+d\nIGdKsFQRAgMBAAECggEAA4j7ZhnQ3ZZ2IwaVIFveVpEdnTBKIdKCeHEGsPWtm9sB\nA9g/zbZtshWKPOYXuX8BSeQBVuTARU6UoLjLlk0sIHrRtQU5B1gnHeClbz4ykH+n\njQD574vINuthTb5c/hkzd0Z0SVWpm2/5OgUKnmfyqRbDTRzyI1TeNbUVlcFNDqLt\nYITA1LTPACbU7lY5s3hJ/WhXLjQE0gvupVFRJFSeT9V/D/v8ZvK9ow7czwWW/+sJ\nIvw/sXcbycOGOqSPV+NWYL++VdQmyk1oOznNqERaelTy1VUpiX+YxXxCZ184UP6H\nPvFzS+rn91asRqAjKJNI3hxPQVm07Vr8gVT1TbnP2QKBgQDMXGvhz5+rqfyKlOb7\nx6Ee8pDLjO2kBFG1rdKqyrOsvK6go9/DhgYQ4465ObmIITQP+nvTH7fDZP9xdJcr\n9k035XNHdJuAx8hHqWxFtLgpG1F5JJLP2K60x11ouv3wPu8acr+7ye9ipMMeCdRp\nZuDOByx18O6lUh1U4a47rtXq3QKBgQC2eKzWFYmebCpbn8eZAGJ/+E1LJOxbrDY6\nBiqiCeI3AIHqO07xAW14Z7C2I6QWKGlSFtquzsmnZ3wmBniDk296L7DiY1Gvp6eQ\nh9y+WImNdKYjHOb5Tx5AnQmv+C2t1s0TDdILhjQR/Fs1Hv0c3TW4hFTHZhNv8Pet\nQuVkjrd4xQKBgHa3Dbicux2m3tzGSTRkMHXg5TpJwNbx52GJ+4JZxGyJI0yQRfG4\nTpfLCWMSZHPvDeZmVT49A6xPZJDM8PCJ4SuicAhHdfomlHMEua/4nq7KftbH5z00\nm7DKy7mGPvQsKwwLMtRtJ1H/cpVlkm40ZE1rH2nYL1n8TKu9elCTbRNFAoGAIKgO\nPq5SF+FB324EGdTgzAhTRPyRtIJong/Wd3OPYcqcdaAxq55WyjK8hIxyZGjNGJzw\nfFKT8nrp1CBaVyn+zH5WiN2/k9FMguhd0E8mJwPWa/hTOhE319aDElQ3UKJdx2g0\nzE0zanigliw6nnzUjXZZeepB1kno+cA8L7f/DAUCgYEAriqY5g/WiARrH6qFOrP6\nxNPhNiM/vn+ibD+vD7N0C3NUxlvkFAuzwshqkQlVF0Z7C4pXxXtHsqKc0ZdyXTmU\nZOkkhsrZRLh36RRPktFfzwn7iPmjCcGaJpyWDxQ+1BAUHRgBRN0Uz6KQ6L+JBafp\nofQ4qD10mr23gsW3qDlNX1k=\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-m6g22@monapp-33057.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [19196] initializeApp(DEFAULT) {\"credential\":{\"implicit\":false,\"projectId\":\"monapp-33057\",\"privateKey\":\"-----BEGIN PRIVATE KEY-----\\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCRqgn+GmQt7M1M\\nAaJQeh3YzMPFZYi/9mPI30RSymmsPaALytP49I6wcgIpvaAqSa7cjnuZAMAwvuIH\\ny0Ga4ZFeEeVqnzFsmAQwkgl6gi6g1Hgty9czina8vFqjUP+sAyYkhiqeiHslrTb3\\nHDCFCmRxOFEaCLtlpPx4mmdOxPrCRuKXoeiogOHxGuvdyoNZWwNiq/cS8J3rZqZE\\nXFaC8UE/IWVds45KohDyewwyiP/T9j1K8Q3BkSaxp0o/txPOF4R3LszSnOQ3IlmK\\ns6FRGeqAGeum9SMn0nl4NInfc/9WLD3VqoYa0HbXdqCgjjXShkzTUdEK3retI0+d\\nIGdKsFQRAgMBAAECggEAA4j7ZhnQ3ZZ2IwaVIFveVpEdnTBKIdKCeHEGsPWtm9sB\\nA9g/zbZtshWKPOYXuX8BSeQBVuTARU6UoLjLlk0sIHrRtQU5B1gnHeClbz4ykH+n\\njQD574vINuthTb5c/hkzd0Z0SVWpm2/5OgUKnmfyqRbDTRzyI1TeNbUVlcFNDqLt\\nYITA1LTPACbU7lY5s3hJ/WhXLjQE0gvupVFRJFSeT9V/D/v8ZvK9ow7czwWW/+sJ\\nIvw/sXcbycOGOqSPV+NWYL++VdQmyk1oOznNqERaelTy1VUpiX+YxXxCZ184UP6H\\nPvFzS+rn91asRqAjKJNI3hxPQVm07Vr8gVT1TbnP2QKBgQDMXGvhz5+rqfyKlOb7\\nx6Ee8pDLjO2kBFG1rdKqyrOsvK6go9/DhgYQ4465ObmIITQP+nvTH7fDZP9xdJcr\\n9k035XNHdJuAx8hHqWxFtLgpG1F5JJLP2K60x11ouv3wPu8acr+7ye9ipMMeCdRp\\nZuDOByx18O6lUh1U4a47rtXq3QKBgQC2eKzWFYmebCpbn8eZAGJ/+E1LJOxbrDY6\\nBiqiCeI3AIHqO07xAW14Z7C2I6QWKGlSFtquzsmnZ3wmBniDk296L7DiY1Gvp6eQ\\nh9y+WImNdKYjHOb5Tx5AnQmv+C2t1s0TDdILhjQR/Fs1Hv0c3TW4hFTHZhNv8Pet\\nQuVkjrd4xQKBgHa3Dbicux2m3tzGSTRkMHXg5TpJwNbx52GJ+4JZxGyJI0yQRfG4\\nTpfLCWMSZHPvDeZmVT49A6xPZJDM8PCJ4SuicAhHdfomlHMEua/4nq7KftbH5z00\\nm7DKy7mGPvQsKwwLMtRtJ1H/cpVlkm40ZE1rH2nYL1n8TKu9elCTbRNFAoGAIKgO\\nPq5SF+FB324EGdTgzAhTRPyRtIJong/Wd3OPYcqcdaAxq55WyjK8hIxyZGjNGJzw\\nfFKT8nrp1CBaVyn+zH5WiN2/k9FMguhd0E8mJwPWa/hTOhE319aDElQ3UKJdx2g0\\nzE0zanigliw6nnzUjXZZeepB1kno+cA8L7f/DAUCgYEAriqY5g/WiARrH6qFOrP6\\nxNPhNiM/vn+ibD+vD7N0C3NUxlvkFAuzwshqkQlVF0Z7C4pXxXtHsqKc0ZdyXTmU\\nZOkkhsrZRLh36RRPktFfzwn7iPmjCcGaJpyWDxQ+1BAUHRgBRN0Uz6KQ6L+JBafp\\nofQ4qD10mr23gsW3qDlNX1k=\\n-----END PRIVATE KEY-----\\n\",\"clientEmail\":\"firebase-adminsdk-m6g22@monapp-33057.iam.gserviceaccount.com\",\"httpClient\":{\"retry\":{\"maxRetries\":4,\"statusCodes\":[503],\"ioErrorCodes\":[\"ECONNRESET\",\"ETIMEDOUT\"],\"backOffFactor\":0.5,\"maxDelayInMillis\":60000}}}}"}}
+[debug] [2023-03-30T15:28:25.029Z] [runtime-status] [19196] Functions runtime initialized. {"cwd":"C:\\Users\\Michael.i_FNGA0247\\monapp\\functions","node_version":"16.18.0"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [19196] Functions runtime initialized. {\"cwd\":\"C:\\\\Users\\\\Michael.i_FNGA0247\\\\monapp\\\\functions\",\"node_version\":\"16.18.0\"}"}}
+[debug] [2023-03-30T15:28:25.030Z] [runtime-status] [19196] Listening to port: \\?\pipe\fire_emu_7908d4f6d5a29599 {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"[runtime-status] [19196] Listening to port: \\\\?\\pipe\\fire_emu_7908d4f6d5a29599"}}
+[debug] [2023-03-30T15:28:25.095Z] [worker-pool] submitRequest(triggerId=us-central1-app) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-app)"}}
+[debug] [2023-03-30T15:28:25.095Z] [worker-us-central1-app-a23b1dbe-612e-4903-b16d-f40231f02d93]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-a23b1dbe-612e-4903-b16d-f40231f02d93]: BUSY"}}
+[info] i  functions: Beginning execution of "app" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"Beginning execution of \"app\""}}
+[debug] [2023-03-30T15:28:25.270Z] [worker-us-central1-app-a23b1dbe-612e-4903-b16d-f40231f02d93]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-a23b1dbe-612e-4903-b16d-f40231f02d93]: IDLE"}}
+[debug] [2023-03-30T15:28:25.270Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[info] i  functions: Finished "app" in 21.7835ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"Finished \"app\" in 21.7835ms"}}
+[debug] [2023-03-30T15:35:12.253Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2023-03-30T15:35:12.253Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2023-03-30T15:35:12.254Z] Accepted request POST /monapp-33057/us-central1/app/api/getFee --> us-central1-app
+[debug] [2023-03-30T15:35:12.260Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2023-03-30T15:35:12.261Z] [functions] Got req.url=/monapp-33057/us-central1/app/api/getFee, mapping to path=/api/getFee {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/monapp-33057/us-central1/app/api/getFee, mapping to path=/api/getFee"}}
+[debug] [2023-03-30T15:35:12.262Z] [worker-pool] submitRequest(triggerId=us-central1-app) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-app)"}}
+[debug] [2023-03-30T15:35:12.262Z] [worker-us-central1-app-a23b1dbe-612e-4903-b16d-f40231f02d93]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-a23b1dbe-612e-4903-b16d-f40231f02d93]: BUSY"}}
+[info] i  functions: Beginning execution of "app" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"Beginning execution of \"app\""}}
+[debug] [2023-03-30T15:35:12.271Z] [worker-us-central1-app-a23b1dbe-612e-4903-b16d-f40231f02d93]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-a23b1dbe-612e-4903-b16d-f40231f02d93]: IDLE"}}
+[debug] [2023-03-30T15:35:12.272Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[info] i  functions: Finished "app" in 3.4764ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"Finished \"app\" in 3.4764ms"}}
+[debug] [2023-03-31T10:15:37.968Z] File C:\Users\Michael.i_FNGA0247\monapp\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\index.js changed, reloading triggers"}}
+[debug] [2023-03-31T10:15:39.092Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] !  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2023-03-31T10:16:03.973Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "api": "^5.0.7",
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.18.0",
+    "node-fetch": "^2.6.9",
+    "paystack-api": "^2.0.6"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2023-03-31T10:16:03.974Z] Building nodejs source
+[debug] [2023-03-31T10:16:03.974Z] Analyzing nodejs backend spec
+[debug] [2023-03-31T10:16:03.998Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-03-31T10:16:04.149Z] File C:\Users\Michael.i_FNGA0247\monapp\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\index.js changed, reloading triggers"}}
+[debug] [2023-03-31T10:16:05.179Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] !  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2023-03-31T10:16:22.454Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "api": "^5.0.7",
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.18.0",
+    "node-fetch": "^2.6.9",
+    "paystack-api": "^2.0.6"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2023-03-31T10:16:22.455Z] Building nodejs source
+[debug] [2023-03-31T10:16:22.455Z] Analyzing nodejs backend spec
+[debug] [2023-03-31T10:16:22.458Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-03-31T10:16:22.525Z] Serving at port 9005
+
+[debug] [2023-03-31T10:16:24.148Z] Serving at port 9006
+
+[debug] [2023-03-31T10:16:41.366Z] Got response from /__/functions.yaml {"endpoints":{"app":{"platform":"gcfv1","httpsTrigger":{},"entryPoint":"app"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2023-03-31T10:16:41.416Z] shutdown requested via /__/quitquitquit
+
+[debug] [2023-03-31T10:16:41.417Z] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: app. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: app."}}
+[debug] [2023-03-31T10:16:41.459Z] [worker-pool] Shutting down IDLE worker (us-central1-app) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Shutting down IDLE worker (us-central1-app)"}}
+[debug] [2023-03-31T10:16:41.459Z] [worker-us-central1-app-a23b1dbe-612e-4903-b16d-f40231f02d93]: FINISHING {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-a23b1dbe-612e-4903-b16d-f40231f02d93]: FINISHING"}}
+[error] !!  functions: Failed to load function definition from source: FirebaseError: User code failed to load. Cannot determine backend specification {"metadata":{"emulator":{"name":"functions"},"message":"Failed to load function definition from source: FirebaseError: User code failed to load. Cannot determine backend specification"}}
+[debug] [2023-03-31T10:16:41.486Z] [worker-us-central1-app-a23b1dbe-612e-4903-b16d-f40231f02d93]: exited {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-a23b1dbe-612e-4903-b16d-f40231f02d93]: exited"}}
+[debug] [2023-03-31T10:16:41.486Z] [worker-us-central1-app-a23b1dbe-612e-4903-b16d-f40231f02d93]: FINISHED {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-a23b1dbe-612e-4903-b16d-f40231f02d93]: FINISHED"}}
