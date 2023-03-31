@@ -15,7 +15,7 @@ function TermsOfUse() {
 
                     <Text>The Monapp service, website and/or software application (collectively, the “Service”) enables you to pay for products and services offered by third parties (“Products”). The Service is operated by Creatorh Technologies Limited (“Monapp”), subject to these Terms of Service (“Terms”).</Text>
 
-                    <Text my="40px" fontSize={'xx-large'} fontWeight={500}>Welcome to Monapp's Terms of service</Text>
+                    <Text my="40px" fontSize={'xx-large'} fontWeight={500}>Welcome to Monapp&#39;s Terms of service</Text>
 
                     <Box my="20px">
                         <Text fontSize={'x-large'} fontWeight={500}>This is a contract.</Text>
