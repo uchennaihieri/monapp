@@ -241,12 +241,12 @@ app.post('/api/fundAccount', access)
 
 app.post('/api/getFee', (req, res) => {
 
+    const payData = JSON.parse(req.body);
 
 
     (async () => {
         try {
 
-            const payData = req.body;
             const newFees = helper.addFeesTo(payData.topUpAmount)
             return res.status(200).send({
                 "successful": true,
