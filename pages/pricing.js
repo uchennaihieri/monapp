@@ -137,7 +137,7 @@ const Pricing = () => {
                             options={cardOptions}
                         />
                         <Divider />
-                        <PackageTier title={'Transact'} typePlan="1%" options={payOptions} />
+                        <PackageTier title={'Transact'} typePlan="1.5%" options={payOptions} />
                     </Stack>
                 </Box>
             </Box>

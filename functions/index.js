@@ -123,22 +123,7 @@ app.post('/api/verifyOtp', (req, res) => {
             })
 
                 .then(function (data) {
-
-                    bcrypt.hash(process.env.MONAPP_SECRET_KEY, saltRounds, async function (err, hash) {
-                        if (err) {
-                            return res.send(err)
-                        } else {
-
-                            return res.send({
-                                data,
-                                qrData: 'monapp' + termi.num + hash
-                            });
-
-                        }
-
-                    })
-
-
+                    return res.send(data);
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -234,7 +219,9 @@ function access(req, res) {
                         ],
                         transactionType: "CR"
                     });
+
                 }
+
             }
             return res.sendStatus(200)
 
