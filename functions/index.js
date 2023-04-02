@@ -18,10 +18,11 @@ const app = express();
 const db = admin.firestore();
 const saltRounds = 10;
 const cors = require('cors');
+app.use(cors({ origin: true }))
 const helper = new paystack.FeeHelper();
 const events = paystack.Events;
 var secret = "sk_test_1fbf46ff165d68ab2c5a7ac01f12109fb4073d00";
-app.use(cors({ origin: true }))
+
 
 
 
@@ -122,7 +123,22 @@ app.post('/api/verifyOtp', (req, res) => {
             })
 
                 .then(function (data) {
-                    return res.send(data);
+
+                    bcrypt.hash(process.env.MONAPP_SECRET_KEY, saltRounds, async function (err, hash) {
+                        if (err) {
+                            return res.send(err)
+                        } else {
+
+                            return res.send({
+                                data,
+                                qrData: 'monapp' + termi.num + hash
+                            });
+
+                        }
+
+                    })
+
+
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -178,7 +194,7 @@ app.post('/api/crypt', (req, res) => {
 
 
 
-function access(req, res, next) {
+function access(req, res) {
 
     (async () => {
         try {
@@ -218,12 +234,8 @@ function access(req, res, next) {
                         ],
                         transactionType: "CR"
                     });
-
                 }
-
             }
-
-
             return res.sendStatus(200)
 
         } catch (error) {
@@ -242,10 +254,12 @@ app.post('/api/fundAccount', access)
 
 app.post('/api/getFee', (req, res) => {
 
-    const payData = JSON.parse(req.body);
+
 
     (async () => {
         try {
+
+            const payData = req.body;
             const newFees = helper.addFeesTo(payData.topUpAmount)
             return res.status(200).send({
                 "successful": true,

@@ -42,20 +42,22 @@ function ConfirmOtp() {
 
     const toast = useToast()
 
+
+    const num = verificationNumber.substring(3)
+    console.log(personalBalance, merchantBalance, num, AuthUser.id, location, merchantName, myBusiness)
+    console.log(num)
+
+
     const url = "https://us-central1-monapp-33057.cloudfunctions.net/app/api/verifyOtp";
     var info = {
         "pinId": tokenPin,
         "pin": otp,
+        "num": num
     }
 
     const storage = getStorage();
     const storageRef = ref(storage, `${AuthUser.id}`);
 
-
-
-    const num = verificationNumber.substring(3)
-    console.log(personalBalance, merchantBalance, num, AuthUser.id, location, merchantName, myBusiness)
-    console.log(num)
 
     const submitOtp = () => {
         setLoadingState(true)
@@ -83,11 +85,11 @@ function ConfirmOtp() {
             .then(async function (res) {
                 console.log(res)
 
-                if (res.verified == true) {
+                if (res.data.verified == true) {
 
 
 
-                    await QRCode.toDataURL(`monapp${num}`, { errorCorrectionLevel: 'M' }).then(async (val) => {
+                    await QRCode.toDataURL(res.qrData, { errorCorrectionLevel: 'M' }).then(async (val) => {
                         await uploadString(storageRef, `${val}`, 'data_url').then((snapshot) => {
                             getDownloadURL(snapshot.ref).then(async (downloadURL) => {
                                 await setDoc(doc(db, "wallet", `${AuthUser.id}`), {
@@ -120,7 +122,7 @@ function ConfirmOtp() {
 
                     router.push('/Dashboard')
 
-                } else if (res.verified == 'Expired') {
+                } else if (res.data.verified == 'Expired') {
                     setLoadingState(false)
                     toast({
                         title: 'Verification failed',

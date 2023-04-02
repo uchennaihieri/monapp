@@ -365,7 +365,7 @@ function Dashboard({ person }) {
     const getFee = async () => {
 
 
-        await fetch("http://127.0.0.1:5001/monapp-33057/us-central1/app/api/getFee", {
+        await fetch("https://us-central1-monapp-33057.cloudfunctions.net/app/api/getFee", {
 
             // Adding method type
             method: "POST",

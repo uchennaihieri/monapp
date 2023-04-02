@@ -839,3 +839,257 @@ Issues? Report them at https://github.com/firebase/firebase-tools/issues and att
 [debug] [2023-03-31T11:31:38.544Z] [worker-us-central1-app-39296e7b-3d48-4891-853f-49e11539d699]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-39296e7b-3d48-4891-853f-49e11539d699]: IDLE"}}
 [debug] [2023-03-31T11:31:38.544Z] [work-queue] {"queueLength":0,"workRunningCount":0}
 [info] i  functions: Finished "app" in 13.6287ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-app"},"extension":{},"message":"Finished \"app\" in 13.6287ms"}}
+[debug] [2023-04-01T21:23:58.133Z] File C:\Users\Michael.i_FNGA0247\monapp\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\index.js changed, reloading triggers"}}
+[debug] [2023-04-01T21:23:59.317Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] !  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2023-04-01T21:24:39.423Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "api": "^5.0.7",
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.18.0",
+    "node-fetch": "^2.6.9",
+    "paystack-api": "^2.0.6"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2023-04-01T21:24:39.424Z] Building nodejs source
+[debug] [2023-04-01T21:24:39.424Z] Analyzing nodejs backend spec
+[debug] [2023-04-01T21:24:39.486Z] File C:\Users\Michael.i_FNGA0247\monapp\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\index.js changed, reloading triggers"}}
+[debug] [2023-04-01T21:24:39.486Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-04-01T21:24:40.491Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] !  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2023-04-01T21:25:06.269Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "api": "^5.0.7",
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.18.0",
+    "node-fetch": "^2.6.9",
+    "paystack-api": "^2.0.6"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2023-04-01T21:25:06.269Z] Building nodejs source
+[debug] [2023-04-01T21:25:06.269Z] Analyzing nodejs backend spec
+[debug] [2023-04-01T21:25:06.271Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-04-01T21:25:06.332Z] Serving at port 9005
+
+[debug] [2023-04-01T21:25:08.276Z] Serving at port 9006
+
+[debug] [2023-04-01T21:25:32.045Z] Got response from /__/functions.yaml {"endpoints":{"app":{"platform":"gcfv1","httpsTrigger":{},"entryPoint":"app"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2023-04-01T21:25:32.101Z] shutdown requested via /__/quitquitquit
+
+[debug] [2023-04-01T21:25:32.125Z] shutdown requested via /__/quitquitquit
+
+[error] !!  functions: Failed to load function definition from source: FirebaseError: User code failed to load. Cannot determine backend specification {"metadata":{"emulator":{"name":"functions"},"message":"Failed to load function definition from source: FirebaseError: User code failed to load. Cannot determine backend specification"}}
+[info] +  functions: Loaded functions definitions from source: app. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: app."}}
+[debug] [2023-04-01T21:25:32.191Z] [worker-pool] Shutting down IDLE worker (us-central1-app) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Shutting down IDLE worker (us-central1-app)"}}
+[debug] [2023-04-01T21:25:32.191Z] [worker-us-central1-app-39296e7b-3d48-4891-853f-49e11539d699]: FINISHING {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-39296e7b-3d48-4891-853f-49e11539d699]: FINISHING"}}
+[debug] [2023-04-01T21:25:32.353Z] [worker-us-central1-app-39296e7b-3d48-4891-853f-49e11539d699]: exited {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-39296e7b-3d48-4891-853f-49e11539d699]: exited"}}
+[debug] [2023-04-01T21:25:32.354Z] [worker-us-central1-app-39296e7b-3d48-4891-853f-49e11539d699]: FINISHED {"metadata":{"emulator":{"name":"functions"},"message":"[worker-us-central1-app-39296e7b-3d48-4891-853f-49e11539d699]: FINISHED"}}
+[debug] [2023-04-01T21:30:37.188Z] File C:\Users\Michael.i_FNGA0247\monapp\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\index.js changed, reloading triggers"}}
+[debug] [2023-04-01T21:30:38.203Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] !  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2023-04-01T21:30:54.285Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "api": "^5.0.7",
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.18.0",
+    "node-fetch": "^2.6.9",
+    "paystack-api": "^2.0.6"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2023-04-01T21:30:54.285Z] Building nodejs source
+[debug] [2023-04-01T21:30:54.285Z] Analyzing nodejs backend spec
+[debug] [2023-04-01T21:30:54.287Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-04-01T21:30:54.332Z] File C:\Users\Michael.i_FNGA0247\monapp\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\index.js changed, reloading triggers"}}
+[debug] [2023-04-01T21:30:55.338Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] !  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2023-04-01T21:31:09.981Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "api": "^5.0.7",
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.18.0",
+    "node-fetch": "^2.6.9",
+    "paystack-api": "^2.0.6"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2023-04-01T21:31:09.982Z] Building nodejs source
+[debug] [2023-04-01T21:31:09.982Z] Analyzing nodejs backend spec
+[debug] [2023-04-01T21:31:09.983Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-04-01T21:31:10.034Z] Serving at port 9005
+
+[debug] [2023-04-01T21:31:11.950Z] Serving at port 9006
+
+[debug] [2023-04-01T21:31:14.893Z] File C:\Users\Michael.i_FNGA0247\monapp\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\index.js changed, reloading triggers"}}
+[debug] [2023-04-01T21:31:15.942Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] !  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2023-04-01T21:31:34.574Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "api": "^5.0.7",
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.18.0",
+    "node-fetch": "^2.6.9",
+    "paystack-api": "^2.0.6"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2023-04-01T21:31:34.575Z] Building nodejs source
+[debug] [2023-04-01T21:31:34.575Z] Analyzing nodejs backend spec
+[debug] [2023-04-01T21:31:34.578Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-04-01T21:31:34.634Z] Got response from /__/functions.yaml {"endpoints":{"app":{"platform":"gcfv1","httpsTrigger":{},"entryPoint":"app"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2023-04-01T21:31:34.665Z] shutdown requested via /__/quitquitquit
+
+[debug] [2023-04-01T21:31:34.666Z] shutdown requested via /__/quitquitquit
+
+[error] !!  functions: Failed to load function definition from source: FirebaseError: User code failed to load. Cannot determine backend specification {"metadata":{"emulator":{"name":"functions"},"message":"Failed to load function definition from source: FirebaseError: User code failed to load. Cannot determine backend specification"}}
+[info] +  functions: Loaded functions definitions from source: app. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: app."}}
+[debug] [2023-04-01T21:31:35.860Z] Serving at port 9007
+
+[debug] [2023-04-01T21:31:41.198Z] Got response from /__/functions.yaml {"endpoints":{"app":{"platform":"gcfv1","httpsTrigger":{},"entryPoint":"app"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2023-04-01T21:31:41.209Z] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: app. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: app."}}
+[debug] [2023-04-02T02:42:53.280Z] File C:\Users\Michael.i_FNGA0247\monapp\functions\index.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File C:\\Users\\Michael.i_FNGA0247\\monapp\\functions\\index.js changed, reloading triggers"}}
+[debug] [2023-04-02T02:42:54.365Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] !  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2023-04-02T02:43:18.054Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "api": "^5.0.7",
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.18.0",
+    "node-fetch": "^2.6.9",
+    "paystack-api": "^2.0.6"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2023-04-02T02:43:18.055Z] Building nodejs source
+[debug] [2023-04-02T02:43:18.056Z] Analyzing nodejs backend spec
+[debug] [2023-04-02T02:43:18.073Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-04-02T02:43:22.573Z] Serving at port 9005
+
+[debug] [2023-04-02T02:43:39.063Z] Got response from /__/functions.yaml {"endpoints":{"app":{"platform":"gcfv1","httpsTrigger":{},"entryPoint":"app"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2023-04-02T02:43:39.091Z] shutdown requested via /__/quitquitquit
+
+[info] +  functions: Loaded functions definitions from source: app. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: app."}}
