@@ -66,7 +66,6 @@ const Pricing = () => {
     const cardOptions = [
         { id: 1, desc: 'Zero Maintenance fee' },
         { id: 2, desc: 'Free delivery fee' },
-        { id: 3, desc: 'Pay later available' },
     ];
 
 
@@ -133,11 +132,11 @@ const Pricing = () => {
                         <PackageTier
                             title={'Card'}
                             checked={true}
-                            typePlan="&#8358;1,500"
+                            typePlan="&#8358;3,000"
                             options={cardOptions}
                         />
                         <Divider />
-                        <PackageTier title={'Transact'} typePlan="1.5%" options={payOptions} />
+                        <PackageTier title={'Transact'} typePlan="0.75%" options={payOptions} />
                     </Stack>
                 </Box>
             </Box>
