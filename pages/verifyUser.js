@@ -39,6 +39,7 @@ import {
     RadioGroup,
     Radio,
     FormHelperText,
+    useToast,
 } from '@chakra-ui/react';
 import { AuthAction, withAuthUser, withAuthUserTokenSSR } from 'next-firebase-auth';
 import { useRouter } from 'next/router';
@@ -259,7 +260,7 @@ const VerifyUser = ({ person }) => {
 
 
 export const Verify = ({ person }) => {
-
+    const toast = useToast()
     const router = useRouter()
     const [tokenPin, setTokenPin] = useRecoilState(pinID);
     const [verificationNumber, setVerificationNumber] = useRecoilState(bvnN);
@@ -277,6 +278,7 @@ export const Verify = ({ person }) => {
     const [account, setAccount] = useState('')
     const [myBank, setMyBank] = useState("")
     const [errorFetchedChecker, setErrorFetchedChecker] = useState(false);
+    const [betaCode, setBetaCode] = useState('')
 
 
     // const config = {
@@ -349,6 +351,17 @@ export const Verify = ({ person }) => {
 
     }
 
+
+    const notBetaUser = () => {
+        toast({
+            title: 'Not a beta User',
+            description: 'Only beta users are allowed to use the product for now. We will inform you when we launch officially to the public. ',
+            status: 'error',
+            duration: 9000,
+            isClosable: true,
+            position: 'top',
+        })
+    }
 
 
     return (
@@ -471,11 +484,23 @@ export const Verify = ({ person }) => {
                     </>
                 }
 
+                <Box >
+                    <FormControl id="email" >
+                        <FormLabel className={roboto.className}>Beta Code</FormLabel>
+
+                        <Input
+                            value={betaCode}
+                            onChange={(e) => setBetaCode(e.target.value)} mb="1.6rem" h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'} type="text" placeholder='What is the beta code?' />
+
+
+                    </FormControl>
+                </Box>
+
                 <Button
                     type='submit'
                     isLoading={loadingState}
                     loadingText='Please wait..'
-                    onClick={verifyUser}
+                    onClick={betaCode == 'mysteryAccess2Beta' ? verifyUser : notBetaUser}
                     borderRadius={'0.125rem'}
                     h="4rem"
                     bg={'#000000'}

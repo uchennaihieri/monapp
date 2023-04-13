@@ -43,7 +43,8 @@ import {
     Select,
     Stack,
     NumberInput,
-    NumberInputField
+    NumberInputField,
+    useBreakpointValue
 } from '@chakra-ui/react'
 import _ from 'lodash';
 import {
@@ -77,6 +78,7 @@ import { Bree_Serif } from '@next/font/google';
 import dayjs from 'dayjs';
 import { usePaystackPayment } from 'react-paystack';
 import { TbCurrencyNaira } from 'react-icons/tb'
+import axios from 'axios';
 
 const bree = Bree_Serif({ weight: '400', subsets: ['latin'] })
 
@@ -106,8 +108,24 @@ function Dashboard({ person }) {
     const [view, setView] = useState('')
     const [amountFees, setAmountFees] = useState(0)
     const [amountWithFees, setAmountWithFees] = useState(0)
+    const [activePage, setActivePage] = useState(1)
 
     const now = dayjs()
+
+    const pageHiden = useBreakpointValue(
+        {
+            base: 'none',
+            md: 'block',
+        },
+    )
+
+
+    const pageView = useBreakpointValue(
+        {
+            base: 'block',
+            md: 'block',
+        },
+    )
 
     useEffect(() => {
 
@@ -171,6 +189,9 @@ function Dashboard({ person }) {
 
     }
 
+    const goToCard = () => {
+        setActivePage(2)
+    }
 
     const getSecurity = () => {
         const unsub = onSnapshot(doc(db, "security", `${person.id}`), (doc) => {
@@ -234,6 +255,7 @@ function Dashboard({ person }) {
         })
     }
     const goToDashboard = () => {
+        setActivePage(1)
         router.push('/Dashboard')
     }
 
@@ -365,18 +387,12 @@ function Dashboard({ person }) {
     const getFee = async () => {
 
 
-        await fetch("https://us-central1-monapp-33057.cloudfunctions.net/app/api/getFee", {
 
-            // Adding method type
-            method: "POST",
-            body: JSON.stringify({
-                topUpAmount: topUpAmount * 100,
-            })
-        }).then(function (res) {
-            return res.json();
+        axios.post('http://127.0.0.1:5001/monapp-33057/us-central1/app/api/getFeeApp', {
+            topUpAmount: topUpAmount * 100,
         })
-            // Converting to JSON
-            .then(function (data) {
+            .then(function ({ data }) {
+                console.log(data)
                 if (data.successful) {
                     setAmountWithFees(data.newFees / 100)
                     setAmountFees((data.newFees / 100) - topUpAmount)
@@ -391,7 +407,37 @@ function Dashboard({ person }) {
             .catch(function (error) {
                 setLoadingState(false)
                 console.log(error);
-            })
+            });
+
+
+        // await fetch("http://127.0.0.1:5001/monapp-33057/us-central1/app/api/getFee", {
+
+        //     // Adding method type
+        //     method: "POST",
+        //     body: JSON.stringify({
+        //         topUpAmount: topUpAmount * 100,
+        //     })
+        // }).then(function (res) {
+        //     return res.json();
+        // })
+        //     // Converting to JSON
+        //     .then(function (data) {
+        //         console.log(data)
+        //         if (data.successful) {
+        //             setAmountWithFees(data.newFees / 100)
+        //             setAmountFees((data.newFees / 100) - topUpAmount)
+        //             setLoadingState(false)
+        //             setPaymentDialog(4)
+
+        //         } else {
+        //             setLoadingState(false)
+
+        //         }
+        //     })
+        //     .catch(function (error) {
+        //         setLoadingState(false)
+        //         console.log(error);
+        //     })
 
     }
 
@@ -456,6 +502,9 @@ function Dashboard({ person }) {
                         <Button colorScheme='gray' fontWeight={600} variant={'link'} color='white' mr="30px" onClick={goToMerchants} >
                             Merchants
                         </Button>
+                        <Button colorScheme='gray' fontWeight={600} variant={'link'} color='white' mr="30px" onClick={goToCard} >
+                            Card
+                        </Button>
                         <Button fontWeight={600} variant={'link'} color='white' onClick={signMeOut}>logout</Button>
 
 
@@ -471,6 +520,8 @@ function Dashboard({ person }) {
                 flexDir="column"
                 overflow="auto"
                 minH={{ base: "90vh", md: "100vh" }}
+
+                display={activePage == 1 ? pageView : pageHiden}
             >
                 <Heading
                     fontWeight="normal"
@@ -583,9 +634,10 @@ function Dashboard({ person }) {
             {/* Column 3 */}
             <Flex
                 w={["100%", "100%", "30%"]}
-                bgColor="#F5F5F5" p={{ base: "5%", md: "3%" }}
+                bgColor={{ base: "#FFFFFF", md: "#F5F5F5" }} p={{ base: "5%", md: "3%" }}
                 flexDir="column"
                 overflow="auto"
+                display={activePage == 2 ? pageView : pageHiden}
                 minW={[null, null, "300px", "300px", "400px"]}
             >
                 <Flex justify="space-between">

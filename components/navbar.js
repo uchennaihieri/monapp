@@ -14,6 +14,7 @@ import {
     PopoverContent,
     useColorModeValue,
     useDisclosure,
+    Badge,
 } from '@chakra-ui/react';
 import { DM_Sans } from '@next/font/google'
 import {
@@ -47,8 +48,10 @@ export default function Navbar() {
 
                 <Flex justify={{ base: 'start', md: 'start' }} onClick={goHome} _hover={{
                     cursor: "pointer"
-                }}>
+                }} position="relative">
                     <Img src="/logo.png" width={{ base: '8.625rem', md: "14.4275rem" }} height={{ base: '1.569rem', md: "2.625rem" }} />
+
+                    <Badge position="absolute" left="-10px" top="-15px" colorScheme='green'>BETA</Badge>
                 </Flex>
 
                 <Flex pl={{ base: '36.154vw' }} justify={{ base: 'center', md: 'start' }}>
@@ -104,6 +107,7 @@ const DesktopNav = () => {
                     <Img position={'absolute'} w={'0em'} _groupHover={{ width: "100%" }} src="line.svg" height="0.6em" transition={'width .5s ease-in-out'} />
                 </Box>
             ))}
+
         </Stack>
     );
 };

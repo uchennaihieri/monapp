@@ -7,13 +7,13 @@ const sdk = require('api')('@qoreid/v1.0#79ra32ll9x7kn58');
 var serviceAccount = require("./permissions.json");
 const bcrypt = require('bcrypt');
 var crypto = require('crypto');
+const express = require('express');
 
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
 })
 
-const express = require('express');
 const app = express();
 const db = admin.firestore();
 const saltRounds = 10;
@@ -239,9 +239,32 @@ function access(req, res) {
 app.post('/api/fundAccount', access)
 
 
-app.post('/api/getFee', (req, res) => {
+// app.post('/api/getFee', (req, res) => {
 
-    const payData = JSON.parse(req.body);
+//     const payData = JSON.parse(req.body);
+
+
+//     (async () => {
+//         try {
+
+//             const newFees = helper.addFeesTo(payData.topUpAmount)
+//             return res.status(200).send({
+//                 "successful": true,
+//                 newFees: newFees
+//             })
+//         } catch (error) {
+//             console.log(error)
+//             return res.send(error)
+//         }
+//     })();
+
+// })
+
+
+
+app.post('/api/getFeeApp', (req, res) => {
+
+    const payData = req.body;
 
 
     (async () => {
