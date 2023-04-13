@@ -110,7 +110,7 @@ export default function CardSection() {
                         <Divider />
                         <Box py={{ base: "1.28rem", md: '2.25rem' }} >
                             <Flex flexDirection={'row'} align={'center'}>
-                                <Image src={'https://picsum.photos/200/300.webp'} height={{ base: "2.53rem", md: '4.4rem' }} width={{ base: "2.46rem", md: '4.3rem' }} mr={{ base: "0.42rem", md: "0.75rem" }} border={'1px solid #D5D6D6'} borderRadius={{ base: "0.14rem", md: '0.25rem' }} />
+                                {/* <Image src={'https://picsum.photos/200/300.webp'} height={{ base: "2.53rem", md: '4.4rem' }} width={{ base: "2.46rem", md: '4.3rem' }} mr={{ base: "0.42rem", md: "0.75rem" }} border={'1px solid #D5D6D6'} borderRadius={{ base: "0.14rem", md: '0.25rem' }} /> */}
                                 <Box>
                                     <Text color={'#000000'}
                                         lineHeight={{ base: "0.57rem", md: '0.875rem' }}
@@ -155,7 +155,6 @@ export default function CardSection() {
                         <Divider />
                         <Box py={{ base: "1.28rem", md: '2.25rem' }} >
                             <Flex flexDirection={'row'} align={'center'}>
-                                <Image src={'https://picsum.photos/200/300.webp'} height={{ base: "2.53rem", md: '4.4rem' }} width={{ base: "2.46rem", md: '4.3rem' }} mr={{ base: "0.42rem", md: "0.75rem" }} border={'1px solid #D5D6D6'} borderRadius={{ base: "0.14rem", md: '0.25rem' }} />
                                 <Box>
                                     <Text color={'#000000'}
                                         lineHeight={{ base: "0.57rem", md: '0.875rem' }}
@@ -200,7 +199,7 @@ export default function CardSection() {
                         <Divider />
                         <Box py={{ base: "1.28rem", md: '2.25rem' }} >
                             <Flex flexDirection={'row'} align={'center'}>
-                                <Image src={'https://picsum.photos/200/300.webp'} height={{ base: "2.53rem", md: '4.4rem' }} width={{ base: "2.46rem", md: '4.3rem' }} mr={{ base: "0.42rem", md: "0.75rem" }} border={'1px solid #D5D6D6'} borderRadius={{ base: "0.14rem", md: '0.25rem' }} />
+
                                 <Box>
                                     <Text color={'#000000'}
                                         lineHeight={{ base: "0.57rem", md: '0.875rem' }}
