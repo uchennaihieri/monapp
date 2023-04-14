@@ -121,9 +121,9 @@ export default function CardSection() {
                                 fontSize={{ base: "0.57rem", md: '1rem' }}
                                 className={dmsans.className}
                                 textAlign={'justify'}>
-                                I'm pretty damn excited about this! As a business owner, you know how frustrating it can be to wait for payments to come in. Your product is the perfect solution to this problem!
+                                I&#39;m pretty damn excited about this! As a business owner, you know how frustrating it can be to wait for payments to come in. Your product is the perfect solution to this problem!
 
-                                I like the level of thought and care you've put into this project. I know firsthand how hard you've been working, and it's inspiring to see your dedication pay off. I can't wait to start using it for my own business.
+                                I like the level of thought and care you&#39;ve put into this project. I know firsthand how hard you&#39;ve been working, and it&#39;s inspiring to see your dedication pay off. I can&#39;t wait to start using it for my own business.
                             </Text>
                         </Box>
 
@@ -170,9 +170,9 @@ export default function CardSection() {
                                 fontSize={{ base: "0.57rem", md: '1rem' }}
                                 className={dmsans.className}
                                 textAlign={'justify'}>
-                                Heard about your new payment product and I'm stoked! As you know, getting paid on time is crucial for my business and your product seems like the perfect solution.
+                                Heard about your new payment product and I&#39;m stoked! As you know, getting paid on time is crucial for my business and your product seems like the perfect solution.
 
-                                I'm confident it's going to be a hit. I can't wait to start using it!
+                                I&#39;m confident it&#39;s going to be a hit. I can&#39;t wait to start using it!
 
 
                             </Text>
@@ -219,9 +219,9 @@ export default function CardSection() {
                                 fontWeight={400}
                                 fontSize={{ base: "0.57rem", md: '1rem' }}
                                 className={dmsans.className}
-                                textAlign={'justify'}>Just wanted to say how excited I am for your new payment product! It seems like it will solve a major issue I've been having and I'm really looking forward to using it.
+                                textAlign={'justify'}>Just wanted to say how excited I am for your new payment product! It seems like it will solve a major issue I&#39;ve been having and I&#39;m really looking forward to using it.
 
-                                The features and functionality look amazing, and I can't wait to see how it will make my life easier.
+                                The features and functionality look amazing, and I can&#39;t wait to see how it will make my life easier.
                             </Text>
                         </Box>
                         <Divider />
