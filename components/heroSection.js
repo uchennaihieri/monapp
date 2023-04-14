@@ -14,6 +14,7 @@ import {
     useColorModeValue,
     StackDivider,
     HStack,
+    useToast,
 } from '@chakra-ui/react';
 import { DM_Sans, Bree_Serif } from '@next/font/google'
 
@@ -22,6 +23,20 @@ const bree = Bree_Serif({ weight: '400', subsets: ['latin'] })
 const dmsans = DM_Sans({ weight: '400', subsets: ['latin'] })
 
 export default function HeroSection() {
+
+    const toast = useToast()
+
+    const getApp = () => {
+        toast({
+            title: 'Sorry, you cannot get the app at this time.',
+            description: 'This app is only available to pilot users for now. We still have open slots in our pilot which you can join by filling the form on our "work with us" page or simply sign up to be notified when we are available for public use',
+            status: 'error',
+            duration: 9000,
+            isClosable: true,
+            position: 'top',
+        })
+    }
+
     return (
 
         <Stack
@@ -68,6 +83,9 @@ export default function HeroSection() {
                         src={
                             '/playstore.png'
                         }
+
+                        onClick={getApp}
+                        _hover={{ cursor: 'pointer' }}
                     />
                     <Image
                         alt={'Hero Image'}
@@ -78,6 +96,9 @@ export default function HeroSection() {
                         src={
                             '/appstore.png'
                         }
+
+                        onClick={getApp}
+                        _hover={{ cursor: 'pointer' }}
                     />
 
                 </HStack>

@@ -18,6 +18,7 @@ import {
 import { MdCheckCircle } from 'react-icons/md'
 import { AiOutlineRight } from 'react-icons/ai'
 import { Bree_Serif, DM_Sans, Inter, Plus_Jakarta_Sans } from '@next/font/google'
+import { useRouter } from 'next/router';
 
 const plus = Plus_Jakarta_Sans({ weight: ['500', '700'], subsets: ['latin'] })
 
@@ -27,6 +28,12 @@ const dmsans = DM_Sans({ weight: '400', subsets: ['latin'] })
 const bree = Bree_Serif({ weight: '400', subsets: ['latin'] })
 
 export default function DataSection() {
+    const router = useRouter()
+
+    const getStarted = () => {
+        router.push('/auth?task=signup')
+    }
+
     return (
         <Box bg="#F9FAFC" h={{ base: "56.125em", md: "53.12em" }}>
             <Container maxW='79.81em' pt={{ base: "0.75rem", md: "5.25rem" }} centerContent>
@@ -103,7 +110,7 @@ export default function DataSection() {
 
                         <Button alignSelf={{ base: "center", md: 'start' }} bg={{ base: 'black', md: 'transparent' }} _hover={{
                             backgroundColor: 'none'
-                        }} color={{ base: '#ffffff', md: '#3183FF' }} w={{ base: "17.5em", md: "6.6em" }} rightIcon={<AiOutlineRight />}>Get Started</Button>
+                        }} color={{ base: '#ffffff', md: '#3183FF' }} w={{ base: "17.5em", md: "6.6em" }} rightIcon={<AiOutlineRight />} onClick={getStarted}>Get Started</Button>
 
                     </Stack>
 

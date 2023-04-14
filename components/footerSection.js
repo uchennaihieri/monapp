@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { Box, SimpleGrid, Icon, Text, Stack, Flex, VStack, StackDivider, HStack, Image, Center, Button, Divider } from '@chakra-ui/react';
+import { Box, SimpleGrid, Icon, Text, Stack, Flex, VStack, StackDivider, HStack, Image, Center, Button, Divider, useToast } from '@chakra-ui/react';
 import { BsFacebook, BsTwitter } from 'react-icons/bs';
 import { AiFillInstagram, AiFillLinkedin } from 'react-icons/ai';
 import { FcAssistant, FcDonate, FcInTransit } from 'react-icons/fc';
@@ -11,6 +11,22 @@ const dmsans = DM_Sans({ weight: '400', subsets: ['latin'] })
 
 
 export default function FooterSection() {
+
+
+    const toast = useToast()
+
+    const getApp = () => {
+        toast({
+            title: 'Sorry, you cannot get the app at this time.',
+            description: 'This app is only available to pilot users for now. We still have open slots in our pilot which you can join by filling the form on our "work with us" page or simply sign up to be notified when we are available for public use',
+            status: 'error',
+            duration: 9000,
+            isClosable: true,
+            position: 'top',
+        })
+    }
+
+
     const router = useRouter()
     const goIssues = () => {
         router.push('/issues')
@@ -47,8 +63,12 @@ export default function FooterSection() {
 
                         <Image display={{ base: 'none', md: 'flex' }} src={'/arrow.svg'} w={'12.32rem'} h={'5.895rem'} />
                         <HStack>
-                            <Image src={'/playstore.png'} w={{ base: '8rem', md: '12.81rem' }} h={{ base: '2.61rem', md: '4.18rem' }} />
-                            <Image src={'/appstore.png'} w={{ base: '8.06rem', md: '12.90rem' }} h={{ base: '2.67rem', md: '4.27rem' }} />
+                            <Image src={'/playstore.png'} w={{ base: '8rem', md: '12.81rem' }} h={{ base: '2.61rem', md: '4.18rem' }}
+                                onClick={getApp}
+                                _hover={{ cursor: 'pointer' }} />
+                            <Image src={'/appstore.png'} w={{ base: '8.06rem', md: '12.90rem' }} h={{ base: '2.67rem', md: '4.27rem' }}
+                                onClick={getApp}
+                                _hover={{ cursor: 'pointer' }} />
                         </HStack>
                     </Flex>
                 </Box>

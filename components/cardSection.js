@@ -13,6 +13,8 @@ import {
     Button,
     Divider,
     HStack,
+    useToast,
+    Spacer,
 } from '@chakra-ui/react';
 import { MdCheckCircle } from 'react-icons/md'
 import { AiFillStar, AiOutlineLine, AiOutlineRight, AiOutlineStar } from 'react-icons/ai'
@@ -28,6 +30,21 @@ const bree = Bree_Serif({ weight: '400', subsets: ['latin'] })
 
 
 export default function CardSection() {
+
+
+    const toast = useToast()
+
+    const getApp = () => {
+        toast({
+            title: 'Sorry, you cannot get the app at this time.',
+            description: 'This app is only available to pilot users for now. We still have open slots in our pilot which you can join by filling the form on our "work with us" page or simply sign up to be notified when we are available for public use',
+            status: 'error',
+            duration: 9000,
+            isClosable: true,
+            position: 'top',
+        })
+    }
+
     return (
         <Box >
             <Container maxW='79.81em' pt={{ base: "1.125rem", md: "1.78rem" }} centerContent>
@@ -60,7 +77,7 @@ export default function CardSection() {
 
                         <Button alignSelf={{ base: "center", md: 'start' }} bg={{ base: 'black', md: 'transparent' }} _hover={{
                             backgroundColor: 'none'
-                        }} color={{ base: '#ffffff', md: '#3183FF' }} w={{ base: "17.5em", md: "6.6em" }} rightIcon={<AiOutlineRight />}>Download App</Button>
+                        }} color={{ base: '#ffffff', md: '#3183FF' }} w={{ base: "17.5em", md: "6.6em" }} rightIcon={<AiOutlineRight />} onClick={getApp}>Download App</Button>
 
                     </Stack>
                     <Box position="relative">
@@ -91,12 +108,12 @@ export default function CardSection() {
                         fontSize={{ base: '0.75rem', md: '1rem' }}
                         className={dmsans.className}
                         w={{ base: "15.25rem", md: "auto" }}
-                    >Hear what our users are saying about the smooth payment life.</Text>
+                    >Hear what prospective users are saying about the smooth payment life.</Text>
                 </Box>
 
                 <Flex flexDirection={'row'} >
                     <Box w={{ base: "15.52rem", md: '27.18rem' }} h={{ base: "16.81rem", md: '29.43rem' }} bg={'rgba(213, 214, 214, 0.15)'} px={{ base: "0.99rem", md: '1.75rem' }} border={'1px solid rgba(0, 0, 0, 0.2)'} mb={{ base: "2.25rem", md: "4.75rem" }} m="10px">
-                        <Box py={{ base: "1.35rem", md: '2.375rem' }}>
+                        <Box h='65%' py={{ base: "1.35rem", md: '2.375rem' }}>
                             <Text
                                 color={'#000000'}
                                 lineHeight={{ base: "0.85rem", md: '1.5rem' }}
@@ -104,9 +121,12 @@ export default function CardSection() {
                                 fontSize={{ base: "0.57rem", md: '1rem' }}
                                 className={dmsans.className}
                                 textAlign={'justify'}>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,  standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                I'm pretty damn excited about this! As a business owner, you know how frustrating it can be to wait for payments to come in. Your product is the perfect solution to this problem!
+
+                                I like the level of thought and care you've put into this project. I know firsthand how hard you've been working, and it's inspiring to see your dedication pay off. I can't wait to start using it for my own business.
                             </Text>
                         </Box>
+
                         <Divider />
                         <Box py={{ base: "1.28rem", md: '2.25rem' }} >
                             <Flex flexDirection={'row'} align={'center'}>
@@ -117,7 +137,7 @@ export default function CardSection() {
                                         fontWeight={500}
                                         fontSize={{ base: "0.81rem", md: '1.5rem' }}
                                         className={dmsansBold.className}
-                                        mb={{ base: "0.57rem", md: "1rem" }}> Phillip Chatham A. </Text>
+                                        mb={{ base: "0.57rem", md: "1rem" }}> Kelechi Agorua </Text>
                                     <Text
                                         color={'#000000'}
                                         lineHeight={{ base: "0.5rem", md: '0.875rem' }}
@@ -125,7 +145,58 @@ export default function CardSection() {
                                         fontSize={{ base: "0.64rem", md: '1.125rem' }}
                                         letterSpacing={{ base: "0.34rem", md: '0.6px' }}
                                         className={dmsans.className}
-                                        mb={{ base: "0.49rem", md: "0.875rem" }}>CEO, Creatorh </Text>
+                                        mb={{ base: "0.49rem", md: "0.875rem" }}>Founder, Penn Hill Academy </Text>
+                                    <HStack>
+                                        <Icon as={AiFillStar} fontSize={{ base: "0.35rem", md: "0.625rem" }} color="#DFA206" />
+                                        <Icon as={AiFillStar} fontSize={{ base: "0.35rem", md: "0.625rem" }} color="#DFA206" />
+                                        <Icon as={AiFillStar} fontSize={{ base: "0.35rem", md: "0.625rem" }} color="#DFA206" />
+
+                                        <Icon as={AiOutlineStar} fontSize={{ base: "0.35rem", md: "0.625rem" }} color="#DFA206" />
+                                        <Icon as={AiOutlineStar} fontSize={{ base: "0.35rem", md: "0.625rem" }} color="#DFA206" />
+                                    </HStack>
+
+                                </Box>
+                            </Flex>
+                        </Box>
+                    </Box>
+
+
+                    <Box w={{ base: "15.52rem", md: '27.18rem' }} h={{ base: "16.81rem", md: '29.43rem' }} bg={'rgba(213, 214, 214, 0.15)'} px={{ base: "0.99rem", md: '1.75rem' }} border={'1px solid rgba(0, 0, 0, 0.2)'} mb={{ base: "2.25rem", md: "4.75rem" }} m="10px" >
+                        <Box h='65%' py={{ base: "1.35rem", md: '2.375rem' }}>
+                            <Text
+                                color={'#000000'}
+                                lineHeight={{ base: "0.85rem", md: '1.5rem' }}
+                                fontWeight={400}
+                                fontSize={{ base: "0.57rem", md: '1rem' }}
+                                className={dmsans.className}
+                                textAlign={'justify'}>
+                                Heard about your new payment product and I'm stoked! As you know, getting paid on time is crucial for my business and your product seems like the perfect solution.
+
+                                I'm confident it's going to be a hit. I can't wait to start using it!
+
+
+                            </Text>
+                        </Box>
+
+
+                        <Divider />
+                        <Box py={{ base: "1.28rem", md: '2.25rem' }} >
+                            <Flex flexDirection={'row'} align={'center'}>
+                                <Box>
+                                    <Text color={'#000000'}
+                                        lineHeight={{ base: "0.57rem", md: '0.875rem' }}
+                                        fontWeight={500}
+                                        fontSize={{ base: "0.81rem", md: '1.5rem' }}
+                                        className={dmsansBold.className}
+                                        mb={{ base: "0.57rem", md: "1rem" }}> Akpa Uchenna Michael</Text>
+                                    <Text
+                                        color={'#000000'}
+                                        lineHeight={{ base: "0.5rem", md: '0.875rem' }}
+                                        fontWeight={400}
+                                        fontSize={{ base: "0.64rem", md: '1.125rem' }}
+                                        letterSpacing={{ base: "0.34rem", md: '0.6px' }}
+                                        className={dmsans.className}
+                                        mb={{ base: "0.49rem", md: "0.875rem" }}>CEO, Lemans Academy Limited</Text>
                                     <HStack>
                                         <Icon as={AiFillStar} fontSize={{ base: "0.35rem", md: "0.625rem" }} color="#DFA206" />
                                         <Icon as={AiFillStar} fontSize={{ base: "0.35rem", md: "0.625rem" }} color="#DFA206" />
@@ -141,59 +212,16 @@ export default function CardSection() {
 
 
                     <Box w={{ base: "15.52rem", md: '27.18rem' }} h={{ base: "16.81rem", md: '29.43rem' }} bg={'rgba(213, 214, 214, 0.15)'} px={{ base: "0.99rem", md: '1.75rem' }} border={'1px solid rgba(0, 0, 0, 0.2)'} mb={{ base: "2.25rem", md: "4.75rem" }} m="10px">
-                        <Box py={{ base: "1.35rem", md: '2.375rem' }}>
+                        <Box h='65%' py={{ base: "1.35rem", md: '2.375rem' }}>
                             <Text
                                 color={'#000000'}
                                 lineHeight={{ base: "0.85rem", md: '1.5rem' }}
                                 fontWeight={400}
                                 fontSize={{ base: "0.57rem", md: '1rem' }}
                                 className={dmsans.className}
-                                textAlign={'justify'}>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,  standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                            </Text>
-                        </Box>
-                        <Divider />
-                        <Box py={{ base: "1.28rem", md: '2.25rem' }} >
-                            <Flex flexDirection={'row'} align={'center'}>
-                                <Box>
-                                    <Text color={'#000000'}
-                                        lineHeight={{ base: "0.57rem", md: '0.875rem' }}
-                                        fontWeight={500}
-                                        fontSize={{ base: "0.81rem", md: '1.5rem' }}
-                                        className={dmsansBold.className}
-                                        mb={{ base: "0.57rem", md: "1rem" }}> Phillip Chatham A. </Text>
-                                    <Text
-                                        color={'#000000'}
-                                        lineHeight={{ base: "0.5rem", md: '0.875rem' }}
-                                        fontWeight={400}
-                                        fontSize={{ base: "0.64rem", md: '1.125rem' }}
-                                        letterSpacing={{ base: "0.34rem", md: '0.6px' }}
-                                        className={dmsans.className}
-                                        mb={{ base: "0.49rem", md: "0.875rem" }}>CEO, Creatorh </Text>
-                                    <HStack>
-                                        <Icon as={AiFillStar} fontSize={{ base: "0.35rem", md: "0.625rem" }} color="#DFA206" />
-                                        <Icon as={AiFillStar} fontSize={{ base: "0.35rem", md: "0.625rem" }} color="#DFA206" />
-                                        <Icon as={AiFillStar} fontSize={{ base: "0.35rem", md: "0.625rem" }} color="#DFA206" />
-                                        <Icon as={AiFillStar} fontSize={{ base: "0.35rem", md: "0.625rem" }} color="#DFA206" />
-                                        <Icon as={AiOutlineStar} fontSize={{ base: "0.35rem", md: "0.625rem" }} color="#DFA206" />
-                                    </HStack>
+                                textAlign={'justify'}>Just wanted to say how excited I am for your new payment product! It seems like it will solve a major issue I've been having and I'm really looking forward to using it.
 
-                                </Box>
-                            </Flex>
-                        </Box>
-                    </Box>
-
-
-                    <Box w={{ base: "15.52rem", md: '27.18rem' }} h={{ base: "16.81rem", md: '29.43rem' }} bg={'rgba(213, 214, 214, 0.15)'} px={{ base: "0.99rem", md: '1.75rem' }} border={'1px solid rgba(0, 0, 0, 0.2)'} mb={{ base: "2.25rem", md: "4.75rem" }} m="10px">
-                        <Box py={{ base: "1.35rem", md: '2.375rem' }}>
-                            <Text
-                                color={'#000000'}
-                                lineHeight={{ base: "0.85rem", md: '1.5rem' }}
-                                fontWeight={400}
-                                fontSize={{ base: "0.57rem", md: '1rem' }}
-                                className={dmsans.className}
-                                textAlign={'justify'}>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,  standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                The features and functionality look amazing, and I can't wait to see how it will make my life easier.
                             </Text>
                         </Box>
                         <Divider />
@@ -206,7 +234,7 @@ export default function CardSection() {
                                         fontWeight={500}
                                         fontSize={{ base: "0.81rem", md: '1.5rem' }}
                                         className={dmsansBold.className}
-                                        mb={{ base: "0.57rem", md: "1rem" }}> Phillip Chatham A. </Text>
+                                        mb={{ base: "0.57rem", md: "1rem" }}> Olajumoke Awotungase </Text>
                                     <Text
                                         color={'#000000'}
                                         lineHeight={{ base: "0.5rem", md: '0.875rem' }}
@@ -214,7 +242,7 @@ export default function CardSection() {
                                         fontSize={{ base: "0.64rem", md: '1.125rem' }}
                                         letterSpacing={{ base: "0.34rem", md: '0.6px' }}
                                         className={dmsans.className}
-                                        mb={{ base: "0.49rem", md: "0.875rem" }}>CEO, Creatorh </Text>
+                                        mb={{ base: "0.49rem", md: "0.875rem" }}>CEO, Prettiejays Signature </Text>
                                     <HStack>
                                         <Icon as={AiFillStar} fontSize={{ base: "0.35rem", md: "0.625rem" }} color="#DFA206" />
                                         <Icon as={AiFillStar} fontSize={{ base: "0.35rem", md: "0.625rem" }} color="#DFA206" />

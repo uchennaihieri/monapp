@@ -28,6 +28,9 @@ const Feature = ({ title, text, icon }) => {
 };
 
 export default function BlackSection() {
+
+
+
     return (
         <Box bg="#000000" color={'#FFFFFF'}>
             <Container maxW='79.81em' h={{ base: '50em', md: "40.625em" }} centerContent>
