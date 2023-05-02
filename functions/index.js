@@ -8,7 +8,7 @@ var serviceAccount = require("./permissions.json");
 const bcrypt = require('bcrypt');
 var crypto = require('crypto');
 const express = require('express');
-
+var _ = require('lodash');
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
@@ -275,6 +275,189 @@ app.post('/api/getFeeApp', (req, res) => {
                 "successful": true,
                 newFees: newFees
             })
+        } catch (error) {
+            console.log(error)
+            return res.send(error)
+        }
+    })();
+
+})
+
+app.post('/api/getAccountName', (req, res) => {
+
+
+
+    (async () => {
+        try {
+            paystack.verification.resolveAccount({
+                account_number: req.body.accountNumber,
+                bank_code: req.body.bankCode,
+            })
+                .then(function (body) {
+                    return res.status(200).send(body)
+                }).catch(error => console.log(error));
+
+
+        } catch (error) {
+            console.log(error)
+            return res.send(error)
+        }
+    })();
+
+})
+
+
+
+app.get('/api/getBanks', (req, res) => {
+
+
+
+    (async () => {
+        try {
+            paystack.misc.list_banks()
+                .then(function (body) {
+                    return res.status(200).send(body)
+                }).catch(error => console.log(error));
+
+
+        } catch (error) {
+            console.log(error)
+            return res.send(error)
+        }
+    })();
+
+})
+
+
+
+
+
+
+
+app.post('/api/withdraw', (req, res) => {
+
+
+    (async () => {
+        try {
+
+            const senderWallet = db.collection('wallet').doc(req.body.senderId);
+            const security = db.collection('security').doc(req.body.senderId);
+            const senderInfo = db.collection('users').doc(req.body.senderId);
+
+            let senderWalletInfo2 = await senderWallet.get()
+            let hashPin2 = await security.get()
+            let sender = await senderInfo.get();
+            let senderWalletInfo = senderWalletInfo2.data()
+            let hashPinData = hashPin2.data()
+            let senderInfoData = sender.data()
+            var transactionamount = req.body.amount * 100
+            var senderamount = senderWalletInfo.personalBalance * 100;
+            var hashPin = hashPinData.pin
+            var senderDataName = _.toUpper(senderInfoData.firstName) + " " + _.toUpper(senderInfoData.lastName)
+            var senderNameArray = _.words(senderDataName)
+
+
+
+
+            bcrypt.compare(req.body.pin, hashPin).then(async function (result) {
+                if (result) {
+
+                    paystack.verification.resolveAccount({
+                        account_number: req.body.accountNumber,
+                        bank_code: req.body.bankCode,
+                    })
+                        .then(async function (body) {
+                            if (body.status == true) {
+                                var senderBankNameArray = _.words(body.data.account_name)
+                                const difference = _.difference(senderNameArray, senderBankNameArray);
+
+                                if (difference.length === 0) {
+
+                                    if (senderamount > transactionamount) {
+                                        await senderWallet.update({
+                                            personalBalance: (senderamount - transactionamount) / 100
+                                        });
+
+                                        await db.collection('transactions').add({
+                                            createdAt: new Date().toLocaleDateString(),
+                                            amount: req.body.amount,
+                                            transactionStatus: "Success",
+                                            senderId: req.body.senderId,
+                                            senderName: senderDataName,
+                                            receiverBank: req.body.bank,
+                                            receiverBankCode: req.body.bankCode,
+                                            receiverAccountNumber: req.body.accountNumber,
+                                            receiverAccountName: req.body.accountName,
+                                            verifiedAccountName: body.data.account_name,
+                                            users: [
+                                                "",
+                                                req.body.senderId
+                                            ],
+                                            transactionType: "DB"
+                                        });
+
+                                        await db.collection('payout').add({
+                                            createdAt: new Date().toLocaleDateString(),
+                                            amount: req.body.amount,
+                                            senderId: req.body.senderId,
+                                            senderName: senderDataName,
+                                            receiverBank: req.body.bank,
+                                            receiverBankCode: req.body.bankCode,
+                                            receiverAccountNumber: req.body.accountNumber,
+                                            receiverAccountName: req.body.accountName,
+                                            verifiedAccountName: body.data.account_name,
+                                            users: [
+                                                "",
+                                                req.body.senderId
+                                            ],
+                                            transactionType: "Payout",
+                                            status: "pending"
+                                        });
+
+                                        return res.status(200).send({
+                                            'status': true,
+                                            'messege': "transaction sucessful"
+                                        });
+
+                                    } else {
+                                        return res.status(404).send({
+                                            'status': false,
+                                            'messege': "Insuficient funds"
+                                        });
+                                    }
+
+                                } else {
+
+                                    return res.status(404).send({
+                                        'status': false,
+                                        'messege': "inconsistent account name"
+                                    });
+                                    // name not the same with bank name
+
+                                }
+
+
+                            } else {
+                                return res.status(404).send({
+                                    'status': false,
+                                    'messege': "Unverified account name"
+                                });
+                                //account name could not be verified
+
+                            }
+
+
+                        }).catch(error => console.log(error));
+
+
+
+                } else {
+                    return res.status(404).send({
+                        'status': false,
+                        'messege': "incorrect pin"
+                    });
+                }
+            });
         } catch (error) {
             console.log(error)
             return res.send(error)
