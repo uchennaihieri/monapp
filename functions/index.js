@@ -6,6 +6,7 @@ var paystack = require("paystack-api")("sk_test_1fbf46ff165d68ab2c5a7ac01f12109f
 const sdk = require('api')('@qoreid/v1.0#79ra32ll9x7kn58');
 var serviceAccount = require("./permissions.json");
 const bcrypt = require('bcrypt');
+const { getGeneralSettings } = require('./reusable.js')
 var crypto = require('crypto');
 const express = require('express');
 var _ = require('lodash');
@@ -27,6 +28,7 @@ var secret = "sk_test_1fbf46ff165d68ab2c5a7ac01f12109fb4073d00";
 
 
 
+// ====== GET user by ID =====
 app.get('/api/user/:id', (req, res) => {
 
     (async () => {
@@ -331,9 +333,19 @@ app.get('/api/getBanks', (req, res) => {
 
 
 
+app.get('/api/general-settings', async (req, res) => {
+    try {
+        const settings = await getGeneralSettings(db);
+
+        return res.status(200).send({ "error": false, "data": settings });
+    } catch (error) {
+        return res.status(500).send({ "error": true, "msg": error.message })
+    }
+});
 
 
 
+//============ Withdraw from wallet =================
 app.post('/api/withdraw', (req, res) => {
 
 
@@ -343,6 +355,8 @@ app.post('/api/withdraw', (req, res) => {
             const senderWallet = db.collection('wallet').doc(req.body.senderId);
             const security = db.collection('security').doc(req.body.senderId);
             const senderInfo = db.collection('users').doc(req.body.senderId);
+            const general_settings = await getGeneralSettings(db);
+            const max_per_transaction = general_settings.max_per_transaction;
 
             let senderWalletInfo2 = await senderWallet.get()
             let hashPin2 = await security.get()
@@ -374,51 +388,57 @@ app.post('/api/withdraw', (req, res) => {
                                 if (difference.length === 0) {
 
                                     if (senderamount > transactionamount) {
-                                        await senderWallet.update({
-                                            personalBalance: (senderamount - transactionamount) / 100
-                                        });
+                                        if (transactionamount < max_per_transaction) {
+                                            await senderWallet.update({
+                                                personalBalance: (senderamount - transactionamount) / 100
+                                            });
 
-                                        await db.collection('transactions').add({
-                                            createdAt: new Date().toLocaleDateString(),
-                                            amount: req.body.amount,
-                                            transactionStatus: "Success",
-                                            senderId: req.body.senderId,
-                                            senderName: senderDataName,
-                                            receiverBank: req.body.bank,
-                                            receiverBankCode: req.body.bankCode,
-                                            receiverAccountNumber: req.body.accountNumber,
-                                            receiverAccountName: req.body.accountName,
-                                            verifiedAccountName: body.data.account_name,
-                                            users: [
-                                                "",
-                                                req.body.senderId
-                                            ],
-                                            transactionType: "DB"
-                                        });
+                                            await db.collection('transactions').add({
+                                                createdAt: new Date().toLocaleDateString(),
+                                                amount: req.body.amount,
+                                                transactionStatus: "Success",
+                                                senderId: req.body.senderId,
+                                                senderName: senderDataName,
+                                                receiverBank: req.body.bank,
+                                                receiverBankCode: req.body.bankCode,
+                                                receiverAccountNumber: req.body.accountNumber,
+                                                receiverAccountName: req.body.accountName,
+                                                verifiedAccountName: body.data.account_name,
+                                                users: [
+                                                    "",
+                                                    req.body.senderId
+                                                ],
+                                                transactionType: "DB"
+                                            });
 
-                                        await db.collection('payout').add({
-                                            createdAt: new Date().toLocaleDateString(),
-                                            amount: req.body.amount,
-                                            senderId: req.body.senderId,
-                                            senderName: senderDataName,
-                                            receiverBank: req.body.bank,
-                                            receiverBankCode: req.body.bankCode,
-                                            receiverAccountNumber: req.body.accountNumber,
-                                            receiverAccountName: req.body.accountName,
-                                            verifiedAccountName: body.data.account_name,
-                                            users: [
-                                                "",
-                                                req.body.senderId
-                                            ],
-                                            transactionType: "Payout",
-                                            status: "pending"
-                                        });
+                                            await db.collection('payout').add({
+                                                createdAt: new Date().toLocaleDateString(),
+                                                amount: req.body.amount,
+                                                senderId: req.body.senderId,
+                                                senderName: senderDataName,
+                                                receiverBank: req.body.bank,
+                                                receiverBankCode: req.body.bankCode,
+                                                receiverAccountNumber: req.body.accountNumber,
+                                                receiverAccountName: req.body.accountName,
+                                                verifiedAccountName: body.data.account_name,
+                                                users: [
+                                                    "",
+                                                    req.body.senderId
+                                                ],
+                                                transactionType: "Payout",
+                                                status: "pending"
+                                            });
 
-                                        return res.status(200).send({
-                                            'status': true,
-                                            'messege': "transaction sucessful"
-                                        });
-
+                                            return res.status(200).send({
+                                                'status': true,
+                                                'messege': "transaction sucessful"
+                                            });
+                                        } else {
+                                            return res.status(404).send({
+                                                'status': false,
+                                                'messege': "Transaction amount has exceeded the limit."
+                                            });
+                                        }
                                     } else {
                                         return res.status(404).send({
                                             'status': false,
