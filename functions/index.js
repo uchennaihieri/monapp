@@ -641,6 +641,13 @@ app.post('/api/wallet/add', (req, res) => {
                                 ],
                                 transactionType: "TR"
                             });
+                            await db.collection('transaction_fees').add({
+                                createdAt: new Date().toLocaleDateString(),
+                                amount: req.body.amount.toString(),
+                                fee: req.body.fee.toString(),
+                                senderId: req.body.senderId,
+                                receiverId: req.body.receiverId,
+                            });
                             return res.status(200).send({
                                 'status': true,
                                 'messege': "transaction sucessful"
