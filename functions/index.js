@@ -6,6 +6,7 @@ var paystack = require("paystack-api")("sk_test_1fbf46ff165d68ab2c5a7ac01f12109f
 const sdk = require('api')('@qoreid/v1.0#79ra32ll9x7kn58');
 var serviceAccount = require("./permissions.json");
 const bcrypt = require('bcrypt');
+const { getGeneralSettings } = require('./reusable.js')
 var crypto = require('crypto');
 const express = require('express');
 var _ = require('lodash');
@@ -27,6 +28,7 @@ var secret = "sk_test_1fbf46ff165d68ab2c5a7ac01f12109fb4073d00";
 
 
 
+// ====== GET user by ID =====
 app.get('/api/user/:id', (req, res) => {
 
     (async () => {
@@ -330,10 +332,20 @@ app.get('/api/getBanks', (req, res) => {
 
 
 
+//============ Get the settings ============
+app.get('/api/general-settings', async (req, res) => {
+    try {
+        const settings = await getGeneralSettings(db);
+
+        return res.status(200).send({ "error": false, "data": settings });
+    } catch (error) {
+        return res.status(500).send({ "error": true, "msg": error.message })
+    }
+});
 
 
 
-
+//============ Withdraw from wallet =================
 app.post('/api/withdraw', (req, res) => {
 
 
@@ -343,6 +355,7 @@ app.post('/api/withdraw', (req, res) => {
             const senderWallet = db.collection('wallet').doc(req.body.senderId);
             const security = db.collection('security').doc(req.body.senderId);
             const senderInfo = db.collection('users').doc(req.body.senderId);
+
 
             let senderWalletInfo2 = await senderWallet.get()
             let hashPin2 = await security.get()
@@ -374,6 +387,7 @@ app.post('/api/withdraw', (req, res) => {
                                 if (difference.length === 0) {
 
                                     if (senderamount > transactionamount) {
+
                                         await senderWallet.update({
                                             personalBalance: (senderamount - transactionamount) / 100
                                         });
@@ -573,6 +587,7 @@ app.post('/api/withdraw', (req, res) => {
 // })
 
 
+// ======== Receive and Make Payment ========
 app.post('/api/wallet/add', (req, res) => {
 
     (async () => {
@@ -582,6 +597,8 @@ app.post('/api/wallet/add', (req, res) => {
             const senderInfo = db.collection('users').doc(req.body.senderId);
             const receiverWallet = db.collection('wallet').doc(req.body.receiverId);
             const security = db.collection('security').doc(req.body.senderId);
+            const general_settings = await getGeneralSettings(db);
+            const max_per_transaction = general_settings.max_per_transaction * 100;
 
 
             let senderWalletInfo2 = await senderWallet.get()
@@ -594,6 +611,8 @@ app.post('/api/wallet/add', (req, res) => {
             let senderInfoData = sender.data()
             let hashPinData = hashPin2.data()
             var transactionamount = req.body.amount * 100
+            var transactionfee = req.body.fee * 100
+            var totalAmountToDeduct = transactionamount + transactionfee;
             var receiveramount = receiverWalletInfo.personalBalance * 100;
             var senderamount = senderWalletInfo.personalBalance * 100;
             var hashPin = hashPinData.pin
@@ -601,30 +620,45 @@ app.post('/api/wallet/add', (req, res) => {
 
             bcrypt.compare(req.body.pin, hashPin).then(async function (result) {
                 if (result) {
-                    if (senderamount > transactionamount) {
-                        await senderWallet.update({
-                            personalBalance: (senderamount - transactionamount) / 100
-                        });
-                        await receiverWallet.update({
-                            personalBalance: (receiveramount + transactionamount) / 100
-                        });
-                        await db.collection('transactions').add({
-                            createdAt: new Date().toLocaleDateString(),
-                            amount: req.body.amount.toString(),
-                            transactionStatus: "Success",
-                            senderId: req.body.senderId,
-                            receiverId: req.body.receiverId,
-                            sendername: senderInfoData.firstName + " " + senderInfoData.lastName,
-                            users: [
-                                req.body.senderId,
-                                req.body.receiverId
-                            ],
-                            transactionType: "TR"
-                        });
-                        return res.status(200).send({
-                            'status': true,
-                            'messege': "transaction sucessful"
-                        });
+                    if (senderamount > totalAmountToDeduct) {
+                        if (transactionamount < max_per_transaction) {
+                            await senderWallet.update({
+                                personalBalance: (senderamount - totalAmountToDeduct) / 100
+                            });
+                            await receiverWallet.update({
+                                personalBalance: (receiveramount + transactionamount) / 100
+                            });
+                            await db.collection('transactions').add({
+                                createdAt: new Date().toLocaleDateString(),
+                                amount: req.body.amount.toString(),
+                                transactionStatus: "Success",
+                                senderId: req.body.senderId,
+                                receiverId: req.body.receiverId,
+                                sendername: senderInfoData.firstName + " " + senderInfoData.lastName,
+                                users: [
+                                    req.body.senderId,
+                                    req.body.receiverId
+                                ],
+                                transactionType: "TR"
+                            });
+                            await db.collection('transaction_fees').add({
+                                createdAt: new Date().toLocaleDateString(),
+                                amount: req.body.amount.toString(),
+                                fee: req.body.fee.toString(),
+                                senderId: req.body.senderId,
+                                receiverId: req.body.receiverId,
+                            });
+                            return res.status(200).send({
+                                'status': true,
+                                'messege': "transaction sucessful"
+                            });
+                        } else {
+                            return res.status(404).send({
+                                'status': false,
+                                'messege': "Transaction amount has exceeded maximum threshold per transaction."
+                            });
+                        }
+
 
                     } else {
                         return res.status(404).send({
