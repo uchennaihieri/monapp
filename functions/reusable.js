@@ -1,3 +1,26 @@
+const moment = require('moment');// require
+
+const getExpensesInMonths = async (db, userId, number) => {
+    try {
+        const monthsAgo = moment().subtract(number, 'months').startOf('month').toDate();
+        const formattedDate = monthsAgo.toLocaleDateString();
+        const collection = db.collection('transactions');
+
+        const querySnapshot = await collection.where('createdAt', '>=', formattedDate)
+        .where('users', 'array-contains-any', [userId])
+        .where('transactionStatus', '==', 'Success')
+        .get();
+
+        const expenses = querySnapshot.docs.map((doc) => doc.data())
+
+        return expenses
+    } catch (error) {
+        console.error('Error retrieving expenses:', error);
+        throw new Error(error.message); // Throw custom error message
+    }
+}
+
+
 const getGeneralSettings = async (db) => {
     try {
         const collection = db.collection('general_settings');
@@ -75,4 +98,4 @@ const GetSettlementDetailsForUser = async (db, userId) => {
     }
 };
 
-module.exports = { getGeneralSettings, CreateDeliveryDetails, GetDeliveryDetailsForUser, GetSettlementDetailsForUser, CreateSettlementDetails };
+module.exports = { getGeneralSettings, CreateDeliveryDetails, GetDeliveryDetailsForUser, GetSettlementDetailsForUser, CreateSettlementDetails, getExpensesInMonths };

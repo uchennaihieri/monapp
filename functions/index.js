@@ -6,7 +6,7 @@ var paystack = require("paystack-api")("sk_test_1fbf46ff165d68ab2c5a7ac01f12109f
 const sdk = require('api')('@qoreid/v1.0#79ra32ll9x7kn58');
 var serviceAccount = require("./permissions.json");
 const bcrypt = require('bcrypt');
-const { getGeneralSettings } = require('./reusable.js')
+const { getGeneralSettings, CreateDeliveryDetails, GetDeliveryDetailsForUser, GetSettlementDetailsForUser, CreateSettlementDetails, getExpensesInMonths } = require('./reusable.js')
 var crypto = require('crypto');
 const express = require('express');
 var _ = require('lodash');
@@ -332,12 +332,77 @@ app.get('/api/getBanks', (req, res) => {
 
 
 
+//============ Get expenses ============
+app.get('/api/expenses/:userId', async (req, res) => {
+    try {
+        const expenses = await getExpensesInMonths(db, req.params.userId, 7);
+
+        return res.status(200).send({ "error": false, "data": expenses });
+    } catch (error) {
+        return res.status(500).send({ "error": true, "msg": error.message })
+    }
+});
+
 //============ Get the settings ============
 app.get('/api/general-settings', async (req, res) => {
     try {
         const settings = await getGeneralSettings(db);
 
         return res.status(200).send({ "error": false, "data": settings });
+    } catch (error) {
+        return res.status(500).send({ "error": true, "msg": error.message })
+    }
+});
+
+//============ Add Delivery details ============
+app.post('/api/create-delivery-details', async (req, res) => {
+    try {
+        const details = await GetDeliveryDetailsForUser(db, req.body.userId);
+        if (details) {
+            return res.status(400).send({ "error": true, "msg": "Delivery details already exists" })
+        }
+        const deliveryDetails = await CreateDeliveryDetails(db, req.body.address, req.body.contact, req.body.email, req.body.userId);
+
+        return res.status(200).send({ "error": false, "data": deliveryDetails })
+    } catch (error) {
+        return res.status(500).send({ "error": true, "msg": error.message })
+    }
+});
+
+
+// ============ Get Delivery Details =============
+app.get('/api/get-delivery-details/:userId', async (req, res) => {
+    try {
+        const details = await GetDeliveryDetailsForUser(db, req.params.userId);
+
+        return res.status(200).send({ "error": false, "data": details })
+    } catch (error) {
+        return res.status(500).send({ "error": true, "msg": error.message })
+    }
+});
+
+
+// ============= Add settlement client ==========
+app.post('/api/add-settlements-details', async (req, res) => {
+    try {
+        const details = await GetSettlementDetailsForUser(db, req.body.userId);
+        if (details) {
+            return res.status(400).send({ "error": true, "msg": "Settlement details already added" })
+        }
+        const settlementDetails = await CreateSettlementDetails(db, req.body.bankCode, req.body.bankName, req.body.accountNumber, req.body.accountName, req.body.userId);
+
+        return res.status(200).send({ "error": false, "data": settlementDetails })
+    } catch (error) {
+        return res.status(500).send({ "error": true, "msg": error.message })
+    }
+});
+
+// ============== Get settlement ============
+app.get('/api/get-settlements-details/:userId', async (req, res) => {
+    try {
+        const details = await GetSettlementDetailsForUser(db, req.params.userId);
+
+        return res.status(200).send({ "error": false, "data": details })
     } catch (error) {
         return res.status(500).send({ "error": true, "msg": error.message })
     }
