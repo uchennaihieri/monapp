@@ -9,6 +9,8 @@ const bcrypt = require('bcrypt');
 const { getGeneralSettings, CreateDeliveryDetails, GetDeliveryDetailsForUser, GetSettlementDetailsForUser, CreateSettlementDetails, getExpensesInMonths } = require('./reusable.js')
 var crypto = require('crypto');
 const express = require('express');
+const SwaggerSpec = require('./swagger.js');
+const swaggerUi = require('swagger-ui-express');
 var _ = require('lodash');
 
 admin.initializeApp({
@@ -26,8 +28,30 @@ var secret = "sk_test_1fbf46ff165d68ab2c5a7ac01f12109fb4073d00";
 
 
 
+// Serve Swagger API documentation
+SwaggerSpec.setUpSwaggerJSDoc();
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(SwaggerSpec.getSwaggerJSON()));
 
 
+/**
+ * @swagger
+ * /api/user/{id}:
+ *   get:
+ *     summary: Get all Events For a single user
+ *     tags: [USERS]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The user's id
+ *     responses:
+ *       200:
+ *         description: User found
+ *       400:
+ *         description: An error occured
+ */
 // ====== GET user by ID =====
 app.get('/api/user/:id', (req, res) => {
 
