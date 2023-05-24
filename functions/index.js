@@ -355,8 +355,25 @@ app.get('/api/getBanks', (req, res) => {
 })
 
 
-
-//============ Get expenses ============
+/**
+ * @swagger
+ * /api/expenses/{userId}:
+ *   get:
+ *     summary: Get all Expenses For a single user
+ *     tags: [USERS]
+ *     parameters:
+ *       - in: path
+ *         name: userId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The user's id
+ *     responses:
+ *       200:
+ *         description: Expense found
+ *       400:
+ *         description: An error occured
+ */
 app.get('/api/expenses/:userId', async (req, res) => {
     try {
         const expenses = await getExpensesInMonths(db, req.params.userId, 7);
@@ -367,6 +384,19 @@ app.get('/api/expenses/:userId', async (req, res) => {
     }
 });
 
+
+/**
+ * @swagger
+ * /api/general-settings:
+ *   get:
+ *     summary: Get general settings
+ *     tags: [APP]
+ *     responses:
+ *       200:
+ *         description: General settings
+ *       400:
+ *         description: An error occured
+ */
 //============ Get the settings ============
 app.get('/api/general-settings', async (req, res) => {
     try {
@@ -378,7 +408,39 @@ app.get('/api/general-settings', async (req, res) => {
     }
 });
 
-//============ Add Delivery details ============
+
+
+/**
+ * @swagger
+ * /api/create-delivery-details:
+ *   post:
+ *     summary: Create Delivery details
+ *     tags: [USERS]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               userId:
+ *                 type: string
+ *                 description: The user Id
+ *               address:
+ *                 type: string
+ *                 description: The address
+ *               contact:
+ *                 type: string
+ *                 description: The contact
+ *               email:
+ *                 type: string
+ *                 description: The customer's email
+ *     responses:
+ *       200:
+ *         description:  success
+ *       400:
+ *         description: An error occured
+ */
 app.post('/api/create-delivery-details', async (req, res) => {
     try {
         const details = await GetDeliveryDetailsForUser(db, req.body.userId);
@@ -394,7 +456,25 @@ app.post('/api/create-delivery-details', async (req, res) => {
 });
 
 
-// ============ Get Delivery Details =============
+/**
+ * @swagger
+ * /api/get-delivery-details/{userId}:
+ *   get:
+ *     summary: Get delivery details
+ *     tags: [USERS]
+ *     parameters:
+ *       - in: path
+ *         name: userId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The user's id
+ *     responses:
+ *       200:
+ *         description: Success
+ *       400:
+ *         description: An error occured
+ */
 app.get('/api/get-delivery-details/:userId', async (req, res) => {
     try {
         const details = await GetDeliveryDetailsForUser(db, req.params.userId);
@@ -406,7 +486,40 @@ app.get('/api/get-delivery-details/:userId', async (req, res) => {
 });
 
 
-// ============= Add settlement client ==========
+/**
+ * @swagger
+ * /api/add-settlements-details:
+ *   post:
+ *     summary: Create settlement details
+ *     tags: [USERS]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               userId:
+ *                 type: string
+ *                 description: The user Id
+ *               bankCode:
+ *                 type: string
+ *                 description: The customer's bank code  
+ *               bankName:
+ *                 type: string
+ *                 description: The customer's bank name
+ *               accountNumber:
+ *                 type: string
+ *                 description: The customer's account number
+ *               accountName:
+ *                 type: string
+ *                 description: The customer's account name
+ *     responses:
+ *       200:
+ *         description:  success
+ *       400:
+ *         description: An error occured
+ */
 app.post('/api/add-settlements-details', async (req, res) => {
     try {
         const details = await GetSettlementDetailsForUser(db, req.body.userId);
@@ -421,7 +534,25 @@ app.post('/api/add-settlements-details', async (req, res) => {
     }
 });
 
-// ============== Get settlement ============
+/**
+ * @swagger
+ * /api/get-settlements-details/{userId}:
+ *   get:
+ *     summary: Get settlements details
+ *     tags: [USERS]
+ *     parameters:
+ *       - in: path
+ *         name: userId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The user's id
+ *     responses:
+ *       200:
+ *         description: Success
+ *       400:
+ *         description: An error occured
+ */
 app.get('/api/get-settlements-details/:userId', async (req, res) => {
     try {
         const details = await GetSettlementDetailsForUser(db, req.params.userId);

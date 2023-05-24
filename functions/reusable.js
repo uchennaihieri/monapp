@@ -7,9 +7,9 @@ const getExpensesInMonths = async (db, userId, number) => {
         const collection = db.collection('transactions');
 
         const querySnapshot = await collection.where('createdAt', '>=', formattedDate)
-        .where('users', 'array-contains-any', [userId])
-        .where('transactionStatus', '==', 'Success')
-        .get();
+            .where('users', 'array-contains-any', [userId])
+            .where('transactionStatus', '==', 'Success')
+            .get();
 
         const expenses = querySnapshot.docs.map((doc) => doc.data())
 
@@ -67,7 +67,7 @@ const GetDeliveryDetailsForUser = async (db, userId) => {
     }
 };
 
-const CreateSettlementDetails = async (db, bankCode, accountNumber, accountName, userId) => {
+const CreateSettlementDetails = async (db, bankCode, bankName, accountNumber, accountName, userId) => {
     try {
         const document = await db.collection('settlement_details').add({
             createdAt: new Date().toLocaleDateString(),
@@ -80,6 +80,7 @@ const CreateSettlementDetails = async (db, bankCode, accountNumber, accountName,
         return document;
     } catch (err) {
         console.log(err)
+        throw new Error(err.message); // Throw custom error message 
     }
 }
 const GetSettlementDetailsForUser = async (db, userId) => {
