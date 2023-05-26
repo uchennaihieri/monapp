@@ -6,9 +6,11 @@ var paystack = require("paystack-api")("sk_test_1fbf46ff165d68ab2c5a7ac01f12109f
 const sdk = require('api')('@qoreid/v1.0#79ra32ll9x7kn58');
 var serviceAccount = require("./permissions.json");
 const bcrypt = require('bcrypt');
-const { getGeneralSettings } = require('./reusable.js')
+const { getGeneralSettings, CreateDeliveryDetails, GetDeliveryDetailsForUser, GetSettlementDetailsForUser, CreateSettlementDetails, getExpensesInMonths } = require('./reusable.js')
 var crypto = require('crypto');
 const express = require('express');
+const SwaggerSpec = require('./swagger.js');
+const swaggerUi = require('swagger-ui-express');
 var _ = require('lodash');
 
 admin.initializeApp({
@@ -26,8 +28,30 @@ var secret = "sk_test_1fbf46ff165d68ab2c5a7ac01f12109fb4073d00";
 
 
 
+// Serve Swagger API documentation
+SwaggerSpec.setUpSwaggerJSDoc();
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(SwaggerSpec.getSwaggerJSON()));
 
 
+/**
+ * @swagger
+ * /api/user/{id}:
+ *   get:
+ *     summary: Get all Events For a single user
+ *     tags: [USERS]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The user's id
+ *     responses:
+ *       200:
+ *         description: User found
+ *       400:
+ *         description: An error occured
+ */
 // ====== GET user by ID =====
 app.get('/api/user/:id', (req, res) => {
 
@@ -331,13 +355,209 @@ app.get('/api/getBanks', (req, res) => {
 })
 
 
+/**
+ * @swagger
+ * /api/expenses/{userId}:
+ *   get:
+ *     summary: Get all Expenses For a single user
+ *     tags: [USERS]
+ *     parameters:
+ *       - in: path
+ *         name: userId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The user's id
+ *     responses:
+ *       200:
+ *         description: Expense found
+ *       400:
+ *         description: An error occured
+ */
+app.get('/api/expenses/:userId', async (req, res) => {
+    try {
+        const expenses = await getExpensesInMonths(db, req.params.userId, 7);
 
+        return res.status(200).send({ "error": false, "data": expenses });
+    } catch (error) {
+        return res.status(500).send({ "error": true, "msg": error.message })
+    }
+});
+
+
+/**
+ * @swagger
+ * /api/general-settings:
+ *   get:
+ *     summary: Get general settings
+ *     tags: [APP]
+ *     responses:
+ *       200:
+ *         description: General settings
+ *       400:
+ *         description: An error occured
+ */
 //============ Get the settings ============
 app.get('/api/general-settings', async (req, res) => {
     try {
         const settings = await getGeneralSettings(db);
 
         return res.status(200).send({ "error": false, "data": settings });
+    } catch (error) {
+        return res.status(500).send({ "error": true, "msg": error.message })
+    }
+});
+
+
+
+/**
+ * @swagger
+ * /api/create-delivery-details:
+ *   post:
+ *     summary: Create Delivery details
+ *     tags: [USERS]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               userId:
+ *                 type: string
+ *                 description: The user Id
+ *               address:
+ *                 type: string
+ *                 description: The address
+ *               contact:
+ *                 type: string
+ *                 description: The contact
+ *               email:
+ *                 type: string
+ *                 description: The customer's email
+ *     responses:
+ *       200:
+ *         description:  success
+ *       400:
+ *         description: An error occured
+ */
+app.post('/api/create-delivery-details', async (req, res) => {
+    try {
+        const details = await GetDeliveryDetailsForUser(db, req.body.userId);
+        if (details) {
+            return res.status(400).send({ "error": true, "msg": "Delivery details already exists" })
+        }
+        const deliveryDetails = await CreateDeliveryDetails(db, req.body.address, req.body.contact, req.body.email, req.body.userId);
+
+        return res.status(200).send({ "error": false, "data": deliveryDetails })
+    } catch (error) {
+        return res.status(500).send({ "error": true, "msg": error.message })
+    }
+});
+
+
+/**
+ * @swagger
+ * /api/get-delivery-details/{userId}:
+ *   get:
+ *     summary: Get delivery details
+ *     tags: [USERS]
+ *     parameters:
+ *       - in: path
+ *         name: userId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The user's id
+ *     responses:
+ *       200:
+ *         description: Success
+ *       400:
+ *         description: An error occured
+ */
+app.get('/api/get-delivery-details/:userId', async (req, res) => {
+    try {
+        const details = await GetDeliveryDetailsForUser(db, req.params.userId);
+
+        return res.status(200).send({ "error": false, "data": details })
+    } catch (error) {
+        return res.status(500).send({ "error": true, "msg": error.message })
+    }
+});
+
+
+/**
+ * @swagger
+ * /api/add-settlements-details:
+ *   post:
+ *     summary: Create settlement details
+ *     tags: [USERS]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               userId:
+ *                 type: string
+ *                 description: The user Id
+ *               bankCode:
+ *                 type: string
+ *                 description: The customer's bank code  
+ *               bankName:
+ *                 type: string
+ *                 description: The customer's bank name
+ *               accountNumber:
+ *                 type: string
+ *                 description: The customer's account number
+ *               accountName:
+ *                 type: string
+ *                 description: The customer's account name
+ *     responses:
+ *       200:
+ *         description:  success
+ *       400:
+ *         description: An error occured
+ */
+app.post('/api/add-settlements-details', async (req, res) => {
+    try {
+        const details = await GetSettlementDetailsForUser(db, req.body.userId);
+        if (details) {
+            return res.status(400).send({ "error": true, "msg": "Settlement details already added" })
+        }
+        const settlementDetails = await CreateSettlementDetails(db, req.body.bankCode, req.body.bankName, req.body.accountNumber, req.body.accountName, req.body.userId);
+
+        return res.status(200).send({ "error": false, "data": settlementDetails })
+    } catch (error) {
+        return res.status(500).send({ "error": true, "msg": error.message })
+    }
+});
+
+/**
+ * @swagger
+ * /api/get-settlements-details/{userId}:
+ *   get:
+ *     summary: Get settlements details
+ *     tags: [USERS]
+ *     parameters:
+ *       - in: path
+ *         name: userId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The user's id
+ *     responses:
+ *       200:
+ *         description: Success
+ *       400:
+ *         description: An error occured
+ */
+app.get('/api/get-settlements-details/:userId', async (req, res) => {
+    try {
+        const details = await GetSettlementDetailsForUser(db, req.params.userId);
+
+        return res.status(200).send({ "error": false, "data": details })
     } catch (error) {
         return res.status(500).send({ "error": true, "msg": error.message })
     }
