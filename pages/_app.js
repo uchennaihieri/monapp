@@ -4,12 +4,13 @@ import initAuth from '../services/initAuth'
 import {
   RecoilRoot
 } from 'recoil';
+import theme from '@/theme';
 
 initAuth()
 
 
 export default function App({ Component, pageProps }) {
-  return <ChakraProvider>
+  return <ChakraProvider theme={theme}>
     <RecoilRoot>
       <Component {...pageProps} />
     </RecoilRoot>

@@ -39,3 +39,8 @@ export const businessReg = atom({
     key: "businessReg",
     default: "",
 });
+
+export const activePage = atom({
+    key: "activePage",
+    default: "profile",
+});
