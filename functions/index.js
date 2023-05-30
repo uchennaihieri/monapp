@@ -6,7 +6,7 @@ var paystack = require("paystack-api")("sk_test_1fbf46ff165d68ab2c5a7ac01f12109f
 const sdk = require('api')('@qoreid/v1.0#79ra32ll9x7kn58');
 var serviceAccount = require("./permissions.json");
 const bcrypt = require('bcrypt');
-const { getGeneralSettings, CreateDeliveryDetails, GetDeliveryDetailsForUser, GetSettlementDetailsForUser, CreateSettlementDetails, getExpensesInMonths } = require('./reusable.js')
+const { getSubscribedUsers, unSubscribeToMerchant, getSubscriptionsForUser, subscribeToMerchant, getGeneralSettings, CreateDeliveryDetails, GetDeliveryDetailsForUser, GetSettlementDetailsForUser, CreateSettlementDetails, getExpensesInMonths } = require('./reusable.js')
 var crypto = require('crypto');
 const express = require('express');
 const SwaggerSpec = require('./swagger.js');
@@ -563,6 +563,156 @@ app.get('/api/get-settlements-details/:userId', async (req, res) => {
     }
 });
 
+/**
+ * @swagger
+ * /api/subscribe-to-merchant:
+ *   post:
+ *     summary: Subscribe to a merchant
+ *     tags: [USERS]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               userId:
+ *                 type: string
+ *                 description: The user Id
+ *               merchantId:
+ *                 type: string
+ *                 description: The merchant Id
+ *     responses:
+ *       200:
+ *         description: Success
+ *       400:
+ *         description: An error occured
+ */
+app.post('/api/subscribe-to-merchant', async (req, res) => {
+    try {
+        const details = await subscribeToMerchant(db, req.body.merchantId, req.body.userId);
+
+        if(details.status === true) {
+            return res.status(200).send({ "error": false, "message": details.message})
+        }else {
+           return res.status(200).send({ "error": true, "message": "An error occured" })
+        }
+    } catch (error) {
+        return res.status(500).send({ "error": true, "msg": error.message })
+    }
+});
+
+
+/**
+ * @swagger
+ * /api/unsubscribe:
+ *   post:
+ *     summary: Unsubscribe to a merchant
+ *     tags: [USERS]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               userId:
+ *                 type: string
+ *                 description: The user Id
+ *               merchantId:
+ *                 type: string
+ *                 description: The merchant Id
+ *     responses:
+ *       200:
+ *         description: Success
+ *       400:
+ *         description: An error occured
+ */
+app.post('/api/unsubscribe', async (req, res) => {
+    try {
+        const details = await unSubscribeToMerchant(db, req.body.merchantId, req.body.userId);
+
+        if(details.status === true) {
+            return res.status(200).send({ "error": false, "message": details.message})
+        }else {
+           return res.status(200).send({ "error": true, "message": "An error occured" })
+        }
+    } catch (error) {
+        return res.status(500).send({ "error": true, "msg": error.message })
+    }
+});
+
+
+/**
+ * @swagger
+ * /api/user/get-subscriptions/{userId}:
+ *   get:
+ *     summary: Get subscriptions for a user
+ *     tags: [USERS]
+ *     parameters:
+ *       - in: path
+ *         name: userId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The user's id
+ *     responses:
+ *       200:
+ *         description: Success
+ *       400:
+ *         description: An error occured
+ */
+app.get('/api/user/get-subscriptions/:userId', async (req, res) => {
+    try {
+        const details = await getSubscriptionsForUser(db, req.params.userId);
+
+        if(details.status === true) {
+            return res.status(200).send({ "error": false, "message": details.message, "data": details.data})
+        }else {
+           return res.status(200).send({ "error": true, "message": "An error occured" })
+        }
+    } catch (error) {
+        return res.status(500).send({ "error": true, "msg": error.message })
+    }
+});
+
+
+
+
+
+
+/**
+ * @swagger
+ * /api/merchant/get-subscribers/{merchantId}:
+ *   get:
+ *     summary: Get subscribers under a merchant account
+ *     tags: [USERS]
+ *     parameters:
+ *       - in: path
+ *         name: merchantId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The merchant's id
+ *     responses:
+ *       200:
+ *         description: Success
+ *       400:
+ *         description: An error occured
+ */
+app.get('/api/merchant/get-subscribers/:merchantId', async (req, res) => {
+    try {
+        const details = await getSubscribedUsers(db, req.params.merchantId);
+
+        if(details.status === true) {
+            return res.status(200).send({ "error": false, "message": details.message, "data": details.data})
+        }else {
+           return res.status(200).send({ "error": true, "message": "An error occured" })
+        }
+    } catch (error) {
+        return res.status(500).send({ "error": true, "msg": error.message })
+    }
+});
 
 
 //============ Withdraw from wallet =================
