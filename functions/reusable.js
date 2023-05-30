@@ -217,7 +217,7 @@ const subscribeToMerchant = async (db, merchantId, userId) => {
         return { status: true, message: "Subscribed users.", data: subscribedUsers};
       } else {
         console.log('Merchant document does not exist.');
-        return [];
+        return { status: true, message: "Subscribed users.", data: []};
       }
     } catch (error) {
         console.error('Error retrieving subscribers:', error);
