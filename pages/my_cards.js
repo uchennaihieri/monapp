@@ -37,6 +37,9 @@ import {
     Divider,
     Checkbox,
     Stack,
+    Slide,
+    Textarea,
+    Radio,
 } from '@chakra-ui/react';
 import {
     FiHome,
@@ -51,20 +54,23 @@ import {
 import { IconType } from 'react-icons';
 import { ReactText } from 'react';
 import { ArrowForwardIcon, SearchIcon } from '@chakra-ui/icons';
-import { DM_Sans, Rubik, } from '@next/font/google';
-import { BsChevronDown, BsDot } from 'react-icons/bs';
+import { DM_Sans, Rubik, Poppins } from '@next/font/google';
+import { BsChevronDown, BsChevronUp, BsDot } from 'react-icons/bs';
 import { GoPrimitiveDot } from 'react-icons/go';
 import MyChart from '@/components/myChart';
 import NewDash from './NewDash';
 import MerchantHorizontalCard from '@/components/merchantHorizontalCard';
+import { IoRadioButtonOn } from 'react-icons/io5';
 
 
 
 const dmsans = DM_Sans({ weight: '400', subsets: ['latin'] })
+const poppins = Poppins({ weight: ['300', '400'], subsets: ['latin'] })
 const dmsansbold = DM_Sans({ weight: '500', subsets: ['latin'] })
 const rubik = Rubik({ weight: ['300', '400'], subsets: ['latin'] })
 
 function My_Cards() {
+     const { isOpen, onToggle } = useDisclosure()
     return (
         <NewDash>
             <div>
@@ -100,7 +106,7 @@ function My_Cards() {
                                             <Image src={'/addMoneyIcon.svg'} width={'18px'} height={'18px'} mr='6px' />
                                             <Text color='#000000' fontSize={'12px'} className={dmsansbold.className} >Add Money </Text></Flex>
 
-                                        <Flex flexDirection={'row'} justify='center' align='center' w='124px' h='38px' borderWidth="0.2px" borderStyle="solid" bg='rgba(255, 255, 255, 0.4)' borderRadius={'4px'} boxShadow={'0px 4px 14px rgba(0, 0, 0, 0.08)'} >
+                                        <Flex  flexDirection={'row'} justify='center' align='center' w='124px' h='38px' borderWidth="0.2px" borderStyle="solid" bg='rgba(255, 255, 255, 0.4)' borderRadius={'4px'} boxShadow={'0px 4px 14px rgba(0, 0, 0, 0.08)'} >
                                             <Image src={'/freezeCard.svg'} width={'15px'} height={'15px'} mr='6px' />
                                             <Text color='#000000' fontSize={'12px'} className={dmsansbold.className} >Freeze Card </Text></Flex>
 
@@ -110,7 +116,7 @@ function My_Cards() {
 
 
                                     </Stack>
-                                    {/* nmbh */}
+                                 
 
                                     <Stack direction={'row'} spacing='12px' >
 
@@ -245,7 +251,7 @@ function My_Cards() {
                                             <Image src={'/addMoneyIcon.svg'} width={'18px'} height={'18px'} mr='6px' />
                                             <Text color='#000000' fontSize={'12px'} className={dmsansbold.className} >Add Money </Text></Flex>
 
-                                        <Flex flexDirection={'row'} justify='center' align='center' w='122px' h='42px' borderWidth="0.2px" borderStyle="solid" bg='rgba(255, 255, 255, 0.4)' borderRadius={'4px'} boxShadow={'0px 4px 14px rgba(0, 0, 0, 0.08)'} >
+                                        <Flex onClick={onToggle} flexDirection={'row'} justify='center' align='center' w='122px' h='42px' borderWidth="0.2px" borderStyle="solid" bg='rgba(255, 255, 255, 0.4)' borderRadius={'4px'} boxShadow={'0px 4px 14px rgba(0, 0, 0, 0.08)'} >
                                             <Image src={'/freezeCard.svg'} width={'15px'} height={'15px'} mr='6px' />
                                             <Text color='#000000' fontSize={'12px'} className={dmsansbold.className} >Freeze Card </Text></Flex>
 
@@ -255,6 +261,8 @@ function My_Cards() {
 
 
                                     </Stack>
+
+                                   
 
                                 </Flex>
                                 
@@ -316,6 +324,7 @@ function My_Cards() {
                                                                 <Text > Success </Text></HStack>                 
                                                             </VStack>
                                             </Flex>
+                                                            <Divider/>
                                             <Flex overflow="auto" justify={'space-between'} mr={'2'}>
                                 
                                                             <HStack alignItems={'flex-start'}>
@@ -333,6 +342,7 @@ function My_Cards() {
                                                                 <Text > Success </Text></HStack>                 
                                                             </VStack>
                                             </Flex>
+                                             <Divider/>
                                             <Flex overflow="auto" justify={'space-between'} mr={'2'}>
                                 
                                                             <HStack alignItems={'flex-start'}>
@@ -350,6 +360,7 @@ function My_Cards() {
                                                                 <Text > Success </Text></HStack>                 
                                                             </VStack>
                                             </Flex>
+                                             <Divider/>
                                             <Flex overflow="auto" justify={'space-between'} mr={'2'}>
                                 
                                                             <HStack alignItems={'flex-start'}>
@@ -367,6 +378,7 @@ function My_Cards() {
                                                                 <Text > Success </Text></HStack>                 
                                                             </VStack>
                                             </Flex>
+                                             <Divider/>
 
                                                       
                                                        
@@ -380,7 +392,6 @@ function My_Cards() {
                             </Box>
 
                             </Stack>
-
 
                             {/* responsive end */}
 
@@ -487,6 +498,69 @@ function My_Cards() {
                         </VStack>
                     </Box>
                 </HStack>
+
+                 {/* mobile slide up card */}
+
+                 <Slide direction='bottom' in={isOpen} style={{ zIndex: 10 }}>
+                    <Box px={'7'} pt={'4'} color='black' mt='4' bg='white' rounded='md'shadow='md' w='410px' h='650px' borderTopLeftRadius={'24px'} borderTopRightRadius={'24px'} justifyContent={'center'} alignItems={'center'}
+                    >
+                    <HStack justify='space-between'  >
+                      <Text fontSize='18px' fontWeight={'500'} lineHeight='23.44px' className={dmsansbold.className}>Freeze Card</Text>  
+
+                    <CloseButton onClick={onToggle} size='lg' alignSelf={'flex-end'}/>
+                    </HStack>
+                    
+                       <Text fontSize='15px' lineHeight='19.53px' mt={'35px'} classNsame={dmsans.className}  fontWeight={'500'}>Select Card</Text>
+
+                        <Box w={'360px'} h={'170px'} border={'1px solid #CDCDCD'} borderRadius={'4px'} mt={'16px'}  px={'2'}
+                        >
+                        <HStack justify='space-between' px={'4'} py={'4'}>
+                            <Text fontSize='14px' lineHeight='18.23px' className={dmsans.className}  fontWeight={'400'}>Choose card </Text>
+                            <Icon as={BsChevronUp} boxSize={5} color='#333333' p='0px' />
+                        </HStack>
+
+                        <Box mx={'3'} w={'330px'} h={'79px'} border={'1px solid #000000'} mt={'10px'} p={'4'} >
+                        
+
+                                <HStack justify={'space-between'} >     
+                                <HStack>
+                                <Radio size='lg' name='0' type='gray' defaultChecked/> 
+
+                                <VStack alignItems={'flex-start'}>
+                                    <Text  fontSize='18.67px' lineHeight='25.11px' className={poppins.className}  fontWeight={'500'}>****   ****   9793</Text>
+                                    <Text  fontSize='12px' lineHeight='16.09px' className={poppins.className}  fontWeight={'400'}>Card Number</Text>
+                                </VStack>
+                                
+                                </HStack>                           
+                          
+                            
+                            <VStack alignItems={'flex-end'}>
+                                      <Text  fontSize='14.93px' lineHeight='20.09px' className={poppins.className}  fontWeight={'500'}>01/24</Text>
+                                    <Text  fontSize='12px' lineHeight='16.09px' className={poppins.className}  fontWeight={'400'}>Expiry Date</Text>
+                            </VStack>
+    
+                            
+                            </HStack>
+                          
+                        
+                        </Box>
+
+                        <Text mt={'20'} fontSize='14px' lineHeight='18.23px' className={dmsans.className}  fontWeight={'400'} ml={'-2'}
+                        >
+                            Reasons for freezing card
+                        </Text>
+
+                        <Textarea  mt={'3'} size={'lg'} w={'360px'} h={'170px'} ml={'-2'} border={'2px solid #CDCDCD'}/>
+
+                        <Button mt={'10'} w={'361px'} h={'58px'} bg={'#000000'} color={'white'} borderRadius={'4px'} ml={'-2'} >Top Up</Button>
+                    
+                        </Box>
+                    
+                    </Box>
+                </Slide>
+
+
+
 
 
 
