@@ -222,6 +222,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
     const title = routeNames[currentRoute];
 
     return (
+        <>
         <Flex
             ml={{ base: 0, md: '6.375rem' }}
             px={{ base: 4, md: '3.1875rem' }}
@@ -243,7 +244,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
 
             <Image display={{ base: 'flex', md: 'none' }} src={'/footerlogo.png'} width={{ base: '9.8rem' }} height={'auto'} />
             <HStack display={{ base: 'none', md: 'flex' }} w='100%' ml="17.25rem" mr="2.375rem" >
-                <Box>
+                <Box display={{}}>
                     <Text fontSize={'32px'} fontWeight={500} >{title}</Text>
                     <Text fontSize={'14px'} fontWeight={400} >Tuesday, 14th May, 2023</Text>
                 </Box>
@@ -276,6 +277,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
                     }}
                 >
                     <Avatar
+                        display={{ base: 'none', md: 'flex' }}
                         size={'lg'}
                         src={
                             'https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
@@ -285,6 +287,16 @@ const MobileNav = ({ onOpen, ...rest }) => {
 
                 </Box>
             </HStack>
+           
         </Flex >
+         <Box display={{md:'none'}}
+         ml={{ base: 0, md: '6.375rem' }}
+            px={{ base: 4, md: '3.1875rem' }}
+            height={{ base: '20', md: '8.8rem' }}
+         >
+            <Text fontSize={'22px'} fontWeight={500} >{title}</Text>
+            <Text fontSize={'14px'} fontWeight={400} >Tuesday, 14th May, 2023</Text>
+        </Box>
+        </>
     );
 };
