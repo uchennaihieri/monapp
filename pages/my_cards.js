@@ -175,7 +175,80 @@ function My_Cards() {
 
                             </HStack>
 
-                            {/* responsive */}
+                            
+
+                                {/* all transactions */}
+                            <Box w={'60rem'} display={{base:'none', md:'flex'}}>
+
+                                <Box mt='18px'>
+                                    <Flex dir='row' justify={'space-between'} align='center'>
+                                        <Text color='#141736' fontSize='20px' className={dmsans.className} fontWeight={400} lineHeight='19px'>Transaction History</Text>
+                                        <Button
+                                            colorScheme='gray' variant='outline' rightIcon={<BsChevronDown />}
+                                            transition="all 0.3s"
+                                            _focus={{ boxShadow: 'none' }} color='#A5B3CD'>
+                                            All Transactions
+
+                                        </Button>
+
+                                    </Flex>
+
+                                    <Box dropShadow='lg' w='100%' h='221px' my='26px'>
+                                        <Flex flexDir="column">
+                                            <Flex overflow="auto">
+                                                <Table variant="simple" bg='#FFFFFF' boxShadow={'0px 14px 54px rgba(0, 0, 0, 0.03);'} borderRadius={'8px'}>
+                                                    <Thead h='60px' bg='rgba(0, 0, 0, 0.04)'>
+                                                        <Tr color="gray"  >
+                                                            <Th w='104px'>S/N</Th>
+                                                            <Th w='257px'>Name</Th>
+                                                            <Th w='174px'>Amount</Th>
+                                                            <Th >Status</Th>
+                                                        </Tr>
+                                                    </Thead>
+                                                    <Tbody fontSize='14px' className={dmsans.className} fontWeight={400} >
+                                                        <Tr h='79px'>
+                                                            <Td>
+                                                                1
+                                                            </Td>
+                                                            <Td> <HStack> <Image src={'/sentImage.svg'} width={'24px'} height={'24px'} />
+                                                                <Text> Franklin Uchemba Stores </Text></HStack> </Td>
+
+                                                            <Td fontWeight={'bold'}> NGN 42,000.98</Td>
+
+                                                            <Td><HStack spacing={0}> <Icon as={GoPrimitiveDot} boxSize={8} color='#27AE60' p='0px' />
+                                                                <Text > Success </Text></HStack> </Td>
+
+                                                        </Tr>
+                                                        <Tr h='79px'>
+                                                            <Td>
+                                                                2
+                                                            </Td>
+                                                            <Td> <HStack> <Image src={'/receiveImage.svg'} width={'24px'} height={'24px'} />
+
+                                                                <Text> Franklin Uchemba Stores </Text></HStack> </Td>
+
+                                                            <Td fontWeight={'bold'}>NGN 42,000.98</Td>
+
+                                                            <Td><HStack spacing={0}> <Icon as={GoPrimitiveDot} boxSize={8} color='#27AE60' p='0px' />
+                                                                <Text > Success </Text></HStack> </Td>
+
+                                                        </Tr>
+
+
+                                                    </Tbody>
+
+                                                </Table>
+                                            </Flex>
+                                        </Flex>
+
+                                    </Box>
+
+                                </Box>
+                            </Box>
+
+                        </VStack>
+
+                          {/* responsive */}
                             <Stack w={'25.75em'} mb='3.299em' display={{base:'flex',md:'none'}} alignItems={'center'}>
                                 <Box  boxShadow="md" h='12.5em' w='24.044em' borderRadius={'0.32em'} bg='linear-gradient(to bottom, #000000 0, #000000 72.80%, #191919 72.80%, #191919 86.52%, #000000 86.52%, #000000 100%)' pt='0.617em' pb='0.609em' pl='0.712em' pr='0.704em' mb={'5'}>
                                     <Flex justify={'space-between'} align='center'>
@@ -454,81 +527,12 @@ function My_Cards() {
                             </Stack>
 
                             {/* responsive end */}
-
-
-                            <Box w={'60rem'} display={{base:'none', md:'flex'}}>
-
-                                <Box mt='18px'>
-                                    <Flex dir='row' justify={'space-between'} align='center'>
-                                        <Text color='#141736' fontSize='20px' className={dmsans.className} fontWeight={400} lineHeight='19px'>Transaction History</Text>
-                                        <Button
-                                            colorScheme='gray' variant='outline' rightIcon={<BsChevronDown />}
-                                            transition="all 0.3s"
-                                            _focus={{ boxShadow: 'none' }} color='#A5B3CD'>
-                                            All Transactions
-
-                                        </Button>
-
-                                    </Flex>
-
-                                    <Box dropShadow='lg' w='100%' h='221px' my='26px'>
-                                        <Flex flexDir="column">
-                                            <Flex overflow="auto">
-                                                <Table variant="simple" bg='#FFFFFF' boxShadow={'0px 14px 54px rgba(0, 0, 0, 0.03);'} borderRadius={'8px'}>
-                                                    <Thead h='60px' bg='rgba(0, 0, 0, 0.04)'>
-                                                        <Tr color="gray"  >
-                                                            <Th w='104px'>S/N</Th>
-                                                            <Th w='257px'>Name</Th>
-                                                            <Th w='174px'>Amount</Th>
-                                                            <Th >Status</Th>
-                                                        </Tr>
-                                                    </Thead>
-                                                    <Tbody fontSize='14px' className={dmsans.className} fontWeight={400} >
-                                                        <Tr h='79px'>
-                                                            <Td>
-                                                                1
-                                                            </Td>
-                                                            <Td> <HStack> <Image src={'/sentImage.svg'} width={'24px'} height={'24px'} />
-                                                                <Text> Franklin Uchemba Stores </Text></HStack> </Td>
-
-                                                            <Td fontWeight={'bold'}> NGN 42,000.98</Td>
-
-                                                            <Td><HStack spacing={0}> <Icon as={GoPrimitiveDot} boxSize={8} color='#27AE60' p='0px' />
-                                                                <Text > Success </Text></HStack> </Td>
-
-                                                        </Tr>
-                                                        <Tr h='79px'>
-                                                            <Td>
-                                                                2
-                                                            </Td>
-                                                            <Td> <HStack> <Image src={'/receiveImage.svg'} width={'24px'} height={'24px'} />
-
-                                                                <Text> Franklin Uchemba Stores </Text></HStack> </Td>
-
-                                                            <Td fontWeight={'bold'}>NGN 42,000.98</Td>
-
-                                                            <Td><HStack spacing={0}> <Icon as={GoPrimitiveDot} boxSize={8} color='#27AE60' p='0px' />
-                                                                <Text > Success </Text></HStack> </Td>
-
-                                                        </Tr>
-
-
-                                                    </Tbody>
-
-                                                </Table>
-                                            </Flex>
-                                        </Flex>
-
-                                    </Box>
-
-                                </Box>
-                            </Box>
-
-                        </VStack>
-
+                    
 
                     </Box>
-                    <Box >
+
+                        {/* Subscribed Merchants */}
+                    <Box display={{base:'none', md:'flex'}}>
                         <VStack>
 
                             <Box h={'auto'} w={'28rem'} borderRadius={'8px'} bg='rgba(255, 255, 255, 0.4)' align={'center'} p='18px' border='0.4px solid rgba(0, 0, 0, 0.2)'>
@@ -557,6 +561,8 @@ function My_Cards() {
 
                         </VStack>
                     </Box>
+
+                   
                 </HStack>
 
                 
