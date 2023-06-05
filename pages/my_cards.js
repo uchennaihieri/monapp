@@ -342,7 +342,7 @@ function My_Cards() {
                                 <Stack>
 
                             <Box h={'auto'} w={'28rem'} borderRadius={'8px'} bg='rgba(255, 255, 255, 0.4)' align={'center'} px={'2.25em'} py='18px' >
-                                <Flex flexDirection={'row'} justify='space-between' align='center' mb='36px' >
+                                <Flex flexDirection={'row'} justify='space-between' align='center'  >
                                     <Text color='#141736' fontSize='16px' className={dmsansbold.className} fontWeight={500} lineHeight='20.83px' >
                                         Subscribed Merchants
                                     </Text>
@@ -363,9 +363,9 @@ function My_Cards() {
 
                             {/* all transactions */}
 
-                            <Box w={'28rem'} px={'2.25em'} py='18px'>
+                            <Box w={'28rem'} px={'2.25em'}  >
 
-                                <Box mt='18px'>
+                                <Box >
                                     <Flex dir='row' justify={'space-between'} align='center'>
                                         <Text color='#141736' fontSize='1em' className={dmsans.className} fontWeight={400} lineHeight='11.193em'>Transaction History</Text>
                                         <Button
@@ -379,7 +379,7 @@ function My_Cards() {
 
                                     </Flex>
 
-                                    <Box  w='100%'  my='26px'>
+                                    <Box  w='100%' >
                                         <Flex flexDir="column" gap={5}>
                                             <Flex overflow="auto" justify={'space-between'} mr={'2'}>
                                 
