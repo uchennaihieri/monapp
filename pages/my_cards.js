@@ -367,10 +367,11 @@ function My_Cards() {
 
                                 <Box mt='18px'>
                                     <Flex dir='row' justify={'space-between'} align='center'>
-                                        <Text color='#141736' fontSize='20px' className={dmsans.className} fontWeight={400} lineHeight='19px'>Transaction History</Text>
+                                        <Text color='#141736' fontSize='1em' className={dmsans.className} fontWeight={400} lineHeight='11.193em'>Transaction History</Text>
                                         <Button
                                             rightIcon={<BsChevronDown />}
                                             transition="all 0.3s"
+                                            fontSize={'0.529em'}
                                             >
                                             All Transactions
 
