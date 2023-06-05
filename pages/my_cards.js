@@ -378,7 +378,7 @@ function My_Cards() {
 
                                     </Flex>
 
-                                    <Box  w='100%' h='221px' my='26px'>
+                                    <Box  w='100%'  my='26px'>
                                         <Flex flexDir="column" gap={5}>
                                             <Flex overflow="auto" justify={'space-between'} mr={'2'}>
                                 
