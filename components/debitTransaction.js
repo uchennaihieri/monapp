@@ -1,23 +1,42 @@
-import { HStack, Image, Td, Text, Tr, Icon } from '@chakra-ui/react'
-import React from 'react'
-import { GoPrimitiveDot } from 'react-icons/go'
+import { HStack, Image, Td, Text, Tr, Icon, useBreakpointValue, Box, Flex} from "@chakra-ui/react";
+import React from "react";
+import { GoPrimitiveDot } from "react-icons/go";
 
 function DebitTransaction() {
-    return (
-        <Tr h='79px'>
-            <Td>
-                1
-            </Td>
-            <Td> <HStack> <Image src={'/sentImage.svg'} width={'24px'} height={'24px'} />
-                <Text> Franklin Uchemba Stores </Text></HStack> </Td>
-            <Td>RET647UYT9IO</Td>
-            <Td fontWeight={'bold'}> NGN 42,000.98</Td>
-            <Td>25 April at 09:30am</Td>
-            <Td><HStack spacing={0}> <Icon as={GoPrimitiveDot} boxSize={8} color='#27AE60' p='0px' />
-                <Text > Success </Text></HStack> </Td>
+    const isDesktop=useBreakpointValue({base: false, lg: true})
+  return (
+    <Tr h="79px">
+      <Td display={["none", "table-cell"]}>1</Td>
+      <Td>
+        <HStack>
+          <Image src={"/sentImage.svg"} width={"24px"} height={"24px"} />
+          <Text fontSize={["14px", "md"]}> Franklin U. Stores </Text>
+        </HStack>
+        <Box marginLeft={"2rem"} fontSize={"sm"}>
+     {!isDesktop && <span>25 April at 09:30am</span>} 
 
-        </Tr>
-    )
+        </Box>
+
+             </Td>
+      <Td display={["none", "table-cell"]}>RET647UYT9IO</Td>
+      <Td fontWeight={"bold"}> NGN 42,000.98
+      <Box  fontSize={"sm"} >
+     {!isDesktop && <Flex align="center"><Icon as={GoPrimitiveDot} boxSize={6} color="#27AE60" p="0px" />
+          <Text fontWeight={"thin"}> Success </Text></Flex>} 
+
+        </Box>
+
+      </Td>
+      <Td display={["none", "table-cell"]}>25 April at 09:30am</Td>
+      <Td display={["none", "table-cell"]}>
+        <HStack spacing={0}>
+          {" "}
+          <Icon as={GoPrimitiveDot} boxSize={8} color="#27AE60" p="0px" />
+          <Text> Success </Text>
+        </HStack>{" "}
+      </Td>
+    </Tr>
+  );
 }
 
-export default DebitTransaction
+export default DebitTransaction;
