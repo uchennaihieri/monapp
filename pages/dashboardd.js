@@ -30,24 +30,30 @@ const dmsansbold = DM_Sans({ weight: "500", subsets: ["latin"] });
 const rubik = Rubik({ weight: ["300", "400"], subsets: ["latin"] });
 
 function Dashboardd() {
+  
   return (
-    <NewDash >
-      <div>
-        <HStack ml={{ base: 0, md: "8rem" }} flexWrap="wrap">
-          <Box mr="10px">
+    <NewDash>
+      <div >
+        <HStack ml={["0", "6rem"]} flexWrap={["wrap","nowrap"]} >
+          <Box mr={["0","10px"]}  w={"100%"} m={"auto"}>
             <VStack>
                 {/* current balance card */}
               <Box
                 h={"144px"}
-                w={"60rem"}
+                w={["100%","60rem"]}
+                m={"auto"}
                 mb="15px"
-                bg="#000000"
+                bg={[`url(/Maskbg.png)`]}
+                backgroundColor="#000000"
+                backgroundRepeat="no-repeat"
+                backgroundSize="cover"
+                backgroundPosition="50% 25%"
                 borderRadius={"8px"}
                 boxShadow="0px 14px 54px rgba(0, 0, 0, 0.03)"
-                position="relative"
-                overflow={"hidden"}
+                // position="relative"
+                // overflow={"hidden"}
               >
-                <Box mt="22px" ml="40px">
+                <Box mt="22px" ml={["20px","40px"]}>
                   <Text
                     className={dmsans.className}
                     fontSize="18px"
@@ -60,7 +66,7 @@ function Dashboardd() {
                   <HStack mt="16px" flex>
                     <Text
                       className={dmsans.className}
-                      fontSize={"32px"}
+                      fontSize={["26px","32px"]}
                       color="rgba(255, 255, 255, 1)"
                       fontWeight={800}
                       lineHeight="38px"
@@ -92,7 +98,7 @@ function Dashboardd() {
                     </Text>
                   </HStack>
                 </Box>
-                <Image
+                {/* <Image
                   src={"/prints.png"}
                   width={"334px"}
                   height={"329px"}
@@ -123,12 +129,13 @@ function Dashboardd() {
                   position="absolute"
                   left="424"
                   top="11"
-                />
+                /> */}
               </Box>
               {/* the graph area */}
               <Box
-                h={"393px"}
-                w={"60rem"}
+                h={["240px","393px"]}
+                // w={["23rem","60rem"]}
+                w={"100%"}
                 bg="#FFFFFF"
                 borderRadius={"8px"}
                 boxShadow="0px 14px 54px rgba(0, 0, 0, 0.03)"
@@ -183,13 +190,15 @@ function Dashboardd() {
               </Box>
             </VStack>
           </Box>
-          <Box>
-            <VStack flexBasis={{base:"100%", sm: "50%", lg: "25%"}}>
+          <Box  w={"100%"} m={"auto"}>
+            <VStack  >
                 {/* quick links area */}
               <Box
                 h={"144px"}
-                w={"28rem"}
-                borderRadius={"8px"}
+                // w={["23rem", "28rem"]}   
+                w={"100%"}
+                             borderRadius={"8px"}
+                mt={["15px", "0px"]}
                 mb="15px"
                 bg="rgba(255, 255, 255, 0.4)"
                 border="1px solid rgba(0, 0, 0, 0.2)"
@@ -272,7 +281,9 @@ function Dashboardd() {
               {/* cards area */}
               <Box
                 h={"393px"}
-                w={"28rem"}
+                w={"100%"}
+                // w={["20rem","28rem"]}
+                // mx="auto"
                 borderRadius={"8px"}
                 bg="#FFFFFF"
                 align={"center"}
