@@ -1,8 +1,40 @@
 import React, { ReactNode, useState } from "react";
 import {
-  IconButton,Avatar,Box,CloseButton,Flex,HStack,VStack,Icon,useColorModeValue,Link,Drawer,DrawerContent,Text,
-  useDisclosure,BoxProps,FlexProps,Menu,MenuButton,MenuDivider,MenuItem,MenuList,Image,InputGroup,InputLeftElement,
-  Input,Spacer,Button,Table,Thead,Tr,Th,Tbody,Td,Heading,Divider,
+  IconButton,
+  Avatar,
+  Box,
+  CloseButton,
+  Flex,
+  HStack,
+  VStack,
+  Icon,
+  useColorModeValue,
+  Link,
+  Drawer,
+  DrawerContent,
+  Text,
+  useDisclosure,
+  BoxProps,
+  FlexProps,
+  Menu,
+  MenuButton,
+  MenuDivider,
+  MenuItem,
+  MenuList,
+  Image,
+  InputGroup,
+  InputLeftElement,
+  Input,
+  Spacer,
+  Button,
+  Table,
+  Thead,
+  Tr,
+  Th,
+  Tbody,
+  Td,
+  Heading,
+  Divider,
 } from "@chakra-ui/react";
 import {
   FiHome,
@@ -30,17 +62,16 @@ const dmsansbold = DM_Sans({ weight: "500", subsets: ["latin"] });
 const rubik = Rubik({ weight: ["300", "400"], subsets: ["latin"] });
 
 function Dashboardd() {
-  
   return (
     <NewDash>
-      <div >
-        <HStack ml={["0", "6rem"]} flexWrap={["wrap","nowrap"]} >
-          <Box mr={["0","10px"]}  w={"100%"} m={"auto"}>
+      <div>
+        <HStack ml={["0", "6rem"]} flexWrap={["wrap", "nowrap"]}>
+          <Box mr={["0", "10px"]} w={"100%"} m={"auto"}>
             <VStack>
-                {/* current balance card */}
+              {/* current balance card */}
               <Box
                 h={"144px"}
-                w={["100%","60rem"]}
+                w={["100%", "60rem"]}
                 m={"auto"}
                 mb="15px"
                 bg={[`url(/Maskbg.png)`]}
@@ -53,7 +84,7 @@ function Dashboardd() {
                 // position="relative"
                 // overflow={"hidden"}
               >
-                <Box mt="22px" ml={["20px","40px"]}>
+                <Box mt="22px" ml={["20px", "40px"]}>
                   <Text
                     className={dmsans.className}
                     fontSize="18px"
@@ -66,7 +97,7 @@ function Dashboardd() {
                   <HStack mt="16px" flex>
                     <Text
                       className={dmsans.className}
-                      fontSize={["26px","32px"]}
+                      fontSize={["26px", "32px"]}
                       color="rgba(255, 255, 255, 1)"
                       fontWeight={800}
                       lineHeight="38px"
@@ -136,14 +167,14 @@ function Dashboardd() {
               <Box
                 h={"144px"}
                 w={"100%"}
-                 borderRadius={"8px"}
+                borderRadius={"8px"}
                 mt={["15px", "0px"]}
                 mb="15px"
                 bg="rgba(255, 255, 255, 0.4)"
                 border="1px solid rgba(0, 0, 0, 0.2)"
                 py="14px"
                 px="18px"
-                display={["block","none"]}
+                display={["block", "none"]}
               >
                 <Text
                   color="#141736"
@@ -220,8 +251,7 @@ function Dashboardd() {
               </Box>
               {/* the graph area */}
               <Box
-                h={["240px","393px"]}
-                // w={["23rem","60rem"]}
+                h={["240px", "393px"]}
                 w={"100%"}
                 bg="#FFFFFF"
                 borderRadius={"8px"}
@@ -277,21 +307,21 @@ function Dashboardd() {
               </Box>
             </VStack>
           </Box>
-          <Box  w={"100%"} m={"auto"}>
-            <VStack  >
-                {/* quick links area */}
+          <Box w={"100%"} m={"auto"}>
+            <VStack>
+              {/* quick links area */}
+
               <Box
                 h={"144px"}
-                // w={["23rem", "28rem"]}   
                 w={"100%"}
-                             borderRadius={"8px"}
+                borderRadius={"8px"}
                 mt={["15px", "0px"]}
                 mb="15px"
                 bg="rgba(255, 255, 255, 0.4)"
                 border="1px solid rgba(0, 0, 0, 0.2)"
                 py="14px"
                 px="18px"
-                display={["none","block"]}
+                display={["none", "block"]}
               >
                 <Text
                   color="#141736"
@@ -572,7 +602,7 @@ function Dashboardd() {
           <Flex dir="row" justify={"space-between"} align="center">
             <Text
               color="#141736"
-              fontSize={["16px","20px"]}
+              fontSize={["16px", "20px"]}
               className={dmsans.className}
               fontWeight={400}
               lineHeight="19px"
@@ -600,7 +630,11 @@ function Dashboardd() {
                   boxShadow={"0px 14px 54px rgba(0, 0, 0, 0.03);"}
                   borderRadius={"8px"}
                 >
-                  <Thead h="60px" bg="rgba(0, 0, 0, 0.04)" display={['none','table-head']}>
+                  <Thead
+                    h="60px"
+                    bg="rgba(0, 0, 0, 0.04)"
+                    display={["none", "table-head"]}
+                  >
                     <Tr color="gray">
                       <Th w="104px">S/N</Th>
                       <Th w="257px">Name</Th>
