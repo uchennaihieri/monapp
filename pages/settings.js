@@ -81,7 +81,7 @@ function Setting() {
             <div>
 
 
-                <Box ml={{ base: 0, md: '8rem' }} mt='18px' px='10px'>
+                <Box ml={{ base: 0, md: '8rem' }} display={{base:'none', md:'flex'}} mt='18px' px='10px'>
 
                     <Box dropShadow='lg' w='100%' minH='221px' my='26px' >
                         <Flex flexDir="row">
