@@ -84,17 +84,8 @@ function merchants() {
 
 
 
-
-
-
-
-
-
-
-
-
-                    <Box dropShadow='lg' w='100%' my='26px'>
-                        <Flex flexDir="row" flexWrap={'wrap'} >
+                    <Box dropShadow='lg' w={{base:'15.313rem', md:'100%'}}  my='26px'>
+                        <Flex flexDir="row" flexWrap={'wrap'}  >
                             <MerchantBoxCard />
                             <MerchantBoxCard /><MerchantBoxCard /><MerchantBoxCard /><MerchantBoxCard /><MerchantBoxCard /><MerchantBoxCard /><MerchantBoxCard /><MerchantBoxCard /><MerchantBoxCard /><MerchantBoxCard /><MerchantBoxCard /><MerchantBoxCard /><MerchantBoxCard /><MerchantBoxCard /><MerchantBoxCard /><MerchantBoxCard /><MerchantBoxCard /><MerchantBoxCard /><MerchantBoxCard /><MerchantBoxCard />
                             
