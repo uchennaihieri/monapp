@@ -131,6 +131,93 @@ function Dashboardd() {
                   top="11"
                 /> */}
               </Box>
+
+              {/* responsive/mobile quick links box */}
+              <Box
+                h={"144px"}
+                w={"100%"}
+                 borderRadius={"8px"}
+                mt={["15px", "0px"]}
+                mb="15px"
+                bg="rgba(255, 255, 255, 0.4)"
+                border="1px solid rgba(0, 0, 0, 0.2)"
+                py="14px"
+                px="18px"
+                display={["block","none"]}
+              >
+                <Text
+                  color="#141736"
+                  fontSize="16px"
+                  className={dmsansbold.className}
+                  fontWeight={500}
+                  lineHeight="19px"
+                  mb="17px"
+                >
+                  Quick Links
+                </Text>
+
+                <Flex justify={"space-between"}>
+                  <Box align={"center"}>
+                    <Flex
+                      _hover={{ cursor: "pointer", bg: "#F5F5F5" }}
+                      width={"54px"}
+                      height={"54px"}
+                      borderRadius="100%"
+                      justify={"center"}
+                      align={"center"}
+                      border={"1px solid rgba(0, 0, 0, 0.24)"}
+                      mb="8px"
+                    >
+                      <Image
+                        src={"/fundAcc.svg"}
+                        width={"24px"}
+                        height={"24px"}
+                      />
+                    </Flex>
+                    <Text fontSize={"10px"}>Top up Wallet</Text>
+                  </Box>
+
+                  <Box align={"center"}>
+                    <Flex
+                      _hover={{ cursor: "pointer", bg: "#F5F5F5" }}
+                      width={"54px"}
+                      height={"54px"}
+                      borderRadius="100%"
+                      justify={"center"}
+                      align={"center"}
+                      border={"1px solid rgba(0, 0, 0, 0.24)"}
+                      mb="8px"
+                    >
+                      <Image
+                        src={"/settle.svg"}
+                        width={"24px"}
+                        height={"24px"}
+                      />
+                    </Flex>
+                    <Text fontSize={"10px"}>Add Settlement</Text>
+                  </Box>
+
+                  <Box align={"center"}>
+                    <Flex
+                      _hover={{ cursor: "pointer", bg: "#F5F5F5" }}
+                      width={"54px"}
+                      height={"54px"}
+                      borderRadius="100%"
+                      justify={"center"}
+                      align={"center"}
+                      border={"1px solid rgba(0, 0, 0, 0.24)"}
+                      mb="8px"
+                    >
+                      <Image
+                        src={"/collect.svg"}
+                        width={"24px"}
+                        height={"24px"}
+                      />
+                    </Flex>
+                    <Text fontSize={"10px"}>Receive Payment</Text>
+                  </Box>
+                </Flex>
+              </Box>
               {/* the graph area */}
               <Box
                 h={["240px","393px"]}
@@ -204,6 +291,7 @@ function Dashboardd() {
                 border="1px solid rgba(0, 0, 0, 0.2)"
                 py="14px"
                 px="18px"
+                display={["none","block"]}
               >
                 <Text
                   color="#141736"
