@@ -163,7 +163,7 @@ function Dashboardd() {
                 /> */}
               </Box>
 
-              {/* responsive/mobile quick links box */}
+              {/* Responsive/mobile quick links box */}
               <Box
                 h={"144px"}
                 w={"100%"}
