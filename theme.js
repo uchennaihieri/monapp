@@ -1,8 +1,17 @@
 import { extendTheme } from '@chakra-ui/react';
 
+
+
 const theme = extendTheme({
     components: {
         Checkbox: {
+            variants: {
+                circular: {
+                    control: {
+                        rounded: "full"
+                    }
+                },
+            },
             baseStyle: {
                 control: {
                     borderRadius: '2px',
@@ -13,6 +22,32 @@ const theme = extendTheme({
                 },
 
             },
+        },
+        Radio: {
+            baseStyle: {
+                container: {
+                    w: '100%',
+                    h: '3rem',
+                    border: '1px solid #CDCDCD',
+                    borderRadius: '4px',
+                    px: '18px',
+                },
+                control: {
+                    _checked: {
+                        bg: 'black',
+                        color: 'black',
+                        borderColor: "",
+                    },
+                    _hover: {
+                        bg: '',
+                        color: '',
+                        borderColor: "",
+                    }
+
+                }
+
+
+            }
         },
         Switch: {
             variants: {
