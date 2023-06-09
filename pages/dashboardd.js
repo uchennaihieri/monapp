@@ -81,8 +81,6 @@ function Dashboardd() {
                 backgroundPosition="50% 25%"
                 borderRadius={"8px"}
                 boxShadow="0px 14px 54px rgba(0, 0, 0, 0.03)"
-                // position="relative"
-                // overflow={"hidden"}
               >
                 <Box mt="22px" ml={["20px", "40px"]}>
                   <Text
