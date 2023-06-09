@@ -223,80 +223,80 @@ const MobileNav = ({ onOpen, ...rest }) => {
 
     return (
         <>
-        <Flex
-            ml={{ base: 0, md: '6.375rem' }}
-            px={{ base: 4, md: '3.1875rem' }}
-            height={{ base: '20', md: '8.8rem' }}
-            alignItems="center"
-            bg={'#FCFCFC'}
-            // borderBottomWidth="1px"
-            // borderBottomColor={useColorModeValue('gray.200', 'gray.700')}
-            justifyContent={{ base: 'space-between', md: 'flex-end' }}
-            {...rest}>
-            <IconButton
-                display={{ base: 'flex', md: 'none' }}
-                onClick={onOpen}
-                variant="outline"
-                aria-label="open menu"
-                icon={<FiMenu />}
-            />
-
-
-            <Image display={{ base: 'flex', md: 'none' }} src={'/footerlogo.png'} width={{ base: '9.8rem' }} height={'auto'} />
-            <HStack display={{ base: 'none', md: 'flex' }} w='100%' ml="17.25rem" mr="2.375rem" >
-                <Box display={{}}>
-                    <Text fontSize={'32px'} fontWeight={500} >{title}</Text>
-                    <Text fontSize={'14px'} fontWeight={400} >Tuesday, 14th May, 2023</Text>
-                </Box>
-                <Spacer />
-
-                <InputGroup align="center" w="35.125rem" h="3.75rem"  >
-                    <InputLeftElement
-                        h="3.75rem"
-                        pointerEvents='none'
-                        children={<SearchIcon w="14.91px" h="15.06px" color="#A5B3CD" />}
-                    />
-                    <Input type="search"
-                        borderRadius="8px" w="35.125rem" h="3.75rem" variant='outline' _placeholder={{ opacity: 1, color: "#A5B3CD", fontSize: '1rem' }} placeholder='Search a transaction' bg="#FFFFFF" />
-                </InputGroup>
-
-            </HStack>
-            <HStack spacing={{ base: '.75rem', md: '1.39rem' }}>
+            <Flex
+                ml={{ base: 0, md: '6.375rem' }}
+                px={{ base: 4, md: '3.1875rem' }}
+                height={{ base: '20', md: '8.8rem' }}
+                alignItems="center"
+                bg={'#FCFCFC'}
+                // borderBottomWidth="1px"
+                // borderBottomColor={useColorModeValue('gray.200', 'gray.700')}
+                justifyContent={{ base: 'space-between', md: 'flex-end' }}
+                {...rest}>
                 <IconButton
-                    borderRadius={'100%'}
-                    size="lg"
+                    display={{ base: 'flex', md: 'none' }}
+                    onClick={onOpen}
                     variant="outline"
                     aria-label="open menu"
-
-                    icon={<FiBell />}
+                    icon={<FiMenu />}
                 />
 
-                <Box
-                    style={{
-                        filter: "drop-shadow(0px 14px 54px rgba(0, 0, 0, 0.06))",
-                    }}
-                >
-                    <Avatar
-                        display={{ base: 'none', md: 'flex' }}
-                        size={'lg'}
-                        src={
-                            'https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
-                        }
+
+                <Image display={{ base: 'flex', md: 'none' }} src={'/footerlogo.png'} width={{ base: '9.8rem' }} height={'auto'} />
+                <HStack display={{ base: 'none', md: 'flex' }} w='100%' ml="17.25rem" mr="2.375rem" >
+                    <Box display={{}}>
+                        <Text fontSize={'32px'} fontWeight={500} >{title}</Text>
+                        <Text fontSize={'14px'} fontWeight={400} >Tuesday, 14th May, 2023</Text>
+                    </Box>
+                    <Spacer />
+
+                    <InputGroup align="center" w="35.125rem" h="3.75rem"  >
+                        <InputLeftElement
+                            h="3.75rem"
+                            pointerEvents='none'
+                            children={<SearchIcon w="14.91px" h="15.06px" color="#A5B3CD" />}
+                        />
+                        <Input type="search"
+                            borderRadius="8px" w="35.125rem" h="3.75rem" variant='outline' _placeholder={{ opacity: 1, color: "#A5B3CD", fontSize: '1rem' }} placeholder='Search a transaction' bg="#FFFFFF" />
+                    </InputGroup>
+
+                </HStack>
+                <HStack spacing={{ base: '.75rem', md: '1.39rem' }}>
+                    <IconButton
+                        borderRadius={'100%'}
+                        size="lg"
+                        variant="outline"
+                        aria-label="open menu"
+
+                        icon={<FiBell />}
                     />
 
+                    <Box
+                        style={{
+                            filter: "drop-shadow(0px 14px 54px rgba(0, 0, 0, 0.06))",
+                        }}
+                    >
+                        <Avatar
+                            display={{ base: 'none', md: 'flex' }}
+                            size={'lg'}
+                            src={
+                                'https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
+                            }
+                        />
 
-                </Box>
-            </HStack>
-           
-        </Flex >
-         <Box display={{md:'none'}}
-         ml={{ base: 0, md: '6.375rem' }}
-            px={{ base: 4, md: '3.1875rem' }}
-            height={{ base: '20', md: '8.8rem' }}
-         >
-            <Text fontSize={'22px'} fontWeight={500} >{title}</Text>
-            <Text fontSize={'14px'} fontWeight={400} >Tuesday, 14th May, 2023</Text>
-        </Box>
+
+                    </Box>
+                </HStack>
+
+            </Flex >
+            <Box display={{ md: 'none' }}
+                ml={{ base: 0, md: '6.375rem' }}
+                px={{ base: 4, md: '3.1875rem' }}
+                height={{ base: '20', md: '8.8rem' }}
+            >
+                <Text fontSize={'22px'} fontWeight={500} >{title}</Text>
+                <Text fontSize={'14px'} fontWeight={400} >Tuesday, 14th May, 2023</Text>
+            </Box>
         </>
     );
 };

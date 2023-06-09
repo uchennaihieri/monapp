@@ -1,40 +1,8 @@
 import React, { ReactNode, useState } from "react";
 import {
-  IconButton,
-  Avatar,
-  Box,
-  CloseButton,
-  Flex,
-  HStack,
-  VStack,
-  Icon,
-  useColorModeValue,
-  Link,
-  Drawer,
-  DrawerContent,
-  Text,
-  useDisclosure,
-  BoxProps,
-  FlexProps,
-  Menu,
-  MenuButton,
-  MenuDivider,
-  MenuItem,
-  MenuList,
-  Image,
-  InputGroup,
-  InputLeftElement,
-  Input,
-  Spacer,
-  Button,
-  Table,
-  Thead,
-  Tr,
-  Th,
-  Tbody,
-  Td,
-  Heading,
-  Divider,
+  IconButton, Avatar, Box, CloseButton, Flex, HStack, VStack, Icon, useColorModeValue, Link, Drawer, DrawerContent, Text,
+  useDisclosure, BoxProps, FlexProps, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Image, InputGroup, InputLeftElement,
+  Input, Spacer, Button, Table, Thead, Tr, Th, Tbody, Td, Heading, Divider,
 } from "@chakra-ui/react";
 import {
   FiHome,
@@ -63,28 +31,23 @@ const rubik = Rubik({ weight: ["300", "400"], subsets: ["latin"] });
 
 function Dashboardd() {
   return (
-    <NewDash>
+    <NewDash >
       <div>
-        <HStack ml={["0", "6rem"]} flexWrap={["wrap", "nowrap"]}>
-          <Box mr={["0", "10px"]} w={"100%"} m={"auto"}>
+        <HStack ml={{ base: 0, md: "8rem" }} flexWrap="wrap">
+          <Box mr="10px">
             <VStack>
               {/* current balance card */}
               <Box
                 h={"144px"}
-                w={["100%", "60rem"]}
-                m={"auto"}
+                w={"60rem"}
                 mb="15px"
-                bg={[`url(/Maskbg.png)`]}
-                backgroundColor="#000000"
-                backgroundRepeat="no-repeat"
-                backgroundSize="cover"
-                backgroundPosition="50% 25%"
+                bg="#000000"
                 borderRadius={"8px"}
                 boxShadow="0px 14px 54px rgba(0, 0, 0, 0.03)"
-                // position="relative"
-                // overflow={"hidden"}
+                position="relative"
+                overflow={"hidden"}
               >
-                <Box mt="22px" ml={["20px", "40px"]}>
+                <Box mt="22px" ml="40px">
                   <Text
                     className={dmsans.className}
                     fontSize="18px"
@@ -97,7 +60,7 @@ function Dashboardd() {
                   <HStack mt="16px" flex>
                     <Text
                       className={dmsans.className}
-                      fontSize={["26px", "32px"]}
+                      fontSize={"32px"}
                       color="rgba(255, 255, 255, 1)"
                       fontWeight={800}
                       lineHeight="38px"
@@ -129,7 +92,7 @@ function Dashboardd() {
                     </Text>
                   </HStack>
                 </Box>
-                {/* <Image
+                <Image
                   src={"/prints.png"}
                   width={"334px"}
                   height={"329px"}
@@ -160,99 +123,12 @@ function Dashboardd() {
                   position="absolute"
                   left="424"
                   top="11"
-                /> */}
-              </Box>
-
-              {/* responsive/mobile quick links box */}
-              <Box
-                h={"144px"}
-                w={"100%"}
-                borderRadius={"8px"}
-                mt={["15px", "0px"]}
-                mb="15px"
-                bg="rgba(255, 255, 255, 0.4)"
-                border="1px solid rgba(0, 0, 0, 0.2)"
-                py="14px"
-                px="18px"
-                display={["block", "none"]}
-              >
-                <Text
-                  color="#141736"
-                  fontSize="16px"
-                  className={dmsansbold.className}
-                  fontWeight={500}
-                  lineHeight="19px"
-                  mb="17px"
-                >
-                  Quick Links
-                </Text>
-
-                <Flex justify={"space-between"}>
-                  <Box align={"center"}>
-                    <Flex
-                      _hover={{ cursor: "pointer", bg: "#F5F5F5" }}
-                      width={"54px"}
-                      height={"54px"}
-                      borderRadius="100%"
-                      justify={"center"}
-                      align={"center"}
-                      border={"1px solid rgba(0, 0, 0, 0.24)"}
-                      mb="8px"
-                    >
-                      <Image
-                        src={"/fundAcc.svg"}
-                        width={"24px"}
-                        height={"24px"}
-                      />
-                    </Flex>
-                    <Text fontSize={"10px"}>Top up Wallet</Text>
-                  </Box>
-
-                  <Box align={"center"}>
-                    <Flex
-                      _hover={{ cursor: "pointer", bg: "#F5F5F5" }}
-                      width={"54px"}
-                      height={"54px"}
-                      borderRadius="100%"
-                      justify={"center"}
-                      align={"center"}
-                      border={"1px solid rgba(0, 0, 0, 0.24)"}
-                      mb="8px"
-                    >
-                      <Image
-                        src={"/settle.svg"}
-                        width={"24px"}
-                        height={"24px"}
-                      />
-                    </Flex>
-                    <Text fontSize={"10px"}>Add Settlement</Text>
-                  </Box>
-
-                  <Box align={"center"}>
-                    <Flex
-                      _hover={{ cursor: "pointer", bg: "#F5F5F5" }}
-                      width={"54px"}
-                      height={"54px"}
-                      borderRadius="100%"
-                      justify={"center"}
-                      align={"center"}
-                      border={"1px solid rgba(0, 0, 0, 0.24)"}
-                      mb="8px"
-                    >
-                      <Image
-                        src={"/collect.svg"}
-                        width={"24px"}
-                        height={"24px"}
-                      />
-                    </Flex>
-                    <Text fontSize={"10px"}>Receive Payment</Text>
-                  </Box>
-                </Flex>
+                />
               </Box>
               {/* the graph area */}
               <Box
-                h={["240px", "393px"]}
-                w={"100%"}
+                h={"393px"}
+                w={"60rem"}
                 bg="#FFFFFF"
                 borderRadius={"8px"}
                 boxShadow="0px 14px 54px rgba(0, 0, 0, 0.03)"
@@ -307,21 +183,18 @@ function Dashboardd() {
               </Box>
             </VStack>
           </Box>
-          <Box w={"100%"} m={"auto"}>
-            <VStack>
+          <Box>
+            <VStack flexBasis={{ base: "100%", sm: "50%", lg: "25%" }}>
               {/* quick links area */}
-
               <Box
                 h={"144px"}
-                w={"100%"}
+                w={"28rem"}
                 borderRadius={"8px"}
-                mt={["15px", "0px"]}
                 mb="15px"
                 bg="rgba(255, 255, 255, 0.4)"
                 border="1px solid rgba(0, 0, 0, 0.2)"
                 py="14px"
                 px="18px"
-                display={["none", "block"]}
               >
                 <Text
                   color="#141736"
@@ -399,9 +272,7 @@ function Dashboardd() {
               {/* cards area */}
               <Box
                 h={"393px"}
-                w={"100%"}
-                // w={["20rem","28rem"]}
-                // mx="auto"
+                w={"28rem"}
                 borderRadius={"8px"}
                 bg="#FFFFFF"
                 align={"center"}
@@ -630,11 +501,7 @@ function Dashboardd() {
                   boxShadow={"0px 14px 54px rgba(0, 0, 0, 0.03);"}
                   borderRadius={"8px"}
                 >
-                  <Thead
-                    h="60px"
-                    bg="rgba(0, 0, 0, 0.04)"
-                    display={["none", "table-head"]}
-                  >
+                  <Thead h="60px" bg="rgba(0, 0, 0, 0.04)" display={['none', 'table-head']}>
                     <Tr color="gray">
                       <Th w="104px">S/N</Th>
                       <Th w="257px">Name</Th>
