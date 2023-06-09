@@ -1,8 +1,8 @@
 import React, { ReactNode, useState } from "react";
 import {
-  IconButton,Avatar,Box,CloseButton,Flex,HStack,VStack,Icon,useColorModeValue,Link,Drawer,DrawerContent,Text,
-  useDisclosure,BoxProps,FlexProps,Menu,MenuButton,MenuDivider,MenuItem,MenuList,Image,InputGroup,InputLeftElement,
-  Input,Spacer,Button,Table,Thead,Tr,Th,Tbody,Td,Heading,Divider,
+  IconButton, Avatar, Box, CloseButton, Flex, HStack, VStack, Icon, useColorModeValue, Link, Drawer, DrawerContent, Text,
+  useDisclosure, BoxProps, FlexProps, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Image, InputGroup, InputLeftElement,
+  Input, Spacer, Button, Table, Thead, Tr, Th, Tbody, Td, Heading, Divider,
 } from "@chakra-ui/react";
 import {
   FiHome,
@@ -36,7 +36,7 @@ function Dashboardd() {
         <HStack ml={{ base: 0, md: "8rem" }} flexWrap="wrap">
           <Box mr="10px">
             <VStack>
-                {/* current balance card */}
+              {/* current balance card */}
               <Box
                 h={"144px"}
                 w={"60rem"}
@@ -184,8 +184,8 @@ function Dashboardd() {
             </VStack>
           </Box>
           <Box>
-            <VStack flexBasis={{base:"100%", sm: "50%", lg: "25%"}}>
-                {/* quick links area */}
+            <VStack flexBasis={{ base: "100%", sm: "50%", lg: "25%" }}>
+              {/* quick links area */}
               <Box
                 h={"144px"}
                 w={"28rem"}
@@ -473,7 +473,7 @@ function Dashboardd() {
           <Flex dir="row" justify={"space-between"} align="center">
             <Text
               color="#141736"
-              fontSize={["16px","20px"]}
+              fontSize={["16px", "20px"]}
               className={dmsans.className}
               fontWeight={400}
               lineHeight="19px"
@@ -501,7 +501,7 @@ function Dashboardd() {
                   boxShadow={"0px 14px 54px rgba(0, 0, 0, 0.03);"}
                   borderRadius={"8px"}
                 >
-                  <Thead h="60px" bg="rgba(0, 0, 0, 0.04)" display={['none','table-head']}>
+                  <Thead h="60px" bg="rgba(0, 0, 0, 0.04)" display={['none', 'table-head']}>
                     <Tr color="gray">
                       <Th w="104px">S/N</Th>
                       <Th w="257px">Name</Th>
