@@ -199,13 +199,13 @@ function Setting() {
 
                 {/* Mobile View */}
                 <Box display={{base:'flex', md:'none'}} >
-                    <Tabs isFitted  width='100%' variant='enclosed-colored' colorScheme='blackAlpha.900' >
+                    <Tabs isFitted  width='100%' variant='colorful' colorScheme='blackAlpha.900' >
                             <TabList mb='1em'>
                                 <Tab >
                                      <HStack  align='center' >
 
-                                            <ProfileIcon boxSize={4} color={currentPage === 'profile' ? "#000000" : 'rgba(0, 0, 0, 0.4)'} />
-                                            <Box textAlign={'left'} >  <Text fontSize={'0.625em'} mb='0.25em' lineHeight='1.139em' className={dmsansbold.className} color={currentPage === 'profile' ? "#000000" : 'rgba(0, 0, 0, 0.4)'} fontStyle="normal" fontWeight={500}>Your Profile</Text>
+                                            <ProfileIcon boxSize={4} />
+                                            <Box textAlign={'left'} >  <Text fontSize={'0.625em'} mb='0.25em' lineHeight='1.139em' className={dmsansbold.className}  fontStyle="normal" fontWeight={600}>Your Profile</Text>
                                             </Box>
 
                                         </HStack>
@@ -213,22 +213,22 @@ function Setting() {
                                 </Tab>
                                 <Tab>
                                       <HStack  align='center' >
-                                            <ProfileIcon boxSize={4} color={currentPage === 'notification' ? "#000000" : 'rgba(0, 0, 0, 0.4)'} />
-                                            <Box textAlign={'left'} >  <Text fontSize={'0.625em'} mb='0.25em' lineHeight='1.139em' className={dmsansbold.className} color={currentPage === 'notification' ? "#000000" : 'rgba(0, 0, 0, 0.4)'} fontStyle="normal" fontWeight={500}>Notifications</Text>
+                                            <ProfileIcon boxSize={4}  />
+                                            <Box textAlign={'left'} >  <Text fontSize={'0.625em'} mb='0.25em' lineHeight='1.139em' className={dmsansbold.className}  fontStyle="normal" fontWeight={600}>Notifications</Text>
                                             </Box>
                                         </HStack>
                                 </Tab>
                                 <Tab>
                                       <HStack  align='center' >
-                                            <ProfileIcon boxSize={4} color={currentPage === 'billing' ? "#000000" : 'rgba(0, 0, 0, 0.4)'} />
-                                            <Box textAlign={'left'} >  <Text fontSize={'0.625em'} mb='0.25em' lineHeight='1.139em' className={dmsansbold.className} color={currentPage === 'billing' ? "#000000" : 'rgba(0, 0, 0, 0.4)'} fontStyle="normal" fontWeight={500}>Billing</Text>
+                                            <ProfileIcon boxSize={4}  />
+                                            <Box textAlign={'left'} >  <Text fontSize={'0.625em'} mb='0.25em' lineHeight='1.139em' className={dmsansbold.className}  fontStyle="normal" fontWeight={600}>Billing</Text>
                                             </Box>
                                         </HStack>
                                 </Tab>
                                 <Tab>
                                       <HStack  align='center' >
-                                            <ProfileIcon boxSize={4} color={currentPage === 'security' ? "#000000" : 'rgba(0, 0, 0, 0.4)'} />
-                                            <Box textAlign={'left'} >  <Text fontSize={'0.625em'} mb='0.25em' lineHeight='1.139em' className={dmsansbold.className} color={currentPage === 'security' ? "#000000" : 'rgba(0, 0, 0, 0.4)'} fontStyle="normal" fontWeight={500}>Security</Text>
+                                            <ProfileIcon boxSize={4}  />
+                                            <Box textAlign={'left'} >  <Text fontSize={'0.625em'} mb='0.25em' lineHeight='1.139em' className={dmsansbold.className}  fontStyle="normal" fontWeight={600}>Security</Text>
                                             </Box>
                                         </HStack>
                                 </Tab>
