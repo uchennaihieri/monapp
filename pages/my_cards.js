@@ -490,11 +490,11 @@ function My_Cards() {
 
                                 <HStack justify={'space-between'} >     
                                 <HStack>
-                                <Radio size='lg' name='0' type='gray' defaultChecked/> 
-
+                               
+ <Radio variant='blackCircle' size='lg' name='0' type='gray' defaultChecked/> 
                                 <VStack alignItems={'flex-start'}>
-                                    <Text  fontSize='18.67px' lineHeight='25.11px' className={poppins.className}  fontWeight={'500'}>****   ****   9793</Text>
-                                    <Text  fontSize='12px' lineHeight='16.09px' className={poppins.className}  fontWeight={'400'}>Card Number</Text>
+                                    <Text  fontSize='1.167em' lineHeight='1.569em' className={poppins.className}  fontWeight={'500'}>****   ****   9793</Text>
+                                    <Text  fontSize='0.75em' lineHeight='1em' className={poppins.className}  fontWeight={'400'}>Card Number</Text>
                                 </VStack>
                                 
                                 </HStack>                           
