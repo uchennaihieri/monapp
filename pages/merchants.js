@@ -62,6 +62,7 @@ const dmsansbold = DM_Sans({ weight: "500", subsets: ["latin"] });
 const rubik = Rubik({ weight: ["300", "400"], subsets: ["latin"] });
 
 function merchants() {
+<<<<<<< HEAD
   return (
     <NewDash>
       <div>
@@ -126,6 +127,61 @@ function merchants() {
       </div>
     </NewDash>
   );
+=======
+    return (
+        <NewDash>
+            <div>
+
+
+                <Box ml={{ base: 0, md: '8rem' }} mt='18px' px='10px'>
+                    <Flex dir='row' justify={'space-between'} align='center'>
+                        <Text color='#141736' fontSize={{base:'1em', md:'1.25em'}} className={dmsans.className} fontWeight={400} lineHeight='19px'>View Merchants</Text>
+                        <Button
+                            colorScheme='gray' variant='outline' rightIcon={<BsChevronDown />}
+                            transition="all 0.3s"
+                            _focus={{ boxShadow: 'none' }} color='#A5B3CD' fontSize={{base:'1em', md:'1.25em'}}>
+                            Search merchant
+
+                        </Button>
+
+                    </Flex>
+
+
+
+                    {/* <Box dropShadow='lg'  > */}
+                        <Flex  flexWrap={'wrap'}  w='100%'  my='26px'  justify={{base:'center', md:'flex-start'}} gap={'3'} dropShadow='lg'>
+                            <MerchantBoxCard />
+                            <MerchantBoxCard /><MerchantBoxCard /><MerchantBoxCard /><MerchantBoxCard /><MerchantBoxCard /><MerchantBoxCard /><MerchantBoxCard /><MerchantBoxCard /><MerchantBoxCard /><MerchantBoxCard /><MerchantBoxCard /><MerchantBoxCard /><MerchantBoxCard /><MerchantBoxCard /><MerchantBoxCard /><MerchantBoxCard /><MerchantBoxCard /><MerchantBoxCard /><MerchantBoxCard /><MerchantBoxCard />
+                            
+                        </Flex>
+
+                    {/* </Box> */}
+
+                </Box>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </NewDash>
+    )
+>>>>>>> main
 }
 
 export default merchants;

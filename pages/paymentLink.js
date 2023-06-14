@@ -236,11 +236,11 @@ export const Signin = () => {
                                     <AccordionPanel pb={'2.5rem'}  >
 
 
-                                        <Radio value='1' mb='1.5rem'>
+                                        <Radio variant={'long'} value='1' mb='1.5rem'>
                                             Monapp Account
                                         </Radio>
 
-                                        <Radio value='2'>
+                                        <Radio variant={'long'} value='2'>
                                             QR Code
                                         </Radio>
 

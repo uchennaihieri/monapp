@@ -1,4 +1,5 @@
 import { extendTheme } from '@chakra-ui/react';
+import { tabsTheme } from './components/Tabs'
 
 
 
@@ -24,7 +25,9 @@ const theme = extendTheme({
             },
         },
         Radio: {
-            baseStyle: {
+            variants:{
+                long:{
+
                 container: {
                     w: '100%',
                     h: '3rem',
@@ -46,8 +49,25 @@ const theme = extendTheme({
 
                 }
 
+                },
+                blackCircle:{
+                control: {
+                    _checked: {
+                        bg: 'black',
+                        color: 'black',
+                        borderColor: "",
+                    },
+                    _hover: {
+                        bg: '',
+                        color: '',
+                        borderColor: "",
+                    }
 
+                }
+
+                }
             }
+            
         },
         Switch: {
             variants: {
@@ -70,6 +90,7 @@ const theme = extendTheme({
                 },
             },
         },
+        Tabs:tabsTheme,
     },
 
 });
