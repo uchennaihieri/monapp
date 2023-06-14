@@ -1,11 +1,24 @@
 import { HStack, Image, Td, Text, Tr, Icon, useBreakpointValue, Box, Flex} from "@chakra-ui/react";
-import React from "react";
+import React, {useState} from "react";
 import { GoPrimitiveDot } from "react-icons/go";
+import TransactionDrawer from "@/pages/transactionsDrawer";
 
 function DebitTransaction() {
     const isDesktop=useBreakpointValue({base: false, lg: true})
+    const [isDrawerOpen, setIsDrawerOpen]=useState(false)
+  
+    const handleOpenDrawer=()=>{
+      // setSelectedTransaction(transaction);
+      setIsDrawerOpen(true);
+    }
+  
+    // fuction to handle closing the drawer
+    const handleCloseDrawer=()=>{
+      setIsDrawerOpen(false)
+    }
+  
   return (
-    <Tr h="79px">
+    <Tr h="79px" onClick={handleOpenDrawer}>
       <Td display={["none", "table-cell"]}>1</Td>
       <Td>
         <HStack>
@@ -35,6 +48,10 @@ function DebitTransaction() {
           <Text> Success </Text>
         </HStack>{" "}
       </Td>
+      <TransactionDrawer isOpen={isDrawerOpen} 
+                 onClose={handleCloseDrawer} 
+                // transaction={selectedTransaction} 
+               />
     </Tr>
   );
 }

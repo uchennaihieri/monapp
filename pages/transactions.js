@@ -55,6 +55,7 @@ import { GoPrimitiveDot } from "react-icons/go";
 import DebitTransaction from "@/components/debitTransaction";
 import CreditTransaction from "@/components/creditTransaction";
 import NewDash from "./NewDash";
+import TransactionDrawer from "./transactionsDrawer";
 
 const dmsans = DM_Sans({ weight: "400", subsets: ["latin"] });
 const dmsansbold = DM_Sans({ weight: "500", subsets: ["latin"] });
@@ -111,7 +112,7 @@ function Transactions() {
                     className={dmsans.className}
                     fontWeight={400}
                   >
-                    <DebitTransaction />
+                    <DebitTransaction  />
                     <CreditTransaction />
                     <CreditTransaction />
                     <CreditTransaction />
@@ -121,6 +122,7 @@ function Transactions() {
                     <DebitTransaction />
                   </Tbody>
                 </Table>
+            
               </Flex>
             </Flex>
           </Box>
