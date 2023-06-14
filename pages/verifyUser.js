@@ -49,7 +49,7 @@ import { Bree_Serif, DM_Sans, Roboto_Slab } from '@next/font/google';
 import { useEffect, useState } from 'react';
 import { AiOutlineLeft } from 'react-icons/ai';
 import { RiEyeCloseFill, RiEyeFill } from 'react-icons/ri';
-import { businessCat, businessReg, bvnN, myLocation, pinID, seller, sellerType } from '@/recoil/atoms';
+import { businessCat, businessReg, bvnN, myLocation, pinID, seller, sellerType, myCity, myAddress, myPostalCode } from '@/recoil/atoms';
 import { useForm } from "react-hook-form";
 import { auth, createUserWithEmailAndPassword, db, deleteDoc, doc, deleteUser, serverTimestamp, setDoc, signInWithEmailAndPassword } from '@/services/firebase';
 import { reauthenticateWithCredential } from 'firebase/auth';
@@ -270,6 +270,9 @@ export const Verify = ({ person }) => {
     const [merchant, setMerchant] = useBoolean(true)
     const [banks, setBanks] = useState(null)
     const [location, setLocation] = useRecoilState(myLocation)
+    const [city, setCity] = useRecoilState(myCity)
+    const [address, setAddress] = useRecoilState(myAddress)
+    const [postalCode, setPostalCode] = useRecoilState(myPostalCode)
     const [merchantName, setMerchantName] = useRecoilState(seller)
     const [myBusiness, setMyBusiness] = useRecoilState(businessCat)
     const [merchantType, setMerchantType] = useState('1')
@@ -311,12 +314,7 @@ export const Verify = ({ person }) => {
     const verifyUser = async () => {
         setLoadingState(true)
 
-        if (merchantType == '1') {
-            setMerch('personal')
-            setMerchantName(`${person.firstName + " " + person.lastName}`)
-        } else if (merchantType == '2') {
-            setMerch('registered business')
-        }
+
 
         await fetch("https://us-central1-monapp-33057.cloudfunctions.net/app/api/verifyBvn", {
 
@@ -377,7 +375,7 @@ export const Verify = ({ person }) => {
             <Stack >
                 <Box >
                     <FormControl id="email" >
-                        <FormLabel className={roboto.className}>Select Location</FormLabel>
+                        <FormLabel className={roboto.className}>Select State</FormLabel>
 
                         <Select placeholder='Select option' value={location}
                             onChange={(e) => setLocation(e.target.value)} variant='outline' mb="1.6rem" h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'}>
@@ -387,14 +385,51 @@ export const Verify = ({ person }) => {
 
                     </FormControl>
                 </Box>
-                <Box >
+                {/* <Box >
                     <FormControl id="email" >
                         <FormLabel className={roboto.className}>Would you like to also recieve payments?</FormLabel>
 
                         <Switch colorScheme='green' mb="1.6rem" defaultChecked onChange={setMerchant.toggle} />
 
                     </FormControl>
+                </Box> */}
+
+                <Box >
+                    <FormControl id="email" >
+                        <FormLabel className={roboto.className}>City</FormLabel>
+
+                        <Input
+                            value={city}
+                            onChange={(e) => setCity(e.target.value)} mb="1.6rem" h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'} type="text" placeholder='What is your city?' />
+
+
+                    </FormControl>
                 </Box>
+
+                <Box >
+                    <FormControl id="email" >
+                        <FormLabel className={roboto.className}>Address</FormLabel>
+
+                        <Input
+                            value={address}
+                            onChange={(e) => setAddress(e.target.value)} mb="1.6rem" h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'} type="text" placeholder='What is your address?' />
+
+
+                    </FormControl>
+                </Box>
+
+                <Box >
+                    <FormControl id="email" >
+                        <FormLabel className={roboto.className}>Postal Code</FormLabel>
+
+                        <Input
+                            value={postalCode}
+                            onChange={(e) => setPostalCode(e.target.value)} mb="1.6rem" h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'} type="text" placeholder='code' />
+
+
+                    </FormControl>
+                </Box>
+                {/* 
 
                 {merchant &&
                     <>
@@ -405,15 +440,15 @@ export const Verify = ({ person }) => {
                                     <Radio value='1'>Personal</Radio>
                                     <Radio value='2'>Registered Business</Radio>
                                 </Stack>
-                            </RadioGroup>
-                            {/* <CheckboxGroup colorScheme='green' defaultValue={['naruto', 'kakashi']}>
+                            </RadioGroup> */}
+                {/* <CheckboxGroup colorScheme='green' defaultValue={['naruto', 'kakashi']}>
 
                                 <HStack > <Checkbox value='personal'></Checkbox>
                                     <Checkbox value='registered_business'></Checkbox></HStack>
                             </CheckboxGroup> */}
-                        </Box>
+                {/* </Box> */}
 
-                        {merchantType == '1' && <>
+                {/* {merchantType == '1' && <>
                             <Box  >
                                 <FormControl id="email" isDisabled >
                                     <FormLabel className={roboto.className}>Merchant Name</FormLabel>
@@ -437,12 +472,12 @@ export const Verify = ({ person }) => {
                             </Box>
 
 
-                        </>}
+                        </>} */}
 
 
 
 
-                        {merchantType == '2' && <>
+                {/* {merchantType == '2' && <>
                             <Box  >
                                 <FormControl id="email" >
                                     <FormLabel className={roboto.className}>Merchant Name</FormLabel>
@@ -477,14 +512,14 @@ export const Verify = ({ person }) => {
                             </Box>
 
 
-                        </>}
+                        </>} */}
 
 
-
+                {/* 
                     </>
-                }
+                } */}
 
-                <Box >
+                {/* <Box >
                     <FormControl id="email" >
                         <FormLabel className={roboto.className}>Beta Code</FormLabel>
 
@@ -494,13 +529,13 @@ export const Verify = ({ person }) => {
 
 
                     </FormControl>
-                </Box>
+                </Box> */}
 
                 <Button
                     type='submit'
                     isLoading={loadingState}
                     loadingText='Please wait..'
-                    onClick={betaCode == 'mysteryAccess2Beta' ? verifyUser : notBetaUser}
+                    onClick={verifyUser}
                     borderRadius={'0.125rem'}
                     h="4rem"
                     bg={'#000000'}
