@@ -25,7 +25,9 @@ const theme = extendTheme({
             },
         },
         Radio: {
-            baseStyle: {
+            variants:{
+                long:{
+
                 container: {
                     w: '100%',
                     h: '3rem',
@@ -47,8 +49,25 @@ const theme = extendTheme({
 
                 }
 
+                },
+                blackCircle:{
+                control: {
+                    _checked: {
+                        bg: 'black',
+                        color: 'black',
+                        borderColor: "",
+                    },
+                    _hover: {
+                        bg: '',
+                        color: '',
+                        borderColor: "",
+                    }
 
+                }
+
+                }
             }
+            
         },
         Switch: {
             variants: {
