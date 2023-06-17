@@ -23,7 +23,7 @@ function DebitTransaction() {
       <Td>
         <HStack>
           <Image src={"/sentImage.svg"} width={"24px"} height={"24px"} />
-          <Text fontSize={["14px", "md"]}> Franklin U. Stores </Text>
+          <Text fontSize={["14px", "15px"]}> Franklin U. Stores </Text>
         </HStack>
         <Box marginLeft={"2rem"} fontSize={"sm"}>
      {!isDesktop && <span>25 April at 09:30am</span>} 
