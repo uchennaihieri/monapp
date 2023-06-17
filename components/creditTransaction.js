@@ -26,10 +26,9 @@ function CreditTransaction() {
             </Td>
             <Td> <HStack> <Image src={'/receiveImage.svg'} width={'24px'} height={'24px'} />
 
-                <Text fontSize={["14px", "md"]}> Franklin U. Stores </Text></HStack>
+                <Text fontSize={["14px", "15px"]}> Franklin U. Stores </Text></HStack>
                 <Box marginLeft={"2rem"} fontSize={"sm"}>
      {!isDesktop && <span>25 April at 09:30am</span>} 
-     <button onClick={()=>{handleOpenDrawer}}> drawer</button>
 
         </Box>
  </Td>
