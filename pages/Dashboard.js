@@ -1,1012 +1,680 @@
-import React, { useEffect, useState } from 'react'
+import React, { ReactNode, useState } from "react";
 import {
-    Flex,
-    Heading,
-    Avatar,
-    AvatarGroup,
-    Text,
-    Icon,
-    IconButton,
-    Table,
-    Thead,
-    Tbody,
-    Tr,
-    Th,
-    Td,
-    Divider,
-    Link,
-    Box,
-    Button,
-    Input,
-    InputGroup,
-    InputLeftElement,
-    Image,
-    Switch,
-    PinInputField,
-    PinInput,
-    useToast,
-    HStack,
-    Textarea,
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalCloseButton,
-    ModalBody,
-    useDisclosure,
-    Stat,
-    Card,
-    CardBody,
-    StatLabel,
-    StatNumber,
-    ButtonGroup,
-    Select,
-    Stack,
-    NumberInput,
-    NumberInputField,
-    useBreakpointValue
-} from '@chakra-ui/react'
-import _ from 'lodash';
+  IconButton, Avatar, Box, CloseButton, Flex, HStack, VStack, Icon, useColorModeValue, Link, Drawer, DrawerContent, Text,
+  useDisclosure, BoxProps, FlexProps, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Image, InputGroup, InputLeftElement,
+  Input, Spacer, Button, Table, Thead, Tr, Th, Tbody, Td, Heading, Divider,
+} from "@chakra-ui/react";
 import {
-    FiHome,
-    FiPieChart,
-    FiDollarSign,
-    FiBox,
-    FiCalendar,
-    FiChevronDown,
-    FiChevronUp,
-    FiPlus,
-    FiCreditCard,
-    FiSearch,
-    FiBell
-} from "react-icons/fi"
+  FiHome,
+  FiTrendingUp,
+  FiCompass,
+  FiStar,
+  FiSettings,
+  FiMenu,
+  FiBell,
+  FiChevronDown,
+} from "react-icons/fi";
+
 import {
-    AuthAction,
-    useAuthUser,
-    withAuthUser,
-    withAuthUserTokenSSR,
+  AuthAction,
+  useAuthUser,
+  withAuthUser,
+  withAuthUserTokenSSR,
 } from 'next-firebase-auth'
-import { auth, db, doc, onSnapshot, signOut } from '@/services/firebase';
-import { useRouter } from 'next/router';
-import { RiMailSendFill } from 'react-icons/ri';
-import { GiShop } from 'react-icons/gi';
-import { MdBlock, MdFiberPin, MdPin } from 'react-icons/md';
-import { BsDot, BsFillPlusCircleFill } from 'react-icons/bs';
-import { addDoc, collection, query, where } from 'firebase/firestore';
-import MyChart from '@/components/myChart';
-import { Bree_Serif } from '@next/font/google';
-import dayjs from 'dayjs';
-import { usePaystackPayment } from 'react-paystack';
-import { TbCurrencyNaira } from 'react-icons/tb'
-import axios from 'axios';
-
-const bree = Bree_Serif({ weight: '400', subsets: ['latin'] })
-
-
-function Dashboard({ person }) {
-    const AuthUser = useAuthUser()
-    const toast = useToast()
-    const router = useRouter()
-    const [display, changeDisplay] = useState('hide')
-    const [value, changeValue] = useState(1)
-    const [otherValue, changeOtherValue] = useState(1)
-    const [wallet, setWallet] = useState(null)
-    const [loadingState, setLoadingState] = useState(false);
-    const { isOpen, onOpen, onClose } = useDisclosure()
-    const [myTransactions, setMyTransactions] = useState(null)
-    const [paymentDialog, setPaymentDialog] = useState(1)
-    const [loanAmount, setLoanAmount] = useState(1500)
-    const [clientRepaymentAmount, setClientRepaymentAmount] = useState(0)
-    const [clientRepaymentDate, setClientRepaymentDate] = useState('')
-    const [security, setSecurity] = useState(null)
-    const [loanTenor, setLoanTenor] = useState('')
-    const [deliveryAddress, setDeliveryAddress] = useState('')
-    const [deliveryContact, setDeliveryContact] = useState('')
-    const [pin, setPin] = useState('')
-    const [confirmPin, setConfirmPin] = useState('')
-    const [topUpAmount, setTopUpAmount] = useState(0)
-    const [view, setView] = useState('')
-    const [amountFees, setAmountFees] = useState(0)
-    const [amountWithFees, setAmountWithFees] = useState(0)
-    const [activePage, setActivePage] = useState(1)
-
-    const now = dayjs()
-
-    const pageHiden = useBreakpointValue(
-        {
-            base: 'none',
-            md: 'block',
-        },
-    )
-
-
-    const pageView = useBreakpointValue(
-        {
-            base: 'block',
-            md: 'block',
-        },
-    )
-
-    useEffect(() => {
-
-        getSecurity()
-        getWallet()
-        getTransactions()
-
-    }, [])
-
-
-    useEffect(() => {
-        if (loanAmount && loanTenor) {
-            const repaymentAmount = _.parseInt(loanAmount) + (loanAmount * _.parseInt(loanTenor) * 0.3333 / 100)
-
-            const repaymentDate = now.add(_.parseInt(loanTenor), 'day')
-            setClientRepaymentDate(dayjs(repaymentDate).format('MMMM D, YYYY'))
-            console.log(repaymentDate)
-            setClientRepaymentAmount(repaymentAmount.toLocaleString('en-US', { maximumFractionDigits: 2 }))
-
-        } else {
-            setClientRepaymentAmount(0)
-            setClientRepaymentDate('')
-        }
-    }, [loanAmount, loanTenor])
-
-    const submitLoan = async () => {
-
-        const postRef = await addDoc(collection(db, "CardApplication"), {
-            firstName: person.firstName,
-            lastName: person.lastName,
-            monappNumber: wallet?.accountNumber,
-            QrCode: wallet?.qrImage,
-            deliveryAddress: deliveryAddress,
-            deliveryContact: deliveryContact,
-            loanAmount: loanAmount,
-            loanTenor: `${loanTenor} days`, applicationDate: dayjs(now).format('MMMM D, YYYY'), repaymentDate: clientRepaymentDate, repaymentAmount: clientRepaymentAmount
-        }).then(() => toast({
-            title: 'Card application submitted',
-            description: 'Our agent would reach out to you shortly',
-            status: 'success',
-            duration: 9000,
-            isClosable: true,
-            position: 'top',
-        })).catch(err => console.log(err));
-
-
-        setLoanTenor("")
-        closeModal()
-    }
-
-
-
-
-    const getWallet = () => {
-
-
-        const unsub = onSnapshot(doc(db, "wallet", `${person.id}`), (doc) => {
-            setWallet({ id: doc.id, ...doc.data() });
-        });
-
-
-    }
-
-    const goToCard = () => {
-        setActivePage(2)
-    }
-
-    const getSecurity = () => {
-        const unsub = onSnapshot(doc(db, "security", `${person.id}`), (doc) => {
-            setSecurity({ id: doc.id, ...doc.data() });
-        });
-    }
-
-
-
-    const getTransactions = () => {
-
-
-        const q = query(collection(db, "transactions"), where("user", "array-contains", `${person.id}`));
-        const unsubscribe = onSnapshot(q, (querySnapshot) => {
-
-            if (querySnapshot.empty) {
-                setMyTransactions(null)
-            } else {
-                const txn = [];
-                querySnapshot.forEach((doc) => {
-                    txn.push({ id: doc.id, ...doc.data() });
-                });
-
-                setMyTransactions(txn)
-
-            }
-
-
-        });
-
-
-
-
-    }
-
-    const fundAccount = () => {
-        alert('hello')
-    }
-
-
-    let Naira = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'NGN',
-    });
-
-    const amount = wallet?.merchantBalance + wallet?.personalBalance
-
-
-    const goToLogin = () => {
-        router.push('/auth')
-    }
-
-    const goToMerchants = () => {
-        toast({
-            title: 'Still under development',
-            description: 'Sorry, you cannot navigate here at this time.',
-            status: 'error',
-            duration: 9000,
-            isClosable: true,
-            position: 'top',
-        })
-    }
-    const goToDashboard = () => {
-        setActivePage(1)
-        router.push('/Dashboard')
-    }
-
-
-
-    const signMeOut = () => {
-        signOut(auth).then(() => {
-            goToLogin()
-        }).catch((error) => {
-            // An error happened.
-        });
-    }
-
-
-    const handleTopUp = () => {
-        onOpen()
-        setPaymentDialog(3)
-    }
-
-
-    const openDelivery = () => {
-        onOpen()
-        setView('delivery')
-    }
-
-    const goPay = () => {
-
-
-        router.push('https://paystack.com/pay/monapp')
-    }
-
-    const closeModal = () => {
-        setDeliveryAddress('')
-        setDeliveryContact('')
-        setLoanTenor('')
-        setTopUpAmount(0)
-        setPaymentDialog(1)
-        onClose()
-    }
-
-
-
-
-    const createPin = () => {
-        setLoadingState(true)
-
-        if (pin != confirmPin) {
-            setLoadingState(false)
-            toast({
-                title: 'Pin creation error',
-                description: 'Your pin does not match',
-                status: 'error',
-                duration: 9000,
-                isClosable: true,
-                position: 'top',
-            })
-        } else {
-
-            fetch("https://us-central1-monapp-33057.cloudfunctions.net/app/api/crypt", {
-
-                // Adding method type
-                method: "POST",
-                body: JSON.stringify({
-                    pin: pin,
-                    id: person.id
-                })
-            }).then(function (res) {
-                return res.json();
-            })
-                // Converting to JSON
-                .then(function (data) {
-                    if (data.successful) {
-                        setLoadingState(false)
-                        toast({
-                            title: 'Pin creation successful',
-                            description: 'Your pin has been created',
-                            status: 'success',
-                            duration: 9000,
-                            isClosable: true,
-                            position: 'top',
-                        })
-                    } else {
-                        setLoadingState(false)
-                        toast({
-                            title: 'Pin creation error',
-                            description: 'There was an error somewhere, please try again',
-                            status: 'error',
-                            duration: 9000,
-                            isClosable: true,
-                            position: 'top',
-                        })
-                    }
-                })
-                .catch(function (error) {
-                    setLoadingState(false)
-                    console.log(error);
-                })
-        }
-    }
-
-
-    const config = {
-        reference: (new Date()).getTime().toString(),
-        email: person.email,
-        amount: amountWithFees * 100, //Amount is in the country's lowest currency. E.g Kobo, so 20000 kobo = N200
-        publicKey: process.env.NEXT_PUBLIC_FUND_KEY,
-        metadata: {
-            "user_id": person.id,
-            "creditAmount": topUpAmount,
-            "custom_fields": [
-                {
-                    "display_name": person.firstName + " " + person.lastName,
-                    "variable_name": person.id,
-                    "value": topUpAmount
-                }]
-        }
-    };
-
-
-
-    const CloseModal = () => {
-        console.log('closed')
-    }
-
-    const initializePayment = usePaystackPayment(config);
-
-
-
-    const getFee = async () => {
-
-
-
-        axios.post('http://127.0.0.1:5001/monapp-33057/us-central1/app/api/getFeeApp', {
-            topUpAmount: topUpAmount * 100,
-        })
-            .then(function ({ data }) {
-                console.log(data)
-                if (data.successful) {
-                    setAmountWithFees(data.newFees / 100)
-                    setAmountFees((data.newFees / 100) - topUpAmount)
-                    setLoadingState(false)
-                    setPaymentDialog(4)
-
-                } else {
-                    setLoadingState(false)
-
-                }
-            })
-            .catch(function (error) {
-                setLoadingState(false)
-                console.log(error);
-            });
-
-
-        // await fetch("http://127.0.0.1:5001/monapp-33057/us-central1/app/api/getFee", {
-
-        //     // Adding method type
-        //     method: "POST",
-        //     body: JSON.stringify({
-        //         topUpAmount: topUpAmount * 100,
-        //     })
-        // }).then(function (res) {
-        //     return res.json();
-        // })
-        //     // Converting to JSON
-        //     .then(function (data) {
-        //         console.log(data)
-        //         if (data.successful) {
-        //             setAmountWithFees(data.newFees / 100)
-        //             setAmountFees((data.newFees / 100) - topUpAmount)
-        //             setLoadingState(false)
-        //             setPaymentDialog(4)
-
-        //         } else {
-        //             setLoadingState(false)
-
-        //         }
-        //     })
-        //     .catch(function (error) {
-        //         setLoadingState(false)
-        //         console.log(error);
-        //     })
-
-    }
-
-
-    const pay = () => {
-        closeModal()
-        initializePayment(CloseModal)
-    }
-
-
-    return (
-        <Flex
-            h={[null, null, "100vh"]}
-            maxW="2000px"
-            flexDir={["column", "column", "row"]}
-            overflow="hidden"
-        >
-            {/* Column 1 */}
-            <Flex
-                w={["100%", "100%", "10%", "15%", "15%"]}
-                flexDir="column"
-                alignItems="center"
-                backgroundColor="#020202"
-                color="#fff"
-            >
-                <Flex
-                    flexDir="column"
-                    h={[null, null, "100vh"]}
-                    justifyContent="space-between"
-                >
-                    <Flex
-                        flexDir="column"
-                        as="nav"
+import { IconType } from "react-icons";
+import { ReactText } from "react";
+import { SearchIcon } from "@chakra-ui/icons";
+import { DM_Sans, Rubik } from "@next/font/google";
+import { BsChevronDown, BsDot } from "react-icons/bs";
+import { GoPrimitiveDot } from "react-icons/go";
+import MyChart from "@/components/myChart";
+import NewDash from "./NewDash";
+import DebitTransaction from "@/components/debitTransaction";
+import CreditTransaction from "@/components/creditTransaction";
+
+const dmsans = DM_Sans({ weight: "400", subsets: ["latin"] });
+const dmsansbold = DM_Sans({ weight: "500", subsets: ["latin"] });
+const rubik = Rubik({ weight: ["300", "400"], subsets: ["latin"] });
+
+function Dashboard() {
+
+  return (
+    <NewDash>
+      <div >
+        <HStack ml={["0", "6rem"]} flexWrap={["wrap", "nowrap"]} >
+          <Box mr={["0", "10px"]} w={"100%"} m={"auto"}>
+            <VStack>
+              {/* current balance card */}
+              <Box
+                h={"144px"}
+                w={["100%", "60rem"]}
+                m={"auto"}
+                mb="15px"
+                bg={[`url(/Maskbg.png)`]}
+                backgroundColor="#000000"
+                backgroundRepeat="no-repeat"
+                backgroundSize="cover"
+                backgroundPosition="50% 25%"
+                borderRadius={"8px"}
+                boxShadow="0px 14px 54px rgba(0, 0, 0, 0.03)"
+                position="relative"
+                overflow={"hidden"}
+              >
+                <Box mt="22px" ml={["20px", "40px"]}>
+                  <Text
+                    className={dmsans.className}
+                    fontSize="18px"
+                    color={"#FFFFFF"}
+                    fontStyle="normal"
+                    fontWeight={400}
+                  >
+                    Current Balance
+                  </Text>
+                  <HStack mt="16px" flex>
+                    <Text
+                      className={dmsans.className}
+                      fontSize={["26px", "32px"]}
+                      color="rgba(255, 255, 255, 1)"
+                      fontWeight={800}
+                      lineHeight="38px"
+                      letterSpacing={"-0.006em"}
                     >
-                        <Image src={'/logo.png'} width={{ base: '8.625rem', md: "14.4275rem" }} height={{ base: '1.569rem', md: "2.625rem" }} mt={50}
-                            mb={{ base: 5, md: 100 }} alignSelf="center" onClick={goToDashboard} _hover={{
-                                cursor: "pointer"
-                            }} />
-
-
-                    </Flex>
-                    <Flex flexDir="column" alignItems="center" mb={10} mt={5} display={{ base: 'none', md: "flex" }}>
-                        <Flex flexDir="column" align="center" justify="center" bg="#ffffff" w="80%" borderRadius={'12px'} color="#000000" p="10px" mb="20px" position={'relative'} onClick={goToMerchants} _hover={{
-                            bg: "gray.200",
-                            cursor: "pointer"
-                        }}>
-
-                            <Image src={'/seller.png'} w={20} h={20}
-                                alignSelf="center" />
-                            <Text fontWeight={600} > Merchants</Text>
-
-                        </Flex>
-
-                        <Flex flexDir="row" align="center" justify="center"> <Avatar my={2} name={person.firstName + " " + person.lastName} src="avatar-1.jpg" mr="10px" />
-                            <Text fontWeight={600} textAlign="center">{person.firstName + " " + person.lastName}</Text> </Flex>
-
-
-                        <Button fontWeight={600} variant={'link'} color='white' mt="1em" onClick={signMeOut}>logout</Button>
-                    </Flex>
-
-                    <Flex flexDir="row" alignItems="center" my="20px" display={{ base: 'flex', md: "none" }} >
-                        <Button colorScheme='gray' fontWeight={600} variant={'link'} color='white' mr="30px" onClick={goToMerchants} >
-                            Merchants
-                        </Button>
-                        <Button colorScheme='gray' fontWeight={600} variant={'link'} color='white' mr="30px" onClick={goToCard} >
-                            Card
-                        </Button>
-                        <Button fontWeight={600} variant={'link'} color='white' onClick={signMeOut}>logout</Button>
-
-
-                    </Flex>
-
-                </Flex>
-            </Flex>
-
-            {/* Column 2 */}
-            <Flex
-                w={["100%", "100%", "60%", "60%", "55%"]}
-                p={{ base: "5%", md: "3%" }}
-                flexDir="column"
-                overflow="auto"
-                minH={{ base: "90vh", md: "100vh" }}
-
-                display={activePage == 1 ? pageView : pageHiden}
-            >
-                <Heading
-                    fontWeight="normal"
-                    mb={4}
-                    letterSpacing="tight"
-                >
-                    Welcome back, <Flex display="inline-flex" fontWeight="bold">{person.firstName}</Flex>
-                </Heading>
-                <Text color="gray" fontSize="sm">My Balance</Text>
-                <Flex flexDirection={'row'} align="center" justify={'space-between'}>
-                    <Text fontWeight="bold" fontSize="2xl">{Naira.format(amount)}</Text>
-                    <Stack ml={3}>
-                        <Button variant={'link'} color={'#000000'} rightIcon={<Icon as={BsFillPlusCircleFill} />} onClick={handleTopUp}>Top up</Button>
-                    </Stack>
-                </Flex>
-                {myTransactions && <>
-
-                    <Flex justifyContent="space-between" mt={8}>
-                        <Flex align="flex-end">
-                            <Heading as="h2" size="lg" letterSpacing="tight">Transactions</Heading>
-
-                        </Flex>
-                        <IconButton icon={<FiCalendar />} />
-                    </Flex>
-
-                    <Flex flexDir="column">
-                        <Flex overflow="auto">
-                            <Table variant="unstyled" mt={4}>
-                                <Thead>
-                                    <Tr color="gray">
-                                        <Th>Name of transaction</Th>
-                                        <Th>Category</Th>
-                                        <Th isNumeric>Amount</Th>
-                                    </Tr>
-                                </Thead>
-                                <Tbody>
-                                    <Tr>
-                                        <Td>
-                                            <Flex align="center">
-                                                <Avatar size="sm" mr={2} src="amazon.jpeg" />
-                                                <Flex flexDir="column">
-                                                    <Heading size="sm" letterSpacing="tight">Amazon</Heading>
-                                                    <Text fontSize="sm" color="gray">Apr 24, 2021 at 1:40pm</Text>
-                                                </Flex>
-                                            </Flex>
-                                        </Td>
-                                        <Td>Electronic Devices</Td>
-                                        <Td isNumeric><Text fontWeight="bold" display="inline-table">-$242</Text>.00</Td>
-                                    </Tr>
-
-                                </Tbody>
-                                <Flex align="center">
-
-
-                                    <Divider />
-                                </Flex>
-                            </Table>
-                        </Flex>
-                    </Flex>
-
-                </>}
-
-
-                {!myTransactions && <>
-                    <Flex flexDirection={'column'} align="center" mt="30px">
-                        {/* <MyChart /> */}
-                        <Box align="center" mt={{ base: "50px", md: "35px" }}>
-
-                            <Heading size="lg" letterSpacing="tight" mb="5px">No transactions yet</Heading>
-                            <Text size="md" letterSpacing="tight" mb="10px">Get your monapp card and start making local payments</Text>
-                            <Text size="md" letterSpacing="tight" mb="10px">or</Text>
-                            <Text size="md" letterSpacing="tight" mb="30px">Download the app for full features</Text>
-                            <HStack spacing={{ base: '0.85rem', md: '2.3rem' }}  >
-                                <Image
-                                    alt={'Hero Image'}
-
-                                    align={'center'}
-                                    width={{ base: '10.3rem', md: '10.677vw' }}
-                                    height={{ base: '3.36rem', md: '7.39vh' }}
-                                    src={
-                                        '/playstore.png'
-                                    }
-                                />
-                                <Image
-                                    alt={'Hero Image'}
-
-                                    align={'center'}
-                                    width={{ base: '10.37rem', md: '10.75vw' }}
-                                    height={{ base: '3.43rem', md: '7.55vh' }}
-                                    src={
-                                        '/appstore.png'
-                                    }
-                                />
-
-                            </HStack>
-
-                        </Box>
-
-
-                    </Flex>
-
-                </>}
-
-
-
-
-
-            </Flex>
-
-            {/* Column 3 */}
-            <Flex
-                w={["100%", "100%", "30%"]}
-                bgColor={{ base: "#FFFFFF", md: "#F5F5F5" }} p={{ base: "5%", md: "3%" }}
-                flexDir="column"
-                overflow="auto"
-                display={activePage == 2 ? pageView : pageHiden}
-                minW={[null, null, "300px", "300px", "400px"]}
-            >
-                <Flex justify="space-between">
-                    <Heading letterSpacing="tight">My Card</Heading>
-                    <IconButton icon={<FiBell />} fontSize="sm" bgColor="#fff" borderRadius="50%" p="10px" />
-
-                </Flex>
-
-                {value == 1 &&
-                    <Flex
-                        flexDirection={'row'}
-                        justify="center"
-
-
-
-
-
-                    >
-                        {/* <Image src={wallet?.qrImage} left={'9em'} top={'3em'} alignSelf="center" position={'absolute'}
-                        /> */}
-
-                        <Image src={'/cardImage.png'} width={'auto'} height={'25.6rem'}
-                        />
-
-                    </Flex>
-                }
-
-                <Flex justifyContent="center" mt={2}>
-                    <Button bgColor={"gray.600"} size="xs" mx={1} onClick={() => changeValue(1)} />
-
-                </Flex>
-
-                <Flex flexDir="column" my={4}>
-                    <Flex justify="space-between">
-                        <Text>Name on card</Text>
-                        <Text fontWeight="bold">{person.firstName + " " + person.lastName}</Text>
-                    </Flex>
-                    <Flex justify="space-between" my={2}>
-                        <Text>Monapp Number</Text>
-
-                        <Text fontWeight="bold">{wallet?.accountNumber}</Text>
-                    </Flex>
-
-                </Flex>
-                <Flex my={4}>
-
-                    <IconButton icon={<RiMailSendFill fontSize={'16px'} />} ml={2} color="#fff" bgColor="gray.600" _hover={{
-                        bgColor: "gray.500"
-                    }} onClick={() => changeOtherValue(1)} />
-                    <IconButton icon={<MdFiberPin fontSize={'16px'} />} ml={2} color="#fff" bgColor="gray.600" _hover={{
-                        bgColor: "gray.500"
-                    }} onClick={() => changeOtherValue(2)} />
-                    <IconButton icon={<MdBlock fontSize={'16px'} />} ml={2} color="#fff" bgColor="gray.600" _hover={{
-                        bgColor: "gray.500"
-                    }} onClick={() => changeOtherValue(3)} />
-                </Flex>
-                {otherValue == 1 && <>
-                    <Heading letterSpacing="tight" size="md" >Deliver card</Heading>
-
-                    <Text color="gray" mt={10} mb={2}>Delivery address</Text>
-                    <InputGroup>
-
-                        <Input type="text" value={deliveryAddress} placeholder="xxxx xxxx xxxx xxxx" onChange={e => setDeliveryAddress(e.target.value)} />
-                    </InputGroup>
-                    <Text color="gray" mt={4} mb={2}>Delivery contact</Text>
-                    <InputGroup>
-
-                        <Input type="number" value={deliveryContact} placeholder="07012******" onChange={e => setDeliveryContact(e.target.value)} />
-                    </InputGroup>
-                    <Button disabled mt={4} bgColor="blackAlpha.900" _hover={{ bgColor: "blackAlpha.700" }} color="#fff" p={7} borderRadius={15} onClick={openDelivery}>Send card to me</Button>
-                </>
-                }
-
-                {otherValue == 2 && <> {!security?.pin &&
-
-                    <> <Heading letterSpacing="tight" size="md" >Create Pin</Heading>
-
-                        <Text color="gray" mt={10} mb={2}>Pin</Text>
-                        <HStack>
-                            <PinInput mask otp onChange={(e) => setPin(e)}>
-                                <PinInputField />
-                                <PinInputField />
-                                <PinInputField />
-                                <PinInputField />
-                                <PinInputField />
-                                <PinInputField />
-                            </PinInput>
-                        </HStack>
-                        <Text color="gray" mt={4} mb={2}>Confirm Pin</Text>
-                        <InputGroup>
-                            <HStack>
-                                <PinInput mask otp onChange={(e) => setConfirmPin(e)}>
-                                    <PinInputField />
-                                    <PinInputField />
-                                    <PinInputField />
-                                    <PinInputField />
-                                    <PinInputField />
-                                    <PinInputField />
-                                </PinInput>
-                            </HStack>
-                        </InputGroup>
-                        <Button isLoading={loadingState}
-                            loadingText='Creating..' disabled mt={4} bgColor="blackAlpha.900" _hover={{ bgColor: "blackAlpha.700" }} color="#fff" p={7} borderRadius={15} onClick={createPin}>Create my pin</Button></>}
-
-                    {security?.pin &&
-                        <> <Heading letterSpacing="tight" size="md" >Reset Pin</Heading>
-
-                            <Text color="gray" mt={10} mb={2}>Old Pin</Text>
-                            <HStack>
-                                <PinInput>
-                                    <PinInputField />
-                                    <PinInputField />
-                                    <PinInputField />
-                                    <PinInputField />
-                                    <PinInputField />
-                                    <PinInputField />
-                                </PinInput>
-                            </HStack>
-                            <Text color="gray" mt={4} mb={2}>New Pin</Text>
-                            <InputGroup>
-                                <HStack>
-                                    <PinInput>
-                                        <PinInputField />
-                                        <PinInputField />
-                                        <PinInputField />
-                                        <PinInputField />
-                                        <PinInputField />
-                                        <PinInputField />
-                                    </PinInput>
-                                </HStack>
-                            </InputGroup>
-                            <Button disabled mt={4} bgColor="blackAlpha.900" _hover={{ bgColor: "blackAlpha.700" }} color="#fff" p={7} borderRadius={15}>Reset my pin</Button></>
-
-                    }
-
-
-                </>}
-
-
-
-                {otherValue == 3 && <>
-                    <Heading letterSpacing="tight" size="md" >Block transactions</Heading>
-
-                    <Text color="gray" mt={10} mb={2}>Reason for blocking</Text>
-                    <HStack>
-                        <Textarea placeholder='' />
+                      {"NGN 23,000,000.24"}
+                    </Text>
+                  </HStack>
+                  <HStack mt="4px" align={"center"} spacing="11px">
+                    {" "}
+                    <HStack spacing="2px" align={"center"}>
+                      {" "}
+                      <Image w="18px" h="18px" src={"/upArrow.svg"} />{" "}
+                      <Text
+                        color="#2CC16B"
+                        fontSize="14px"
+                        className={dmsans.className}
+                        fontWeight={400}
+                      >
+                        +24%
+                      </Text>{" "}
                     </HStack>
-                    <Text color="gray" mt={4} mb={2}>Pin</Text>
-                    <InputGroup>
-                        <HStack>
-                            <PinInput>
-                                <PinInputField />
-                                <PinInputField />
-                                <PinInputField />
-                                <PinInputField />
-                                <PinInputField />
-                                <PinInputField />
-                            </PinInput>
-                        </HStack>
-                    </InputGroup>
-                    <Button disabled mt={4} bgColor="blackAlpha.900" _hover={{ bgColor: "blackAlpha.700" }} color="#fff" p={7} borderRadius={15}>Block now</Button>
-                </>
-                }
-                <Modal isOpen={isOpen} onClose={closeModal}>
-                    <ModalOverlay />
-                    <ModalContent align="center">
+                    <Text
+                      className={dmsans.className}
+                      fontSize="14px"
+                      color="white"
+                    >
+                      Monday, May 10th, 2023
+                    </Text>
+                  </HStack>
+                </Box>
+                {/* <Image
+                  src={"/prints.png"}
+                  width={"334px"}
+                  height={"329px"}
+                  position="absolute"
+                  left="-55"
+                  top="-20"
+                />
+                <Image
+                  src={"/coinBar.png"}
+                  width={"201px"}
+                  height={"182.71px"}
+                  position="absolute"
+                  left="487"
+                  top="0"
+                />
+                <Image
+                  src={"/ropeBar.png"}
+                  width={"41px"}
+                  height={"41px"}
+                  position="absolute"
+                  left="369"
+                  bottom="3"
+                />
+                <Image
+                  src={"/dotBar.svg"}
+                  width={"24px"}
+                  height={"26px"}
+                  position="absolute"
+                  left="424"
+                  top="11"
+                /> */}
 
-                        {paymentDialog == 1 && <>
-                            <ModalHeader>Monapp Card</ModalHeader>
-                            <ModalCloseButton />
-                            <ModalBody align="left">
-                                <Box>
-                                    <Stat mb="10px">
-                                        <StatLabel>Name on card</StatLabel>
-                                        <StatNumber>{person.firstName + " " + person.lastName}</StatNumber>
-                                    </Stat>
-                                    <Stat mb="10px">
-                                        <StatLabel>Monapp Number</StatLabel>
-                                        <StatNumber>{wallet?.accountNumber}</StatNumber>
-                                    </Stat>
-                                    <Stat mb="10px">
-                                        <StatLabel>Delivery address</StatLabel>
-                                        <StatNumber>{deliveryAddress}</StatNumber>
-                                    </Stat>
-                                    <Stat mb="10px">
-                                        <StatLabel>Delivery contact</StatLabel>
-                                        <StatNumber>{deliveryContact}</StatNumber>
-                                    </Stat>
-                                    <Stat mb="10px">
-                                        <StatLabel>Price</StatLabel>
-                                        <StatNumber>&#x20A6; 1500</StatNumber>
-                                    </Stat>
+              </Box>
 
-                                    <Box display='flex'
-                                        alignItems='center'
-                                        justifyContent='center'
-                                        width='100%'
-                                        py={12}>
-                                        <ButtonGroup gap='4'>
-                                            <Button bgColor="blackAlpha.900" _hover={{ bgColor: "blackAlpha.700" }} color="#fff" onClick={goPay} >Pay Now</Button>
-                                            <Button bgColor="blackAlpha.900" _hover={{ bgColor: "blackAlpha.700" }} color="#fff" onClick={() => setPaymentDialog(2)}>Pay Later</Button>
-                                        </ButtonGroup>
-                                    </Box>
-                                </Box>
-                            </ModalBody>
-                        </>}
+              {/* responsive quickcards */}
+              <Box
+                h={"144px"}
+                // w={["23rem", "28rem"]}   
+                w={"100%"}
+                borderRadius={"8px"}
+                mt={["15px", "0px"]}
+                mb="15px"
+                bg="rgba(255, 255, 255, 0.4)"
+                border="1px solid rgba(0, 0, 0, 0.2)"
+                py="14px"
+                px="18px"
+                display={["block", "none"]}
+              >
+                <Text
+                  color="#141736"
+                  fontSize="16px"
+                  className={dmsansbold.className}
+                  fontWeight={500}
+                  lineHeight="19px"
+                  mb="17px"
+                >
+                  Quick Links
+                </Text>
 
-                        {paymentDialog == 2 && <>
-                            <ModalHeader>Monapp Card</ModalHeader>
-                            <ModalCloseButton />
-                            <ModalBody align="left">
-                                <Box>
-                                    <Box>
-                                        <Text mb="5px">Loan amount: {loanAmount}</Text>
+                <Flex justify={"space-between"}>
+                  <Box align={"center"}>
+                    <Flex
+                      _hover={{ cursor: "pointer", bg: "#F5F5F5" }}
+                      width={"54px"}
+                      height={"54px"}
+                      borderRadius="100%"
+                      justify={"center"}
+                      align={"center"}
+                      border={"1px solid rgba(0, 0, 0, 0.24)"}
+                      mb="8px"
+                    >
+                      <Image
+                        src={"/fundAcc.svg"}
+                        width={"24px"}
+                        height={"24px"}
+                      />
+                    </Flex>
+                    <Text fontSize={"10px"}>Top up Wallet</Text>
+                  </Box>
 
+                  <Box align={"center"}>
+                    <Flex
+                      _hover={{ cursor: "pointer", bg: "#F5F5F5" }}
+                      width={"54px"}
+                      height={"54px"}
+                      borderRadius="100%"
+                      justify={"center"}
+                      align={"center"}
+                      border={"1px solid rgba(0, 0, 0, 0.24)"}
+                      mb="8px"
+                    >
+                      <Image
+                        src={"/settle.svg"}
+                        width={"24px"}
+                        height={"24px"}
+                      />
+                    </Flex>
+                    <Text fontSize={"10px"}>Add Settlement</Text>
+                  </Box>
 
-                                    </Box>
-                                    <Box my="20px">
-                                        <Text mb="5px">Tenor:</Text>
-                                        <Select value={loanTenor} onChange={(e) => setLoanTenor(e.target.value)} placeholder='Select duration'>
-                                            <option value='7'>7 days</option>
-                                            <option value='14'>14 days</option>
-                                            <option value='21'>21 days</option>
-                                            <option value='30'>30 days</option>
-                                        </Select>
-                                    </Box>
-                                    <Card
-                                        direction={{ base: 'column', sm: 'row' }}
-                                        overflow='hidden'
-                                        variant='outline'
-                                    >
+                  <Box align={"center"}>
+                    <Flex
+                      _hover={{ cursor: "pointer", bg: "#F5F5F5" }}
+                      width={"54px"}
+                      height={"54px"}
+                      borderRadius="100%"
+                      justify={"center"}
+                      align={"center"}
+                      border={"1px solid rgba(0, 0, 0, 0.24)"}
+                      mb="8px"
+                    >
+                      <Image
+                        src={"/collect.svg"}
+                        width={"24px"}
+                        height={"24px"}
+                      />
+                    </Flex>
+                    <Text fontSize={"10px"}>Receive Payment</Text>
+                  </Box>
+                </Flex>
+              </Box>
+              {/* the graph area */}
+              <Box
+                h={["240px", "393px"]}
+                // w={["23rem","60rem"]}
+                w={"100%"}
+                bg="#FFFFFF"
+                borderRadius={"8px"}
+                boxShadow="0px 14px 54px rgba(0, 0, 0, 0.03)"
+                p="32px"
+              >
+                <HStack>
+                  <Text
+                    color="#141736"
+                    fontSize="20px"
+                    className={dmsansbold.className}
+                    fontWeight={500}
+                    lineHeight="19px"
+                  >
+                    Activity
+                  </Text>
+                  <Spacer />
 
+                  <Menu>
+                    <MenuButton
+                      as={Button}
+                      colorScheme="gray"
+                      variant="outline"
+                      rightIcon={<BsChevronDown />}
+                      transition="all 0.3s"
+                      _focus={{ boxShadow: "none" }}
+                      color="#A5B3CD"
+                    >
+                      This week
+                    </MenuButton>
+                    <MenuList
+                      bg={useColorModeValue("white", "gray.900")}
+                      borderColor={useColorModeValue("gray.200", "gray.700")}
+                    >
+                      <MenuItem>Sunday</MenuItem>
 
-                                        <CardBody align="left">
-                                            <Heading size='md'>Your repayment info</Heading>
+                      <MenuItem>Monday</MenuItem>
 
-                                            <Text py='2'>
-                                                Amount: &#x20A6;{clientRepaymentAmount}
-                                            </Text>
-                                            <Text py='2'>
-                                                Date: {clientRepaymentDate}
-                                            </Text>
-                                        </CardBody>
-                                    </Card>
-                                    <Box display='flex'
-                                        alignItems='center'
-                                        justifyContent='center'
-                                        width='100%'
-                                        py={12}>
-                                        <Button bgColor="blackAlpha.900" _hover={{ bgColor: "blackAlpha.700" }} color="#fff" onClick={submitLoan}>Proceed</Button>
-                                    </Box>
-                                </Box>
-                            </ModalBody>
-                        </>}
+                      <MenuItem>Tuesday</MenuItem>
 
-                        {paymentDialog == 3 && <>
-                            <ModalHeader>Top up balance</ModalHeader>
-                            <ModalCloseButton />
-                            <ModalBody align="left">
-                                <Box>
-                                    <Box>
-                                        <Text mb="5px">Top up amount:</Text>
+                      <MenuItem>Wednesday</MenuItem>
 
-                                        <InputGroup>
+                      <MenuItem>Thursday</MenuItem>
 
-                                            <NumberInput
-                                                value={topUpAmount}
+                      <MenuItem>Friday</MenuItem>
 
-                                                variant="flushed"
-                                                w="100%"
-                                            >
-                                                <NumberInputField placeholder="how much are you topping? "
-                                                    _placeholder={{ paddingLeft: "10px", opacity: 0.5, color: 'gray.500', fontSize: "14px" }}
-                                                    onChange={(e) => setTopUpAmount(e.target.value)}
-                                                />
-                                            </NumberInput>
-                                        </InputGroup>
+                      <MenuItem>Saturday</MenuItem>
+                    </MenuList>
+                  </Menu>
+                </HStack>
 
+                <MyChart />
+              </Box>
+            </VStack>
+          </Box>
+          <Box w={"100%"} m={"auto"}>
+            <VStack  >
+              {/* quick links area */}
+              <Box
+                h={"144px"}
+                // w={["23rem", "28rem"]}   
+                w={"100%"}
+                borderRadius={"8px"}
+                mt={["15px", "0px"]}
+                mb="15px"
+                bg="rgba(255, 255, 255, 0.4)"
+                border="1px solid rgba(0, 0, 0, 0.2)"
+                py="14px"
+                px="18px"
+                display={["none", "block"]}
+              >
+                <Text
+                  color="#141736"
+                  fontSize="16px"
+                  className={dmsansbold.className}
+                  fontWeight={500}
+                  lineHeight="19px"
+                  mb="17px"
+                >
+                  Quick Links
+                </Text>
 
-                                    </Box>
+                <Flex justify={"space-between"}>
+                  <Box align={"center"}>
+                    <Flex
+                      _hover={{ cursor: "pointer", bg: "#F5F5F5" }}
+                      width={"54px"}
+                      height={"54px"}
+                      borderRadius="100%"
+                      justify={"center"}
+                      align={"center"}
+                      border={"1px solid rgba(0, 0, 0, 0.24)"}
+                      mb="8px"
+                    >
+                      <Image
+                        src={"/fundAcc.svg"}
+                        width={"24px"}
+                        height={"24px"}
+                      />
+                    </Flex>
+                    <Text fontSize={"10px"}>Top up Wallet</Text>
+                  </Box>
 
+                  <Box align={"center"}>
+                    <Flex
+                      _hover={{ cursor: "pointer", bg: "#F5F5F5" }}
+                      width={"54px"}
+                      height={"54px"}
+                      borderRadius="100%"
+                      justify={"center"}
+                      align={"center"}
+                      border={"1px solid rgba(0, 0, 0, 0.24)"}
+                      mb="8px"
+                    >
+                      <Image
+                        src={"/settle.svg"}
+                        width={"24px"}
+                        height={"24px"}
+                      />
+                    </Flex>
+                    <Text fontSize={"10px"}>Add Settlement</Text>
+                  </Box>
 
-                                    <Box display='flex'
-                                        alignItems='center'
-                                        justifyContent='center'
-                                        width='100%'
-                                        py={12}>
-                                        <Button bgColor="blackAlpha.900" _hover={{ bgColor: "blackAlpha.700" }} color="#fff" onClick={getFee}>Next</Button>
-                                    </Box>
-                                </Box>
-                            </ModalBody>
-                        </>}
-                        {paymentDialog == 4 && <>
-                            <ModalHeader>Top up balance</ModalHeader>
-                            <ModalCloseButton />
-                            <ModalBody align="left">
-                                <Box>
-                                    <Card
-                                        direction={{ base: 'column', sm: 'row' }}
-                                        overflow='hidden'
-                                        variant='outline'
-                                    >
+                  <Box align={"center"}>
+                    <Flex
+                      _hover={{ cursor: "pointer", bg: "#F5F5F5" }}
+                      width={"54px"}
+                      height={"54px"}
+                      borderRadius="100%"
+                      justify={"center"}
+                      align={"center"}
+                      border={"1px solid rgba(0, 0, 0, 0.24)"}
+                      mb="8px"
+                    >
+                      <Image
+                        src={"/collect.svg"}
+                        width={"24px"}
+                        height={"24px"}
+                      />
+                    </Flex>
+                    <Text fontSize={"10px"}>Receive Payment</Text>
+                  </Box>
+                </Flex>
+              </Box>
+              {/* cards area */}
+              <Box
+                h={"393px"}
+                w={"100%"}
+                // w={["20rem","28rem"]}
+                // mx="auto"
+                borderRadius={"8px"}
+                bg="#FFFFFF"
+                align={"center"}
+                p="18px"
+              >
+                <Text
+                  color="#141736"
+                  fontSize="16px"
+                  className={dmsansbold.className}
+                  fontWeight={500}
+                  lineHeight="19px"
+                  textAlign={"left"}
+                  mb="18px"
+                >
+                  My Cards
+                </Text>
+                <Box
+                  h="161px"
+                  w="284.12px"
+                  borderRadius={"5.12px"}
+                  bg="linear-gradient(to bottom, #000000 0, #000000 72.80%, #191919 72.80%, #191919 86.52%, #000000 86.52%, #000000 100%)"
+                  pt="9.87px"
+                  pb="9.74px"
+                  pl="11.39px"
+                  pr="11.26px"
+                >
+                  <Flex justify={"space-between"} align="center">
+                    <Image
+                      src={"/cardLogoImage.png"}
+                      width={"43.84px"}
+                      height={"auto"}
+                    />
+                    <Text
+                      fontSize={"5.55345px"}
+                      lineHeight="4px"
+                      letterSpacing="-0.174251px"
+                      className={rubik.className}
+                      color="white"
+                      fontWeight={400}
+                    >
+                      cards@monapp.ng
+                    </Text>
+                  </Flex>
+                  <Flex
+                    flexDirection={"column"}
+                    align="center"
+                    justify="center"
+                    mt="28.05px"
+                  >
+                    <Text
+                      className={rubik.className}
+                      color="white"
+                      fontSize={"16.51px"}
+                      letterSpacing="0.517008px"
+                      lineHeight="12px"
+                      mb="7.7px"
+                      fontWeight={400}
+                    >
+                      {" "}
+                      Phillip Chatham Ansalem
+                    </Text>
+                    <Text
+                      className={rubik.className}
+                      color="white"
+                      fontSize={"10px"}
+                      letterSpacing="0.409298px"
+                      lineHeight="10px"
+                      fontWeight={400}
+                    >
+                      @PhillipCA
+                    </Text>
+                    <Text
+                      className={rubik.className}
+                      color="white"
+                      fontSize={"5.36156px"}
+                      letterSpacing="0.409298px"
+                      lineHeight="7px"
+                      fontWeight={300}
+                      width="175.46px"
+                      textAlign={"center"}
+                      mt="22.17px"
+                    >
+                      This card is issued by Monapp and may be used by the
+                      holder in accordance to the Monapp terms and conditions
+                    </Text>
+                  </Flex>
 
+                  <Flex justify={"space-between"} align="center" mt="34.43px">
+                    <Text
+                      fontSize={"5.55345px"}
+                      lineHeight="4px"
+                      letterSpacing="-0.174251px"
+                      className={rubik.className}
+                      color="white"
+                      fontWeight={400}
+                    >
+                      Monapp Authentication card{" "}
+                    </Text>
+                    <Text
+                      fontSize={"5.55345px"}
+                      lineHeight="4px"
+                      letterSpacing="-0.174251px"
+                      className={rubik.className}
+                      color="white"
+                      fontWeight={400}
+                    >
+                      www.monapp.ng
+                    </Text>
+                  </Flex>
+                </Box>
 
-                                        <CardBody align="left">
-                                            <Heading size='md'>Your payment</Heading>
+                <Flex
+                  _hover={{ cursor: "pointer" }}
+                  direction={"row"}
+                  justify="center"
+                  width={"100%"}
+                  h="42px"
+                  bg="#FCFCFC"
+                  border="1px dashed rgba(0, 0, 0, 0.4)"
+                  borderRadius={"1.46px"}
+                  color="white"
+                  mt="18px"
+                  align="center"
+                >
+                  <Icon color="white" boxSize={9}>
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 18 18"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M8.25 8.25V3.75H9.75V8.25H14.25V9.75H9.75V14.25H8.25V9.75H3.75V8.25H8.25Z"
+                        fill="#828282"
+                      />
+                    </svg>
+                  </Icon>
+                  <Text
+                    fontSize={"13.13px"}
+                    lineHeight="16.92px"
+                    className={dmsans.className}
+                    color={"#828282"}
+                    fontStyle="normal"
+                    fontWeight={400}
+                  >
+                    Create new card{" "}
+                  </Text>
+                </Flex>
 
-                                            <Text py='2'>
-                                                Amount: &#x20A6; {topUpAmount.toLocaleString()}
-                                            </Text>
-                                            <Text py='2'>
-                                                Fee: &#x20A6; {amountFees.toLocaleString()}
-                                            </Text>
-                                            <Text py='2'>
-                                                Total: &#x20A6; {amountWithFees.toLocaleString()}
-                                            </Text>
-                                        </CardBody>
-                                    </Card>
+                <Flex
+                  _hover={{ cursor: "pointer" }}
+                  direction={"row"}
+                  justify="space-between"
+                  width={"100%"}
+                  h="42px"
+                  bg="#000000"
+                  borderRadius={"1.46px"}
+                  color="white"
+                  mt="18px"
+                  pl="14px"
+                  pr="11px"
+                  align="center"
+                >
+                  <Text
+                    fontSize={"13.13px"}
+                    lineHeight="16.92px"
+                    className={dmsans.className}
+                    color={"#F2F2F2"}
+                    fontStyle="normal"
+                    fontWeight={400}
+                  >
+                    Deliver my card{" "}
+                  </Text>
+                  <Icon color="white" boxSize={10}>
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M13.4764 9.16658L9.00637 4.69657L10.1849 3.51807L16.6667 9.99992L10.1849 16.4817L9.00637 15.3032L13.4764 10.8332H3.33337V9.16658H13.4764Z"
+                        fill="#F2F2F2"
+                      />
+                    </svg>
+                  </Icon>
+                </Flex>
+              </Box>
+            </VStack>
 
+            <VStack></VStack>
+          </Box>
+        </HStack>
 
-                                    <Box display='flex'
-                                        alignItems='center'
-                                        justifyContent='center'
-                                        width='100%'
-                                        py={12}>
-                                        <Button bgColor="blackAlpha.900" _hover={{ bgColor: "blackAlpha.700" }} color="#fff" onClick={pay}>Proceed</Button>
-                                    </Box>
-                                </Box>
-                            </ModalBody>
-                        </>}
+        <Box ml={{ base: 0, md: "8rem" }} mt="18px" px="10px">
+          <Flex dir="row" justify={"space-between"} align="center">
+            <Text
+              color="#141736"
+              fontSize={["16px", "20px"]}
+              className={dmsans.className}
+              fontWeight={400}
+              lineHeight="19px"
+            >
+              Transaction History
+            </Text>
+            <Button
+              colorScheme="gray"
+              variant="outline"
+              rightIcon={<BsChevronDown />}
+              transition="all 0.3s"
+              _focus={{ boxShadow: "none" }}
+              color="#A5B3CD"
+            >
+              All Transactions
+            </Button>
+          </Flex>
 
-                    </ModalContent>
-                </Modal>
+          <Box dropShadow="lg" w="100%" h="221px" my="26px">
+            <Flex flexDir="column">
+              <Flex overflow="auto">
+                <Table
+                  variant="simple"
+                  bg="#FFFFFF"
+                  boxShadow={"0px 14px 54px rgba(0, 0, 0, 0.03);"}
+                  borderRadius={"8px"}
+                >
+                  <Thead h="60px" bg="rgba(0, 0, 0, 0.04)" display={['none', 'table-head']}>
+                    <Tr color="gray">
+                      <Th w="104px">S/N</Th>
+                      <Th w="257px">Name</Th>
+                      <Th w="167px">Reference No</Th>
+                      <Th w="174px">Amount</Th>
+                      <Th w="180px">Date</Th>
+                      <Th>Status</Th>
+                    </Tr>
+                  </Thead>
+                  <Tbody
+                    fontSize="14px"
+                    className={dmsans.className}
+                    fontWeight={400}
+                  >
+                    <DebitTransaction />
+                    <CreditTransaction />
+                  </Tbody>
+                </Table>
+              </Flex>
             </Flex>
-        </Flex >
-    )
+          </Box>
+        </Box>
+      </div>
+    </NewDash>
+  );
 }
 
-
 export const getServerSideProps = withAuthUserTokenSSR({
-    whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
+  whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
 })(async ({ AuthUser }) => {
-    // Optionally, get other props.
-    const token = await AuthUser.getIdToken(true)
+  // Optionally, get other props.
+  const token = await AuthUser.getIdToken(true)
 
-    const UID = AuthUser.id
-    const response = await fetch(`https://us-central1-monapp-33057.cloudfunctions.net/app/api/user/${UID}`, {
-        method: 'GET',
-        headers: {
-            Authorization: token,
-        },
-    })
-    const data = await response.json()
-    if (!data.verified) {
-        return {
-            redirect: {
-                destination: '/verifyUser',
-                permanent: false,
-            },
-        }
-    }
+  const UID = AuthUser.id
+  const response = await fetch(`https://us-central1-monapp-33057.cloudfunctions.net/app/api/user/${UID}`, {
+    method: 'GET',
+    headers: {
+      Authorization: token,
+    },
+  })
+  const data = await response.json()
 
+  if (!data.verified) {
     return {
-        props: {
-            person: data,
-        },
+      redirect: {
+        destination: '/verifyUser',
+        permanent: false,
+      },
     }
+  }
+
+  if (data.verified == 'submitted') {
+    return {
+      redirect: {
+        destination: '/confirmOtp',
+        permanent: false,
+      },
+    }
+  }
+
+  return {
+    props: {
+      person: data,
+    },
+  }
 })
 
 export default withAuthUser()(Dashboard)
-
-

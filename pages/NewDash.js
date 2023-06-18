@@ -70,7 +70,7 @@ const dmsansbold = DM_Sans({ weight: '500', subsets: ['latin'] })
 const rubik = Rubik({ weight: ['300', '400'], subsets: ['latin'] })
 
 const LinkItems = [
-    { name: 'Dashboard', icon: DashboardIcon, pathname: '/dashboardd' },
+    { name: 'Dashboard', icon: DashboardIcon, pathname: '/Dashboard' },
     { name: 'My Cards', icon: MyCardsIcon, pathname: '/my_cards' },
     { name: 'Transaction', icon: TransactionIcon, pathname: '/transactions' },
     { name: 'Merchants', icon: MerchantsIcon, pathname: '/merchants' },
@@ -211,7 +211,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
 
     const router = useRouter();
     const routeNames = {
-        '/dashboardd': 'Dashboard',
+        '/Dashboard': 'Dashboard',
         '/my_cards': 'My Cards',
         '/transactions': 'Transaction',
         '/merchants': 'Merchants',

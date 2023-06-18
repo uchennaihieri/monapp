@@ -40,6 +40,7 @@ import {
     Radio,
     FormHelperText,
     useToast,
+    InputLeftAddon,
 } from '@chakra-ui/react';
 import { AuthAction, withAuthUser, withAuthUserTokenSSR } from 'next-firebase-auth';
 import { useRouter } from 'next/router';
@@ -53,6 +54,7 @@ import { businessCat, businessReg, bvnN, myLocation, pinID, seller, sellerType, 
 import { useForm } from "react-hook-form";
 import { auth, createUserWithEmailAndPassword, db, deleteDoc, doc, deleteUser, serverTimestamp, setDoc, signInWithEmailAndPassword } from '@/services/firebase';
 import { reauthenticateWithCredential } from 'firebase/auth';
+import { addDoc, collection, getDocs, query, updateDoc, where } from 'firebase/firestore';
 
 const dmsansBold = DM_Sans({ weight: '500', subsets: ['latin'] })
 const bree = Bree_Serif({ weight: '400', subsets: ['latin'] })
@@ -270,6 +272,7 @@ export const Verify = ({ person }) => {
     const [merchant, setMerchant] = useBoolean(true)
     const [banks, setBanks] = useState(null)
     const [location, setLocation] = useRecoilState(myLocation)
+    const [tag, setTag] = useState('')
     const [city, setCity] = useRecoilState(myCity)
     const [address, setAddress] = useRecoilState(myAddress)
     const [postalCode, setPostalCode] = useRecoilState(myPostalCode)
@@ -284,69 +287,140 @@ export const Verify = ({ person }) => {
     const [betaCode, setBetaCode] = useState('')
 
 
-    // const config = {
-    //     first_name: person.firstName,
-    //     last_name: person.lastName,
-    //     email: person.email,
-    //     merchant_key: `${process.env.NEXT_PUBLIC_IDENTITY_API_KEY}`,
-    //     user_ref: person.id,
-    //     is_test: false,  //set this to through for a test
-    //     callback: (response) => {
-    //         if (response.code == "00") {
-
-
-
-
-    //         } else if (response.code == "01") {
-
-    //         } else if (response.code == "02") {
-
-    //         } else null
-    //     }
-    // }
-
-
-
-
-    // const verifyWithIdentity = useIdentityPayKYC(config)
 
 
     const verifyUser = async () => {
         setLoadingState(true)
+        const q = query(collection(db, "cards"), where("tag", "==", `${tag}`));
+        const querySnapshot = await getDocs(q);
+        if (querySnapshot.empty) {
+
+            await fetch('http://127.0.0.1:5001/monapp-33057/us-central1/app/api/anchor/create-customer', {
+
+                // Adding method type
+                method: "POST",
+
+                // Adding body or contents to send
+                body: JSON.stringify({
+                    "firstName": person.firstName,
+                    "lastName": person.lastName,
+                    "email": person.email,
+                    "city": city,
+                    "state": location,
+                    "address_one": address,
+                    "postalCode": postalCode,
+                    "phoneNumber": person.phoneNumber
+                }),
+
+                // Adding headers to the request
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            }).then(function (response) {
+                return response.json();
+            }).then(async function (res) {
+                console.log(res)
+                if (res.error == true) {
+                    toast({
+                        title: 'user creation failed',
+                        description: res.message,
+                        status: 'error',
+                        duration: 9000,
+                        isClosable: true,
+                        position: 'top',
+                    })
+                    setLoadingState(false)
+                } else {
+
+                    await updateDoc(doc(db, "users", `${person.userID}`), {
+                        state: location,
+                        city: city,
+                        address: address,
+                        postalCode: postalCode,
+                        verified: 'submitted',
+                        anchor_verification_status: res.data.verification_status,
+                        anchor_customerId: res.data.customerId,
+                        anchor_customerType: res.data.customerType,
+                        anchor_customerStatus: res.data.customerStatus,
+                        anchor_createdDate: res.data.createdAt
+                    }).then(async () => {
+                        const wallet = await addDoc(collection(db, "wallet"), {
+                            monappAccountNumber: person.phoneNumber.substring(1),
+                            user: person.userID,
+                            balance: 0,
+                            createdAt: serverTimestamp()
+                        })
+
+                        addDoc(collection(db, "cards"), {
+                            tag: tag,
+                            user: person.userID,
+                            walletID: wallet.id,
+                            createdAt: serverTimestamp()
+                        });
+
+                    }).catch((error) => {
+                        setLoadingState(false)
+                        console.log({ error })
+                    });
 
 
+                    await fetch("https://us-central1-monapp-33057.cloudfunctions.net/app/api/verifyBvn", {
 
-        await fetch("https://us-central1-monapp-33057.cloudfunctions.net/app/api/verifyBvn", {
+                        // Adding method type
+                        method: "POST",
 
-            // Adding method type
-            method: "POST",
+                        // Adding body or contents to send
+                        body: JSON.stringify({
+                            "phoneNumber": person.phoneNumber
+                        }),
 
-            // Adding body or contents to send
-            body: JSON.stringify({
-                "phoneNumber": person.phoneNumber
-            }),
-
-            // Adding headers to the request
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-                "Content-type": "application/json; charset=UTF-8"
-            }
-        }).then(function (res) {
-            return res.json();
-        })
-            // Converting to JSON
-            .then(function (data) {
-                setLoadingState(false)
-                setTokenPin(data.pinId)
-                setVerificationNumber(data.to)
-                router.push('/confirmOtp')
+                        // Adding headers to the request
+                        headers: {
+                            'Access-Control-Allow-Origin': '*',
+                            "Content-type": "application/json; charset=UTF-8"
+                        }
+                    }).then(function (res) {
+                        return res.json();
+                    })
+                        // Converting to JSON
+                        .then(async function (data) {
+                            setLoadingState(false)
+                            setTokenPin(data.pinId)
+                            router.push('/confirmOtp')
+                        })
+                        .catch(function (error) {
+                            setLoadingState(false)
+                            console.log(error);
+                        })
+                }
             })
-            .catch(function (error) {
-                setLoadingState(false)
-                console.log(error);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        } else {
+            setLoadingState(false)
+            toast({
+                title: 'Cannot proceed',
+                description: 'Tag already exists',
+                status: 'error',
+                duration: 9000,
+                isClosable: true,
+                position: 'top',
             })
-
-
+        }
     }
 
 
@@ -414,6 +488,20 @@ export const Verify = ({ person }) => {
                             value={address}
                             onChange={(e) => setAddress(e.target.value)} mb="1.6rem" h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'} type="text" placeholder='What is your address?' />
 
+
+                    </FormControl>
+                </Box>
+
+                <Box >
+                    <FormControl id="email" >
+                        <FormLabel className={roboto.className}>tag</FormLabel>
+                        <InputGroup h="3.6rem" mb="1.6rem">
+                            <InputLeftAddon h='100%' children='@' />
+
+                            <Input
+                                value={tag}
+                                onChange={(e) => setTag(e.target.value)} h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'} type="text" placeholder='set a unique tag' />
+                        </InputGroup>
 
                     </FormControl>
                 </Box>
@@ -574,6 +662,25 @@ export const getServerSideProps = withAuthUserTokenSSR({
         },
     })
     const data = await response.json()
+
+
+    if (data.verified == 'submitted') {
+        return {
+            redirect: {
+                destination: '/confirmOtp',
+                permanent: false,
+            },
+        }
+    }
+
+    if (data.verified == true) {
+        return {
+            redirect: {
+                destination: '/dashboard',
+                permanent: false,
+            },
+        }
+    }
 
 
     return {
