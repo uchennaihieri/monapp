@@ -11,18 +11,19 @@ import {
     HStack,
 } from '@chakra-ui/react';
 import { PinInput, PinInputField } from '@chakra-ui/react';
-import { useAuthUser, withAuthUser } from 'next-firebase-auth';
-import { useState } from 'react';
+import { AuthAction, useAuthUser, withAuthUser, withAuthUserTokenSSR } from 'next-firebase-auth';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRecoilState } from 'recoil';
-import { businessCat, businessReg, bvnN, myLocation, pinID, seller, sellerType } from '@/recoil/atoms';
+import { businessCat, businessReg, bvnN, myAddress, myPostalCode, myCity, myLocation, pinID, seller, sellerType } from '@/recoil/atoms';
 import QRCode from 'qrcode'
-import { addDoc, collection, doc, setDoc, updateDoc } from 'firebase/firestore';
+import { addDoc, collection, doc, getDocs, limit, onSnapshot, orderBy, query, setDoc, updateDoc, where } from 'firebase/firestore';
 import { getDownloadURL, getStorage, ref, uploadString } from "firebase/storage";
 import { db } from '@/services/firebase';
 import { useRouter } from 'next/router';
 
-function ConfirmOtp() {
+function ConfirmOtp({ person }) {
+
     const AuthUser = useAuthUser()
     const router = useRouter()
     const { register, handleSubmit } = useForm();
@@ -30,29 +31,88 @@ function ConfirmOtp() {
     const [srcUrl, setSrcUrl] = useState('')
     const [loadingState, setLoadingState] = useState(false);
     const [location, setLocation] = useRecoilState(myLocation)
+    const [city, setCity] = useRecoilState(myCity)
+    const [address, setAddress] = useRecoilState(myAddress)
+    const [postalCode, setPostalCode] = useRecoilState(myPostalCode)
     const [merchantName, setMerchantName] = useRecoilState(seller)
     const [myBusiness, setMyBusiness] = useRecoilState(businessCat)
     const [merch, setMerch] = useRecoilState(sellerType)
     const [regNum, setRegNum] = useRecoilState(businessReg)
+    const [wallet, setWallet] = useState(null)
+    const [card, setCard] = useState(null)
     const [personalBalance, setPersonalBalance] = useState(0);
     const [merchantBalance, setMerchantBalance] = useState(0);
     const [tokenPin, setTokenPin] = useRecoilState(pinID);
     const [otp, setOtp] = useState('')
     const [verificationNumber, setVerificationNumber] = useRecoilState(bvnN);
-
     const toast = useToast()
 
 
-    const num = verificationNumber.substring(3)
-    console.log(personalBalance, merchantBalance, num, AuthUser.id, location, merchantName, myBusiness)
-    console.log(num)
 
+    useEffect(() => {
+
+
+        getWallet()
+        getCard()
+
+    }, [])
+
+
+    const getWallet = async () => {
+        const walletQuery = query(
+            collection(db, "wallet"),
+            where("user", "==", person.userID),
+            orderBy("createdAt", "desc"),
+            limit(1)
+        );
+        const unsubscribe = onSnapshot(walletQuery, (querySnapshot) => {
+            const myWallet = [];
+            querySnapshot.forEach((doc) => {
+                myWallet.push({ id: doc.id, ...doc.data() });
+            });
+
+
+            setWallet(myWallet[0]);
+        });
+    }
+
+    console.log(wallet)
+
+    const getCard = () => {
+        const cardQuery = query(
+            collection(db, "cards"),
+            where("user", "==", person.userID),
+            orderBy("createdAt", "desc"),
+            limit(1)
+        );
+
+        const unsubscribe = onSnapshot(cardQuery, (querySnapshot) => {
+            const myCard = [];
+            querySnapshot.forEach((doc) => {
+                myCard.push({ id: doc.id, ...doc.data() });
+            });
+
+
+            setCard(myCard[0]);
+        });
+
+    }
+
+    console.log(card)
+
+    const qrData = `${card?.tag + '/' + process.env.NEXT_PUBLIC_QR_KEY + '/' + card?.createdAt}`
+
+    // const setQR = () => {
+    //     setQrData()
+    //     console.log(qrData)
+    // }
+
+    console.log(qrData)
 
     const url = "https://us-central1-monapp-33057.cloudfunctions.net/app/api/verifyOtp";
     var info = {
         "pinId": tokenPin,
-        "pin": otp,
-        "num": num
+        "pin": otp
     }
 
     const storage = getStorage();
@@ -61,68 +121,78 @@ function ConfirmOtp() {
 
     const submitOtp = () => {
         setLoadingState(true)
-
-
-
         fetch(url, {
-
-            // Adding method type
             method: "POST",
-
-            // Adding body or contents to send
             body: JSON.stringify(info),
-
-            // Adding headers to the request
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
             }
         }).then(function (response) {
             return response.json();
         })
-
-
-            // Converting to JSON
             .then(async function (res) {
                 console.log(res)
 
-                if (res.data.verified == true) {
+                if (res.verified == true) {
 
+                    await fetch('http://127.0.0.1:5001/monapp-33057/us-central1/app/api/anchor/subaccount/create', {
 
+                        // Adding method type
+                        method: "POST",
 
-                    await QRCode.toDataURL(res.qrData, { errorCorrectionLevel: 'M' }).then(async (val) => {
-                        await uploadString(storageRef, `${val}`, 'data_url').then((snapshot) => {
-                            getDownloadURL(snapshot.ref).then(async (downloadURL) => {
-                                await setDoc(doc(db, "wallet", `${AuthUser.id}`), {
-                                    personalBalance: personalBalance,
-                                    merchantBalance: merchantBalance,
-                                    accountNumber: `${num}`,
-                                    walletId: `${AuthUser.id}`,
-                                    qrImage: `${downloadURL}`
-                                });
-                            });
-                        })
+                        // Adding body or contents to send
+                        body: JSON.stringify({
+                            "customerId": person.anchor_customerId
+                        }),
+
+                        // Adding headers to the request
+                        headers: {
+                            "Content-type": "application/json; charset=UTF-8"
+                        }
+                    }).then(function (response) {
+                        return response.json();
                     })
-                    const me = await addDoc(collection(db, "merchant"), {
-                        createdBy: `${AuthUser.id}`,
-                        merchantType: merch,
-                        merchantName: merchantName,
-                        businessCategory: myBusiness,
-                        businessLocation: location,
-                        CACNumber: regNum,
-                        accountNumber: `${num}`,
-                    });
 
-                    const updateUser = await updateDoc(doc(db, "users", `${AuthUser.id}`), {
-                        id: `${AuthUser.id}`,
-                        verified: true,
-                        verificationNumber: verificationNumber,
-                        location: location,
-                        merchantBusinesses: merchantName,
-                    });
 
-                    router.push('/Dashboard')
+                        // Converting to JSON
+                        .then(async function (res) {
 
-                } else if (res.data.verified == 'Expired') {
+                            console.log(res)
+                            await updateDoc(doc(db, "wallet", `${wallet.id}`), {
+                                anchor_subAccountId: res.data.data.subAccountId,
+                                anchor_customerId: res.data.data.customerId,
+                                anchor_subAccountType: res.data.data.subAccountType,
+                                anchor_createdDate: res.data.data.createdAt
+                            });
+
+
+                            await QRCode.toDataURL(qrData, { errorCorrectionLevel: 'M' }).then(async (val) => {
+                                await uploadString(storageRef, `${val}`, 'data_url').then((snapshot) => {
+                                    getDownloadURL(snapshot.ref).then(async (downloadURL) => {
+                                        await updateDoc(doc(db, "cards", `${card.id}`), {
+                                            qrImage: `${downloadURL}`
+                                        });
+                                    });
+                                })
+
+
+
+                                await updateDoc(doc(db, "users", `${person.userID}`), {
+                                    verified: true,
+                                });
+
+
+                                router.push('/Dashboard')
+
+                            }).catch((error) => {
+                                console.log({ error })
+                            })
+
+
+                        }).catch((error) => {
+                            console.log({ error })
+                        })
+                } else if (res.verified == 'Expired') {
                     setLoadingState(false)
                     toast({
                         title: 'Verification failed',
@@ -139,7 +209,7 @@ function ConfirmOtp() {
             .catch(function (error) {
 
                 setLoadingState(false)
-                console.log(error);
+                console.log({ error });
             })
 
     }
@@ -156,7 +226,7 @@ function ConfirmOtp() {
 
             // Adding body or contents to send
             body: JSON.stringify({
-                "phoneNumber": verificationNumber
+                "phoneNumber": person.phoneNumber
             }),
 
             // Adding headers to the request
@@ -218,7 +288,7 @@ function ConfirmOtp() {
                     fontSize={{ base: 'sm', sm: 'md' }}
                     fontWeight="bold"
                     color={useColorModeValue('gray.800', 'gray.400')}>
-                    {'******' + verificationNumber.substring(8)}
+                    {'******' + person.phoneNumber.substring(7)}
                 </Center>
                 <FormControl>
                     <Center>
@@ -264,5 +334,49 @@ function ConfirmOtp() {
     );
 }
 
+
+
+
+
+export const getServerSideProps = withAuthUserTokenSSR({
+    whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
+})(async ({ AuthUser }) => {
+    // Optionally, get other props.
+    const token = await AuthUser.getIdToken(true)
+    const UID = AuthUser.id
+    const response = await fetch(`https://us-central1-monapp-33057.cloudfunctions.net/app/api/user/${UID}`, {
+        method: 'GET',
+        headers: {
+            Authorization: token,
+        },
+    })
+    const data = await response.json()
+
+
+    if (!data.verified) {
+        return {
+            redirect: {
+                destination: '/verifyUser',
+                permanent: false,
+            },
+        }
+    }
+
+    if (data.verified == true) {
+        return {
+            redirect: {
+                destination: '/dashboard',
+                permanent: false,
+            },
+        }
+    }
+
+
+    return {
+        props: {
+            person: data,
+        },
+    }
+})
 
 export default withAuthUser()(ConfirmOtp)

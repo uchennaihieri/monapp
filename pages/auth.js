@@ -356,6 +356,7 @@ export const Signup = () => {
         setLoadingState(true)
         const q = query(collection(db, "users"), where("phoneNumber", "==", `${data.phoneNumber}`));
 
+
         const querySnapshot = await getDocs(q);
         if (querySnapshot.empty) {
             createUserWithEmailAndPassword(auth, data.email, data.pwd)

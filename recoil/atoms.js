@@ -44,3 +44,18 @@ export const activePage = atom({
     key: "activePage",
     default: "profile",
 });
+
+export const myCity = atom({
+    key: "myCity",
+    default: "",
+});
+
+export const myAddress = atom({
+    key: "myAddress",
+    default: "",
+});
+
+export const myPostalCode = atom({
+    key: "myPostalCode",
+    default: "",
+});
