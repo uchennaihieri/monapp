@@ -81,7 +81,7 @@ function My_Cards() {
                             <HStack w={'60em'} mb='52.79px' display={{base:'none',md:'flex'}}>
                                 <Box  boxShadow="md" h='176.21px' w='311px' borderRadius={'5.12px'} bg='linear-gradient(to bottom, #000000 0, #000000 72.80%, #191919 72.80%, #191919 86.52%, #000000 86.52%, #000000 100%)' pt='9.87px' pb='9.74px' pl='11.39px' pr='11.26px' mr='16px'>
                                     <Flex justify={'space-between'} align='center'>
-                                        <Image src={'/logo.png'} width={'50px'} height={'auto'} />
+                                        <Image src={'/logo.png'} width={'50px'} height={'10.8px'} />
                                         <Text fontSize={'5.55345px'} lineHeight='4px' letterSpacing='-0.174251px' className={rubik.className} color='white' fontWeight={400}>cards@monapp.ng</Text>
                                     </Flex>
                                     <Flex flexDirection={'column'} align='center' justify='center' mt='28.51px'>
@@ -121,7 +121,7 @@ function My_Cards() {
                                     <Stack direction={'row'} spacing='12px' >
 
                                         <Flex flexDirection={'column'} w='124px' h='122px' border="0.6px solid #BFBFBF" pt='14px' pl='12px' bg='#000000' borderRadius={'8px'} boxShadow={'0px 4px 14px rgba(0, 0, 0, 0.08)'} position='relative' overflow={'hidden'}>
-                                            <Image color='black' position='absolute' opacity={'0.2'} src={'/blackcard.svg'} top='0px' />
+                                            <Image color='black' h={'116px'} w={'116px'} position='absolute' opacity={'0.2'} src={'/blackcard.svg'} top='0px' />
                                             <Box bg='#FFFFFF'
                                                 border='1px solid #000000'
                                                 borderRadius='4px'
@@ -130,12 +130,12 @@ function My_Cards() {
                                             </Box>
                                             <Text color='#FFFFFF' fontSize='12px' className={dmsans.className} fontWeight={400} mt='10px'>Balance</Text>
                                             <Text color='#FFFFFF' fontSize='16px' className={dmsans.className} fontWeight={700} >N182,000</Text>
-                                            <HStack mt='4px' spacing='2px' align={'center'}> <Image src={'/upArrow.svg'} /> <Text color='#2CC16B' fontSize='7.25px' className={dmsans.className} fontWeight={400}>+24%</Text></HStack>
+                                            <HStack mt='4px' spacing='2px' align={'center'}> <Image w={'4'} h={'4'}  src={'/upArrow.svg'} /> <Text color='#2CC16B' fontSize='7.25px' className={dmsans.className} fontWeight={400}>+24%</Text></HStack>
 
                                         </Flex>
 
                                         <Flex position='relative' flexDirection={'column'} w='124px' h='122px' border="0.8px solid #27AE60" pt='14px' pl='12px' bg='rgba(44, 193, 107, 0.08)' borderRadius={'8px'} boxShadow={'0px 14px 54px rgba(0, 0, 0, 0.03'} overflow={'hidden'}>
-                                            <Image color='black' position='absolute' opacity={'0.2'} src={'/greenCard.svg'} top='0px' />
+                                            <Image color='black' h={'116px'} w={'116px'} position='absolute' opacity={'0.2'} src={'/greenCard.svg'} top='0px' />
                                             <Box bg='#219653'
                                                 border='1px solid #219653'
                                                 borderRadius='4px'
@@ -144,7 +144,7 @@ function My_Cards() {
                                             </Box>
                                             <Text color='#000000' fontSize='12px' className={dmsans.className} fontWeight={400} mt='10px'>Income</Text>
                                             <Text color='#000000' fontSize='16px' className={dmsans.className} fontWeight={700} >N182,000</Text>
-                                            <HStack mt='4px' spacing='2px' align={'center'}> <Image src={'/upArrow.svg'} /> <Text color='#2CC16B' fontSize='7.25px' className={dmsans.className} fontWeight={400}>+24%</Text></HStack>
+                                            <HStack mt='4px' spacing='2px' align={'center'}> <Image w={'4'} h={'4'} src={'/upArrow.svg'} /> <Text color='#2CC16B' fontSize='7.25px' className={dmsans.className} fontWeight={400}>+24%</Text></HStack>
 
                                         </Flex>
 
@@ -158,8 +158,8 @@ function My_Cards() {
                                             </Box>
                                             <Text color='#000000' fontSize='12px' className={dmsans.className} fontWeight={400} mt='10px'>Spending</Text>
                                             <Text color='#000000' fontSize='16px' className={dmsans.className} fontWeight={700} >N182,000</Text>
-                                            <HStack mt='4px' spacing='2px' align={'center'}> <Image src={'/redArrow.svg'} /> <Text color='#EB5757' fontSize='7.25px' className={dmsans.className} fontWeight={400}>+24%</Text></HStack>
-                                            <Image color='black' position='absolute' opacity={'0.2'} src={'/redCard.svg'} top='0px' />
+                                            <HStack mt='4px' spacing='2px' align={'center'}> <Image w={'4'} h={'4'} src={'/redArrow.svg'} /> <Text color='#EB5757' fontSize='7.25px' className={dmsans.className} fontWeight={400}>+24%</Text></HStack>
+                                            <Image color='black' h={'116px'} w={'116px'} position='absolute' opacity={'0.2'} src={'/redCard.svg'} top='0px' />
                                         </Flex>
 
 
@@ -210,7 +210,7 @@ function My_Cards() {
                                                             <Td>
                                                                 1
                                                             </Td>
-                                                            <Td> <HStack> <Image src={'/sentImage.svg'} width={'24px'} height={'24px'} />
+                                                            <Td> <HStack> <Image w={'9.16px'} h={'9.16px'} src={'/sentImage.svg'} width={'24px'} height={'24px'} />
                                                                 <Text> Franklin Uchemba Stores </Text></HStack> </Td>
 
                                                             <Td fontWeight={'bold'}> NGN 42,000.98</Td>
@@ -223,7 +223,7 @@ function My_Cards() {
                                                             <Td>
                                                                 2
                                                             </Td>
-                                                            <Td> <HStack> <Image src={'/receiveImage.svg'} width={'24px'} height={'24px'} />
+                                                            <Td> <HStack> <Image w={'9.16px'} h={'9.16px'} src={'/receiveImage.svg'} width={'24px'} height={'24px'} />
 
                                                                 <Text> Franklin Uchemba Stores </Text></HStack> </Td>
 
@@ -275,7 +275,7 @@ function My_Cards() {
                                     <Stack direction={'row'} w={'auto'}  >
 
                                         <Flex flexDirection={'column'} w='7.652em' h='122px' border="0.6px solid #BFBFBF" pt='14px' pl='12px' bg='#000000' borderRadius={'8px'} boxShadow={'0px 4px 14px rgba(0, 0, 0, 0.08)'} position='relative' overflow={'hidden'}>
-                                            <Image color='black' position='absolute' opacity={'0.2'} src={'/blackcard.svg'} top='0px' />
+                                            <Image color='black' w={'7.173em'} h={'7.173em'} position='absolute' opacity={'0.2'} src={'/blackcard.svg'} top='0px' />
                                             <Box bg='#FFFFFF'
                                                 border='1px solid #000000'
                                                 borderRadius='4px'
@@ -284,12 +284,12 @@ function My_Cards() {
                                             </Box>
                                             <Text color='#FFFFFF' fontSize='12px' className={dmsans.className} fontWeight={400} mt='10px'>Balance</Text>
                                             <Text color='#FFFFFF' fontSize='16px' className={dmsans.className} fontWeight={700} >N182,000</Text>
-                                            <HStack mt='4px' spacing='2px' align={'center'}> <Image src={'/upArrow.svg'} /> <Text color='#2CC16B' fontSize='7.25px' className={dmsans.className} fontWeight={400}>+24%</Text></HStack>
+                                            <HStack mt='4px' spacing='2px' align={'center'}> <Image w={'0.7em'} h={'0.7em'} src={'/upArrow.svg'} /> <Text color='#2CC16B' fontSize='7.25px' className={dmsans.className} fontWeight={400}>+24%</Text></HStack>
 
                                         </Flex>
 
                                         <Flex position='relative' flexDirection={'column'} w='7.652em' h='122px' border="0.8px solid #27AE60" pt='14px' pl='12px' bg='rgba(44, 193, 107, 0.08)' borderRadius={'8px'} boxShadow={'0px 14px 54px rgba(0, 0, 0, 0.03'} overflow={'hidden'}>
-                                            <Image color='black' position='absolute' opacity={'0.2'} src={'/greenCard.svg'} top='0px' />
+                                            <Image color='black' w={'7.173em'} h={'7.173em'} position='absolute' opacity={'0.2'} src={'/greenCard.svg'} top='0px' />
                                             <Box bg='#219653'
                                                 border='1px solid #219653'
                                                 borderRadius='4px'
@@ -298,7 +298,7 @@ function My_Cards() {
                                             </Box>
                                             <Text color='#000000' fontSize='12px' className={dmsans.className} fontWeight={400} mt='10px'>Income</Text>
                                             <Text color='#000000' fontSize='16px' className={dmsans.className} fontWeight={700} >N182,000</Text>
-                                            <HStack mt='4px' spacing='2px' align={'center'}> <Image src={'/upArrow.svg'} /> <Text color='#2CC16B' fontSize='7.25px' className={dmsans.className} fontWeight={400}>+24%</Text></HStack>
+                                            <HStack mt='4px' spacing='2px' align={'center'}> <Image w={'0.7em'} h={'0.7em'} src={'/upArrow.svg'} /> <Text color='#2CC16B' fontSize='7.25px' className={dmsans.className} fontWeight={400}>+24%</Text></HStack>
 
                                         </Flex>
 
@@ -312,8 +312,8 @@ function My_Cards() {
                                             </Box>
                                             <Text color='#000000' fontSize='12px' className={dmsans.className} fontWeight={400} mt='10px'>Spending</Text>
                                             <Text color='#000000' fontSize='16px' className={dmsans.className} fontWeight={700} >N182,000</Text>
-                                            <HStack mt='4px' spacing='2px' align={'center'}> <Image src={'/redArrow.svg'} /> <Text color='#EB5757' fontSize='7.25px' className={dmsans.className} fontWeight={400}>+24%</Text></HStack>
-                                            <Image color='black' position='absolute' opacity={'0.2'} src={'/redCard.svg'} top='0px' />
+                                            <HStack mt='4px' spacing='2px' align={'center'}> <Image w={'0.7em'} h={'0.7em'} src={'/redArrow.svg'} /> <Text color='#EB5757' fontSize='7.25px' className={dmsans.className} fontWeight={400}>+24%</Text></HStack>
+                                            <Image color='black' w={'7.173em'} h={'7.173em'} position='absolute' opacity={'0.2'} src={'/redCard.svg'} top='0px' />
                                         </Flex>
 
                                     </Stack>
