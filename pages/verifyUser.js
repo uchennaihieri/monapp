@@ -676,7 +676,7 @@ export const getServerSideProps = withAuthUserTokenSSR({
     if (data.verified == true) {
         return {
             redirect: {
-                destination: '/dashboard',
+                destination: '/Dashboard',
                 permanent: false,
             },
         }
