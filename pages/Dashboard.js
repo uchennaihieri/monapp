@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import {
   IconButton, Avatar, Box, CloseButton, Flex, HStack, VStack, Icon, useColorModeValue, Link, Drawer, DrawerContent, Text,
   useDisclosure, BoxProps, FlexProps, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Image, InputGroup, InputLeftElement,
@@ -31,12 +31,37 @@ import MyChart from "@/components/myChart";
 import NewDash from "./NewDash";
 import DebitTransaction from "@/components/debitTransaction";
 import CreditTransaction from "@/components/creditTransaction";
+import { db } from "@/services/firebase";
+import { getWallet,getCard,getTransactions } from "@/services/request";
+const dayjs = require("dayjs");
+
 
 const dmsans = DM_Sans({ weight: "400", subsets: ["latin"] });
 const dmsansbold = DM_Sans({ weight: "500", subsets: ["latin"] });
 const rubik = Rubik({ weight: ["300", "400"], subsets: ["latin"] });
 
-function Dashboard() {
+function Dashboard({person}) {
+
+  const [wallet, setWallet] = useState()
+  const [card, setCard] = useState()
+  const [transactions, setTransactions] = useState([])
+  const d = new Date(Date.now())
+
+const {lastName,firstName} = person
+    
+
+
+  useEffect(() => {
+ 
+      getWallet(setWallet,person);
+     getCard(setCard,person);
+     getTransactions(setTransactions,person);
+     
+
+  }, [person]);
+
+  console.log('dashboard',transactions);
+
 
   return (
     <NewDash>
@@ -79,14 +104,14 @@ function Dashboard() {
                       lineHeight="38px"
                       letterSpacing={"-0.006em"}
                     >
-                      {"NGN 23,000,000.24"}
+                      NGN {wallet?.balance}
                     </Text>
                   </HStack>
                   <HStack mt="4px" align={"center"} spacing="11px">
                     {" "}
                     <HStack spacing="2px" align={"center"}>
                       {" "}
-                      <Image w="18px" h="18px" src={"/upArrow.svg"} />{" "}
+                      <Image w="18px" h="18px" src={"/upArrow.svg"} alt='increase'/>{" "}
                       <Text
                         color="#2CC16B"
                         fontSize="14px"
@@ -101,7 +126,7 @@ function Dashboard() {
                       fontSize="14px"
                       color="white"
                     >
-                      Monday, May 10th, 2023
+                      {dayjs(d).format("dddd, MMMM D, YYYY")}
                     </Text>
                   </HStack>
                 </Box>
@@ -181,6 +206,7 @@ function Dashboard() {
                         src={"/fundAcc.svg"}
                         width={"24px"}
                         height={"24px"}
+                        alt="fund svg"
                       />
                     </Flex>
                     <Text fontSize={"10px"}>Top up Wallet</Text>
@@ -201,6 +227,7 @@ function Dashboard() {
                         src={"/settle.svg"}
                         width={"24px"}
                         height={"24px"}
+                        alt="settle svg"
                       />
                     </Flex>
                     <Text fontSize={"10px"}>Add Settlement</Text>
@@ -221,6 +248,7 @@ function Dashboard() {
                         src={"/collect.svg"}
                         width={"24px"}
                         height={"24px"}
+                        alt="collect svg"
                       />
                     </Flex>
                     <Text fontSize={"10px"}>Receive Payment</Text>
@@ -329,6 +357,7 @@ function Dashboard() {
                         src={"/fundAcc.svg"}
                         width={"24px"}
                         height={"24px"}
+                        alt="fund svg"
                       />
                     </Flex>
                     <Text fontSize={"10px"}>Top up Wallet</Text>
@@ -349,6 +378,7 @@ function Dashboard() {
                         src={"/settle.svg"}
                         width={"24px"}
                         height={"24px"}
+                        alt="settle svg"
                       />
                     </Flex>
                     <Text fontSize={"10px"}>Add Settlement</Text>
@@ -369,6 +399,7 @@ function Dashboard() {
                         src={"/collect.svg"}
                         width={"24px"}
                         height={"24px"}
+                        alt="svg"
                       />
                     </Flex>
                     <Text fontSize={"10px"}>Receive Payment</Text>
@@ -412,6 +443,7 @@ function Dashboard() {
                       src={"/cardLogoImage.png"}
                       width={"43.84px"}
                       height={"auto"}
+                      alt="card logo"
                     />
                     <Text
                       fontSize={"5.55345px"}
@@ -440,7 +472,7 @@ function Dashboard() {
                       fontWeight={400}
                     >
                       {" "}
-                      Phillip Chatham Ansalem
+                      {firstName} {lastName}
                     </Text>
                     <Text
                       className={rubik.className}
@@ -450,7 +482,7 @@ function Dashboard() {
                       lineHeight="10px"
                       fontWeight={400}
                     >
-                      @PhillipCA
+                      @{card?.tag}
                     </Text>
                     <Text
                       className={rubik.className}
@@ -624,8 +656,45 @@ function Dashboard() {
                     className={dmsans.className}
                     fontWeight={400}
                   >
-                    <DebitTransaction />
-                    <CreditTransaction />
+                
+                      {
+                          (transactions === undefined || transactions.length == 0) ? 
+                          // the array is undefined and has no elements
+                           (
+                               <Text
+                                color="#141736"
+                                fontSize={["16px", "20px"]}
+                                className={dmsans.className}
+                                fontWeight={400}
+                                lineHeight="19px"
+                                textAlign="center"
+                              >
+                               No Transaction 
+                              </Text>
+                          )
+                        : 
+                                                    
+                        transactions?.map((transaction,index) => {
+                          
+                        return(
+                        <CreditTransaction
+                          key={index}
+                          SN={index + 1}
+                          amount={transaction?.amount}
+                           Date={dayjs(transaction?.createdAt).format("DD, MMMM  YYYY")}
+                           sendername={transaction?.sendername}
+                           status={transaction?.transactionStatus}
+                           transactiontype={transaction?.transactiontype}
+                            transactionId={transaction?.id.toUpperCase()}
+                            transactionType={transaction?.transactionType}
+                         />
+                      )
+                    }
+                      )
+                  }
+                    
+                    
+
                   </Tbody>
                 </Table>
               </Flex>
