@@ -3,7 +3,7 @@ import { HStack, Image, Td, Text, Tr, Icon,useBreakpointValue, Box, Flex } from 
 import { GoPrimitiveDot } from 'react-icons/go'
 import TransactionDrawer from '@/pages/transactionsDrawer'
 
-function CreditTransaction() {
+function CreditTransaction({amount, Date, sendername, status,SN, transactionType,transactionId}) {
     const isDesktop=useBreakpointValue({base: false, lg: true})
   const [isDrawerOpen, setIsDrawerOpen]=useState(false)
 //   const [selectedTransaction, setSelectedTransaction]=useState(null)
@@ -22,29 +22,33 @@ function CreditTransaction() {
     return (
         <Tr h='79px' onClick={handleOpenDrawer}>
             <Td display={['none', 'table-cell']}>
-                2
+                {SN}
             </Td>
-            <Td> <HStack> <Image src={'/receiveImage.svg'} width={'24px'} height={'24px'} />
+            <Td> <HStack> { 
+            transactionType === "CR"? 
+            <Image src={'/receiveImage.svg'} width={'24px'} height={'24px'} alt='receive' />:
+            <Image src={"/sentImage.svg"} width={"24px"} height={"24px"} alt='sent' />            
+          }
 
-                <Text fontSize={["14px", "15px"]}> Franklin U. Stores </Text></HStack>
+                <Text fontSize={["14px", "15px"]}>{sendername} </Text></HStack>
                 <Box marginLeft={"2rem"} fontSize={"sm"}>
-     {!isDesktop && <span>25 April at 09:30am</span>} 
+     {!isDesktop && <span>{Date}</span>} 
 
         </Box>
  </Td>
-            <Td display={['none', 'table-cell']}>RET647UYT9IO</Td>
-            <Td fontWeight={'bold'}>NGN 42,000.98
+            <Td display={['none', 'table-cell']}>{transactionId}</Td>
+            <Td fontWeight={'bold'}>NGN {amount}
             <Box  fontSize={"sm"} >
      {!isDesktop && <Flex align="center"><Icon as={GoPrimitiveDot} boxSize={6} color="#27AE60" p="0px" />
-          <Text fontWeight={"thin"}> Success </Text></Flex>} 
+          <Text fontWeight={"thin"}> {status} </Text></Flex>} 
 
         </Box>
 
             
             </Td>
-            <Td display={['none', 'table-cell']}>25 April at 09:30am</Td>
+            <Td display={['none', 'table-cell']}>{Date}</Td>
             <Td display={['none', 'table-cell']}><HStack spacing={0}> <Icon as={GoPrimitiveDot} boxSize={8} color='#27AE60' p='0px' />
-                <Text > Success </Text></HStack> </Td>
+                <Text > {status} </Text></HStack> </Td>
                 <TransactionDrawer isOpen={isDrawerOpen} 
                  onClose={handleCloseDrawer} 
                 // transaction={selectedTransaction} 
