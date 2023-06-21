@@ -53,8 +53,8 @@ import { DM_Sans, Rubik, } from '@next/font/google';
 import { BsChevronDown, BsDot } from 'react-icons/bs';
 import { GoPrimitiveDot } from 'react-icons/go';
 import MyChart from '@/components/myChart';
-import { activePage } from '@/recoil/atoms';
-import { useRecoilState } from 'recoil';
+import { activePage, personState } from '@/recoil/atoms';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import DashboardIcon from '@/components/Icons/dashboardIcon';
@@ -89,6 +89,9 @@ export default function NewDash({
 }) {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [currentPage, setCurrentPage] = useRecoilState(activePage)
+
+    //   console.log(firstName)
+
     return (
         <Box minH="100vh" bg={'#FCFCFC'}>
             <SidebarContent
@@ -220,6 +223,8 @@ const MobileNav = ({ onOpen, ...rest }) => {
 
     const currentRoute = router.pathname;
     const title = routeNames[currentRoute];
+          const {firstName} = useRecoilValue(personState)
+
 
     return (
         <>
@@ -246,7 +251,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
                 <HStack display={{ base: 'none', md: 'flex' }} w='100%' ml="17.25rem" mr="2.375rem" >
                     <Box display={{}}>
                         <Text fontSize={'32px'} fontWeight={500} >{title}</Text>
-                        <Text fontSize={'14px'} fontWeight={400} >Tuesday, 14th May, 2023</Text>
+                        <Text fontSize={'14px'} fontWeight={400} >Hi {firstName? firstName:'User' }</Text>
                     </Box>
                     <Spacer />
 
@@ -295,7 +300,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
                 height={{ base: '20', md: '8.8rem' }}
             >
                 <Text fontSize={'22px'} fontWeight={500} >{title}</Text>
-                <Text fontSize={'14px'} fontWeight={400} >Tuesday, 14th May, 2023</Text>
+                <Text fontSize={'14px'} fontWeight={400} >Hi {firstName? firstName:'User'}</Text>
             </Box>
         </>
     );
