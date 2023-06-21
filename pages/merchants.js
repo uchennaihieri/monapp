@@ -53,7 +53,7 @@ import { DM_Sans, Rubik } from "@next/font/google";
 import { BsChevronDown, BsDot } from "react-icons/bs";
 import { GoPrimitiveDot } from "react-icons/go";
 import DebitTransaction from "@/components/debitTransaction";
-import CreditTransaction from "@/components/creditTransaction";
+import CreditTransaction from "@/components/AllTransactions";
 import NewDash from "./NewDash";
 import MerchantBoxCard from "@/components/merchantBoxCard";
 

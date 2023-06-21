@@ -29,8 +29,7 @@ import { BsChevronDown, BsDot } from "react-icons/bs";
 import { GoPrimitiveDot } from "react-icons/go";
 import MyChart from "@/components/myChart";
 import NewDash from "./NewDash";
-import DebitTransaction from "@/components/debitTransaction";
-import CreditTransaction from "@/components/creditTransaction";
+import AllTransactions from "@/components/AllTransactions";
 import { db } from "@/services/firebase";
 import { getWallet,getCard,getTransactions } from "@/services/request";
 const dayjs = require("dayjs");
@@ -677,7 +676,7 @@ const {lastName,firstName} = person
                         transactions?.map((transaction,index) => {
                           
                         return(
-                        <CreditTransaction
+                        <AllTransactions
                           key={index}
                           SN={index + 1}
                           amount={transaction?.amount}
