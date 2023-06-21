@@ -52,8 +52,8 @@ import { SearchIcon } from "@chakra-ui/icons";
 import { DM_Sans, Rubik } from "@next/font/google";
 import { BsChevronDown, BsDot } from "react-icons/bs";
 import { GoPrimitiveDot } from "react-icons/go";
-import DebitTransaction from "@/components/debitTransaction";
-import CreditTransaction from "@/components/creditTransaction";
+// import DebitTransaction from "@/components/debitTransaction";
+import AllTransactions from "@/components/AllTransactions";
 import NewDash from "./NewDash";
 import TransactionDrawer from "./transactionsDrawer";
 
@@ -112,14 +112,18 @@ function Transactions() {
                     className={dmsans.className}
                     fontWeight={400}
                   >
-                    <DebitTransaction  />
+                    <AllTransactions  />
+                    <AllTransactions  />
+                    <AllTransactions  />
+                    <AllTransactions  />
+                    <AllTransactions  />
+                    {/* <CreditTransaction />
                     <CreditTransaction />
                     <CreditTransaction />
-                    <CreditTransaction />
                     <DebitTransaction />
                     <DebitTransaction />
                     <DebitTransaction />
-                    <DebitTransaction />
+                    <DebitTransaction /> */}
                   </Tbody>
                 </Table>
             

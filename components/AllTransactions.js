@@ -3,7 +3,7 @@ import { HStack, Image, Td, Text, Tr, Icon,useBreakpointValue, Box, Flex } from 
 import { GoPrimitiveDot } from 'react-icons/go'
 import TransactionDrawer from '@/pages/transactionsDrawer'
 
-function CreditTransaction({amount, Date, sendername, status,SN, transactionType,transactionId}) {
+function AllTransactions({amount, Date, sendername, status,SN, transactionType,transactionId}) {
     const isDesktop=useBreakpointValue({base: false, lg: true})
   const [isDrawerOpen, setIsDrawerOpen]=useState(false)
 //   const [selectedTransaction, setSelectedTransaction]=useState(null)
@@ -59,4 +59,4 @@ function CreditTransaction({amount, Date, sendername, status,SN, transactionType
     )
 }
 
-export default CreditTransaction
+export default AllTransactions
