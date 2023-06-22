@@ -32,6 +32,8 @@ import NewDash from "./NewDash";
 import AllTransactions from "@/components/AllTransactions";
 import { db } from "@/services/firebase";
 import { getWallet,getCard,getTransactions } from "@/services/request";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { personState } from "@/recoil/atoms";
 const dayjs = require("dayjs");
 
 
@@ -41,12 +43,20 @@ const rubik = Rubik({ weight: ["300", "400"], subsets: ["latin"] });
 
 function Dashboard({person}) {
 
+  const setPersonState = useSetRecoilState(personState)
+  setPersonState(person)
+
+
   const [wallet, setWallet] = useState()
   const [card, setCard] = useState()
   const [transactions, setTransactions] = useState([])
   const d = new Date(Date.now())
 
-const {lastName,firstName} = person
+  // const {lastName,firstName}= useRecoilValue(personState)
+
+const  {lastName,firstName} = person
+
+// console.log('user',user);
     
 
 
@@ -59,7 +69,7 @@ const {lastName,firstName} = person
 
   }, [person]);
 
-  console.log('dashboard',transactions);
+  // console.log('card',card);
 
 
   return (

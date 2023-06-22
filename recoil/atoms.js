@@ -59,3 +59,8 @@ export const myPostalCode = atom({
     key: "myPostalCode",
     default: "",
 });
+
+export const personState = atom({
+    key: "personState",
+    default: {},
+});
