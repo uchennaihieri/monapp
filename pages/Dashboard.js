@@ -30,7 +30,6 @@ import { GoPrimitiveDot } from "react-icons/go";
 import MyChart from "@/components/myChart";
 import NewDash from "./NewDash";
 import AllTransactions from "@/components/AllTransactions";
-import { db } from "@/services/firebase";
 import { getWallet,getCard,getTransactions } from "@/services/request";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { personState } from "@/recoil/atoms";
@@ -75,9 +74,9 @@ const  {lastName,firstName} = person
   return (
     <NewDash>
       <div >
-        <HStack ml={["0", "6rem"]} flexWrap={["wrap", "nowrap"]} >
+        <HStack ml={["0", "6rem" ]} flexWrap={["wrap", "nowrap"]} >
           <Box mr={["0", "10px"]} w={"100%"} m={"auto"}>
-            <VStack>
+            <VStack >
               {/* current balance card */}
               <Box
                 h={"144px"}

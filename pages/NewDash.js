@@ -112,7 +112,7 @@ export default function NewDash({
             </Drawer>
             {/* mobilenav */}
             <MobileNav onOpen={onOpen} />
-            <Box ml={{ base: 0, md: '17.25rem' }} p="4">
+            <Box ml={{ base: 0, md: '17.25rem', '2xl':'26rem' }} p="4">
 
 
                 {children}
@@ -179,7 +179,7 @@ const NavItem = ({ icon, to, name, children, ...rest }) => {
             <Flex
                 align="center"
                 p="4"
-                mx="12"
+                ml="12"
                 borderRadius="lg"
                 role="group"
                 cursor="pointer"
@@ -229,7 +229,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
     return (
         <>
             <Flex
-                ml={{ base: 0, md: '6.375rem' }}
+                ml={{ base: 0, md: '6.375rem', '2xl': '13.375rem' }}
                 px={{ base: 4, md: '3.1875rem' }}
                 height={{ base: '20', md: '8.8rem' }}
                 alignItems="center"
