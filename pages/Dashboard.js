@@ -3,6 +3,11 @@ import {
   IconButton, Avatar, Box, CloseButton, Flex, HStack, VStack, Icon, useColorModeValue, Link, Drawer, DrawerContent, Text,
   useDisclosure, BoxProps, FlexProps, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Image, InputGroup, InputLeftElement,
   Input, Spacer, Button, Table, Thead, Tr, Th, Tbody, Td, Heading, Divider,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerCloseButton,
 } from "@chakra-ui/react";
 import {
   FiHome,
@@ -30,7 +35,7 @@ import { GoPrimitiveDot } from "react-icons/go";
 import MyChart from "@/components/myChart";
 import NewDash from "./NewDash";
 import AllTransactions from "@/components/AllTransactions";
-import { db } from "@/services/firebase";
+import { db, doc, onSnapshot } from "@/services/firebase";
 import { getWallet, getCard, getTransactions } from "@/services/request";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { personState } from "@/recoil/atoms";
@@ -46,7 +51,8 @@ function Dashboard({ person }) {
   const setPersonState = useSetRecoilState(personState)
   setPersonState(person)
 
-
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const btnRef = React.useRef()
   const [wallet, setWallet] = useState()
   const [card, setCard] = useState()
   const [transactions, setTransactions] = useState([])
@@ -65,11 +71,27 @@ function Dashboard({ person }) {
     getWallet(setWallet, person);
     getCard(setCard, person);
     getTransactions(setTransactions, person);
+    checkPin()
 
 
   }, [person]);
 
   // console.log('card',card);
+
+
+
+  const checkPin = () => {
+
+    const unsub = onSnapshot(doc(db, "security", person.userID), (doc) => {
+      if (doc.data()) {
+        console.log('pin here')
+        console.log(doc.data())
+      } else {
+        console.log('no pin here')
+      }
+    });
+
+  }
 
 
   const createPin = () => {
@@ -128,6 +150,9 @@ function Dashboard({ person }) {
         })
     }
   }
+
+
+
 
 
   return (
@@ -232,6 +257,31 @@ function Dashboard({ person }) {
 
               </Box>
 
+              <Drawer
+                isOpen={isOpen}
+                placement='right'
+                onClose={onClose}
+                finalFocusRef={btnRef}
+                size={'lg'}
+              >
+                <DrawerOverlay />
+                <DrawerContent>
+                  <DrawerCloseButton />
+                  <DrawerHeader>Create your account</DrawerHeader>
+
+                  <DrawerBody>
+                    <Input placeholder='Type here...' />
+                  </DrawerBody>
+
+                  <DrawerFooter>
+                    <Button variant='outline' mr={3} onClick={onClose}>
+                      Cancel
+                    </Button>
+                    <Button colorScheme='blue'>Save</Button>
+                  </DrawerFooter>
+                </DrawerContent>
+              </Drawer>
+
               {/* responsive quickcards */}
               <Box
                 h={"144px"}
@@ -258,7 +308,7 @@ function Dashboard({ person }) {
                 </Text>
 
                 <Flex justify={"space-between"}>
-                  <Box align={"center"}>
+                  <Box align={"center"} >
                     <Flex
                       _hover={{ cursor: "pointer", bg: "#F5F5F5" }}
                       width={"54px"}
@@ -409,7 +459,7 @@ function Dashboard({ person }) {
                 </Text>
 
                 <Flex justify={"space-between"}>
-                  <Box align={"center"}>
+                  <Box align={"center"} ref={btnRef} onClick={onOpen}>
                     <Flex
                       _hover={{ cursor: "pointer", bg: "#F5F5F5" }}
                       width={"54px"}
