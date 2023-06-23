@@ -43,7 +43,6 @@ const rubik = Rubik({ weight: ["300", "400"], subsets: ["latin"] });
 function Dashboard({person}) {
 
   const setPersonState = useSetRecoilState(personState)
-  setPersonState(person)
 
 
   const [wallet, setWallet] = useState()
@@ -60,10 +59,11 @@ const  {lastName,firstName} = person
 
 
   useEffect(() => {
- 
-      getWallet(setWallet,person);
-     getCard(setCard,person);
+      setPersonState(person)
+      getWallet(setWallet, person);
+     getCard(setCard, person);
      getTransactions(setTransactions,person);
+     
      
 
   }, [person]);
@@ -640,14 +640,35 @@ const  {lastName,firstName} = person
             </Button>
           </Flex>
 
-          <Box dropShadow="lg" w="100%" h="221px" my="26px">
-            <Flex flexDir="column">
-              <Flex overflow="auto">
-                <Table
-                  variant="simple"
-                  bg="#FFFFFF"
-                  boxShadow={"0px 14px 54px rgba(0, 0, 0, 0.03);"}
-                  borderRadius={"8px"}
+             {
+                          (transactions === undefined || transactions.length == 0) ? 
+                          // the array is undefined and has no elements
+                           (
+
+                               <Flex flexDirection='column' justify={'center'} align={'center'}>
+                              
+                                <Text
+                                 color="#141736"
+                                fontSize={["16px", "20px"]}
+                                className={dmsans.className}
+                                fontWeight={400}
+                                lineHeight="19px"
+                                textAlign="center"
+                                >No Transaction</Text>
+                                </Flex>
+                               
+                          )
+                        : 
+                <>
+             
+                <Box dropShadow="lg" w="100%" h="221px" my="26px">
+                  <Flex flexDir="column">
+                    <Flex overflow="auto">
+                      <Table
+                        variant="simple"
+                        bg="#FFFFFF"
+                        boxShadow={"0px 14px 54px rgba(0, 0, 0, 0.03);"}
+                        borderRadius={"8px"}
                 >
                   <Thead h="60px" bg="rgba(0, 0, 0, 0.04)" display={['none', 'table-head']}>
                     <Tr color="gray">
@@ -665,23 +686,8 @@ const  {lastName,firstName} = person
                     fontWeight={400}
                   >
                 
-                      {
-                          (transactions === undefined || transactions.length == 0) ? 
-                          // the array is undefined and has no elements
-                           (
-                               <Text
-                                color="#141736"
-                                fontSize={["16px", "20px"]}
-                                className={dmsans.className}
-                                fontWeight={400}
-                                lineHeight="19px"
-                                textAlign="center"
-                              >
-                               No Transaction 
-                              </Text>
-                          )
-                        : 
-                                                    
+                   
+                        {                            
                         transactions?.map((transaction,index) => {
                           
                         return(
@@ -698,9 +704,8 @@ const  {lastName,firstName} = person
                          />
                       )
                     }
-                      )
-                  }
-                    
+                      )}
+                         
                     
 
                   </Tbody>
@@ -708,6 +713,8 @@ const  {lastName,firstName} = person
               </Flex>
             </Flex>
           </Box>
+          </>
+}
         </Box>
       </div>
     </NewDash>
