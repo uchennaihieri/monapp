@@ -49,7 +49,6 @@ const rubik = Rubik({ weight: ["300", "400"], subsets: ["latin"] });
 function Dashboard({ person }) {
 
   const setPersonState = useSetRecoilState(personState)
-  setPersonState(person)
 
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = React.useRef()
@@ -67,11 +66,12 @@ function Dashboard({ person }) {
 
 
   useEffect(() => {
-
+    checkPin()
+    setPersonState(person)
     getWallet(setWallet, person);
     getCard(setCard, person);
     getTransactions(setTransactions, person);
-    checkPin()
+
 
 
   }, [person]);
@@ -749,77 +749,84 @@ function Dashboard({ person }) {
             </Button>
           </Flex>
 
-          <Box dropShadow="lg" w="100%" h="221px" my="26px">
-            <Flex flexDir="column">
-              <Flex overflow="auto">
-                <Table
-                  variant="simple"
-                  bg="#FFFFFF"
-                  boxShadow={"0px 14px 54px rgba(0, 0, 0, 0.03);"}
-                  borderRadius={"8px"}
-                >
-                  <Thead h="60px" bg="rgba(0, 0, 0, 0.04)" display={['none', 'table-head']}>
-                    <Tr color="gray">
-                      <Th w="104px">S/N</Th>
-                      <Th w="257px">Name</Th>
-                      <Th w="167px">Reference No</Th>
-                      <Th w="174px">Amount</Th>
-                      <Th w="180px">Date</Th>
-                      <Th>Status</Th>
-                    </Tr>
-                  </Thead>
-                  <Tbody
-                    fontSize="14px"
+          {
+            (transactions === undefined || transactions.length == 0) ?
+              // the array is undefined and has no elements
+              (
+
+                <Flex flexDirection='column' justify={'center'} align={'center'}>
+
+                  <Text
+                    color="#141736"
+                    fontSize={["16px", "20px"]}
                     className={dmsans.className}
                     fontWeight={400}
-                  >
+                    lineHeight="19px"
+                    textAlign="center"
+                  >No Transaction</Text>
+                </Flex>
 
-                    {
-                      (transactions === undefined || transactions.length == 0) ?
-                        // the array is undefined and has no elements
-                        (
-                          <Text
-                            color="#141736"
-                            fontSize={["16px", "20px"]}
-                            className={dmsans.className}
-                            fontWeight={400}
-                            lineHeight="19px"
-                            textAlign="center"
-                          >
-                            No Transaction
-                          </Text>
-                        )
-                        :
+              )
+              :
+              <>
 
-                        transactions?.map((transaction, index) => {
-
-                          return (
-                            <AllTransactions
-                              key={index}
-                              SN={index + 1}
-                              amount={transaction?.amount}
-                              Date={dayjs(transaction?.createdAt).format("DD, MMMM  YYYY")}
-                              sendername={transaction?.sendername}
-                              status={transaction?.transactionStatus}
-                              transactiontype={transaction?.transactiontype}
-                              transactionId={transaction?.id.toUpperCase()}
-                              transactionType={transaction?.transactionType}
-                            />
-                          )
-                        }
-                        )
-                    }
+                <Box dropShadow="lg" w="100%" h="221px" my="26px">
+                  <Flex flexDir="column">
+                    <Flex overflow="auto">
+                      <Table
+                        variant="simple"
+                        bg="#FFFFFF"
+                        boxShadow={"0px 14px 54px rgba(0, 0, 0, 0.03);"}
+                        borderRadius={"8px"}
+                      >
+                        <Thead h="60px" bg="rgba(0, 0, 0, 0.04)" display={['none', 'table-head']}>
+                          <Tr color="gray">
+                            <Th w="104px">S/N</Th>
+                            <Th w="257px">Name</Th>
+                            <Th w="167px">Reference No</Th>
+                            <Th w="174px">Amount</Th>
+                            <Th w="180px">Date</Th>
+                            <Th>Status</Th>
+                          </Tr>
+                        </Thead>
+                        <Tbody
+                          fontSize="14px"
+                          className={dmsans.className}
+                          fontWeight={400}
+                        >
 
 
+                          {
+                            transactions?.map((transaction, index) => {
 
-                  </Tbody>
-                </Table>
-              </Flex>
-            </Flex>
-          </Box>
-        </Box>
-      </div>
-    </NewDash>
+                              return (
+                                <AllTransactions
+                                  key={index}
+                                  SN={index + 1}
+                                  amount={transaction?.amount}
+                                  Date={dayjs(transaction?.createdAt).format("DD, MMMM  YYYY")}
+                                  sendername={transaction?.sendername}
+                                  status={transaction?.transactionStatus}
+                                  transactiontype={transaction?.transactiontype}
+                                  transactionId={transaction?.id.toUpperCase()}
+                                  transactionType={transaction?.transactionType}
+                                />
+                              )
+                            }
+                            )}
+
+
+
+                        </Tbody >
+                      </Table >
+                    </Flex >
+                  </Flex >
+                </Box >
+              </>
+          }
+        </Box >
+      </div >
+    </NewDash >
   );
 }
 
