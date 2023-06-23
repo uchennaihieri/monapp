@@ -135,7 +135,7 @@ function Dashboard({ person }) {
       <div >
         <HStack ml={["0", "6rem"]} flexWrap={["wrap", "nowrap"]} >
           <Box mr={["0", "10px"]} w={"100%"} m={"auto"}>
-            <VStack>
+            <VStack >
               {/* current balance card */}
               <Box
                 h={"144px"}
