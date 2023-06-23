@@ -31,7 +31,7 @@ import MyChart from "@/components/myChart";
 import NewDash from "./NewDash";
 import AllTransactions from "@/components/AllTransactions";
 import { db } from "@/services/firebase";
-import { getWallet,getCard,getTransactions } from "@/services/request";
+import { getWallet, getCard, getTransactions } from "@/services/request";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { personState } from "@/recoil/atoms";
 const dayjs = require("dayjs");
@@ -41,7 +41,7 @@ const dmsans = DM_Sans({ weight: "400", subsets: ["latin"] });
 const dmsansbold = DM_Sans({ weight: "500", subsets: ["latin"] });
 const rubik = Rubik({ weight: ["300", "400"], subsets: ["latin"] });
 
-function Dashboard({person}) {
+function Dashboard({ person }) {
 
   const setPersonState = useSetRecoilState(personState)
   setPersonState(person)
@@ -54,22 +54,80 @@ function Dashboard({person}) {
 
   // const {lastName,firstName}= useRecoilValue(personState)
 
-const  {lastName,firstName} = person
+  const { lastName, firstName } = person
 
-// console.log('user',user);
-    
+  // console.log('user',user);
+
 
 
   useEffect(() => {
- 
-      getWallet(setWallet,person);
-     getCard(setCard,person);
-     getTransactions(setTransactions,person);
-     
+
+    getWallet(setWallet, person);
+    getCard(setCard, person);
+    getTransactions(setTransactions, person);
+
 
   }, [person]);
 
   // console.log('card',card);
+
+
+  const createPin = () => {
+    setLoadingState(true)
+
+    if (pin != confirmPin) {
+      setLoadingState(false)
+      toast({
+        title: 'Pin creation error',
+        description: 'Your pin does not match',
+        status: 'error',
+        duration: 9000,
+        isClosable: true,
+        position: 'top',
+      })
+    } else {
+
+      fetch("https://us-central1-monapp-33057.cloudfunctions.net/app/api/crypt", {
+
+        // Adding method type
+        method: "POST",
+        body: JSON.stringify({
+          pin: pin,
+          id: person.id
+        })
+      }).then(function (res) {
+        return res.json();
+      })
+        // Converting to JSON
+        .then(function (data) {
+          if (data.successful) {
+            setLoadingState(false)
+            toast({
+              title: 'Pin creation successful',
+              description: 'Your pin has been created',
+              status: 'success',
+              duration: 9000,
+              isClosable: true,
+              position: 'top',
+            })
+          } else {
+            setLoadingState(false)
+            toast({
+              title: 'Pin creation error',
+              description: 'There was an error somewhere, please try again',
+              status: 'error',
+              duration: 9000,
+              isClosable: true,
+              position: 'top',
+            })
+          }
+        })
+        .catch(function (error) {
+          setLoadingState(false)
+          console.log(error);
+        })
+    }
+  }
 
 
   return (
@@ -120,7 +178,7 @@ const  {lastName,firstName} = person
                     {" "}
                     <HStack spacing="2px" align={"center"}>
                       {" "}
-                      <Image w="18px" h="18px" src={"/upArrow.svg"} alt='increase'/>{" "}
+                      <Image w="18px" h="18px" src={"/upArrow.svg"} alt='increase' />{" "}
                       <Text
                         color="#2CC16B"
                         fontSize="14px"
@@ -665,44 +723,44 @@ const  {lastName,firstName} = person
                     className={dmsans.className}
                     fontWeight={400}
                   >
-                
-                      {
-                          (transactions === undefined || transactions.length == 0) ? 
-                          // the array is undefined and has no elements
-                           (
-                               <Text
-                                color="#141736"
-                                fontSize={["16px", "20px"]}
-                                className={dmsans.className}
-                                fontWeight={400}
-                                lineHeight="19px"
-                                textAlign="center"
-                              >
-                               No Transaction 
-                              </Text>
+
+                    {
+                      (transactions === undefined || transactions.length == 0) ?
+                        // the array is undefined and has no elements
+                        (
+                          <Text
+                            color="#141736"
+                            fontSize={["16px", "20px"]}
+                            className={dmsans.className}
+                            fontWeight={400}
+                            lineHeight="19px"
+                            textAlign="center"
+                          >
+                            No Transaction
+                          </Text>
+                        )
+                        :
+
+                        transactions?.map((transaction, index) => {
+
+                          return (
+                            <AllTransactions
+                              key={index}
+                              SN={index + 1}
+                              amount={transaction?.amount}
+                              Date={dayjs(transaction?.createdAt).format("DD, MMMM  YYYY")}
+                              sendername={transaction?.sendername}
+                              status={transaction?.transactionStatus}
+                              transactiontype={transaction?.transactiontype}
+                              transactionId={transaction?.id.toUpperCase()}
+                              transactionType={transaction?.transactionType}
+                            />
                           )
-                        : 
-                                                    
-                        transactions?.map((transaction,index) => {
-                          
-                        return(
-                        <AllTransactions
-                          key={index}
-                          SN={index + 1}
-                          amount={transaction?.amount}
-                           Date={dayjs(transaction?.createdAt).format("DD, MMMM  YYYY")}
-                           sendername={transaction?.sendername}
-                           status={transaction?.transactionStatus}
-                           transactiontype={transaction?.transactiontype}
-                            transactionId={transaction?.id.toUpperCase()}
-                            transactionType={transaction?.transactionType}
-                         />
-                      )
+                        }
+                        )
                     }
-                      )
-                  }
-                    
-                    
+
+
 
                   </Tbody>
                 </Table>
