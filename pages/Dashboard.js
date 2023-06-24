@@ -62,36 +62,50 @@ import { GoPrimitiveDot } from "react-icons/go";
 import MyChart from "@/components/myChart";
 import NewDash from "./NewDash";
 import AllTransactions from "@/components/AllTransactions";
-import { db } from "@/services/firebase";
-import { getWallet, getCard, getTransactions } from "@/services/request";
+import { getWallet,getCard,getTransactions } from "@/services/request";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { personState } from "@/recoil/atoms";
 const dayjs = require("dayjs");
 
 const dmsans = DM_Sans({ weight: "400", subsets: ["latin"] });
 const dmsansbold = DM_Sans({ weight: "500", subsets: ["latin"] });
 const rubik = Rubik({ weight: ["300", "400"], subsets: ["latin"] });
 
-function Dashboard({ person }) {
-  const [wallet, setWallet] = useState();
-  const [card, setCard] = useState();
-  const [transactions, setTransactions] = useState([]);
-  const d = new Date(Date.now());
+function Dashboard({person}) {
 
-  const { lastName, firstName } = person;
+  const setPersonState = useSetRecoilState(personState)
 
+
+  const [wallet, setWallet] = useState()
+  const [card, setCard] = useState()
+  const [transactions, setTransactions] = useState([])
+  const d = new Date(Date.now())
+
+  // const {lastName,firstName}= useRecoilValue(personState)
+
+const  {lastName,firstName} = person
+
+// console.log('user',user);
+    
   useEffect(() => {
-    getWallet(setWallet, person);
-    getCard(setCard, person);
-    getTransactions(setTransactions, person);
+      setPersonState(person)
+      getWallet(setWallet, person);
+     getCard(setCard, person);
+     getTransactions(setTransactions,person);
+     
+     
+
   }, [person]);
 
-  console.log("dashboard", transactions);
+  // console.log('card',card);
+
 
   return (
     <NewDash>
-      <div>
-        <HStack ml={["0", "6rem"]} flexWrap={["wrap", "nowrap"]}>
+      <div >
+        <HStack ml={["0", "6rem" ]} flexWrap={["wrap", "nowrap"]} >
           <Box mr={["0", "10px"]} w={"100%"} m={"auto"}>
-            <VStack>
+            <VStack >
               {/* current balance card */}
               <Box
                 h={"144px"}
@@ -659,14 +673,35 @@ function Dashboard({ person }) {
             </Button>
           </Flex>
 
-          <Box dropShadow="lg" w="100%" h="221px" my="26px">
-            <Flex flexDir="column">
-              <Flex overflow="auto">
-                <Table
-                  variant="simple"
-                  bg="#FFFFFF"
-                  boxShadow={"0px 14px 54px rgba(0, 0, 0, 0.03);"}
-                  borderRadius={"8px"}
+             {
+                          (transactions === undefined || transactions.length == 0) ? 
+                          // the array is undefined and has no elements
+                           (
+
+                               <Flex flexDirection='column' justify={'center'} align={'center'}>
+                              
+                                <Text
+                                 color="#141736"
+                                fontSize={["16px", "20px"]}
+                                className={dmsans.className}
+                                fontWeight={400}
+                                lineHeight="19px"
+                                textAlign="center"
+                                >No Transaction</Text>
+                                </Flex>
+                               
+                          )
+                        : 
+                <>
+             
+                <Box dropShadow="lg" w="100%" h="221px" my="26px">
+                  <Flex flexDir="column">
+                    <Flex overflow="auto">
+                      <Table
+                        variant="simple"
+                        bg="#FFFFFF"
+                        boxShadow={"0px 14px 54px rgba(0, 0, 0, 0.03);"}
+                        borderRadius={"8px"}
                 >
                   <Thead
                     h="60px"
@@ -687,42 +722,36 @@ function Dashboard({ person }) {
                     className={dmsans.className}
                     fontWeight={400}
                   >
-                    {transactions === undefined || transactions.length == 0 ? (
-                      // the array is undefined and has no elements
-                      <Text
-                        color="#141736"
-                        fontSize={["16px", "20px"]}
-                        className={dmsans.className}
-                        fontWeight={400}
-                        lineHeight="19px"
-                        textAlign="center"
-                      >
-                        No Transaction
-                      </Text>
-                    ) : (
-                      transactions?.map((transaction, index) => {
-                        return (
-                          <AllTransactions
-                            key={index}
-                            SN={index + 1}
-                            amount={transaction?.amount}
-                            Date={dayjs(transaction?.createdAt).format(
-                              "DD, MMMM  YYYY"
-                            )}
-                            sendername={transaction?.sendername}
-                            status={transaction?.transactionStatus}
-                            transactiontype={transaction?.transactiontype}
+                
+                   
+                        {                            
+                        transactions?.map((transaction,index) => {
+                          
+                        return(
+                        <AllTransactions
+                          key={index}
+                          SN={index + 1}
+                          amount={transaction?.amount}
+                           Date={dayjs(transaction?.createdAt).format("DD, MMMM  YYYY")}
+                           sendername={transaction?.sendername}
+                           status={transaction?.transactionStatus}
+                           transactiontype={transaction?.transactiontype}
                             transactionId={transaction?.id.toUpperCase()}
                             transactionType={transaction?.transactionType}
-                          />
-                        );
-                      })
-                    )}
+                         />
+                      )
+                    }
+                      )}
+                         
+                    
+
                   </Tbody>
                 </Table>
               </Flex>
             </Flex>
           </Box>
+          </>
+}
         </Box>
       </div>
     </NewDash>

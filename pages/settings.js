@@ -57,8 +57,6 @@ import { SearchIcon } from '@chakra-ui/icons';
 import { DM_Sans, Rubik, } from '@next/font/google';
 import { BsChevronDown, BsDot } from 'react-icons/bs';
 import { GoPrimitiveDot } from 'react-icons/go';
-import DebitTransaction from '@/components/debitTransaction';
-import CreditTransaction from '@/components/AllTransactions';
 import NewDash from './NewDash';
 import { activePage } from '@/recoil/atoms';
 import { useRecoilState } from 'recoil';
