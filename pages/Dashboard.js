@@ -1,8 +1,40 @@
 import React, { ReactNode, useEffect, useState } from "react";
 import {
-  IconButton, Avatar, Box, CloseButton, Flex, HStack, VStack, Icon, useColorModeValue, Link, Drawer, DrawerContent, Text,
-  useDisclosure, BoxProps, FlexProps, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Image, InputGroup, InputLeftElement,
-  Input, Spacer, Button, Table, Thead, Tr, Th, Tbody, Td, Heading, Divider,
+  IconButton,
+  Avatar,
+  Box,
+  CloseButton,
+  Flex,
+  HStack,
+  VStack,
+  Icon,
+  useColorModeValue,
+  Link,
+  Drawer,
+  DrawerContent,
+  Text,
+  useDisclosure,
+  BoxProps,
+  FlexProps,
+  Menu,
+  MenuButton,
+  MenuDivider,
+  MenuItem,
+  MenuList,
+  Image,
+  InputGroup,
+  InputLeftElement,
+  Input,
+  Spacer,
+  Button,
+  Table,
+  Thead,
+  Tr,
+  Th,
+  Tbody,
+  Td,
+  Heading,
+  Divider,
 } from "@chakra-ui/react";
 import {
   FiHome,
@@ -20,7 +52,7 @@ import {
   useAuthUser,
   withAuthUser,
   withAuthUserTokenSSR,
-} from 'next-firebase-auth'
+} from "next-firebase-auth";
 import { IconType } from "react-icons";
 import { ReactText } from "react";
 import { SearchIcon } from "@chakra-ui/icons";
@@ -31,41 +63,33 @@ import MyChart from "@/components/myChart";
 import NewDash from "./NewDash";
 import AllTransactions from "@/components/AllTransactions";
 import { db } from "@/services/firebase";
-import { getWallet,getCard,getTransactions } from "@/services/request";
+import { getWallet, getCard, getTransactions } from "@/services/request";
 const dayjs = require("dayjs");
-
 
 const dmsans = DM_Sans({ weight: "400", subsets: ["latin"] });
 const dmsansbold = DM_Sans({ weight: "500", subsets: ["latin"] });
 const rubik = Rubik({ weight: ["300", "400"], subsets: ["latin"] });
 
-function Dashboard({person}) {
+function Dashboard({ person }) {
+  const [wallet, setWallet] = useState();
+  const [card, setCard] = useState();
+  const [transactions, setTransactions] = useState([]);
+  const d = new Date(Date.now());
 
-  const [wallet, setWallet] = useState()
-  const [card, setCard] = useState()
-  const [transactions, setTransactions] = useState([])
-  const d = new Date(Date.now())
-
-const {lastName,firstName} = person
-    
-
+  const { lastName, firstName } = person;
 
   useEffect(() => {
- 
-      getWallet(setWallet,person);
-     getCard(setCard,person);
-     getTransactions(setTransactions,person);
-     
-
+    getWallet(setWallet, person);
+    getCard(setCard, person);
+    getTransactions(setTransactions, person);
   }, [person]);
 
-  console.log('dashboard',transactions);
-
+  console.log("dashboard", transactions);
 
   return (
     <NewDash>
-      <div >
-        <HStack ml={["0", "6rem"]} flexWrap={["wrap", "nowrap"]} >
+      <div>
+        <HStack ml={["0", "6rem"]} flexWrap={["wrap", "nowrap"]}>
           <Box mr={["0", "10px"]} w={"100%"} m={"auto"}>
             <VStack>
               {/* current balance card */}
@@ -110,7 +134,12 @@ const {lastName,firstName} = person
                     {" "}
                     <HStack spacing="2px" align={"center"}>
                       {" "}
-                      <Image w="18px" h="18px" src={"/upArrow.svg"} alt='increase'/>{" "}
+                      <Image
+                        w="18px"
+                        h="18px"
+                        src={"/upArrow.svg"}
+                        alt="increase"
+                      />{" "}
                       <Text
                         color="#2CC16B"
                         fontSize="14px"
@@ -161,13 +190,12 @@ const {lastName,firstName} = person
                   left="424"
                   top="11"
                 /> */}
-
               </Box>
 
               {/* responsive quickcards */}
               <Box
                 h={"144px"}
-                // w={["23rem", "28rem"]}   
+                // w={["23rem", "28rem"]}
                 w={"100%"}
                 borderRadius={"8px"}
                 mt={["15px", "0px"]}
@@ -314,11 +342,11 @@ const {lastName,firstName} = person
             </VStack>
           </Box>
           <Box w={"100%"} m={"auto"}>
-            <VStack  >
+            <VStack>
               {/* quick links area */}
               <Box
                 h={"144px"}
-                // w={["23rem", "28rem"]}   
+                // w={["23rem", "28rem"]}
                 w={"100%"}
                 borderRadius={"8px"}
                 mt={["15px", "0px"]}
@@ -640,7 +668,11 @@ const {lastName,firstName} = person
                   boxShadow={"0px 14px 54px rgba(0, 0, 0, 0.03);"}
                   borderRadius={"8px"}
                 >
-                  <Thead h="60px" bg="rgba(0, 0, 0, 0.04)" display={['none', 'table-head']}>
+                  <Thead
+                    h="60px"
+                    bg="rgba(0, 0, 0, 0.04)"
+                    display={["none", "table-head"]}
+                  >
                     <Tr color="gray">
                       <Th w="104px">S/N</Th>
                       <Th w="257px">Name</Th>
@@ -655,45 +687,37 @@ const {lastName,firstName} = person
                     className={dmsans.className}
                     fontWeight={400}
                   >
-                
-                      {
-                          (transactions === undefined || transactions.length == 0) ? 
-                          // the array is undefined and has no elements
-                           (
-                               <Text
-                                color="#141736"
-                                fontSize={["16px", "20px"]}
-                                className={dmsans.className}
-                                fontWeight={400}
-                                lineHeight="19px"
-                                textAlign="center"
-                              >
-                               No Transaction 
-                              </Text>
-                          )
-                        : 
-                                                    
-                        transactions?.map((transaction,index) => {
-                          
-                        return(
-                        <AllTransactions
-                          key={index}
-                          SN={index + 1}
-                          amount={transaction?.amount}
-                           Date={dayjs(transaction?.createdAt).format("DD, MMMM  YYYY")}
-                           sendername={transaction?.sendername}
-                           status={transaction?.transactionStatus}
-                           transactiontype={transaction?.transactiontype}
+                    {transactions === undefined || transactions.length == 0 ? (
+                      // the array is undefined and has no elements
+                      <Text
+                        color="#141736"
+                        fontSize={["16px", "20px"]}
+                        className={dmsans.className}
+                        fontWeight={400}
+                        lineHeight="19px"
+                        textAlign="center"
+                      >
+                        No Transaction
+                      </Text>
+                    ) : (
+                      transactions?.map((transaction, index) => {
+                        return (
+                          <AllTransactions
+                            key={index}
+                            SN={index + 1}
+                            amount={transaction?.amount}
+                            Date={dayjs(transaction?.createdAt).format(
+                              "DD, MMMM  YYYY"
+                            )}
+                            sendername={transaction?.sendername}
+                            status={transaction?.transactionStatus}
+                            transactiontype={transaction?.transactiontype}
                             transactionId={transaction?.id.toUpperCase()}
                             transactionType={transaction?.transactionType}
-                         />
-                      )
-                    }
-                      )
-                  }
-                    
-                    
-
+                          />
+                        );
+                      })
+                    )}
                   </Tbody>
                 </Table>
               </Flex>
@@ -709,40 +733,43 @@ export const getServerSideProps = withAuthUserTokenSSR({
   whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
 })(async ({ AuthUser }) => {
   // Optionally, get other props.
-  const token = await AuthUser.getIdToken(true)
+  const token = await AuthUser.getIdToken(true);
 
-  const UID = AuthUser.id
-  const response = await fetch(`https://us-central1-monapp-33057.cloudfunctions.net/app/api/user/${UID}`, {
-    method: 'GET',
-    headers: {
-      Authorization: token,
-    },
-  })
-  const data = await response.json()
+  const UID = AuthUser.id;
+  const response = await fetch(
+    `https://us-central1-monapp-33057.cloudfunctions.net/app/api/user/${UID}`,
+    {
+      method: "GET",
+      headers: {
+        Authorization: token,
+      },
+    }
+  );
+  const data = await response.json();
 
   if (!data.verified) {
     return {
       redirect: {
-        destination: '/verifyUser',
+        destination: "/verifyUser",
         permanent: false,
       },
-    }
+    };
   }
 
-  if (data.verified == 'submitted') {
+  if (data.verified == "submitted") {
     return {
       redirect: {
-        destination: '/confirmOtp',
+        destination: "/confirmOtp",
         permanent: false,
       },
-    }
+    };
   }
 
   return {
     props: {
       person: data,
     },
-  }
-})
+  };
+});
 
-export default withAuthUser()(Dashboard)
+export default withAuthUser()(Dashboard);
