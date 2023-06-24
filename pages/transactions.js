@@ -55,21 +55,24 @@ import { GoPrimitiveDot } from "react-icons/go";
 import AllTransactions from "@/components/AllTransactions";
 import { getTransactions } from "@/services/request";
 import NewDash from "./NewDash";
+import { useRecoilValue } from "recoil";
+import { personState } from "@/recoil/atoms";
+import dayjs from "dayjs";
 
 const dmsans = DM_Sans({ weight: "400", subsets: ["latin"] });
 const dmsansbold = DM_Sans({ weight: "500", subsets: ["latin"] });
 const rubik = Rubik({ weight: ["300", "400"], subsets: ["latin"] });
 
-function Transactions({person}) {
+function Transactions() {
   const [transactions, setTransactions] = useState([])
 
-console.log(person)
+  const person= useRecoilValue(personState)
+  console.log("person",person)
 
   useEffect(() => {
  getTransactions(setTransactions, person);
 }, [person])     
  console.log("i want to see transactions", transactions)
-
 
   return (
     <NewDash>

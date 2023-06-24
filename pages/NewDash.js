@@ -53,8 +53,8 @@ import { DM_Sans, Rubik, } from '@next/font/google';
 import { BsChevronDown, BsDot } from 'react-icons/bs';
 import { GoPrimitiveDot } from 'react-icons/go';
 import MyChart from '@/components/myChart';
-import { activePage } from '@/recoil/atoms';
-import { useRecoilState } from 'recoil';
+import { activePage, personState } from '@/recoil/atoms';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import DashboardIcon from '@/components/Icons/dashboardIcon';
@@ -89,6 +89,9 @@ export default function NewDash({
 }) {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [currentPage, setCurrentPage] = useRecoilState(activePage)
+
+    //   console.log(firstName)
+
     return (
         <Box minH="100vh" bg={'#FCFCFC'}>
             <SidebarContent
@@ -109,7 +112,7 @@ export default function NewDash({
             </Drawer>
             {/* mobilenav */}
             <MobileNav onOpen={onOpen} />
-            <Box ml={{ base: 0, md: '17.25rem' }} p="4">
+            <Box ml={{ base: 0, md: '17.25rem', '2xl':'26rem' }} p="4">
 
 
                 {children}
@@ -176,7 +179,7 @@ const NavItem = ({ icon, to, name, children, ...rest }) => {
             <Flex
                 align="center"
                 p="4"
-                mx="12"
+                ml="12"
                 borderRadius="lg"
                 role="group"
                 cursor="pointer"
@@ -220,11 +223,13 @@ const MobileNav = ({ onOpen, ...rest }) => {
 
     const currentRoute = router.pathname;
     const title = routeNames[currentRoute];
+    const { firstName, lastName } = useRecoilValue(personState)
+
 
     return (
         <>
             <Flex
-                ml={{ base: 0, md: '6.375rem' }}
+                ml={{ base: 0, md: '6.375rem', '2xl': '13.375rem' }}
                 px={{ base: 4, md: '3.1875rem' }}
                 height={{ base: '20', md: '8.8rem' }}
                 alignItems="center"
@@ -246,7 +251,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
                 <HStack display={{ base: 'none', md: 'flex' }} w='100%' ml="17.25rem" mr="2.375rem" >
                     <Box display={{}}>
                         <Text fontSize={'32px'} fontWeight={500} >{title}</Text>
-                        <Text fontSize={'14px'} fontWeight={400} >Tuesday, 14th May, 2023</Text>
+                        <Text fontSize={'14px'} fontWeight={500} >Hi, {firstName ? firstName + " " + lastName : 'User'}</Text>
                     </Box>
                     <Spacer />
 
@@ -279,9 +284,8 @@ const MobileNav = ({ onOpen, ...rest }) => {
                         <Avatar
                             display={{ base: 'none', md: 'flex' }}
                             size={'lg'}
-                            src={
-                                'https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
-                            }
+                            name={firstName + " " + lastName}
+                            src={''}
                         />
 
 
@@ -295,7 +299,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
                 height={{ base: '20', md: '8.8rem' }}
             >
                 <Text fontSize={'22px'} fontWeight={500} >{title}</Text>
-                <Text fontSize={'14px'} fontWeight={400} >Tuesday, 14th May, 2023</Text>
+                <Text fontSize={'14px'} fontWeight={400} >Hi {firstName ? firstName : 'User'}</Text>
             </Box>
         </>
     );
