@@ -70,7 +70,7 @@ function Transactions() {
   console.log("person",person)
 
   useEffect(() => {
- getTransactions(setTransactions, person);
+ getTransactions(setTransactions, person,10);
 }, [person])     
  console.log("i want to see transactions", transactions)
 
@@ -124,18 +124,7 @@ function Transactions() {
                     className={dmsans.className}
                     fontWeight={400}
                   >
-                    {/* <AllTransactions  />
-                    <AllTransactions  />
-                    <AllTransactions  />
-                    <AllTransactions  />
-                    <AllTransactions  /> */}
-                    {/* <CreditTransaction />
-                    <CreditTransaction />
-                    <CreditTransaction />
-                    <DebitTransaction />
-                    <DebitTransaction />
-                    <DebitTransaction />
-                    <DebitTransaction /> */}
+                   
                     {
                     (transactions===undefined || transactions.length===0)?
                     (
