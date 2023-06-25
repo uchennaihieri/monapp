@@ -87,11 +87,13 @@ const  {lastName,firstName} = person
 
 // console.log('user',user);
     
+    
   useEffect(() => {
       setPersonState(person)
       getWallet(setWallet, person);
      getCard(setCard, person);
-     getTransactions(setTransactions,person, 3);
+     getTransactions(setTransactions,person,3);
+     
      
      
 
@@ -738,6 +740,7 @@ const  {lastName,firstName} = person
                            transactiontype={transaction?.transactiontype}
                             transactionId={transaction?.id.toUpperCase()}
                             transactionType={transaction?.transactionType}
+                            transaction={transaction}
                          />
                       )
                     }
