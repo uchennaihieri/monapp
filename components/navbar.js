@@ -48,14 +48,15 @@ export default function Navbar() {
 
                 <Flex justify={{ base: 'start', md: 'start' }} onClick={goHome} _hover={{
                     cursor: "pointer"
-                }} position="relative">
+                }} position="relative"
+              >
                     <Img src="/logo.png" width={{ base: '8.625rem', md: "14.4275rem" }} height={{ base: '1.569rem', md: "2.625rem" }} />
 
                     <Badge position="absolute" left="-10px" top="-15px" colorScheme='green'>BETA</Badge>
                 </Flex>
 
-                <Flex pl={{ base: '36.154vw' }} justify={{ base: 'center', md: 'start' }}>
-                    <Flex display={{ base: 'none', md: 'flex' }} >
+                <Flex pl={{ base: '36.154vw', md:'12rem' }} justify={{ base: 'center', md: 'space-between'}}>
+                    <Flex display={{ base: 'none', md: 'flex' }}   >
                         <DesktopNav />
                     </Flex>
                 </Flex>
@@ -67,7 +68,7 @@ export default function Navbar() {
                     _hover={{
                         cursor: 'pointer'
                     }}
-                >
+                 >
 
                     {
                         isOpen ? <CloseIcon color="white" w={5} h={5} onClick={onToggle} /> : <RiMenu3Line color="white" w={5} h={5} onClick={onToggle} />
@@ -88,9 +89,30 @@ const DesktopNav = () => {
     const linkHoverColor = useColorModeValue('gray.400', 'white');
 
     return (
-        <Stack direction={'row'} spacing={'2.875rem'} align={'center'}>
-            {NAV_ITEMS.map((navItem) => (
-                <Box key={navItem.label} align={'center'} justify={'center'} role="group" position={'relative'}>
+        <Stack direction={'row'} align={'center'}  gap={{md:'15rem', '2xl':'35rem'}}>
+            <Stack direction={'row'} gap={{md:'2', '2xl':'4'}} >
+            {NAV_ITEMS.slice(0,3).map((navItem) => (
+                <Box key={navItem.label} align={'center'}  role="group" position={'relative'} >
+
+                    <Link
+                        href={navItem.href ?? '#'}
+                        fontSize={'1rem'}
+                        fontWeight={500}
+                        color={linkColor}
+                        _hover={{
+                            textDecoration: 'none',
+                        }}>
+                        {navItem.label}
+                    </Link>
+
+                    <Img position={'absolute'} w={'0em'} _groupHover={{ width: "100%" }} src="line.svg" height="0.6em" transition={'width .5s ease-in-out'} />
+                </Box>
+            ))}
+            </Stack>
+
+            <Stack direction={'row'} gap={{md:'2', '2xl':'4'}}>
+            {NAV_ITEMS.slice(3).map((navItem) => (
+                <Box key={navItem.label} align={'center'}  role="group" position={'relative'}>
 
                     <Link
 
@@ -107,6 +129,8 @@ const DesktopNav = () => {
                     <Img position={'absolute'} w={'0em'} _groupHover={{ width: "100%" }} src="line.svg" height="0.6em" transition={'width .5s ease-in-out'} />
                 </Box>
             ))}
+
+            </Stack>
 
         </Stack>
     );
@@ -184,6 +208,11 @@ const NAV_ITEMS = [
     {
         label: 'Pricing',
         href: '/pricing'
+
+    },
+    {
+        label: 'Support',
+        href: '/Support'
 
     },
     {
