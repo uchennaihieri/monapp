@@ -2,12 +2,14 @@ import React, { ReactNode, useEffect, useState } from "react";
 import {
   IconButton, Avatar, Box, CloseButton, Flex, HStack, VStack, Icon, useColorModeValue, Link, Drawer, DrawerContent, Text,
   useDisclosure, BoxProps, FlexProps, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Image, InputGroup, InputLeftElement,
-  Input, Spacer, Button, Table, Thead, Tr, Th, Tbody, Td, Heading, Divider,
+  Input, Spacer, Button, Table, Thead, Tr, Th, Tbody, Td, Heading, Divider, useToast,
   DrawerBody,
   DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
   DrawerCloseButton,
+  PinInputField,
+  PinInput,
 } from "@chakra-ui/react";
 import {
   FiHome,
@@ -19,6 +21,7 @@ import {
   FiBell,
   FiChevronDown,
 } from "react-icons/fi";
+import { PiCopyFill } from "react-icons/pi";
 
 import {
   AuthAction,
@@ -39,6 +42,8 @@ import { db, doc, onSnapshot } from "@/services/firebase";
 import { getWallet, getCard, getTransactions } from "@/services/request";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { personState } from "@/recoil/atoms";
+import { HiOutlineX } from "react-icons/hi";
+import CancelIcon from "@/components/Icons/cancelIcon";
 const dayjs = require("dayjs");
 
 
@@ -49,12 +54,16 @@ const rubik = Rubik({ weight: ["300", "400"], subsets: ["latin"] });
 function Dashboard({ person }) {
 
   const setPersonState = useSetRecoilState(personState)
-
+  const toast = useToast()
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = React.useRef()
   const [wallet, setWallet] = useState()
   const [card, setCard] = useState()
   const [transactions, setTransactions] = useState([])
+  const [pin, setPin] = useState('')
+  const [loadingState, setLoadingState] = useState('')
+  const [confirmPin, setConfirmPin] = useState('')
+  const [drawerContent, setDrawerContent] = useState('')
   const d = new Date(Date.now())
 
   // const {lastName,firstName}= useRecoilValue(personState)
@@ -84,10 +93,11 @@ function Dashboard({ person }) {
 
     const unsub = onSnapshot(doc(db, "security", person.userID), (doc) => {
       if (doc.data()) {
-        console.log('pin here')
+
         console.log(doc.data())
       } else {
-        console.log('no pin here')
+        setDrawerContent('setPin')
+        onOpen()
       }
     });
 
@@ -97,60 +107,103 @@ function Dashboard({ person }) {
   const createPin = () => {
     setLoadingState(true)
 
-    if (pin != confirmPin) {
+    if (pin.length === 6) {
+
+      if (pin != confirmPin) {
+        setLoadingState(false)
+        toast({
+          title: 'Pin creation error',
+          description: 'Your pin does not match',
+          status: 'error',
+          duration: 9000,
+          isClosable: true,
+          position: 'top',
+        })
+      } else {
+
+        fetch("http://127.0.0.1:5001/monapp-33057/us-central1/app/api/crypt", {
+
+          // Adding method type
+          method: "POST",
+          body: JSON.stringify({
+            pin: pin,
+            id: person.userID
+          })
+        }).then(function (res) {
+          return res.json();
+        })
+          // Converting to JSON
+          .then(function (data) {
+
+            if (data.successful) {
+              setLoadingState(false)
+              toast({
+                title: 'Pin creation successful',
+                description: 'Your pin has been created',
+                status: 'success',
+                duration: 9000,
+                isClosable: true,
+                position: 'top',
+              })
+            } else {
+              setLoadingState(false)
+              toast({
+                title: 'Pin creation error',
+                description: 'There was an error somewhere, please try again',
+                status: 'error',
+                duration: 9000,
+                isClosable: true,
+                position: 'top',
+              })
+            }
+          })
+          .catch(function (error) {
+            setLoadingState(false)
+            console.log(error);
+          })
+      }
+
+    } else {
       setLoadingState(false)
       toast({
         title: 'Pin creation error',
-        description: 'Your pin does not match',
+        description: 'Complete the pin field',
         status: 'error',
         duration: 9000,
         isClosable: true,
         position: 'top',
       })
-    } else {
-
-      fetch("https://us-central1-monapp-33057.cloudfunctions.net/app/api/crypt", {
-
-        // Adding method type
-        method: "POST",
-        body: JSON.stringify({
-          pin: pin,
-          id: person.id
-        })
-      }).then(function (res) {
-        return res.json();
-      })
-        // Converting to JSON
-        .then(function (data) {
-          if (data.successful) {
-            setLoadingState(false)
-            toast({
-              title: 'Pin creation successful',
-              description: 'Your pin has been created',
-              status: 'success',
-              duration: 9000,
-              isClosable: true,
-              position: 'top',
-            })
-          } else {
-            setLoadingState(false)
-            toast({
-              title: 'Pin creation error',
-              description: 'There was an error somewhere, please try again',
-              status: 'error',
-              duration: 9000,
-              isClosable: true,
-              position: 'top',
-            })
-          }
-        })
-        .catch(function (error) {
-          setLoadingState(false)
-          console.log(error);
-        })
     }
+
+
   }
 
+
+  const handleTopupwallet = () => {
+    setDrawerContent('topupwallet')
+    onOpen()
+  }
+
+  const handleReceivePayment = () => {
+    setDrawerContent('receivePayment')
+    onOpen()
+  }
+
+
+  const handleDeliverCard = () => {
+    setDrawerContent('deliverCard')
+    onOpen()
+  }
+
+  const handleSettlementAccount = () => {
+    setDrawerContent('settlementAccount')
+    onOpen()
+  }
+
+  const handleSuccess = () => {
+    setDrawerContent('successView')
+
+  }
 
 
 
@@ -263,23 +316,176 @@ function Dashboard({ person }) {
                 onClose={onClose}
                 finalFocusRef={btnRef}
                 size={'lg'}
+                closeOnOverlayClick={false}
               >
                 <DrawerOverlay />
-                <DrawerContent>
-                  <DrawerCloseButton />
-                  <DrawerHeader>Create your account</DrawerHeader>
+
+                {drawerContent == 'setPin' && <DrawerContent
+                  px='48px' pt='61px'
+                >
+
+                  <DrawerHeader mb='52px'><Flex flexDirection='row' align='center' justify='space-between'>
+                    <Text className={dmsans.className} fontSize='30px' fontWeight={700}>Set Transaction Pin</Text>
+                    <CancelIcon boxSize='16px' onClick={onClose} _hover={{
+                      cursor: 'pointer'
+                    }} />
+                  </Flex></DrawerHeader>
 
                   <DrawerBody>
-                    <Input placeholder='Type here...' />
-                  </DrawerBody>
+                    <Text mb={'11px'}>Pin</Text>
+                    <HStack>
+                      <PinInput size='lg' mask otp onChange={(e) => setPin(e)}>
+                        <PinInputField />
+                        <PinInputField />
+                        <PinInputField />
+                        <PinInputField />
+                        <PinInputField />
+                        <PinInputField />
+                      </PinInput>
+                    </HStack>
+                    <Text mt={'12px'} mb={'11px'}>Confirm Pin</Text>
+                    <InputGroup>
+                      <HStack>
+                        <PinInput size='lg' mask otp onChange={(e) => setConfirmPin(e)}>
+                          <PinInputField />
+                          <PinInputField />
+                          <PinInputField />
+                          <PinInputField />
+                          <PinInputField />
+                          <PinInputField />
+                        </PinInput>
+                      </HStack>
+                    </InputGroup>
+                    <Button isLoading={loadingState}
+                      loadingText='Creating..' variant='solid' colorScheme='blackAlpha' w={'100%'} mt={'71px'} h='54px' borderRadius={'2px'} bg='rgba(0, 0, 0, 1)' ><Text className={dmsans.className} fontSize={'16px'} color='#FFFFFF' fontWeight={700} lineHeight='21px' onClick={createPin} >Create My Pin</Text></Button>
 
-                  <DrawerFooter>
-                    <Button variant='outline' mr={3} onClick={onClose}>
-                      Cancel
-                    </Button>
-                    <Button colorScheme='blue'>Save</Button>
-                  </DrawerFooter>
-                </DrawerContent>
+
+                  </DrawerBody>
+                </DrawerContent>}
+
+
+                {drawerContent == 'receivePayment' && <DrawerContent
+                  px='48px' pt='61px'
+                >
+
+                  <DrawerHeader mb='52px'><Flex flexDirection='row' align='center' justify='space-between'>
+                    <Text className={dmsans.className} fontSize='30px' fontWeight={700}>Receive Payment</Text>
+                    <CancelIcon boxSize='16px' onClick={onClose} _hover={{
+                      cursor: 'pointer'
+                    }} />
+                  </Flex></DrawerHeader>
+
+                  <DrawerBody>
+                    <Text mb={'11px'}>QR Code</Text>
+                    <Box px='38px' py='16px' h='300px' w='100%' border='1px solid #CDCDCD' borderRadius='4px'>
+                      <Image src={card?.qrImage} width='100%' height='100%' />
+
+                    </Box>
+                    <Text mt={'12px'} mb={'11px'}>Payment Link</Text>
+                    <Flex justify='space-between' align='center' px='14px' w='100%' h='54px' border='1px solid #CDCDCD' borderRadius='4px'>
+                      <Text color='#444' fontSize='14px'>{card?.tag}.monapp.ng</Text>
+                      <Button w='36.5px' h='14.6px' leftIcon={PiCopyFill}>copy</Button>
+                    </Flex>
+
+
+
+                  </DrawerBody>
+                </DrawerContent>}
+
+
+
+
+                {drawerContent == 'topupwallet' && <DrawerContent
+                  px='48px' pt='61px'
+                >
+
+                  <DrawerHeader mb='52px'><Flex flexDirection='row' align='center' justify='space-between'>
+                    <Text className={dmsans.className} fontSize='30px' fontWeight={700}>Top Up Wallet</Text>
+                    <CancelIcon boxSize='16px' onClick={onClose} _hover={{
+                      cursor: 'pointer'
+                    }} />
+                  </Flex></DrawerHeader>
+
+                  <DrawerBody>
+                    <Text mb={'11px'}>Pin</Text>
+                    <HStack>
+                      <PinInput size='lg' mask otp onChange={(e) => setPin(e)}>
+                        <PinInputField />
+                        <PinInputField />
+                        <PinInputField />
+                        <PinInputField />
+                        <PinInputField />
+                        <PinInputField />
+                      </PinInput>
+                    </HStack>
+                    <Text mt={'12px'} mb={'11px'}>Confirm Pin</Text>
+                    <InputGroup>
+                      <HStack>
+                        <PinInput size='lg' mask otp onChange={(e) => setConfirmPin(e)}>
+                          <PinInputField />
+                          <PinInputField />
+                          <PinInputField />
+                          <PinInputField />
+                          <PinInputField />
+                          <PinInputField />
+                        </PinInput>
+                      </HStack>
+                    </InputGroup>
+                    <Button isLoading={loadingState}
+                      loadingText='Creating..' variant='solid' colorScheme='blackAlpha' w={'100%'} mt={'71px'} h='54px' borderRadius={'2px'} bg='rgba(0, 0, 0, 1)' ><Text className={dmsans.className} fontSize={'16px'} color='#FFFFFF' fontWeight={700} lineHeight='21px' onClick={createPin} >Create My Pin</Text></Button>
+
+
+                  </DrawerBody>
+                </DrawerContent>}
+
+
+                {drawerContent == 'settlementAccount' && <DrawerContent
+                  px='48px' pt='61px'
+                >
+
+                  <DrawerHeader mb='52px'><Flex flexDirection='row' align='center' justify='space-between'>
+                    <Text className={dmsans.className} fontSize='30px' fontWeight={700}>Top Up Wallet</Text>
+                    <CancelIcon boxSize='16px' onClick={onClose} _hover={{
+                      cursor: 'pointer'
+                    }} />
+                  </Flex></DrawerHeader>
+
+                  <DrawerBody>
+                    <Text mb={'11px'}>Pin</Text>
+                    <HStack>
+                      <PinInput size='lg' mask otp onChange={(e) => setPin(e)}>
+                        <PinInputField />
+                        <PinInputField />
+                        <PinInputField />
+                        <PinInputField />
+                        <PinInputField />
+                        <PinInputField />
+                      </PinInput>
+                    </HStack>
+                    <Text mt={'12px'} mb={'11px'}>Confirm Pin</Text>
+                    <InputGroup>
+                      <HStack>
+                        <PinInput size='lg' mask otp onChange={(e) => setConfirmPin(e)}>
+                          <PinInputField />
+                          <PinInputField />
+                          <PinInputField />
+                          <PinInputField />
+                          <PinInputField />
+                          <PinInputField />
+                        </PinInput>
+                      </HStack>
+                    </InputGroup>
+                    <Button isLoading={loadingState}
+                      loadingText='Creating..' variant='solid' colorScheme='blackAlpha' w={'100%'} mt={'71px'} h='54px' borderRadius={'2px'} bg='rgba(0, 0, 0, 1)' ><Text className={dmsans.className} fontSize={'16px'} color='#FFFFFF' fontWeight={700} lineHeight='21px' onClick={createPin} >Create My Pin</Text></Button>
+
+
+                  </DrawerBody>
+                </DrawerContent>}
+
+
+
+
+
               </Drawer>
 
               {/* responsive quickcards */}
@@ -459,7 +665,7 @@ function Dashboard({ person }) {
                 </Text>
 
                 <Flex justify={"space-between"}>
-                  <Box align={"center"} ref={btnRef} onClick={onOpen}>
+                  <Box align={"center"} ref={btnRef} onClick={handleTopupwallet}>
                     <Flex
                       _hover={{ cursor: "pointer", bg: "#F5F5F5" }}
                       width={"54px"}
@@ -480,7 +686,7 @@ function Dashboard({ person }) {
                     <Text fontSize={"10px"}>Top up Wallet</Text>
                   </Box>
 
-                  <Box align={"center"}>
+                  <Box align={"center"} ref={btnRef} onClick={handleSettlementAccount}>
                     <Flex
                       _hover={{ cursor: "pointer", bg: "#F5F5F5" }}
                       width={"54px"}
@@ -501,7 +707,7 @@ function Dashboard({ person }) {
                     <Text fontSize={"10px"}>Add Settlement</Text>
                   </Box>
 
-                  <Box align={"center"}>
+                  <Box align={"center"} ref={btnRef} onClick={handleReceivePayment}>
                     <Flex
                       _hover={{ cursor: "pointer", bg: "#F5F5F5" }}
                       width={"54px"}
