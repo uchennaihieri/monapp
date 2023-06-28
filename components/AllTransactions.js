@@ -3,18 +3,15 @@ import { HStack, Image, Td, Text, Tr, Icon,useBreakpointValue, Box, Flex } from 
 import { GoPrimitiveDot } from 'react-icons/go'
 import TransactionDrawer from '@/pages/transactionsDrawer'
 
-function AllTransactions({amount, Date, sendername, status,SN, transactionType,transactionId}) {
+function AllTransactions({amount, Date, sendername, status,SN, transactionType,transactionId, transaction}) {
     const isDesktop=useBreakpointValue({base: false, lg: true})
   const [isDrawerOpen, setIsDrawerOpen]=useState(false)
-//   const [selectedTransaction, setSelectedTransaction]=useState(null)
 
 
   const handleOpenDrawer=()=>{
-    // setSelectedTransaction(transaction);
     setIsDrawerOpen(true);
   }
 
-  // fuction to handle closing the drawer
   const handleCloseDrawer=()=>{
     setIsDrawerOpen(false)
   }
@@ -51,7 +48,7 @@ function AllTransactions({amount, Date, sendername, status,SN, transactionType,t
                 <Text > {status} </Text></HStack> </Td>
                 <TransactionDrawer isOpen={isDrawerOpen} 
                  onClose={handleCloseDrawer} 
-                // transaction={selectedTransaction} 
+                transaction={transaction} 
                />
 
         </Tr>

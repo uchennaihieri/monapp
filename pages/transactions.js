@@ -155,6 +155,7 @@ function Transactions() {
                         transactiontype={transaction?.transactiontype}
                         transactionId={transaction?.id.toUpperCase()}
                         transactionType={transaction?.transactionType}
+                        transaction={transaction}
 
                         />
                       )
