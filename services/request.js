@@ -52,13 +52,13 @@ export const getCard = async (setCard,person) => {
     }
 
 
-export const getTransactions = async (setTransactions,person) => {
+export const getTransactions = async (setTransactions,person,lim) => {
     try {
         const transactionsQuery = query(
             collection(db, "transactions"),
             where("users", 'array-contains', person.userID),
             // orderBy( 'createdAt', 'ascend'),
-            limit(3)
+            limit(lim)
         );
 
         const unsubscribe =  onSnapshot(transactionsQuery, (querySnapshot) => {
@@ -69,6 +69,7 @@ export const getTransactions = async (setTransactions,person) => {
 
             setTransactions(myTransactions);
         });
+        return unsubscribe;
     } 
     catch (error) {
         console.error('transactions',error);

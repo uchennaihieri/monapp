@@ -13,7 +13,7 @@ import {
 
 } from "@chakra-ui/react";
 
-const TransactionDrawer = ({ isOpen, onClose }) => {
+const TransactionDrawer = ({ isOpen, onClose, transaction }) => {
   const isDesktop = useBreakpointValue({ base: false, lg: true });
 
   return (
@@ -37,27 +37,27 @@ const TransactionDrawer = ({ isOpen, onClose }) => {
                 >
                   <Thead fontSize={"16px"}>
                     <Tr>
-                      <Th color={"black"} fontWeight={"bold"}>NGN -3,041,730</Th>
-                      <Th color="#27AE60" textAlign={"right"}>Success</Th>
+                      <Th color={"black"} fontWeight={"bold"}>NGN {transaction.transactionType === "CR" ? " ":"-"}{transaction?.amount}</Th>
+                      <Th color="#27AE60" textAlign={"right"}>{transaction?.transactionStatus}</Th>
 
                     </Tr>
                   </Thead>
                   <Tbody>
                   <Tr>
                     <Td>Recipient</Td>
-                    <Td fontWeight={"bold"} textAlign={"right"}>Christopher Aniedi Udoh</Td>
+                    <Td fontWeight={"bold"} textAlign={"right"}>{transaction?.sendername}</Td>
                   </Tr>
                   <Tr>
                     <Td>Type</Td>
-                    <Td fontWeight={"bold"} textAlign={"right"}>Purchase</Td>
+                    <Td fontWeight={"bold"} textAlign={"right"}>{transaction?.transactionType}</Td>
                   </Tr>
                   <Tr>
                    <Td>Reference</Td> 
-                   <Td fontWeight={"bold"} textAlign={"right"}>Rt7890yt</Td>
+                   <Td fontWeight={"bold"} textAlign={"right"}>{transaction?.id}</Td>
                   </Tr>
                   <Tr>
                     <Td> Paid on</Td>
-                    <Td fontWeight={"bold"} textAlign={"right"}>Fri, May 19th 2023 at 8:15pm</Td>
+                    <Td fontWeight={"bold"} textAlign={"right"}>{transaction?.createdAt}</Td>
                   </Tr>
                   </Tbody>
                 </Table>

@@ -3,6 +3,7 @@ import { HStack, Image, Td, Text, Tr, Icon, useBreakpointValue, Box, Flex } from
 import { GoPrimitiveDot } from 'react-icons/go'
 import TransactionDrawer from '@/pages/transactionsDrawer'
 
+<<<<<<< HEAD
 function AllTransactions({ amount, Date, sendername, status, SN, transactionType, transactionId }) {
   const isDesktop = useBreakpointValue({ base: false, lg: true })
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
@@ -16,6 +17,18 @@ function AllTransactions({ amount, Date, sendername, status, SN, transactionType
 
   // fuction to handle closing the drawer
   const handleCloseDrawer = () => {
+=======
+function AllTransactions({amount, Date, sendername, status,SN, transactionType,transactionId, transaction}) {
+    const isDesktop=useBreakpointValue({base: false, lg: true})
+  const [isDrawerOpen, setIsDrawerOpen]=useState(false)
+
+
+  const handleOpenDrawer=()=>{
+    setIsDrawerOpen(true);
+  }
+
+  const handleCloseDrawer=()=>{
+>>>>>>> 7cdbb51fa80e4161d9546cc40e653e618b2f0479
     setIsDrawerOpen(false)
   }
 
@@ -44,6 +57,18 @@ function AllTransactions({ amount, Date, sendername, status, SN, transactionType
 
         </Box>
 
+<<<<<<< HEAD
+=======
+            
+            </Td>
+            <Td display={['none', 'table-cell']}>{Date}</Td>
+            <Td display={['none', 'table-cell']}><HStack spacing={0}> <Icon as={GoPrimitiveDot} boxSize={8} color='#27AE60' p='0px' />
+                <Text > {status} </Text></HStack> </Td>
+                <TransactionDrawer isOpen={isDrawerOpen} 
+                 onClose={handleCloseDrawer} 
+                transaction={transaction} 
+               />
+>>>>>>> 7cdbb51fa80e4161d9546cc40e653e618b2f0479
 
       </Td>
       <Td display={['none', 'table-cell']}>{Date}</Td>

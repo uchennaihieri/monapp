@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, useState, useEffect } from "react";
 import {
   IconButton,
   Avatar,
@@ -52,16 +52,28 @@ import { SearchIcon } from "@chakra-ui/icons";
 import { DM_Sans, Rubik } from "@next/font/google";
 import { BsChevronDown, BsDot } from "react-icons/bs";
 import { GoPrimitiveDot } from "react-icons/go";
-// import DebitTransaction from "@/components/debitTransaction";
 import AllTransactions from "@/components/AllTransactions";
+import { getTransactions } from "@/services/request";
 import NewDash from "./NewDash";
-import TransactionDrawer from "./transactionsDrawer";
+import { useRecoilValue } from "recoil";
+import { personState } from "@/recoil/atoms";
+import dayjs from "dayjs";
 
 const dmsans = DM_Sans({ weight: "400", subsets: ["latin"] });
 const dmsansbold = DM_Sans({ weight: "500", subsets: ["latin"] });
 const rubik = Rubik({ weight: ["300", "400"], subsets: ["latin"] });
 
 function Transactions() {
+  const [transactions, setTransactions] = useState([])
+
+  const person= useRecoilValue(personState)
+  console.log("person",person)
+
+  useEffect(() => {
+ getTransactions(setTransactions, person,10);
+}, [person])     
+ console.log("i want to see transactions", transactions)
+
   return (
     <NewDash>
       <div>
@@ -112,18 +124,43 @@ function Transactions() {
                     className={dmsans.className}
                     fontWeight={400}
                   >
-                    <AllTransactions  />
-                    <AllTransactions  />
-                    <AllTransactions  />
-                    <AllTransactions  />
-                    <AllTransactions  />
-                    {/* <CreditTransaction />
-                    <CreditTransaction />
-                    <CreditTransaction />
-                    <DebitTransaction />
-                    <DebitTransaction />
-                    <DebitTransaction />
-                    <DebitTransaction /> */}
+                   
+                    {
+                    (transactions===undefined || transactions.length===0)?
+                    (
+                      <Box
+                      color="#141746"
+                      h="100px"
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="center"
+                      textAlign="center"
+                      fontWeight="bold"
+                      
+                      >
+                        No Transactions
+
+                      </Box>
+                    )
+                    :
+                    transactions?.map((transaction,index)=>{
+                      return(
+                        <AllTransactions
+                        key={index}
+                        SN={index+1}
+                        amount={transaction?.amount}
+                        Date={dayjs(transaction?.createdAt).format("DD, MMMM YYYY")}
+                        sendername={transaction?.sendername}
+                        status={transaction?.transactionStatus}
+                        transactiontype={transaction?.transactiontype}
+                        transactionId={transaction?.id.toUpperCase()}
+                        transactionType={transaction?.transactionType}
+                        transaction={transaction}
+
+                        />
+                      )
+                    })
+                    }
                   </Tbody>
                 </Table>
             
