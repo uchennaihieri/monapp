@@ -6,6 +6,7 @@ function NewHero({ children}) {
   return (
     <Box
      bg="#000000" h='75vh' w='100%' 
+
      bgImage="url('/herobg.png')"
      >
           <div><Navbar /></div>

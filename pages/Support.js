@@ -1,20 +1,26 @@
 import Head from 'next/head'
 import Image from 'next/image'
+
 import { Inter, DM_Sans } from '@next/font/google'
+
 import Navbar from '@/components/navbar'
 import HeroSection from '@/components/heroSection'
 import Features from '@/components/features'
 import DataSection from '@/components/dataSection'
 import CardSection from '@/components/cardSection'
+
 import { Box, Center, InputGroup,Input, HStack,Button, Text ,InputLeftElement} from '@chakra-ui/react'
+
 import FooterSection from '@/components/footerSection'
 import BlackSection from '@/components/blackSection'
 import PageSeo from '@/Seo/pageSeo'
 import NewHero from '@/components/NewHero'
+
 import { BiSearch } from 'react-icons/bi'
 
 const inter = Inter({ subsets: ['latin'] })
 const dmsans = DM_Sans({ weight: "400", subsets: ["latin"] });
+
 
 
 export default function Support() {
@@ -24,6 +30,7 @@ export default function Support() {
       <main bg="#F5F5F5">
        
         <NewHero>
+
            <Center color='#fff' flexDirection={'column'}>
             <Text fontSize={'1rem'} mt='3rem' >
              What you want to know about Monapp</Text>
@@ -47,6 +54,7 @@ export default function Support() {
                   </HStack>
 
            </Center>
+
         </NewHero>
        
 
