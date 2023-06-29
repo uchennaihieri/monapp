@@ -25,49 +25,49 @@ const theme = extendTheme({
             },
         },
         Radio: {
-            variants:{
-                long:{
+            variants: {
+                long: {
 
-                container: {
-                    w: '100%',
-                    h: '3rem',
-                    border: '1px solid #CDCDCD',
-                    borderRadius: '4px',
-                    px: '18px',
-                },
-                control: {
-                    _checked: {
-                        bg: 'black',
-                        color: 'black',
-                        borderColor: "",
+                    container: {
+                        w: '100%',
+                        h: '3rem',
+                        border: '1px solid #CDCDCD',
+                        borderRadius: '4px',
+                        px: '18px',
                     },
-                    _hover: {
-                        bg: '',
-                        color: '',
-                        borderColor: "",
+                    control: {
+                        _checked: {
+                            bg: 'black',
+                            color: 'black',
+                            borderColor: "",
+                        },
+                        _hover: {
+                            bg: '',
+                            color: '',
+                            borderColor: "",
+                        }
+
                     }
 
-                }
-
                 },
-                blackCircle:{
-                control: {
-                    _checked: {
-                        bg: 'black',
-                        color: 'black',
-                        borderColor: "",
-                    },
-                    _hover: {
-                        bg: '',
-                        color: '',
-                        borderColor: "",
-                    }
+                blackCircle: {
+                    control: {
+                        _checked: {
+                            bg: 'black',
+                            color: 'black',
+                            borderColor: "",
+                        },
+                        _hover: {
+                            bg: '',
+                            color: '',
+                            borderColor: "",
+                        }
 
-                }
+                    }
 
                 }
             }
-            
+
         },
         Switch: {
             variants: {
@@ -90,7 +90,7 @@ const theme = extendTheme({
                 },
             },
         },
-        Tabs:tabsTheme,
+        Tabs: tabsTheme,
     },
 
 });

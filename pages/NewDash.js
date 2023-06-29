@@ -7,7 +7,7 @@ import {
     Flex,
     HStack,
     VStack,
-    Icon,
+    Icon, ButtonGroup,
     useColorModeValue,
     Drawer,
     DrawerContent,
@@ -22,6 +22,13 @@ import {
     MenuList,
     Image,
     InputGroup,
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalFooter,
+    ModalBody,
+    ModalCloseButton,
     InputLeftElement,
     Input,
     Spacer,
@@ -63,6 +70,7 @@ import TransactionIcon from '@/components/Icons/transactionIcon';
 import MerchantsIcon from '@/components/Icons/merchantsIcon';
 import settingIcon from '@/components/Icons/settingIcon';
 import LogoutIcon from '@/components/Icons/logoutIcon';
+import { auth, signOut } from '@/services/firebase';
 
 
 const dmsans = DM_Sans({ weight: '400', subsets: ['latin'] })
@@ -112,7 +120,7 @@ export default function NewDash({
             </Drawer>
             {/* mobilenav */}
             <MobileNav onOpen={onOpen} />
-            <Box ml={{ base: 0, md: '17.25rem', '2xl':'26rem' }} p="4">
+            <Box ml={{ base: 0, md: '17.25rem', '2xl': '26rem' }} p="4">
 
 
                 {children}
@@ -161,51 +169,81 @@ const SidebarContent = ({ onClose, ...rest }) => {
 const NavItem = ({ icon, to, name, children, ...rest }) => {
 
     const router = useRouter();
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const { firstName, lastName } = useRecoilValue(personState)
     const checkClick = (name) => {
 
         if (name === 'Logout') {
 
-            alert('a')
+            onOpen()
         } else null
     }
 
+    const handleLogout = () => {
+        signOut(auth).then(() => {
+            router.push('/auth')
+        }).catch((error) => {
+            console.log({ error })
+        });
+    }
+
+
     return (
-        <Link
-            href={`${to}`}
-            onClick={() => checkClick(name)}
 
+        <>
+            <Modal size='3xl' isOpen={isOpen} onClose={onClose} isCentered blockScrollOnMount={false}>
+                <ModalOverlay />
+                <ModalContent h='355px'>
+                    <ModalCloseButton />
+                    <ModalBody>
+                        <Flex flexDirection='column' align='center' justify='center' pt='38px' pb='65px' textAlign='center'>
+                            <Text mb='26px' fontSize='18px' className={dmsans.className}>Hey, {firstName + ' ' + lastName}.! </Text>
+                            <Text mb='75px' maxW='301px' fontSize='28px' fontWeight={'500'} className={dmsans.className}>Are you sure you want to logout?</Text>
+                            <ButtonGroup gap={{ base: '1.125em', md: '18px' }} flexWrap='wrap' justifyContent='center'>
+                                <Button variant='solid' colorScheme='blackAlpha' w={{ base: '100%', md: '12.625em' }} h='54px' borderRadius={'2px'} bg='rgba(0, 0, 0, 1)' ><Text fontSize={'16px'} color='#FFFFFF' fontWeight={700} lineHeight='21px' className={dmsans.className} onClick={handleLogout}>Yes, log out</Text></Button>
+                                <Button variant='outline' colorScheme='blackAlpha' w={{ base: '100%', md: '12.625em' }} h='54px' borderRadius={'2px'} onClick={onClose}  ><Text fontSize={'16px'} color='#000000' fontWeight={700} lineHeight='21px' className={dmsans.className} > No, Cancel</Text></Button>
 
-            passHref style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
-            <Flex
-                align="center"
-                p="4"
-                ml="12"
-                borderRadius="lg"
-                role="group"
-                cursor="pointer"
-                color={router.pathname === to ? '#000000' : '#A5B3CD'}
-                fontWeight={router.pathname === to ? 'bold' : 'normal'}
-                className={dmsans.className}
-                fontSize={'18px'}
-                _hover={{
-                    color: '#000000',
-                    fontWeight: 'semibold'
-                }}
-                {...rest}>
-                {icon && (
-                    <Icon
-                        mr="17.5px"
-                        fontSize="16px"
-                        color={router.pathname === to ? '#000000' : '#A5B3CD'}
-                        _groupHover={{
-                            color: '#000000',
-                        }}
-                        as={icon}
-                    />
-                )}
-                {children}
-            </Flex>
-        </Link>
+                            </ButtonGroup>
+                        </Flex>
+                    </ModalBody>
+                </ModalContent>
+            </Modal>
+
+            <Link
+                href={`${to}`}
+                onClick={() => checkClick(name)}
+                passHref style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
+                <Flex
+                    align="center"
+                    p="4"
+                    ml="12"
+                    borderRadius="lg"
+                    role="group"
+                    cursor="pointer"
+                    color={router.pathname === to ? '#000000' : '#A5B3CD'}
+                    fontWeight={router.pathname === to ? 'bold' : 'normal'}
+                    className={dmsans.className}
+                    fontSize={'18px'}
+                    _hover={{
+                        color: '#000000',
+                        fontWeight: 'semibold'
+                    }}
+                    {...rest}>
+                    {icon && (
+                        <Icon
+                            mr="17.5px"
+                            fontSize="16px"
+                            color={router.pathname === to ? '#000000' : '#A5B3CD'}
+                            _groupHover={{
+                                color: '#000000',
+                            }}
+                            as={icon}
+                        />
+                    )}
+                    {children}
+                </Flex>
+            </Link>
+        </>
     );
 };
 
