@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { HStack, Image, Td, Text, Tr, Icon, useBreakpointValue, Box, Flex } from '@chakra-ui/react'
-import { GoPrimitiveDot } from 'react-icons/go'
+import { RxDotFilled } from 'react-icons/rx'
 import TransactionDrawer from '@/pages/transactionsDrawer'
 
 function AllTransactions({ amount, Date, sendername, status, SN, transactionType, transactionId }) {
@@ -39,13 +39,13 @@ function AllTransactions({ amount, Date, sendername, status, SN, transactionType
       <Td display={['none', 'table-cell']}>{transactionId}</Td>
       <Td fontWeight={'bold'}>NGN {amount}
         <Box fontSize={"sm"} >
-          {!isDesktop && <Flex align="center"><Icon as={GoPrimitiveDot} boxSize={6} color="#27AE60" p="0px" />
+          {!isDesktop && <Flex align="center"><Icon as={RxDotFilled} boxSize={6} color="#27AE60" p="0px" />
             <Text fontWeight={"thin"}> {status} </Text></Flex>}
 
         </Box>
       </Td>
       <Td display={['none', 'table-cell']}>{Date}</Td>
-      <Td display={['none', 'table-cell']}><HStack spacing={0}> <Icon as={GoPrimitiveDot} boxSize={8} color='#27AE60' p='0px' />
+      <Td display={['none', 'table-cell']}><HStack spacing={0}> <Icon as={RxDotFilled} boxSize={8} color='#27AE60' p='0px' />
         <Text > {status} </Text></HStack> </Td>
       <TransactionDrawer isOpen={isDrawerOpen}
         onClose={handleCloseDrawer}
