@@ -1,5 +1,4 @@
 import FooterSection from "@/components/footerSection";
-import Navbar from "@/components/navbar";
 import NewHero from "@/components/NewHero";
 import OurCommunity from "@/components/OurCommunity";
 import PageSeo from "@/Seo/pageSeo";
