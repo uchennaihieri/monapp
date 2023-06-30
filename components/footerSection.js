@@ -138,9 +138,6 @@ export default function FooterSection() {
           gap={["10px","40px"]}
           textAlign={["center","start"]}
           alignItems={["center","start"]}
-          
-
-
           mb={{ base: "0.78rem", md: "1.5rem" }}
         >
           <Image
