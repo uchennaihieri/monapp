@@ -496,7 +496,9 @@ export const Verify = ({ person }) => {
                     <FormControl id="email" >
                         <FormLabel className={roboto.className}>tag</FormLabel>
                         <InputGroup h="3.6rem" mb="1.6rem">
-                            <InputLeftAddon h='100%' children='@' />
+                            <InputLeftAddon h='100%'>
+                                @
+                            </InputLeftAddon>
 
                             <Input
                                 value={tag}
