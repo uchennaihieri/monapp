@@ -15,6 +15,7 @@ import {
     useColorModeValue,
     useDisclosure,
     Badge,
+    Spacer,
 } from '@chakra-ui/react';
 import { DM_Sans } from '@next/font/google'
 import {
@@ -39,26 +40,39 @@ export default function Navbar() {
     const { isOpen, onToggle } = useDisclosure();
 
     return (
-        <Box className={dmsans.className}>
+        <Flex className={dmsans.className}
+
+            justify='center'
+        >
             <Flex
                 color={useColorModeValue('gray.600', 'white')}
                 pt={{ base: '2.875rem', md: '4.08vh' }}
-                pl={{ base: '1.25rem', md: '15.885vw' }}
+                w={'72.813vw'}
                 align={'center'}>
+
+
+
 
                 <Flex justify={{ base: 'start', md: 'start' }} onClick={goHome} _hover={{
                     cursor: "pointer"
                 }} position="relative"
-              >
+                >
                     <Img src="/logo.png" width={{ base: '8.625rem', md: "14.4275rem" }} height={{ base: '1.569rem', md: "2.625rem" }} />
 
                     <Badge position="absolute" left="-10px" top="-15px" colorScheme='green'>BETA</Badge>
                 </Flex>
 
-                <Flex pl={{ base: '36.154vw', md:'15rem' ,'2xl':'30rem' }} justify={{ base: 'center', md: 'space-between'}}>
-                    <Flex display={{ base: 'none', md: 'flex' }}   >
-                        <DesktopNav />
-                    </Flex>
+
+                <Spacer />
+
+                <Flex display={{ base: 'none', md: 'flex' }}   >
+                    <DesktopNav />
+                </Flex>
+
+                <Spacer />
+
+                <Flex display={{ base: 'none', md: 'flex' }}   >
+                    <ActionNav />
                 </Flex>
                 <Flex
                     flex={{ base: 1, md: 'auto' }}
@@ -68,7 +82,7 @@ export default function Navbar() {
                     _hover={{
                         cursor: 'pointer'
                     }}
-                 >
+                >
 
                     {
                         isOpen ? <CloseIcon color="white" w={5} h={5} onClick={onToggle} /> : <RiMenu3Line color="white" w={5} h={5} onClick={onToggle} />
@@ -80,19 +94,53 @@ export default function Navbar() {
             <Collapse in={isOpen} animateOpacity>
                 <MobileNav />
             </Collapse>
-        </Box>
+
+        </Flex>
     );
 }
+
+
+const ActionNav = () => {
+    const linkColor = useColorModeValue('white', 'gray.200');
+    const linkHoverColor = useColorModeValue('gray.400', 'white');
+
+    return (
+
+        <Stack direction={'row'} gap={{ md: '2.62rem', '2xl': '2.62rem' }} >
+            {NAV_ITEMS.slice(3).map((navItem) => (
+                <Box key={navItem.label} align={'center'} role="group" position={'relative'}>
+
+                    <Link
+
+                        href={navItem.href ?? '#'}
+                        fontSize={'1rem'}
+                        fontWeight={500}
+                        color={linkColor}
+                        _hover={{
+                            textDecoration: 'none',
+                        }}>
+                        {navItem.label}
+                    </Link>
+
+                    <Img position={'absolute'} w={'0em'} _groupHover={{ width: "100%" }} src="line.svg" height="0.6em" transition={'width .5s ease-in-out'} />
+                </Box>
+            ))}
+
+        </Stack>
+
+
+    );
+};
 
 const DesktopNav = () => {
     const linkColor = useColorModeValue('white', 'gray.200');
     const linkHoverColor = useColorModeValue('gray.400', 'white');
 
     return (
-        <Stack direction={'row'} align={'center'}  gap={{md:'35rem', '2xl':'55rem'}}>
-            <Stack direction={'row'} gap={{md:'4', '2xl':'4'}} >
-            {NAV_ITEMS.slice(0,3).map((navItem) => (
-                <Box key={navItem.label} align={'center'}  role="group" position={'relative'} >
+
+        <Stack direction={'row'} align={'center'} gap={{ md: '1.75rem', '2xl': '1.75rem' }} >
+            {NAV_ITEMS.slice(0, 3).map((navItem) => (
+                <Box key={navItem.label} align={'center'} role="group" position={'relative'} >
 
                     <Link
                         href={navItem.href ?? '#'}
@@ -108,31 +156,8 @@ const DesktopNav = () => {
                     <Img position={'absolute'} w={'0em'} _groupHover={{ width: "100%" }} src="line.svg" height="0.6em" transition={'width .5s ease-in-out'} />
                 </Box>
             ))}
-            </Stack>
-
-            <Stack direction={'row'} gap={{md:'4', '2xl':'4'}}>
-            {NAV_ITEMS.slice(3).map((navItem) => (
-                <Box key={navItem.label} align={'center'}  role="group" position={'relative'}>
-
-                    <Link
-
-                        href={navItem.href ?? '#'}
-                        fontSize={'1rem'}
-                        fontWeight={500}
-                        color={linkColor}
-                        _hover={{
-                            textDecoration: 'none',
-                        }}>
-                        {navItem.label}
-                    </Link>
-
-                    <Img position={'absolute'} w={'0em'} _groupHover={{ width: "100%" }} src="line.svg" height="0.6em" transition={'width .5s ease-in-out'} />
-                </Box>
-            ))}
-
-            </Stack>
-
         </Stack>
+
     );
 };
 
@@ -216,7 +241,7 @@ const NAV_ITEMS = [
 
     },
     {
-        label: 'Work with us',
+        label: 'Become a broker',
         href: '/workwithus'
     },
     {
