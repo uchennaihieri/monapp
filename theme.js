@@ -90,6 +90,47 @@ const theme = extendTheme({
                 },
             },
         },
+        Accordion: {
+            variants: {
+                custom: {
+
+                    container: {
+                            border:'2px solid rgba(0, 0, 0, 0.40)',
+                            width: '74.625rem',
+                            borderRadius: '4px',           
+                            // boxShadow:'0px 8px 64px 0px rgba(167, 167, 167, 0.24)',
+                            my:'1.625rem'
+                            },
+                    button: {
+                        width: '74.625rem',
+                        height: '5.0625rem',
+                        borderRadius: '4px',
+                        fontSize:'1.625rem',
+                         fontWeight:'500',
+                          lineHeight:'1.75rem'
+                                         
+                    },
+                    panel: {
+                        // width: '67.8125rem',
+                        height: '8.625rem',
+                        pl: '2.625rem',
+                        pr: '1.625rem',
+                        mb: '2.625rem',
+                        textAlign:'justify',
+                         fontSize:'1.25rem',
+                         lineHeight:'1.75rem'
+
+                    },
+                    // icon: {
+                    //     size:{
+                    //         height: '2.625rem',
+                    //         width: '2.625rem',
+                    //     }
+                        
+                    // },
+                },
+            },
+        },
         Tabs: tabsTheme,
     },
 

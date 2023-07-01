@@ -100,3 +100,32 @@ a {
   }
 
 }
+
+@font-face {
+  font-family: 'clashBold';
+  src: url('../public/fonts/ClashDisplay-Bold.otf') format('openType');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'clashRegular';
+  src: url('../public/fonts/ClashDisplay-Regular.otf') format('openType');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'clashSemiBold';
+  src: url('../public/fonts/ClashDisplay-Semibold.otf') format('openType');
+  font-weight: 500;
+  font-style: normal;
+}
+
+.clashBold {
+  font-family: 'clashBold';
+}
+.clashRegular {
+  font-family: 'clashRegular';
+}
+.clashSemiBold {
+  font-family: 'clashSemiBold';
+}
