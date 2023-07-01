@@ -14,6 +14,7 @@ function OurCommunity() {
   return (
 
 <>
+
 <VStack mt={'15rem'} mb='5rem' pb={["10rem","12rem"]} alignItems={'center'} justifyContent={'center'}>
           <Flex flexDir={"column"} align={"center"} mb='5rem' gap='5'>
             <Text fontSize={'2.625rem'} fontWeight={'700'} className='clashSemiBold' lineHeight={'124%'}>Why our community love us</Text>
@@ -45,6 +46,7 @@ function OurCommunity() {
                 fees are overwhelming too. Keep up guys.
               </Text>
               <Flex justify={"space-between"} align={"center"} mt="4rem">
+
                 <Flex >
                     <Image
                     src={"/playstorelogo.png"}
@@ -65,6 +67,7 @@ function OurCommunity() {
 
                 </Box>
               </Flex>
+
 
               </Box>
             </Card>
@@ -89,6 +92,7 @@ function OurCommunity() {
               <Flex justify={"space-between"} align={"center"} mt="4rem">
                 <Flex >
                    <Image
+
                     src={"/appstorelogo.png"}
                     mr="1rem"
                     /> 
@@ -107,6 +111,7 @@ function OurCommunity() {
 
                 </Box>
               </Flex>
+
 
               </Box>
             </Card>
@@ -129,6 +134,7 @@ function OurCommunity() {
                 fees are overwhelming too. Keep up guys.
               </Text>
               <Flex justify={"space-between"} align={"center"} mt="4rem">
+
                 <Flex >
                     <Image
                     src={"/playstorelogo.png"}
@@ -150,10 +156,10 @@ function OurCommunity() {
                 </Box>
               </Flex>
 
+
               </Box>
             </Card>
 
-            
           </Flex>
         </VStack>
 
