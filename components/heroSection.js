@@ -39,103 +39,127 @@ export default function HeroSection() {
 
     return (
 
-        <Stack
-            mt={{ base: '3.93em', md: '5.604375em' }}
-            pb={'6rem'}
-            direction={{ base: 'column', md: 'row' }}>
-            <Stack w={{ base: '100%', md: '31.5rem' }} mr={{ base: '0rem', md: "7.37vw" }} mt={{ base: '0em', md: '3.395625em' }} ml={{ base: '0rem', md: '16.302vw' }} align={{ base: "center", md: "start" }} >
+        <Flex direction='column'
+            justify={'center'}
+            align='center'
+        >
+            <Stack
+                mt={{ base: '3.93em', md: '4.5rem' }}
+                pb={'6rem'}
+                direction={{ base: 'column', md: 'row' }}
+                w={'72.813vw'}
+                spacing='3.69rem'
+            >
 
-                <Box
-                    textAlign={{ base: "center", md: "start" }}
-                    w={{ base: '23.812rem', md: 'auto' }}
-                >
-                    <Text
-                        letterSpacing={{ base: '-0.79px', md: '-1px' }}
-                        lineHeight={{ base: '3rem', md: '5rem' }}
-                        fontWeight={400}
-                        color="white"
-                        fontSize={{ base: '2.75rem', md: '3.75rem' }}
-                        className={bree.className}
+                <Stack w={{ base: '100%', md: '31.5rem' }} mt={{ base: '0em', md: '3.395625em' }} align={{ base: "center", md: "start" }} >
+
+                    <Box
+                        textAlign={{ base: "center", md: "start" }}
+                        w={{ base: '23.812rem', md: 'auto' }}
+                    >
+
+
+
+                        <Text
+
+                            lineHeight={{ base: '1rem', md: '1,75rem' }}
+                            fontWeight={400}
+                            color="white"
+                            fontSize={{ base: '1rem', md: '1.625rem' }}
+                            className='clashRegular'
+                            mb='1.5rem'
+
+                        >
+                            Go beyond ordinary, experience
+                        </Text>
+
+                        <Text
+                            letterSpacing={{ base: '-0.79px', md: '-0.0625rem' }}
+                            lineHeight={{ base: '3rem', md: '5rem' }}
+                            fontWeight={600}
+                            color="white"
+                            fontSize={{ base: '2.75rem', md: '3.75rem' }}
+                            className='clashSemiBold'
+
+                        >
+                            Payment solution for the next gen
+                        </Text>
+
+                    </Box>
+                    <Box
+                        textAlign={{ base: "center", md: "start" }}
+                        w={{ base: '22.43rem', md: 'auto' }}
+
 
                     >
-                        A better way to make payment for the next generation
-                    </Text>
+                        <Text className={dmsans.className} fontWeight={400} color={'#FFFFFF'} fontSize={{ base: '1.125rem' }} mt={{ base: '1.5rem', md: '1rem' }} mb={'1.88rem'} lineHeight={{ base: '1.5rem', md: '1.75rem' }}
+                        >
+                            Enjoy fast and easy local payments. With our end-to-end solution, you can confirm payments in real-time and enjoy the best customer experience and support in the industry.
+                        </Text>
+                    </Box>
+                    <HStack spacing={{ base: '0.85rem', md: '2.3rem' }}  >
+                        <Image
+                            alt={'Hero Image'}
 
-                </Box>
-                <Box
-                    textAlign={{ base: "center", md: "start" }}
-                    w={{ base: '22.43rem', md: 'auto' }}
+                            align={'center'}
+                            width={{ base: '10.3rem', md: '10.677vw' }}
+                            height={{ base: '3.36rem', md: '7.39vh' }}
+                            src={
+                                '/playstore.png'
+                            }
 
+                            onClick={getApp}
+                            _hover={{ cursor: 'pointer' }}
+                        />
+                        <Image
+                            alt={'Hero Image'}
 
-                >
-                    <Text className={dmsans.className} fontWeight={400} color={'#FFFFFF'} fontSize={{ base: '1.125rem' }} mt={{ base: '1.5rem', md: '1rem' }} mb={'2.3em'} lineHeight={{ base: '1.5rem', md: '1.75rem' }}
-                    >
-                        Enjoy the easiest and fastest means of making local payments. With our end-to-end solution, you can confirm transactions in real-time and experience the best payment option to cash.
-                    </Text>
-                </Box>
-                <HStack spacing={{ base: '0.85rem', md: '2.3rem' }}  >
-                    <Image
-                        alt={'Hero Image'}
+                            align={'center'}
+                            width={{ base: '10.37rem', md: '10.75vw' }}
+                            height={{ base: '3.43rem', md: '7.55vh' }}
+                            src={
+                                '/appstore.png'
+                            }
 
-                        align={'center'}
-                        width={{ base: '10.3rem', md: '10.677vw' }}
-                        height={{ base: '3.36rem', md: '7.39vh' }}
-                        src={
-                            '/playstore.png'
-                        }
+                            onClick={getApp}
+                            _hover={{ cursor: 'pointer' }}
+                        />
 
-                        onClick={getApp}
-                        _hover={{ cursor: 'pointer' }}
-                    />
-                    <Image
-                        alt={'Hero Image'}
-
-                        align={'center'}
-                        width={{ base: '10.37rem', md: '10.75vw' }}
-                        height={{ base: '3.43rem', md: '7.55vh' }}
-                        src={
-                            '/appstore.png'
-                        }
-
-                        onClick={getApp}
-                        _hover={{ cursor: 'pointer' }}
-                    />
-
-                </HStack>
-                {/* 
+                    </HStack>
+                    {/* 
                 <Flex flexDirection={'row'} mr={'1.87rem'} align="center">
                     <Text className={dmsans.className} fontWeight={400} color={'#FFFFFF'} fontSize={{ base: '1rem' }} lineHeight={'2.63rem'} letterSpacing={'0px'} opacity={'0.6'}></Text>
 
                 </Flex> */}
 
 
+                </Stack>
+                <Flex
+                    flex={1}
+                    justify={'center'}
+                    align={'center'}
+                    w={'full'}>
+
+                    <Box
+                        height={'auto'}
+                        boxShadow={'2xl'}
+                        width={{ base: 'auto', md: 'full' }}
+                        mt={{ base: '3.93rem', md: '0px' }}
+                    >
+
+                        <Image
+                            alt={'Hero Image'}
+
+                            align={'center'}
+                            width={{ base: '18.53rem', md: '41.32425rem' }}
+                            height={{ base: '17.06rem', md: '34.25rem' }}
+                            src={
+                                '/heroPhones.png'
+                            }
+                        />
+                    </Box>
+                </Flex>
             </Stack>
-            <Flex
-                flex={1}
-                justify={'center'}
-                align={'center'}
-                w={'full'}>
-
-                <Box
-                    height={'auto'}
-                    boxShadow={'2xl'}
-                    width={{ base: 'auto', md: 'full' }}
-                    mt={{ base: '3.93rem', md: '0px' }}
-                >
-
-                    <Image
-                        alt={'Hero Image'}
-
-                        align={'center'}
-                        width={{ base: '18.53rem', md: '35.26vw' }}
-                        height={{ base: '17.06rem', md: '68.87vh' }}
-                        src={
-                            '/heroPhones.png'
-                        }
-                    />
-                </Box>
-            </Flex>
-        </Stack>
-
+        </Flex>
     );
 }

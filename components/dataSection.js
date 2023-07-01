@@ -19,6 +19,7 @@ import { MdCheckCircle } from 'react-icons/md'
 import { AiOutlineRight } from 'react-icons/ai'
 import { Bree_Serif, DM_Sans, Inter, Plus_Jakarta_Sans } from '@next/font/google'
 import { useRouter } from 'next/router';
+import Features from './features';
 
 const plus = Plus_Jakarta_Sans({ weight: ['500', '700'], subsets: ['latin'] })
 
@@ -35,7 +36,8 @@ export default function DataSection() {
     }
 
     return (
-        <Box bg="#F9FAFC" h={{ base: "56.125em", md: "53.12em" }}>
+        <Box bg="#F9FAFC" h={{ base: "56.125em", md: "53.12em" }} >
+
             <Container maxW='79.81em' pt={{ base: "0.75rem", md: "5.25rem" }} centerContent>
                 <Flex flexDirection={{ base: "column", md: "row" }} justify={{ base: "center", md: 'space-between' }} align={{ base: "center", md: 'start' }}>
                     <Box position="relative">
