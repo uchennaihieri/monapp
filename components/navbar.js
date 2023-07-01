@@ -55,7 +55,7 @@ export default function Navbar() {
                     <Badge position="absolute" left="-10px" top="-15px" colorScheme='green'>BETA</Badge>
                 </Flex>
 
-                <Flex pl={{ base: '36.154vw', md:'12rem' }} justify={{ base: 'center', md: 'space-between'}}>
+                <Flex pl={{ base: '36.154vw', md:'15rem' ,'2xl':'30rem' }} justify={{ base: 'center', md: 'space-between'}}>
                     <Flex display={{ base: 'none', md: 'flex' }}   >
                         <DesktopNav />
                     </Flex>
@@ -89,8 +89,8 @@ const DesktopNav = () => {
     const linkHoverColor = useColorModeValue('gray.400', 'white');
 
     return (
-        <Stack direction={'row'} align={'center'}  gap={{md:'15rem', '2xl':'35rem'}}>
-            <Stack direction={'row'} gap={{md:'2', '2xl':'4'}} >
+        <Stack direction={'row'} align={'center'}  gap={{md:'35rem', '2xl':'55rem'}}>
+            <Stack direction={'row'} gap={{md:'4', '2xl':'4'}} >
             {NAV_ITEMS.slice(0,3).map((navItem) => (
                 <Box key={navItem.label} align={'center'}  role="group" position={'relative'} >
 
@@ -110,7 +110,7 @@ const DesktopNav = () => {
             ))}
             </Stack>
 
-            <Stack direction={'row'} gap={{md:'2', '2xl':'4'}}>
+            <Stack direction={'row'} gap={{md:'4', '2xl':'4'}}>
             {NAV_ITEMS.slice(3).map((navItem) => (
                 <Box key={navItem.label} align={'center'}  role="group" position={'relative'}>
 

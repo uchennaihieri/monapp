@@ -62,47 +62,45 @@ export default function FooterSection() {
     >
       <Center>
         <Box
-          h={{ base: "18.93rem", md: "20.5rem" }}
-          w={{ base: "21.81rem", md: "60.75rem" }}
+          h={{ base: "18.93rem", md: "24.8125rem" }}
+          w={{ base: "21.81rem", md: "83.75rem" }}
           mt={{ base: "-6.46rem", md: "-6.25rem" }}
           bg="#183656"
           borderRadius={"16px"}
         >
           <Flex
             flexDirection={"column"}
-            justifyContent="center"
-            h="100%"
-            w="80%"
-            m="auto"
+            ml={'7rem'}
+            mt={'3.5rem'}
+            gap={'2rem'}
             
           >
-            <Box
+            {/* <Box
               textAlign={{ base: "center", md: "start" }}
               mb={{ base: "1.79rem", md: "0rem" }}
               w={{ base: "15.68em", md: "29.87em" }}
               
-            >
+            > */}
               <Text
-                letterSpacing={{ base: "-0.26px", md: "-0.5px" }}
-                lineHeight={{ base: "1.8rem", md: "2rem" }}
-                fontWeight={500}
-                fontSize={{ base: "1.18rem", md: "1.5rem" }}
-                className={bree.className}
+                // letterSpacing={{ base: "-0.26px", md: "0" }}
+                lineHeight={{ base: "1.8rem", md: "2.65625rem" }}
+                fontWeight={'600'}
+                fontSize={{ base: "1.18rem", md: "2.375rem" }}
                 color={"#ffffff"}
-                pr={["0","11rem"]}
+                className='clashSemiBold'
+                w={'33.5625rem'}
+                // pr={["0","11rem"]}
               >
                 Join community of 137k+ users start making payment today.
               </Text>
-              <Text 
-              color="#ffffff"
-              mt="1rem">
+              <Text color="#ffffff"  w='34.0625rem' h='4.6875rem' fontSize={'1.125rem'}justifyContent={'center'}  lineHeight={'1.78125rem'} letterSpacing={'-0.0225rem'} >
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry Lorem Ipsum is simply. Lorem Ipsum is simply.
               </Text>
-            </Box>
+            {/* </Box> */}
 
             <HStack
-            mt={["0","2rem"]}
+            // mt={["0","2rem"]}
             >
               <Image
                 src={"/app-store.svg"}

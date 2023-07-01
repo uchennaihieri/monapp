@@ -37,7 +37,7 @@ const TransactionDrawer = ({ isOpen, onClose, transaction }) => {
                 >
                   <Thead fontSize={"16px"}>
                     <Tr>
-                      <Th color={"black"} fontWeight={"bold"}>NGN {transaction.transactionType === "CR" ? " ":"-"}{transaction?.amount}</Th>
+                      <Th color={"black"} fontWeight={"bold"}>NGN {transaction?.transactionType === "CR" ? " ":"-"}{transaction?.amount}</Th>
                       <Th color="#27AE60" textAlign={"right"}>{transaction?.transactionStatus}</Th>
 
                     </Tr>

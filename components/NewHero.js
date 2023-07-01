@@ -5,7 +5,9 @@ import { Box } from '@chakra-ui/react'
 function NewHero({ children}) {
   return (
     <Box
-     bg="#000000" h='90vh' w='100%' 
+
+     bg="#000000" h={{md:'70vh','2xl':'75vh'}} w='100%' 
+
      bgImage="url('/herobg.png')"
      >
           <div><Navbar /></div>
