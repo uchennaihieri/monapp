@@ -102,9 +102,9 @@ a {
 }
 
 @font-face {
-  font-family: 'clashBold';
-  src: url('../public/fonts/ClashDisplay-Bold.otf') format('opentype');
-  font-weight: 600;
+  font-family: 'clashMedium';
+  src: url('../public/fonts/ClashDisplay-Medium.otf') format('openType');
+  font-weight: 500;
   font-style: normal;
 }
 
@@ -122,8 +122,8 @@ a {
   font-style: normal;
 }
 
-.clashBold {
-  font-family: 'clashBold';
+.clashMedium {
+  font-family: 'clashMedium';
 }
 
 .clashRegular {
