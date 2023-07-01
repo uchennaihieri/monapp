@@ -36,7 +36,7 @@ export default function Support() {
             <Text fontSize={'1.625rem'} mt={{md:'3rem','2xl':'9rem'}} className='clashRegular' >
              What you want to know about Monapp</Text>
 
-            <Text fontSize={{md:'3.75rem','2xl':'5rem'}} fontWeight={'600'} lineHeight={'5.28125rem'} letterSpacing={'-0.0625rem'} className='clashBold' >
+            <Text fontSize={{md:'3.75rem','2xl':'5rem'}} fontWeight={'600'} lineHeight={'5.28125rem'} letterSpacing={'-0.0625rem'} className='clashSemiBold' >
                 How can we help you today ?</Text>
 
             <Text fontSize={{md:'1.125rem','2xl':'1.3rem'}}   mt='1rem' textAlign='center' className={dmsans.className} h='5.9375rem' w='36.75rem'>
@@ -50,7 +50,7 @@ export default function Support() {
                           <BiSearch   size='2em' color='white.400' />
                         </InputLeftElement>
                        
-                    <Input h="5.0625rem" w='46.625rem'  borderRadius={'12px'} fontSize={'2rem'} fontFamily={dmsans.className} fontWeight={400} lineHeight={'1.65625rem'}  border={'1.4px solid #fff'} type='text' placeholder='write a question or problem'  />              
+                    <Input h="5.0625rem" w='46.625rem'  borderRadius={'12px'} fontSize={'2rem'}  fontWeight={400} lineHeight={'1.65625rem'}  border={'1.4px solid #fff'} type='text' placeholder='write a question or problem'  />              
                         </InputGroup>
                    {/* <Box >
                    
@@ -74,28 +74,28 @@ export default function Support() {
 
                       <Box w=' 3.375rem' h=' 3.375rem' borderRadius='50%' bgColor='#D9D9D9' />
 
-                      <Text fontSize={'1.625rem'} className='clashRegular' fontWeight={'500'}>Getting Started</Text>
+                      <Text fontSize={'1.625rem'} className='clashMedium' fontWeight={'500'}>Getting Started</Text>
                   </Flex>
                   <Flex direction={'column'} w='19.1875rem' h='11.6875rem' justifyContent='center' bgColor={'#fff'} borderRadius={'12px'}
                   alignItems='center' border='1.2px solid rgba(0, 0, 0, 0.20)'  _hover={{border:'2px #000 solid'}} gap='5' boxShadow='0px 8px 64px 0px rgba(167, 167, 167,0.24)'>
 
                       <Box w=' 3.375rem' h=' 3.375rem' borderRadius='50%' bgColor='#D9D9D9' />
 
-                      <Text fontSize={'1.625rem'} className='clashRegular' fontWeight={'500'}>Pricing and Plan</Text>
+                      <Text fontSize={'1.625rem'} className='clashMedium' fontWeight={'500'}>Pricing and Plan</Text>
                   </Flex>
                   <Flex direction={'column'} w='19.1875rem' h='11.6875rem' justifyContent='center' bgColor={'#fff'} borderRadius={'12px'}
                   alignItems='center' border='1.2px solid rgba(0, 0, 0, 0.20)'  _hover={{border:'2px #000 solid'}} gap='5' boxShadow='0px 8px 64px 0px rgba(167, 167, 167,0.24)'>
 
                       <Box w=' 3.375rem' h=' 3.375rem' borderRadius='50%' bgColor='#D9D9D9' />
 
-                      <Text fontSize={'1.625rem'} className='clashRegular' fontWeight={'500'}>Sales Questions</Text>
+                      <Text fontSize={'1.625rem'} className='clashMedium' fontWeight={'500'}>Sales Questions</Text>
                   </Flex>
                   <Flex direction={'column'} w='19.1875rem' h='11.6875rem' justifyContent='center' bgColor={'#fff'} borderRadius={'12px'}
                   alignItems='center' border='1.2px solid rgba(0, 0, 0, 0.20)'  _hover={{border:'2px #000 solid'}} gap='5' boxShadow='0px 8px 64px 0px rgba(167, 167, 167,0.24)'>
 
                       <Box w=' 3.375rem' h=' 3.375rem' borderRadius='50%' bgColor='#D9D9D9' />
 
-                      <Text fontSize={'1.625rem'} className='clashRegular' fontWeight={'500'}>Usage Guides</Text>
+                      <Text fontSize={'1.625rem'} className='clashMedium' fontWeight={'500'}>Usage Guides</Text>
                   </Flex>
               </HStack>
             
@@ -106,9 +106,10 @@ export default function Support() {
                 
 
                   <Accordion allowToggle  mb='3rem' variant='custom'>
+
                       <AccordionItem >
                         <h2>
-                          <AccordionButton className='clashRegular' >
+                          <AccordionButton className='clashMedium' >
                             <Box as="span" flex='1' textAlign='left'>
                             How does the Monapp QR card works ?
                               
@@ -125,7 +126,7 @@ export default function Support() {
 
                       <AccordionItem >
                         <h2>
-                          <AccordionButton>
+                          <AccordionButton className='clashMedium' >
                             <Box as="span" flex='1' textAlign='left'>
                             How does the Monapp QR card works ?
                               
@@ -142,23 +143,7 @@ export default function Support() {
 
                       <AccordionItem >
                         <h2>
-                          <AccordionButton>
-                            <Box as="span" flex='1' textAlign='left'>
-                            How does the Monapp QR card works ?
-                              
-                            </Box>
-                            <AccordionIcon />
-                          </AccordionButton>
-                        </h2>
-                        <AccordionPanel >
-                          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has 
-                          been the industry's standard dummy text ever since the 1500s, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, Lorem Ipsum is simply dummy 
-                          text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                        </AccordionPanel>
-                      </AccordionItem>
-                      <AccordionItem >
-                        <h2>
-                          <AccordionButton>
+                          <AccordionButton className='clashMedium' >
                             <Box as="span" flex='1' textAlign='left'>
                             How does the Monapp QR card works ?
                               
@@ -175,7 +160,7 @@ export default function Support() {
 
                       <AccordionItem >
                         <h2>
-                          <AccordionButton>
+                          <AccordionButton className='clashMedium' >
                             <Box as="span" flex='1' textAlign='left'>
                             How does the Monapp QR card works ?
                               
@@ -192,7 +177,7 @@ export default function Support() {
 
                       <AccordionItem >
                         <h2>
-                          <AccordionButton>
+                          <AccordionButton className='clashMedium' >
                             <Box as="span" flex='1' textAlign='left'>
                             How does the Monapp QR card works ?
                               
@@ -207,22 +192,7 @@ export default function Support() {
                         </AccordionPanel>
                       </AccordionItem>
 
-                      <AccordionItem >
-                        <h2>
-                          <AccordionButton>
-                            <Box as="span" flex='1' textAlign='left'>
-                            How does the Monapp QR card works ?
-                              
-                            </Box>
-                            <AccordionIcon />
-                          </AccordionButton>
-                        </h2>
-                        <AccordionPanel >
-                          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has 
-                          been the industry's standard dummy text ever since the 1500s, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, Lorem Ipsum is simply dummy 
-                          text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                        </AccordionPanel>
-                      </AccordionItem>
+                      
 
                     </Accordion>
                   
@@ -230,7 +200,7 @@ export default function Support() {
                 Send us a message
                 </Text>
 
-                <Text w='47.0625rem' h='3.875rem' fontSize={'1.51888rem'} lineHeight={'2.23838rem'} letterSpacing={'-0.01rem'} mb='5rem'>
+                <Text w='47.0625rem' h='3.875rem' fontSize={'1.51888rem'} lineHeight={'2.23838rem'} letterSpacing={'-0.01rem'} mb='5rem' >
                   Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's stand
                 </Text>
 
