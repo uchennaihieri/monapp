@@ -84,6 +84,22 @@ a {
   text-decoration: none;
 }
 
+#cardTitle {
+  color: '#161618'
+}
+
+#cardButton {
+  color: '#161618'
+}
+
+.mainCard:hover~#cardTitle {
+  color: white;
+}
+
+.mainCard:hover~#cardButton {
+  color: white;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

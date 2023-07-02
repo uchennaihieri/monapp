@@ -77,8 +77,8 @@ export default function Features() {
                     Our payment brokers will give you the necessary training and support to make easy transactions from anywhere in Nigeria.
                 </Text>
 
-                <Flex w='41.0625rem'>
-                    <Flex>
+                <Flex w='41.0625rem' flexDirection={'row'} justify={'space-between'}>
+                    <Flex >
                         <CheckIcon boxSize={'1.75rem'} color='#000000' mr='0.75rem' />
                         <Box>
                             <Text
@@ -92,7 +92,7 @@ export default function Features() {
                                 Personalized support 24/7
                             </Text>
                             <Text
-
+                                maxW='16.625rem'
                                 color="#000"
                                 lineHeight={{ base: '1.5rem' }}
                                 fontWeight={400}
@@ -100,7 +100,8 @@ export default function Features() {
                                 className={dmsans.className}
 
                             >
-                                To address any queries or concerns you may have, ensuring you receive prompt and tailored assistance.
+                                To address any query or concern you may have and ensure you receive prompt and tailored
+                                assistance.
                             </Text>
                         </Box>
                     </Flex>
@@ -118,14 +119,14 @@ export default function Features() {
                                 Comprehensive training
                             </Text>
                             <Text
-
+                                maxW='16.625rem'
                                 color="#000"
                                 lineHeight={{ base: '1.5rem' }}
                                 fontWeight={400}
                                 fontSize={{ base: '0.7rem', md: '1rem' }}
                                 className={dmsans.className}
                             >
-                                Equipping you with the knowledge and skills to navigate the payment process effectively.
+                                To equip you with the knowledge and skills to navigate your payment process effectively.
                             </Text>
                         </Box>
                     </Flex>
