@@ -11,6 +11,7 @@ import FooterSection from '@/components/footerSection'
 import BlackSection from '@/components/blackSection'
 import PageSeo from '@/Seo/pageSeo'
 import NewHero from '@/components/NewHero'
+import OurCommunity from '@/components/OurCommunity'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,18 +19,19 @@ export default function Home() {
   return (
     <>
       <PageSeo title="Super fast payments for the next gen - Monapp" description="" />
-      <main bg="#F5F5F5">
+      <main bg="#FFFFFF">
 
         <NewHero>
           <div><HeroSection /></div>
 
         </NewHero>
 
-        <Flex bg="#F9FAFC" flexDirection={'row'} justify={'center'} ><Features /></Flex>
+        <Flex bg="#FFFFFF" flexDirection={'row'} justify={'center'} ><Features /></Flex>
 
-        <div><DataSection /></div>
         <div><CardSection /></div>
+        <div><DataSection /></div>
         <div><BlackSection /></div>
+        <div><OurCommunity /></div>
         <div><FooterSection /></div>
       </main>
 
