@@ -17,7 +17,7 @@ function OurCommunity() {
 <VStack pt={["3rem"]} pb={["10rem","12rem"]}>
           <Flex flexDir={"column"} align={"center"}>
             <Heading mb="1rem">Why our community love us</Heading>
-            <Text fontSize="1rem" px={["7rem","31rem"]} textAlign={"center"} mb="1rem">
+            <Text fontSize="1.4rem" px={["7rem","39rem"]} textAlign={"center"} mb="1rem">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry
             </Text>
