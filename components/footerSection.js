@@ -59,6 +59,7 @@ export default function FooterSection() {
       bgColor="#000000"
       bgImg="url('/footerbg.svg')"
       color="#ffffff"
+      
     >
       <Center>
         <Box
@@ -132,7 +133,6 @@ export default function FooterSection() {
       >
         <Flex
           flexDirection={"column"}
-          alignItems={"start"}
           gap={["10px","40px"]}
           textAlign={["center","start"]}
           alignItems={["center","start"]}
