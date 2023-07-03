@@ -36,7 +36,7 @@ function OurCommunity() {
               
             >
               <Box p='3'>
-              <Text fontSize="180.97531rempx" fontWeight={'600'} color="#14142B" lineHeight={'1.65844rem'}>
+              <Text fontSize="180.97531rem" fontWeight={'600'} color="#14142B" lineHeight={'1.65844rem'}>
                 “Beat service ever. Fast and reliable”
               </Text>
               <Text fontSize="0.78025rem" color="#6E7191" mt="0.5rem" lineHeight={'1.26794rem'} h={'3.07225rem'} w={'21.01813rem'}>
