@@ -14,37 +14,37 @@ function OurCommunity() {
   return (
 
 <>
-<VStack pt={["3rem"]} pb={["10rem","12rem"]}>
-          <Flex flexDir={"column"} align={"center"}>
-            <Heading mb="1rem">Why our community love us</Heading>
-            <Text fontSize="1.4rem" px={["7rem","39rem"]} textAlign={"center"} mb="1rem">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry
+<VStack mt={'15rem'} mb='5rem' pb={["10rem","12rem"]} alignItems={'center'} justifyContent={'center'}>
+          <Flex flexDir={"column"} align={"center"} mb='5rem' gap='5'>
+            <Text fontSize={'2.625rem'} fontWeight={'700'} className='clashSemiBold' lineHeight={'124%'}>Why our community love us</Text>
+            <Text fontSize="1.125rem" w={'27.5rem'} h={'3.375rem'} lineHeight={'1.8rem'} textAlign={"center"} >
+             Lorem Ipsum is simply dummy text of the printing and typesetting industry
             </Text>
           </Flex>
-          <Flex
-            w={"80%"}
-            m="auto"
-            gap={"10px"}
+          
+          <Flex                  
             align={"center"}
-            justify="space-between"
             flexDirection={["column", "row"]}
+            gap={"2rem"}
           >
             <Card
-              borderRadius-="12.032px"
-              bg="#ffffff"
-              boxShadow="0px 8px 64px 0px rgba(167, 167, 167, 0.24)"
-              p="30px 20px"
+              borderRadius-="14.045px"
+              w='27.504rem'
+              h={'15.3125rem'}
+              bg="#fff"
+              boxShadow=" 0px 3.1210196018218994px 17.165607452392578px 0px rgba(21, 19, 91, 0.04), 0px 2.340764284133911px 4.681528568267822px 0px rgba(51, 71, 255, 0.01), 0px 0.7802549004554749px 3.1210196018218994px 0px rgba(20, 20, 43, 0.01)"
+              
             >
-              <Heading fontSize="18px" color="#14142B">
+              <Box p='3'>
+              <Text fontSize="180.97531rempx" fontWeight={'600'} color="#14142B" lineHeight={'1.65844rem'}>
                 “Beat service ever. Fast and reliable”
-              </Heading>
-              <Text fontSize="14px" color="#6E7191" mt="0.5rem">
+              </Text>
+              <Text fontSize="0.78025rem" color="#6E7191" mt="0.5rem" lineHeight={'1.26794rem'} h={'3.07225rem'} w={'21.01813rem'}>
                 I have been using this for months on a regular and is just
-                everything you will ever need to buy, sell and transact. Their
+                 everything you will ever need to buy, sell and transact. Their
                 fees are overwhelming too. Keep up guys.
               </Text>
-              <Flex justify={"space-between"} align={"center"} mt="2rem">
+              <Flex justify={"space-between"} align={"center"} mt="4rem">
                 <Flex >
                     <Image
                     src={"/playstorelogo.png"}
@@ -65,24 +65,30 @@ function OurCommunity() {
 
                 </Box>
               </Flex>
+
+              </Box>
             </Card>
+
             <Card
-              borderRadius-="12.032px"
-              bg="#ffffff"
-              boxShadow="0px 8px 64px 0px rgba(167, 167, 167, 0.24)"
-              p="30px 20px"
+              borderRadius-="14.045px"
+              w='27.504rem'
+              h={'15.3125rem'}
+              bg="#fff"
+              boxShadow=" 0px 3.1210196018218994px 17.165607452392578px 0px rgba(21, 19, 91, 0.04), 0px 2.340764284133911px 4.681528568267822px 0px rgba(51, 71, 255, 0.01), 0px 0.7802549004554749px 3.1210196018218994px 0px rgba(20, 20, 43, 0.01)"
+              
             >
-              <Heading fontSize="18px" color="#14142B">
+              <Box p='3'>
+              <Text fontSize="180.97531rempx" fontWeight={'600'} color="#14142B" lineHeight={'1.65844rem'}>
                 “Beat service ever. Fast and reliable”
-              </Heading>
-              <Text fontSize="14px" color="#6E7191" mt="0.5rem">
+              </Text>
+              <Text fontSize="0.78025rem" color="#6E7191" mt="0.5rem" lineHeight={'1.26794rem'} h={'3.07225rem'} w={'21.01813rem'}>
                 I have been using this for months on a regular and is just
-                everything you will ever need to buy, sell and transact. Their
+                 everything you will ever need to buy, sell and transact. Their
                 fees are overwhelming too. Keep up guys.
               </Text>
-              <Flex justify={"space-between"} align={"center"} mt="2rem">
+              <Flex justify={"space-between"} align={"center"} mt="4rem">
                 <Flex >
-                    <Image
+                   <Image
                     src={"/appstorelogo.png"}
                     mr="1rem"
                     /> 
@@ -101,22 +107,28 @@ function OurCommunity() {
 
                 </Box>
               </Flex>
+
+              </Box>
             </Card>
+
             <Card
-              borderRadius-="12.032px"
-              bg="#ffffff"
-              boxShadow="0px 8px 64px 0px rgba(167, 167, 167, 0.24)"
-              p="30px 20px"
+              borderRadius-="14.045px"
+              w='27.504rem'
+              h={'15.3125rem'}
+              bg="#fff"
+              boxShadow=" 0px 3.1210196018218994px 17.165607452392578px 0px rgba(21, 19, 91, 0.04), 0px 2.340764284133911px 4.681528568267822px 0px rgba(51, 71, 255, 0.01), 0px 0.7802549004554749px 3.1210196018218994px 0px rgba(20, 20, 43, 0.01)"
+              
             >
-              <Heading fontSize="18px" color="#14142B">
+              <Box p='3'>
+              <Text fontSize="180.97531rempx" fontWeight={'600'} color="#14142B" lineHeight={'1.65844rem'}>
                 “Beat service ever. Fast and reliable”
-              </Heading>
-              <Text fontSize="14px" color="#6E7191" mt="0.5rem">
+              </Text>
+              <Text fontSize="0.78025rem" color="#6E7191" mt="0.5rem" lineHeight={'1.26794rem'} h={'3.07225rem'} w={'21.01813rem'}>
                 I have been using this for months on a regular and is just
-                everything you will ever need to buy, sell and transact. Their
+                 everything you will ever need to buy, sell and transact. Their
                 fees are overwhelming too. Keep up guys.
               </Text>
-              <Flex justify={"space-between"} align={"center"} mt="2rem">
+              <Flex justify={"space-between"} align={"center"} mt="4rem">
                 <Flex >
                     <Image
                     src={"/playstorelogo.png"}
@@ -137,7 +149,11 @@ function OurCommunity() {
 
                 </Box>
               </Flex>
+
+              </Box>
             </Card>
+
+            
           </Flex>
         </VStack>
 
