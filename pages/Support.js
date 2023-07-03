@@ -32,8 +32,8 @@ export default function Support() {
        
         <NewHero>
 
-           <Center color='#fff' flexDirection={'column'} gap={{'2xl':'3rem'}}>
-            <Text fontSize={'1.625rem'} mt={{md:'3rem','2xl':'9rem'}} className='clashRegular' >
+           <Center color='#fff' flexDirection={'column'} gap={{md:'1.5rem','2xl':'3rem'}}>
+            <Text fontSize={'1.625rem'} mt={{md:'12rem','2xl':'9rem'}} className='clashRegular' >
              What you want to know about Monapp</Text>
 
             <Text fontSize={{md:'3.75rem','2xl':'5rem'}} fontWeight={'600'} lineHeight={'5.28125rem'} letterSpacing={'-0.0625rem'} className='clashSemiBold' >
@@ -44,13 +44,13 @@ export default function Support() {
                  typesetting industry. Lorem Ipsum has been the industry's
                   standard dummy text ever since the 1500s,</Text>
 
-                  <HStack mt='2rem' gap='3rem' >
+                  <HStack mt='2rem' justifyContent={'center'} alignItems={'center'} ml='3rem'>
                     <InputGroup >
-                        <InputLeftElement __css={{mt:'1.8rem',mx:'0.5rem', }}>
-                          <BiSearch   size='2em' color='white.400' />
+                        <InputLeftElement __css={{p:'8px', mt:'1.48rem' }}>
+                          <BiSearch   size='1.5rem' color='white.400' />
                         </InputLeftElement>
                        
-                    <Input h="5.0625rem" w='46.625rem'  borderRadius={'12px'} fontSize={'2rem'}  fontWeight={400} lineHeight={'1.65625rem'}  border={'1.4px solid #fff'} type='text' placeholder='write a question or problem'  />              
+                    <Input h="5.0625rem" w='46.625rem' fontSize={'1.5rem'} borderRadius={'12px'}    fontWeight={400} lineHeight={'1.65625rem'}  border={'1.4px solid #fff'} type='text' placeholder='write a question or problem'  />              
                         </InputGroup>
                    {/* <Box >
                    
