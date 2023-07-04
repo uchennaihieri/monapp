@@ -59,12 +59,15 @@ export default function FooterSection() {
       bgColor="#000000"
       bgImg="url('/footerbg.svg')"
       color="#ffffff"
+      mt='20rem' 
+      
     >
-      <Center>
+      <Center 
+      >
         <Box
           h={{ base: "18.93rem", md: "24.8125rem" }}
           w={{ base: "21.81rem", md: "83.75rem" }}
-          mt={{ base: "-6.46rem", md: "-6.25rem" }}
+          mt={{ base: "-6.46rem", md: "-15.25rem" }}
           bg="#183656"
           borderRadius={"16px"}
         >
@@ -120,6 +123,29 @@ export default function FooterSection() {
           </Flex>
         </Box>
       </Center>
+          <Flex 
+          position={'Absolute'}
+          bottom={'23rem'}
+          right={'25rem'}
+          >
+            <Image
+            width={'18.0185rem'}
+            // height={'34.15163rem'}
+            alt="mobile dashboard"
+            src={'/mobileDash.png'}
+            />
+            
+            <Image
+            src="mobilePayment.png"
+            width={'16.51756rem'}
+            // height={'30.76281rem'}
+            alt="mobile Payment"
+            ml='-4.2rem'
+            mt='4.7rem'
+            />
+          </Flex>
+
+
       <Flex
         py={{ base: "2.75rem", md: "4.125rem" }}
         px={{ base: "3.68rem", md: "11.87rem" }}
@@ -132,7 +158,6 @@ export default function FooterSection() {
       >
         <Flex
           flexDirection={"column"}
-          alignItems={"start"}
           gap={["10px","40px"]}
           textAlign={["center","start"]}
           alignItems={["center","start"]}

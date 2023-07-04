@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope&display=swap');
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -148,4 +149,8 @@ a {
 
 .clashSemiBold {
   font-family: 'clashSemiBold';
+}
+
+.manRope{
+   font-family: 'Manrope', sans-serif;
 }
