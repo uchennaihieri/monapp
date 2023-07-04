@@ -59,7 +59,9 @@ export default function FooterSection() {
       bgColor="#000000"
       bgImg="url('/footerbg.svg')"
       color="#ffffff"
+
       mt='20rem' 
+
       
     >
       <Center 
