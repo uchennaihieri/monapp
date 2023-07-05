@@ -130,7 +130,7 @@ export default function CardSection() {
 
     return (
         <Box bg="#FFFFFF" >
-            <Container maxW='79.81em' centerContent pt={{ base: "3.875rem", md: '10.25rem' }}>
+            <Container maxW='79.81em' centerContent pt={{ base: "3.875rem", md: '10.25rem' }} pb='15.25rem'>
                 <Flex flexDirection={{ base: "column-reverse", md: 'row' }} align={{ base: "center", md: "start" }} justify={{ base: "start", md: 'space-between' }}>
 
                     <Stack textAlign={{ base: "center", md: 'start' }} w={{ base: '22.43rem', md: "31.93rem" }} spacing={4} mr={{ base: "0em", md: "5em" }}>
