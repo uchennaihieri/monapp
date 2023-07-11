@@ -23,8 +23,8 @@ function OurCommunity() {
     <>
       <VStack mt={'15rem'} mb='5rem' pb={["10rem", "12rem"]} alignItems={'center'} justifyContent={'center'}>
         <Flex flexDir={"column"} align={"center"} mb='5rem' gap='5'>
-          <Text fontSize={'2.625rem'} fontWeight={'700'} className='clashSemiBold' lineHeight={'124%'}>Why our community love us</Text>
-          <Text fontSize="1.125rem" w={'27.5rem'} h={'3.375rem'} lineHeight={'1.8rem'} textAlign={"center"} >
+          <Text w={['18.8125rem','39.125rem']} h={['4.375rem','2.9375rem']} fontSize={['2rem','2.625rem']} fontWeight={'700'} textAlign={'center'} className='clashSemiBold' lineHeight={'124%'}>Why our community love us</Text>
+          <Text fontSize={['0.875rem',"1.125rem" ]}w={['16.91294rem','27.5rem']} h={['2.07569rem','3.375rem']} lineHeight={'1.8rem'} textAlign={"center"} >
             Lorem Ipsum is simply dummy text of the printing and typesetting industry
           </Text>
         </Flex>

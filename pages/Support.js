@@ -32,74 +32,86 @@ export default function Support() {
        
         <NewHero>
 
-           <Center color='#fff' flexDirection={'column'} gap={{md:'1.5rem','2xl':'3rem'}}>
-            <Text fontSize={'1.625rem'} mt={{md:'12rem','2xl':'9rem'}} className='clashRegular' >
-             What you want to know about Monapp</Text>
+           <Center color='#fff' flexDirection={'column'} gap={{base:'1rem',md:'1.5rem','2xl':'3rem'}} justifyContent={'center'}>
+            <Text fontSize={{base:'1.14613rem', md:'1.625rem'}} mt={{base:'3rem',md:'12rem','2xl':'9rem'}} className='clashRegular' >
+             What do you want to know about Monapp</Text>
 
-            <Text fontSize={{md:'3.75rem','2xl':'5rem'}} fontWeight={'600'} lineHeight={'5.28125rem'} letterSpacing={'-0.0625rem'} className='clashSemiBold' >
+            <Text fontSize={{base:'2.125rem',md:'3.75rem','2xl':'5rem'}} fontWeight={'600'} w={{base:'18.1875rem', md:'59.25rem','2xl':'70rem'}} h={{base:'5.4375rem', md:'5.0625rem'}} textAlign={'center'} lineHeight={{base:'2.625rem',md:'5.28125rem'}} letterSpacing={'-0.0625rem'} className='clashSemiBold' >
                 How can we help you today ?</Text>
 
-            <Text fontSize={{md:'1.125rem','2xl':'1.3rem'}}   mt='1rem' textAlign='center' className={dmsans.className} h='5.9375rem' w='36.75rem'>
+            <Text fontSize={{md:'1.125rem','2xl':'1.3rem'}}   mt='1rem' textAlign='center' className={dmsans.className} h={{base:'5.3125rem',md:'5.9375rem'}} w={{base:'22.375rem',md:'36.75rem'}}>
                 Lorem Ipsum is simply dummy text of the printing and
                  typesetting industry. Lorem Ipsum has been the industry's
                   standard dummy text ever since the 1500s,</Text>
 
-                  <HStack mt='2rem' justifyContent={'center'} alignItems={'center'} ml='3rem'>
-                    <InputGroup >
-                        <InputLeftElement __css={{p:'8px', mt:'1.48rem' }}>
+                  <Flex mt='2rem' mb={['6rem','0']} justifyContent={'center'} alignItems={'center'} ml={['','3rem']} flexDir={{base:'column',md:'row'}} gap={'1.5rem'}>
+                    <InputGroup  >
+                        <InputLeftElement __css={{p:'8px', mt:'1.48rem' }} display={['none','block']}>
                           <BiSearch   size='1.5rem' color='white.400' />
                         </InputLeftElement>
                        
-                    <Input h="5.0625rem" w='46.625rem' fontSize={'1.5rem'} borderRadius={'12px'}    fontWeight={400} lineHeight={'1.65625rem'}  border={'1.4px solid #fff'} type='text' placeholder='write a question or problem'  />              
+                    <Input h={{base:'3.3125rem',md:"5.0625rem"}} w={{base:'24.3125rem',md:'46.625rem'}} fontSize={['0.98325rem','1.5rem']} borderRadius={['0.25rem','12px']}    fontWeight={400} lineHeight={'1.65625rem'}  border={'1.4px solid #fff'} type='text' placeholder='write a question or problem'  />              
                         </InputGroup>
                    {/* <Box >
                    
                     <Input h="5.0625rem" w='46.625rem'  borderRadius={'12px'}    border={'1.4px solid #fff'} type='text' placeholder='write a question or problem'  />              
                     </Box> */}
 
-                     <Button variant='solid'  bgColor={'#fff'} borderRadius={'9px'}  _hover={{bg:'#eee',color:'#000'}} w={'15rem'} h='5.0625rem' >
-                      <Text  fontSize={'1.45rem'} color='#000' fontWeight={700} lineHeight='2.71944rem' letterSpacing={'0.00831rem'} className={dmsans.className} >Search</Text>
+                     <Button variant='solid'  bgColor={'#fff'} borderRadius={['0.25rem','9px']}  _hover={{bg:'#eee',color:'#000'}} w={{base:'24.3125rem',md:'15rem'}} h={['3.375rem','5.0625rem']} >
+                      <Text  fontSize={['1.125rem','1.45rem']} color='#000' fontWeight={700} lineHeight='2.71944rem' letterSpacing={'0.00831rem'} className={dmsans.className} >Search</Text>
                       </Button>
                         
-                  </HStack>
+                  </Flex>
 
            </Center>
 
         </NewHero>
 
-          <Box ml={{md:'15rem','2xl':'30rem'}} mb='5rem' color={'#000'}>
-              <HStack  mt={'3rem'} gap='10'>
-                  <Flex direction={'column'} w='19.1875rem' h='11.6875rem' justifyContent='center' bgColor={'#fff'} borderRadius={'12px'}
-                  alignItems='center' border='1.2px solid rgba(0, 0, 0, 0.20)'  _hover={{border:'2px #000 solid'}}  gap='5' boxShadow='0px 8px 64px 0px rgba(167, 167, 167,0.24)'>
+          <Box ml={{base:'2rem',md:'15rem','2xl':'30rem'}} mb='5rem' color={'#000'}>
+              <Flex overflowX={'auto'}>
+                <HStack  mt={'3rem'} gap={['4','10']}  >
+                 
+                    <Flex direction={'column'} w={['9.35425rem','19.1875rem']} h={['5.69788rem','11.6875rem']} justifyContent='center' bgColor={'#fff'} borderRadius={['0.975px ','12px']}
+                    alignItems='center' border='1.2px solid rgba(0, 0, 0, 0.20)'  _hover={{border:'2px #000 solid'}}  gap={['0.5','5']} boxShadow='0px 8px 64px 0px rgba(167, 167, 167,0.24)'>
+                        <Box w={['2.22431rem',' 3.375rem']} h={['2.22431rem',' 3.375rem']} borderRadius='50%' bgColor='#D9D9D9'>
+                          <Image src='/gettingStarted.png' width={50} height={50} />
+                        </Box>
 
-                      <Box w=' 3.375rem' h=' 3.375rem' borderRadius='50%' bgColor='#D9D9D9' />
+                        <Text fontSize={['0.79219rem','1.625rem']}  lineHeight={['0.85319rem','1.75rem']} className='clashMedium' fontWeight={'500'}>Getting Started</Text>
+                    </Flex>
+                    <Flex direction={'column'} w={['9.35425rem','19.1875rem']} h={['5.69788rem','11.6875rem']} justifyContent='center' bgColor={'#fff'} borderRadius={['0.975px ','12px']}
+                    alignItems='center' border='1.2px solid rgba(0, 0, 0, 0.20)'  _hover={{border:'2px #000 solid'}} gap={['0.5','5']} boxShadow='0px 8px 64px 0px rgba(167, 167, 167,0.24)'>
 
-                      <Text fontSize={'1.625rem'} className='clashMedium' fontWeight={'500'}>Getting Started</Text>
-                  </Flex>
-                  <Flex direction={'column'} w='19.1875rem' h='11.6875rem' justifyContent='center' bgColor={'#fff'} borderRadius={'12px'}
-                  alignItems='center' border='1.2px solid rgba(0, 0, 0, 0.20)'  _hover={{border:'2px #000 solid'}} gap='5' boxShadow='0px 8px 64px 0px rgba(167, 167, 167,0.24)'>
+                        <Box w={['2.22431rem',' 3.375rem']} h={['2.22431rem',' 3.375rem']} borderRadius='50%' >
+                          <Image src='/pricingPlan.png' width={50} height={50} />
+                        </Box>
 
-                      <Box w=' 3.375rem' h=' 3.375rem' borderRadius='50%' bgColor='#D9D9D9' />
+                        <Text fontSize={['0.79219rem','1.625rem']} className='clashMedium' lineHeight={['0.85319rem','1.75rem']} fontWeight={'500'}>Pricing and Plan</Text>
+                    </Flex>
+                    <Flex direction={'column'} w={['9.35425rem','19.1875rem']} h={['5.69788rem','11.6875rem']} justifyContent='center' bgColor={'#fff'} borderRadius={['0.975px ','12px']}
+                    alignItems='center' border='1.2px solid rgba(0, 0, 0, 0.20)'  _hover={{border:'2px #000 solid'}} gap={['0.5','5']} boxShadow='0px 8px 64px 0px rgba(167, 167, 167,0.24)'>
 
-                      <Text fontSize={'1.625rem'} className='clashMedium' fontWeight={'500'}>Pricing and Plan</Text>
-                  </Flex>
-                  <Flex direction={'column'} w='19.1875rem' h='11.6875rem' justifyContent='center' bgColor={'#fff'} borderRadius={'12px'}
-                  alignItems='center' border='1.2px solid rgba(0, 0, 0, 0.20)'  _hover={{border:'2px #000 solid'}} gap='5' boxShadow='0px 8px 64px 0px rgba(167, 167, 167,0.24)'>
+                          <Box w={['2.22431rem',' 3.375rem']} h={['2.22431rem',' 3.375rem']} borderRadius='50%' >
+                          <Image src='/saleQuestions.png' width={50} height={50}  />
+                        </Box>
 
-                      <Box w=' 3.375rem' h=' 3.375rem' borderRadius='50%' bgColor='#D9D9D9' />
+                        <Text fontSize={['0.79219rem','1.625rem']} className='clashMedium'lineHeight={['0.85319rem','1.75rem']} fontWeight={'500'}>Sales Questions</Text>
+                    </Flex>
+                    <Flex direction={'column'} w={['9.35425rem','19.1875rem']} h={['5.69788rem','11.6875rem']} justifyContent='center' bgColor={'#fff'} borderRadius={['0.975px ','12px']}
+                    alignItems='center' border='1.2px solid rgba(0, 0, 0, 0.20)'  _hover={{border:'2px #000 solid'}} gap={['0.5','5']} boxShadow='0px 8px 64px 0px rgba(167, 167, 167,0.24)'>
 
-                      <Text fontSize={'1.625rem'} className='clashMedium' fontWeight={'500'}>Sales Questions</Text>
-                  </Flex>
-                  <Flex direction={'column'} w='19.1875rem' h='11.6875rem' justifyContent='center' bgColor={'#fff'} borderRadius={'12px'}
-                  alignItems='center' border='1.2px solid rgba(0, 0, 0, 0.20)'  _hover={{border:'2px #000 solid'}} gap='5' boxShadow='0px 8px 64px 0px rgba(167, 167, 167,0.24)'>
+                          <Box w={['2.22431rem',' 3.375rem']} h={['2.22431rem',' 3.375rem']} borderRadius='50%' >
+                          <Image src='/UsageGuides.png' width={50} height={50} />
+                        </Box>
 
-                      <Box w=' 3.375rem' h=' 3.375rem' borderRadius='50%' bgColor='#D9D9D9' />
+                        <Text fontSize={['0.79219rem','1.625rem']} className='clashMedium' lineHeight={['0.85319rem','1.75rem']} fontWeight={'500'}>Usage Guides</Text>
+                    </Flex>
+                </HStack>
 
-                      <Text fontSize={'1.625rem'} className='clashMedium' fontWeight={'500'}>Usage Guides</Text>
-                  </Flex>
-              </HStack>
+
+              </Flex>
             
-                <Text   mt='5rem' fontSize='2.25rem' fontWeight={'600'} className='clashSemiBold' lineHeight={'2.97894rem'} >
+                <Text   mt='5rem' fontSize={['1.625rem','2.25rem']} fontWeight={'600'} className='clashSemiBold' lineHeight={['2.97894rem','2.97894rem']} >
                     Popular Questions
                 </Text>
 
@@ -196,68 +208,69 @@ export default function Support() {
 
                     </Accordion>
                   
-              <Text   mt='5rem' mb='3rem' fontSize='2.25rem' className='clashSemiBold' fontWeight={'600'} lineHeight={'2.97894rem'} >
+              <Text   mt='5rem' mb={['1rem','3rem']} fontSize={['1.625rem','2.25rem']} className='clashSemiBold' fontWeight={'600'} lineHeight={['2.97894rem','2.97894rem']} >
                 Send us a message
                 </Text>
 
-                <Text w='47.0625rem' h='3.875rem' fontSize={'1.51888rem'} lineHeight={'2.23838rem'} letterSpacing={'-0.01rem'} mb='5rem' >
+                <Text w={['23.1875rem','47.0625rem']} h={['3.875rem','3.875rem']} fontSize={['1rem','1.51888rem']} lineHeight={'2.23838rem'} letterSpacing={'-0.01rem'} mb='5rem'>
                   Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's stand
                 </Text>
 
           <form>
                 {/* <HStack mb='32px'><IconButton icon={<AiOutlinePicture fontSize={'20px'} />} w='36px' h='36px' isRound /> <Text> Upload New Image</Text></HStack> */}
-                <HStack gap={'12'}>
+                <Flex gap={['0','12']} flexDirection={['column','row']}>
                     <Box mb="21.87px">
                         <FormControl id="firstName" >
-                            <FormLabel fontSize={'1.5rem'} fontWeight={'500'} lineHeight={'200%'} letterSpacing={'0.03rem'} color={'#000'}>First Name</FormLabel>
-                            <Input h="5.5625rem" w='42rem' borderRadius={'2px'} bg="#ffffff" border={'1.4px solid #000'} type="text" />
+                            <FormLabel fontSize={['1.25rem','1.5rem']} fontWeight={'500'} lineHeight={'200%'} letterSpacing={'0.03rem'} color={'#000'}>First Name</FormLabel>
+                            <Input h={['3.5rem',"5.5625rem"]} w={['24.25rem','42rem']} borderRadius={'2px'} bg="#ffffff" border={'1.4px solid #000'} type="text" />
 
                         </FormControl>
                     </Box>
                     <Box mb="21.87px">
                         <FormControl id="firstName" >
-                            <FormLabel fontSize={'1.5rem'} fontWeight={'500'} lineHeight={'200%'} letterSpacing={'0.03rem'} color={'#000'}>Last Name</FormLabel>
-                            <Input h="5.5625rem" w='42rem' borderRadius={'2px'} bg="#ffffff" border={'1.4px solid #000'} type="text" />
+                            <FormLabel fontSize={['1.25rem','1.5rem']} fontWeight={'500'} lineHeight={'200%'} letterSpacing={'0.03rem'} color={'#000'}>Last Name</FormLabel>
+                            <Input h={['3.5rem',"5.5625rem"]} w={['24.25rem','42rem']} borderRadius={'2px'} bg="#ffffff" border={'1.4px solid #000'} type="text" />
 
                         </FormControl>
                     </Box>
 
-                </HStack>
-                <HStack gap={'12'}>
+                </Flex>
+                <Flex gap={['0','12']} flexDirection={['column','row']}>
                     <Box mb="21.87px">
                         <FormControl id="firstName" >
-                            <FormLabel fontSize={'1.5rem'} fontWeight={'500'} lineHeight={'200%'} letterSpacing={'0.03rem'} color={'#000'}>Email</FormLabel>
-                            <Input h="5.5625rem" w='42rem' borderRadius={'2px'} bg="#ffffff" border={'1.4px solid #000'} type="email" />
+                            <FormLabel fontSize={['1.25rem','1.5rem']} fontWeight={'500'} lineHeight={'200%'} letterSpacing={'0.03rem'} color={'#000'}>Email</FormLabel>
+                            <Input h={['3.5rem',"5.5625rem"]} w={['24.25rem','42rem']} borderRadius={'2px'} bg="#ffffff" border={'1.4px solid #000'} type="email" />
 
                         </FormControl>
                     </Box>
                     <Box mb="21.87px">
                         <FormControl id="firstName" >
-                            <FormLabel fontSize={'1.5rem'} fontWeight={'500'} lineHeight={'200%'} letterSpacing={'0.03rem'} color={'#000'}>Phone Number</FormLabel>
-                            <Input h="5.5625rem" w='42rem' borderRadius={'2px'} bg="#ffffff" border={'1.4px solid #000'} type="tel" />
+                            <FormLabel fontSize={['1.25rem','1.5rem']} fontWeight={'500'} lineHeight={'200%'} letterSpacing={'0.03rem'} color={'#000'}>Phone Number</FormLabel>
+                            <Input h={['3.5rem',"5.5625rem"]} w={['24.25rem','42rem']} borderRadius={'2px'} bg="#ffffff" border={'1.4px solid #000'} type="tel" />
 
                         </FormControl>
                     </Box>
 
-                </HStack>
+                </Flex>
                  <Box mb="21.87px">
                         <FormControl id="firstName" >
-                            <FormLabel fontSize={'1.5rem'} fontWeight={'500'} lineHeight={'200%'} letterSpacing={'0.03rem'} color={'#000'}>Message</FormLabel>
-                            <Textarea h="16.5rem" w='87.375rem' borderRadius={'2px'} bg="#ffffff" border={'1.4px solid #000'} type="text" />
+                            <FormLabel fontSize={['1.25rem','1.5rem']} fontWeight={'500'} lineHeight={'200%'} letterSpacing={'0.03rem'} color={'#000'}>Message</FormLabel>
+                            <Textarea h="16.25rem" w={['24.25rem','87.375rem']} borderRadius={'2px'} bg="#ffffff" border={'1.4px solid #000'} type="text" />
 
                         </FormControl>
                     </Box>
 
               
 
-                    <Button variant='solid' colorScheme='blackAlpha' w={'22.6875rem'} h='5.375rem' mt='3rem'  bgColor='#000' borderRadius='10px'>
-                      <Text  fontSize={'16px'} color='#FFFFFF' fontWeight={500} lineHeight='2.71944rem' className={dmsans.className} >Submit</Text>
+                    <Button variant='solid' colorScheme='blackAlpha' w={['24.25rem','22.6875rem']} h={['3.375rem','5.375rem']} mt='3rem'  bgColor='#000' borderRadius={['0.25rem','10px']}>
+                      <Text  fontSize={['1.125rem','16px']} color='#FFFFFF' fontWeight={500} lineHeight={'2.71944rem'} className={dmsans.className} >Submit</Text>
                       </Button>
 
             </form>
 
 
           </Box>
+
             <OurCommunity/>
 
           <FooterSection/>
