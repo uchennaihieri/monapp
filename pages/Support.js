@@ -18,6 +18,7 @@ import NewHero from '@/components/NewHero'
 
 import { BiSearch } from 'react-icons/bi'
 import OurCommunity from '@/components/OurCommunity'
+import EasySteps from '@/components/EasySteps'
 
 const inter = Inter({ subsets: ['latin'] })
 const dmsans = DM_Sans({ weight: "400", subsets: ["latin"] });
@@ -267,6 +268,10 @@ export default function Support() {
                       </Button>
 
             </form>
+
+            <Center display={['flex','none']} mb={'-20rem'}>
+            <EasySteps/>
+            </Center>
 
 
           </Box>

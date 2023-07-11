@@ -32,7 +32,7 @@ function OurCommunity() {
         <Flex
           align={"center"}
           flexDirection={["column", "row"]}
-          gap={"2rem"}
+          gap={"1.5rem"}
         >
           <Card
             borderRadius="14.045px"
@@ -43,7 +43,7 @@ function OurCommunity() {
             py='1.9rem' px='1.56rem'
           >
             <Flex h='100%' flexDirection={'column'} justify={'space-between'}  >
-              <Box>
+              <Box >
                 <Text className={interBold.className} fontSize="0.97531rem" fontWeight={'600'} color="#14142B" lineHeight={'1.65844rem'}>
                   “Beat service ever. Fast and reliable”
                 </Text>

@@ -85,36 +85,34 @@ const Pricing = () => {
           flexDirection={["column", "row"]}
           justify={"space-between"}
           align={"center"}
-          gap={"1.5rem"}
-          py={"4rem"}
+          gap={["2.6rem","1.5rem"]}
         >
           <Card
-            w="28.0625rem"
-            h="42.4375rem"
+            w={["21.6875rem","28.0625rem"]}
+            h={["32.79688rem","42.4375rem"]}
             bg={"ffffff"}
             borderRadius="0.75rem;"
             border="2px solid rgba(0, 0, 0, 0.20)"
             boxShadow="0px 8px 64px 0px rgba(167, 167, 167, 0.24)"
             px={"1.88rem"}
-            pt={"3.81rem"}
-            pb={"8.5rem"}
+            pt={["2.95rem","3.81rem"]}
+            pb={["6.5rem","8.5rem"]}
             mt={["-8rem", "-16rem"]}
           >
             <Text
               fontWeight={"600"}
-              fontSize={"2.25rem"}
-              // mb="1.12rem"
+              fontSize={["1.73888rem","2.25rem"]}
               className="clashSemiBold"
-              lineHeight="2.97894rem"
+              lineHeight={["2.30219rem","2.97894rem"]}
             >
               Mobile app
             </Text>
             <Text
               color="#02073E"
-              fontSize="1.125rem"
+              fontSize={["0.86944rem","1.125rem"]}
               className={dmsans.className}
               fontWeight="400"
-              lineHeight="1.65625rem"
+              lineHeight={["1.28rem","1.65625rem"]}
             >
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry.
@@ -122,71 +120,70 @@ const Pricing = () => {
             <Button
               colorScheme="#000000"
               variant={"outline"}
-              width="12.5rem"
-              height="3.875rem"
-              mt="2rem"
-              mb="2.62rem"
-              borderRadius="0.62144rem"
-              fontSize="1.45rem"
+              width={["9.66038rem","12.5rem"]}
+              height={["2.99469rem","3.875rem"]}
+              mt={["1.55rem","2rem"]}
+              mb={["2.8rem","2.62rem"]}
+              borderRadius={["0.48025rem","0.62144rem"]}
+              fontSize={["1.12063rem","1.45rem"]}
               className={dmsans.className}
               fontWeight="500"
               letterSpacing="-0.00831rem"
-              lineHeight=" 2.71944rem"
+              lineHeight={["2.10169rem"," 2.71944rem"]}
             >
-              {" "}
               Get app now
             </Button>
             <Text
-              fontSize={"2.5rem"}
+              fontSize={["1.73888rem","2.5rem"]}
               fontWeight={"600"}
               mb="0.23rem"
               className="clashSemiBold"
-              lineHeight="2.97894rem"
+              lineHeight={["2.30219rem","2.97894rem"]}
             >
               Free
             </Text>
             <Text
               color="#02073E"
-              fontSize="1.125rem"
+              fontSize={["0.86944rem","1.125rem"]}
               className={dmsans.className}
               fontWeight="400"
-              lineHeight="1.65625rem"
+              lineHeight={["1.28rem","1.65625rem"]}
             >
               Lorem Ipsum is simply dummy
             </Text>
             <Box mt={"1rem"}>
               <HStack>
-                <Icon as={CheckCircleIcon} mr={"10px"} h="1.5rem" w="1.5rem" />
+                <Icon as={CheckCircleIcon} mr={"10px"} h={["1.15925rem","1.5rem"]} w={["1.15925rem","1.5rem"]} />
                 <Text
-                  letterSpacing="-0.05rem"
+                  letterSpacing={["-0.03863rem","-0.05rem"]}
                   fontWeight="500"
-                  lineHeight={"3rem"}
+                  lineHeight={["2rem","3rem"]}
                   className={dmsans.className}
-                  fontSize="1rem"
+                  fontSize={["0.77281rem","1rem"]}
                 >
                   Zero Download Fee
                 </Text>
               </HStack>
               <HStack>
-                <Icon as={CheckCircleIcon} mr={"10px"} h="1.5rem" w="1.5rem" />
+              <Icon as={CheckCircleIcon} mr={"10px"} h={["1.15925rem","1.5rem"]} w={["1.15925rem","1.5rem"]} />
                 <Text
-                  letterSpacing="-0.05rem"
+                  letterSpacing={["-0.03863rem","-0.05rem"]}
                   fontWeight="500"
-                  lineHeight={"3rem"}
+                  lineHeight={["2rem","3rem"]}
                   className={dmsans.className}
-                  fontSize="1rem"
+                  fontSize={["0.77281rem","1rem"]}
                 >
                   Zero Setup Fee
                 </Text>
               </HStack>
               <HStack>
-                <Icon as={CheckCircleIcon} mr={"10px"} h="1.5rem" w="1.5rem" />
+              <Icon as={CheckCircleIcon} mr={"10px"} h={["1.15925rem","1.5rem"]} w={["1.15925rem","1.5rem"]} />
                 <Text
-                  letterSpacing="-0.05rem"
+                  letterSpacing={["-0.03863rem","-0.05rem"]}
                   fontWeight="500"
-                  lineHeight={"3rem"}
+                  lineHeight={["2rem","3rem"]}
                   className={dmsans.className}
-                  fontSize="1rem"
+                  fontSize={["0.77281rem","1rem"]}
                 >
                   Community Support
                 </Text>
@@ -195,32 +192,31 @@ const Pricing = () => {
           </Card>
 
           <Card
-            w="28.0625rem"
-            h="42.4375rem"
+            w={["21.6875rem","28.0625rem"]}
+            h={["32.79688rem","42.4375rem"]}
             bg={"ffffff"}
             borderRadius="0.75rem;"
             border="2px solid rgba(0, 0, 0, 0.20)"
             boxShadow="0px 8px 64px 0px rgba(167, 167, 167, 0.24)"
             px={"1.88rem"}
-            pt={"3.81rem"}
-            pb={"8.5rem"}
+            pt={["2.95rem","3.81rem"]}
+            pb={["6.5rem","8.5rem"]}
             mt={["0rem", "-16rem"]}
           >
             <Text
               fontWeight={"600"}
-              fontSize={"2.25rem"}
-              //  mb="1.12rem"
+              fontSize={["1.73888rem","2.25rem"]}
               className="clashSemiBold"
-              lineHeight="2.97894rem"
+              lineHeight={["2.30219rem","2.97894rem"]}
             >
               Monapp QR Card
             </Text>
             <Text
               color="#02073E"
-              fontSize="1.125rem"
+              fontSize={["0.86944rem","1.125rem"]}
               className={dmsans.className}
               fontWeight="400"
-              lineHeight="1.65625rem"
+              lineHeight={["1.28rem","1.65625rem"]}
             >
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry.
@@ -228,16 +224,19 @@ const Pricing = () => {
             <Button
               bg={"#000000"}
               color="#ffffff"
-              width="12.5rem"
-              height="3.875rem"
-              mt="2rem"
-              mb="2.62rem"
-              borderRadius="0.62144rem"
-              fontSize="1.45rem"
+              colorScheme="#000000"
+              variant={"outline"}
+              width={["9.66038rem","12.5rem"]}
+              h={["2.99469rem","3.875rem"]}
+              p={"0.35025rem 1.49006rem 0.35025rem 1.48869rem"}
+              mt={["1.55rem","2rem"]}
+              mb={["2.8rem","2.62rem"]}
+              borderRadius={["0.48025rem","0.62144rem"]}
+              fontSize={["1.12063rem","1.45rem"]}
               className={dmsans.className}
               fontWeight="500"
               letterSpacing="-0.00831rem"
-              lineHeight=" 2.71944rem"
+              lineHeight={["2.10169rem"," 2.71944rem"]}
             >
               Order now
             </Button>
@@ -261,37 +260,37 @@ const Pricing = () => {
             </Text>
             <Box mt={"1rem"}>
               <HStack>
-                <Icon as={CheckCircleIcon} mr={"10px"} h="1.5rem" w="1.5rem" />
+              <Icon as={CheckCircleIcon} mr={"10px"} h={["1.15925rem","1.5rem"]} w={["1.15925rem","1.5rem"]} />
                 <Text
-                  letterSpacing="-0.05rem"
+                  letterSpacing={["-0.03863rem","-0.05rem"]}
                   fontWeight="500"
-                  lineHeight={"3rem"}
+                  lineHeight={["2rem","3rem"]}
                   className={dmsans.className}
-                  fontSize="1rem"
+                  fontSize={["0.77281rem","1rem"]}
                 >
                   Zero Maintenance Fee
                 </Text>
               </HStack>
               <HStack>
-                <Icon as={CheckCircleIcon} mr={"10px"} h="1.5rem" w="1.5rem" />
+              <Icon as={CheckCircleIcon} mr={"10px"} h={["1.15925rem","1.5rem"]} w={["1.15925rem","1.5rem"]} />
                 <Text
-                  letterSpacing="-0.05rem"
+                  letterSpacing={["-0.03863rem","-0.05rem"]}
                   fontWeight="500"
-                  lineHeight={"3rem"}
+                  lineHeight={["2rem","3rem"]}
                   className={dmsans.className}
-                  fontSize="1rem"
+                  fontSize={["0.77281rem","1rem"]}
                 >
                   Free DElivery
                 </Text>
               </HStack>
               <HStack>
-                <Icon as={CheckCircleIcon} mr={"10px"} h="1.5rem" w="1.5rem" />
+              <Icon as={CheckCircleIcon} mr={"10px"} h={["1.15925rem","1.5rem"]} w={["1.15925rem","1.5rem"]} />
                 <Text
-                  letterSpacing="-0.05rem"
+                  letterSpacing={["-0.03863rem","-0.05rem"]}
                   fontWeight="500"
-                  lineHeight={"3rem"}
+                  lineHeight={["2rem","3rem"]}
                   className={dmsans.className}
-                  fontSize="1rem"
+                  fontSize={["0.77281rem","1rem"]}
                 >
                   Manage Card
                 </Text>
@@ -299,31 +298,31 @@ const Pricing = () => {
             </Box>
           </Card>
           <Card
-            w="28.0625rem"
-            h="42.4375rem"
+            w={["21.6875rem","28.0625rem"]}
+            h={["32.79688rem","42.4375rem"]}
             bg={"ffffff"}
             borderRadius="0.75rem;"
             border="2px solid rgba(0, 0, 0, 0.20)"
             boxShadow="0px 8px 64px 0px rgba(167, 167, 167, 0.24)"
             px={"1.88rem"}
-            pt={"3.81rem"}
-            pb={"8.5rem"}
-            mt={["-8rem", "-16rem"]}
+            pt={["2.95rem","3.81rem"]}
+            pb={["6.5rem","8.5rem"]}
+            mt={["0", "-16rem"]}
           >
             <Text
               fontWeight={"600"}
-              fontSize={"2.25rem"}
+              fontSize={["1.73888rem","2.25rem"]}
               className="clashSemiBold"
-              lineHeight="2.97894rem"
+              lineHeight={["2.30219rem","2.97894rem"]}
             >
               Transact
             </Text>
             <Text
               color="#02073E"
-              fontSize="1.125rem"
+              fontSize={["0.86944rem","1.125rem"]}
               className={dmsans.className}
               fontWeight="400"
-              lineHeight="1.65625rem"
+              lineHeight={["1.28rem","1.65625rem"]}
             >
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry.
@@ -331,16 +330,17 @@ const Pricing = () => {
             <Button
               colorScheme="#000000"
               variant={"outline"}
-              width="12.5rem"
-              height="3.875rem"
-              mt="2rem"
-              mb="2.62rem"
-              borderRadius="0.62144rem"
-              fontSize="1.45rem"
+              width={["9.66038rem","12.5rem"]}
+              height={["2.99469rem","3.875rem"]}
+              p={"0.35025rem 1.49006rem 0.35025rem 1.48869rem"}
+              mt={["1.55rem","2rem"]}
+              mb={["2.8rem","2.62rem"]}
+              borderRadius={["0.48025rem","0.62144rem"]}
+              fontSize={["1.12063rem","1.45rem"]}
               className={dmsans.className}
               fontWeight="500"
               letterSpacing="-0.00831rem"
-              lineHeight=" 2.71944rem"
+              lineHeight={["2.10169rem"," 2.71944rem"]}
             >
               Signup now
             </Button>
@@ -364,37 +364,37 @@ const Pricing = () => {
             </Text>
             <Box mt={"1rem"}>
               <HStack>
-                <Icon as={CheckCircleIcon} mr={"10px"} h="1.5rem" w="1.5rem" />
+              <Icon as={CheckCircleIcon} mr={"10px"} h={["1.15925rem","1.5rem"]} w={["1.15925rem","1.5rem"]} />
                 <Text
-                  letterSpacing="-0.05rem"
+                  letterSpacing={["-0.03863rem","-0.05rem"]}
                   fontWeight="500"
-                  lineHeight={"3rem"}
+                  lineHeight={["2rem","3rem"]}
                   className={dmsans.className}
-                  fontSize="1rem"
+                  fontSize={["0.77281rem","1rem"]}
                 >
                   No hidden charges
                 </Text>
               </HStack>
               <HStack>
-                <Icon as={CheckCircleIcon} mr={"10px"} h="1.5rem" w="1.5rem" />
+              <Icon as={CheckCircleIcon} mr={"10px"} h={["1.15925rem","1.5rem"]} w={["1.15925rem","1.5rem"]} />
                 <Text
-                  letterSpacing="-0.05rem"
+                  letterSpacing={["-0.03863rem","-0.05rem"]}
                   fontWeight="500"
-                  lineHeight={"3rem"}
+                  lineHeight={["2rem","3rem"]}
                   className={dmsans.className}
-                  fontSize="1rem"
+                  fontSize={["0.77281rem","1rem"]}
                 >
                   Low Transaction Fee
                 </Text>
               </HStack>
               <HStack>
-                <Icon as={CheckCircleIcon} mr={"10px"} h="1.5rem" w="1.5rem" />
+              <Icon as={CheckCircleIcon} mr={"10px"} h={["1.15925rem","1.5rem"]} w={["1.15925rem","1.5rem"]} />
                 <Text
-                  letterSpacing="-0.05rem"
+                  letterSpacing={["-0.03863rem","-0.05rem"]}
                   fontWeight="500"
-                  lineHeight={"3rem"}
+                  lineHeight={["2rem","3rem"]}
                   className={dmsans.className}
-                  fontSize="1rem"
+                  fontSize={["0.77281rem","1rem"]}
                 >
                   On-demand Settlement
                 </Text>
