@@ -29,8 +29,9 @@ export default function Home() {
         <Flex bg="#FFFFFF" flexDirection={'row'} justify={'center'} ><Features /></Flex>
 
         <div><CardSection /></div>
-        <div><DataSection /></div>
         <div><BlackSection /></div>
+        <div><DataSection /></div>
+
         <div><OurCommunity /></div>
         <div><FooterSection /></div>
       </main>

@@ -78,7 +78,7 @@ function Dashboard({ person }) {
     setPersonState(person)
     getWallet(setWallet, person);
     getCard(setCard, person);
-    getTransactions(setTransactions, person);
+    getTransactions(setTransactions, person, 3);
 
 
 
