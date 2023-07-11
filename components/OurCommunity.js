@@ -21,8 +21,8 @@ function OurCommunity() {
   return (
 
     <>
-      <VStack mt={'15rem'} mb='5rem' pb={["10rem", "12rem"]} alignItems={'center'} justifyContent={'center'}>
-        <Flex flexDir={"column"} align={"center"} mb='5rem' gap='5'>
+      <VStack  pb={["10rem", "14.33rem"]} alignItems={'center'} justifyContent={'center'}>
+        <Flex flexDir={"column"} align={"center"} mb={"2.62rem"} gap='5'>
           <Text fontSize={'2.625rem'} fontWeight={'700'} className='clashSemiBold' lineHeight={'124%'}>Why our community love us</Text>
           <Text fontSize="1.125rem" w={'27.5rem'} h={'3.375rem'} lineHeight={'1.8rem'} textAlign={"center"} >
             Lorem Ipsum is simply dummy text of the printing and typesetting industry
@@ -32,7 +32,7 @@ function OurCommunity() {
         <Flex
           align={"center"}
           flexDirection={["column", "row"]}
-          gap={"2rem"}
+          gap={"1.5rem"}
         >
           <Card
             borderRadius="14.045px"
@@ -43,7 +43,7 @@ function OurCommunity() {
             py='1.9rem' px='1.56rem'
           >
             <Flex h='100%' flexDirection={'column'} justify={'space-between'}  >
-              <Box>
+              <Box >
                 <Text className={interBold.className} fontSize="0.97531rem" fontWeight={'600'} color="#14142B" lineHeight={'1.65844rem'}>
                   “Beat service ever. Fast and reliable”
                 </Text>
