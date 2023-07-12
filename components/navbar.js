@@ -41,17 +41,17 @@ export default function Navbar() {
 
     return (
         <Flex className={dmsans.className}
-
+            // mt={{ base: '1.5rem', md: '1.25rem' }}
             justify='center'
+            flexDirection={'column'}
         >
             <Flex
                 color={useColorModeValue('gray.600', 'white')}
                 pt={{ base: '2.875rem', md: '4.08vh' }}
-                w={'72.813vw'}
+                w={['100%','72.813vw']}
+                px={['1rem', 'auto']}
                 align={'center'}>
-
-
-
+                
 
                 <Flex justify={{ base: 'start', md: 'start' }} onClick={goHome} _hover={{
                     cursor: "pointer"
@@ -59,7 +59,7 @@ export default function Navbar() {
                 >
                     <Img src="/logo.png" width={{ base: '8.625rem', md: "14.4275rem" }} height={{ base: '1.569rem', md: "2.625rem" }} />
 
-                    <Badge position="absolute" left="-10px" top="-15px" colorScheme='green'>BETA</Badge>
+                    {/* <Badge position="absolute" left="-10px" top="-15px" colorScheme='green'>BETA</Badge> */}
                 </Flex>
 
 
@@ -166,6 +166,9 @@ const MobileNav = () => {
         <Stack
             bg="#000000"
             p={4}
+            // bgColor={'green'}
+            // mt={'20rem'}
+            
             display={{ md: 'none' }}>
             {NAV_ITEMS.map((navItem) => (
                 <MobileNavItem key={navItem.label} {...navItem} />
@@ -178,7 +181,7 @@ const MobileNavItem = ({ label, children, href }) => {
     const { isOpen, onToggle } = useDisclosure();
 
     return (
-        <Stack spacing={4} onClick={children && onToggle}>
+        <Stack spacing={4}  onClick={children && onToggle}>
             <Flex
                 py={2}
                 as={Link}
