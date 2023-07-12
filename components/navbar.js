@@ -43,15 +43,15 @@ export default function Navbar() {
         <Flex className={dmsans.className}
             // mt={{ base: '1.5rem', md: '1.25rem' }}
             justify='center'
+            flexDirection={'column'}
         >
             <Flex
                 color={useColorModeValue('gray.600', 'white')}
                 pt={{ base: '2.875rem', md: '4.08vh' }}
-                w={'72.813vw'}
+                w={['100%','72.813vw']}
+                px={['1rem', 'auto']}
                 align={'center'}>
-
-
-
+                
 
                 <Flex justify={{ base: 'start', md: 'start' }} onClick={goHome} _hover={{
                     cursor: "pointer"
