@@ -21,6 +21,7 @@ function OurCommunity() {
   return (
 
     <>
+
       <VStack mt={'15rem'} mb='5rem' pb={["10rem", "12rem"]} alignItems={'center'} justifyContent={'center'}>
         <Flex flexDir={"column"} align={"center"} mb='5rem' gap='5'>
           <Text fontSize={'2.625rem'} fontWeight={'700'} className='clashSemiBold' lineHeight={'124%'}>Why our community love us</Text>

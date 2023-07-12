@@ -22,6 +22,7 @@ import { MdCheckCircle } from 'react-icons/md'
 import { AiFillStar, AiOutlineLine, AiOutlineRight, AiOutlineStar } from 'react-icons/ai'
 import { Bree_Serif, DM_Sans, Inter, Plus_Jakarta_Sans, Covered_By_Your_Grace } from '@next/font/google'
 import GoIcon from './Icons/goIcon';
+import EllipseIcon from './Icons/ellipseIcon';
 
 const plus = Plus_Jakarta_Sans({ weight: ['500', '700'], subsets: ['latin'] })
 
@@ -52,6 +53,10 @@ const gridData = [
     }
 ]
 
+
+const brokerPoints = [
+    'Onboarding', 'Training', 'Technical support', 'Customer support'
+]
 
 
 const GridBox = (data) => {
@@ -203,7 +208,12 @@ export default function CardSection() {
 
 const BrokerPart = () => {
     return (
-        <Flex direction={'column'} justify={'center'} mt='13.91rem'>
+
+
+
+
+
+        <Flex direction={'column'} justify={'center'} align={'center'} mt='13.91rem'>
             <Text
                 color='#2E2F35'
                 fontSize='4rem'
@@ -223,9 +233,19 @@ const BrokerPart = () => {
 
             >Join Our Payments Revolution</Text>
 
-            <Flex direction={'row'}>
+            <Flex gap={'6.69rem'} direction={'row'}>
                 <Box>
+                    <Box
+                        width='37.625rem'
+                        height='41.4375rem'
+                        borderRadius='0.875rem'
+                        border='1.885px solid rgba(0, 0, 0, 0.10)'
+                        background='#000'
+                        position='relative'
+                    >
 
+                        <Image borderRadius='0.875rem' src={'/supportOfficer.png'} h='41.4375rem' w={'37.625rem'} position={'absolute'} bottom='1.81rem' left='1.56rem' />
+                    </Box>
                 </Box>
                 <Box>
                     <Stack textAlign={{ base: "center", md: 'start' }} w={{ base: '22.43rem', md: "31.93rem" }} spacing={4} >
@@ -248,10 +268,23 @@ const BrokerPart = () => {
                             className={dmsansBold.className}
                             letterSpacing={'-0.01rem'}
                         >
-                            As a payment broker, you'll be helping individuals experience the benefits of our innovative payment solutions while earning 1% on every transaction made by your clients.
+                            As a payment broker, you'll be helping individuals experience the benefits of our innovative payment solutions while earning a fee on every transaction made by your clients.
                         </Text>
 
+                        <SimpleGrid columns={2} spacingX='6.25rem' spacingY='2.38rem' mb='4.38rem'>
 
+                            {brokerPoints.map((point, index) => <Flex key={index}><EllipseIcon boxSize={'18px'} mr='1rem' /> <Text
+                                color='#000'
+                                fontSize='1.141rem'
+                                className={dmsansBold.className}
+                                letterSpacing={'0.01144rem'}
+
+                                lineHeight='142%'
+
+                            >{point}</Text></Flex>)}
+
+
+                        </SimpleGrid>
 
                         <Button variant='solid' w={{ base: "17.5em", md: "13.75rem" }} h={'3.875rem'}
                             borderRadius='0.62144rem'
@@ -274,6 +307,10 @@ const BrokerPart = () => {
 
             </Flex>
         </Flex>
+
+
+
+
     )
 }
 

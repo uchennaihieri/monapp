@@ -12,6 +12,7 @@ import BlackSection from '@/components/blackSection'
 import PageSeo from '@/Seo/pageSeo'
 import NewHero from '@/components/NewHero'
 import OurCommunity from '@/components/OurCommunity'
+import WhiteEasySteps from '@/components/WhiteEasySteps'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -31,7 +32,7 @@ export default function Home() {
         <div><CardSection /></div>
         <div><BlackSection /></div>
         <div><DataSection /></div>
-
+        <div><WhiteEasySteps /></div>
         <div><OurCommunity /></div>
         <div><FooterSection /></div>
       </main>
