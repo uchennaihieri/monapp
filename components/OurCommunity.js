@@ -29,8 +29,9 @@ function OurCommunity() {
           </Text>
         </Flex>
 
-<Flex           overflowX={'auto'}
->
+        <Flex        
+          overflowX={'auto'}
+        >
         <Flex
           align={"center"}
           gap={"1.5rem"}

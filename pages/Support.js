@@ -71,7 +71,6 @@ export default function Support() {
           <Box ml={{base:'2rem',md:'15rem','2xl':'30rem'}} mb='5rem' color={'#000'}>
               <Flex overflowX={'auto'}>
                 <HStack  mt={'3rem'} gap={['4','10']}  >
-                 
                     <Flex direction={'column'} w={['9.35425rem','19.1875rem']} h={['5.69788rem','11.6875rem']} justifyContent='center' bgColor={'#fff'} borderRadius={['0.975px ','12px']}
                     alignItems='center' border='1.2px solid rgba(0, 0, 0, 0.20)'  _hover={{border:'2px #000 solid'}}  gap={['0.5','5']} boxShadow='0px 8px 64px 0px rgba(167, 167, 167,0.24)'>
                         <Box w={['2.22431rem',' 3.375rem']} h={['2.22431rem',' 3.375rem']} borderRadius='50%' bgColor='#D9D9D9'>
@@ -269,7 +268,7 @@ export default function Support() {
 
             </form>
 
-            <Center display={['flex','none']} mb={'-20rem'}>
+            <Center display={['flex','none']} mb={'-4rem'} mr='7'>
             <EasySteps/>
             </Center>
 

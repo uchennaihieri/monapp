@@ -43,7 +43,8 @@ export default function Navbar() {
         <Flex className={dmsans.className}
             // mt={{ base: '1.5rem', md: '1.25rem' }}
             justify='center'
-            flexDirection={'column'}
+            flexDirection={['column', 'row']}
+
         >
             <Flex
                 color={useColorModeValue('gray.600', 'white')}
