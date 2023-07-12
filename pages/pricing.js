@@ -46,15 +46,18 @@ const Pricing = () => {
             flexDirection={"column"}
             alignItems={"center"}
             justifyContent={"center"}
-            textAlign={"center"}
+            // textAlign={"center"}
             color={"white"}
-            width={["80%", "50%"]}
-            m={["4.24rem auto"," 8rem auto"]}
+            // width={["80%", "50%"]}
+            // m={["4.24rem auto"," 8rem auto"]}
+            gap={["1rem", "2.5rem"]}
+            mb={["2.5rem","4.5rem"]}
           >
             <Text
               fontSize={["1.14613rem","1.625rem"]}
               className="clashRegular"
               lineHeight={["1.23425rem","1.75rem"]}
+              mt={["2.5rem","4.5rem"]}
             >
               Pricing with you in mind
             </Text>
@@ -65,6 +68,7 @@ const Pricing = () => {
               letterSpacing={["-0.0875rem","-0.0625rem"]}
               className="clashSemiBold"
               w={["24.875rem","59.25rem"]}
+              textAlign={"center"}
             >
               Simple and fair pricing on budget and that works best for your on{" "}
             </Text>
@@ -73,10 +77,10 @@ const Pricing = () => {
               fontSize={["0.79344rem","1.125rem"]}
               lineHeight={[" 1.23425rem","1.75rem"]}
               w={["22.34925rem","36.75rem"]}
+              textAlign={'center'}
+              mb={["9rem","4.5rem"]}
             >
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s,
+              Enjoy fast and easy local payments. With our end-to-end solution, you can confirm payments in real-time and experience seamless transactions.
             </Text>
           </Flex>
         </NewHero>
@@ -98,7 +102,7 @@ const Pricing = () => {
             px={"1.88rem"}
             pt={["2.95rem","3.81rem"]}
             pb={["6.5rem","8.5rem"]}
-            mt={["-8rem", "-16rem"]}
+            mt={["-9rem", "-16rem"]}
           >
             <Text
               fontWeight={"600"}
