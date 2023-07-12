@@ -18,7 +18,7 @@ function EasySteps() {
       <VStack
         bg={"#000000"}
         maxWidth={["24.375rem","87.375rem"]}
-        m={"7.62rem auto 11.5rem"}
+        m={["6rem auto 7.8rem","7.62rem auto 11.5rem"]}
         h={["58.9375rem","44.4375rem"]}
         color="#ffffff"
         borderRadius={["2.375rem","3rem"]}
