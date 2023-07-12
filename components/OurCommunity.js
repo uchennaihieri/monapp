@@ -21,7 +21,7 @@ function OurCommunity() {
   return (
 
     <>
-      <VStack mt={'15rem'} mb='5rem' pb={["10rem", "12rem"]} alignItems={'center'} justifyContent={'center'}>
+      <VStack mt={["6rem",'15rem']} mb='5rem' pb={["10rem", "12rem"]} alignItems={'center'} justifyContent={'center'} >
         <Flex flexDir={"column"} align={"center"} mb='5rem' gap='5'>
           <Text w={['18.8125rem','39.125rem']} h={['4.375rem','2.9375rem']} fontSize={['2rem','2.625rem']} fontWeight={'700'} textAlign={'center'} className='clashSemiBold' lineHeight={'124%'}>Why our community love us</Text>
           <Text fontSize={['0.875rem',"1.125rem" ]}w={['16.91294rem','27.5rem']} h={['2.07569rem','3.375rem']} lineHeight={'1.8rem'} textAlign={"center"} >
@@ -29,9 +29,10 @@ function OurCommunity() {
           </Text>
         </Flex>
 
+<Flex           overflowX={'auto'}
+>
         <Flex
           align={"center"}
-          flexDirection={["column", "row"]}
           gap={"1.5rem"}
         >
           <Card
@@ -184,6 +185,7 @@ function OurCommunity() {
             </Flex>
           </Card>
 
+        </Flex>
         </Flex>
       </VStack>
 
