@@ -329,7 +329,7 @@ export const Signin = () => {
           isCentered
         >
           <ModalOverlay />
-          <ModalContent maxW={["300px","400px"]} py="10px">
+          <ModalContent maxW={["300px", "400px"]} py="10px">
             <ModalBody>
               {value === "1" && (
                 // Modal content for Monapp Account
@@ -342,8 +342,7 @@ export const Signin = () => {
                       <InputLeftElement
                         pointerEvents={"none"}
                         mt={"6px"}
-                        children={<img src="/email.svg" alt="Image" />}
-                      />
+                      ><Image src="/email.svg" alt="Image" /></InputLeftElement>
                       <Input
                         type="email"
                         placeholder="Enter your Email"
@@ -359,12 +358,10 @@ export const Signin = () => {
                     <InputGroup>
                       <InputLeftElement
                         mt={"5px"}
-                        children={<img src="/pwd.svg" alt="Image" />}
-                      />
+                      ><Image src="/pwd.svg" alt="Image" /></InputLeftElement>
                       <InputRightElement
                         mt={"5px"}
-                        children={<img src="/showpwd.svg" alt="Image" />}
-                      />
+                      ><Image src="/showpwd.svg" alt="Image" /></InputRightElement>
                       <Input
                         type="email"
                         placeholder="Enter your Email"
