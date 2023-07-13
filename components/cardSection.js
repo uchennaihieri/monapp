@@ -268,7 +268,7 @@ const BrokerPart = () => {
                             className={dmsansBold.className}
                             letterSpacing={'-0.01rem'}
                         >
-                            As a payment broker, you&apos;ll be helping individuals experience the benefits of our innovative payment solutions while earning a fee on every transaction made by your clients.
+                            As a payment broker, you&apos;ll be helping individuals experience the benefits ovative payment solutions while earning a fee on every transaction made by your clients.
                         </Text>
 
                         <SimpleGrid columns={2} spacingX='6.25rem' spacingY='2.38rem' mb='4.38rem'>
