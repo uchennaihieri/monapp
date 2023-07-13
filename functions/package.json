@@ -20,8 +20,11 @@
     "firebase-admin": "^10.0.2",
     "firebase-functions": "^3.18.0",
     "lodash": "^4.17.21",
+    "moment": "^2.29.4",
     "node-fetch": "^2.6.9",
-    "paystack-api": "^2.0.6"
+    "paystack-api": "^2.0.6",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^4.6.3"
   },
   "devDependencies": {
     "firebase-functions-test": "^0.2.0"

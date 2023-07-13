@@ -6,7 +6,7 @@ const dmsansextra = DM_Sans({ weight: '700', subsets: ['latin'] })
 
 function SecuritySetting() {
     return (
-        <Box w='730px' minH='100vh' borderRadius='8px' border='0.6px solid #CFD0D3' bg='#FFFFFF' p='36px'>
+        <Box w={{base:'100%',md:'730px'}} minH='100vh' borderRadius='8px' border='0.6px solid #CFD0D3' bg='#FFFFFF' p='36px'>
             <form>
                 <Text mb='27px'>Security</Text>
                 <Box mb="21.87px">
@@ -34,9 +34,9 @@ function SecuritySetting() {
 
                     </FormControl>
                 </Box>
-                <ButtonGroup mt='88px' spacing='18px'>
-                    <Button variant='solid' colorScheme='blackAlpha' w='202px' h='54px' borderRadius={'2px'} bg='rgba(0, 0, 0, 1)' ><Text className={dmsansextra.className} fontSize={'16px'} color='#FFFFFF' fontWeight={700} lineHeight='21px' >Save and Update</Text></Button>
-                    <Button variant='outline' colorScheme='blackAlpha' w='202px' h='54px' borderRadius={'2px'}  ><Text className={dmsansextra.className} fontSize={'16px'} color='#000000' fontWeight={700} lineHeight='21px' >Cancel</Text></Button>
+                <ButtonGroup mt='88px'  gap={{base:'1.125em',md:'18px'}} flexWrap='wrap' justifyContent='center'>
+                    <Button variant='solid' colorScheme='blackAlpha' w={{base:'100%',md:'12.625em'}}  h='54px' borderRadius={'2px'} bg='rgba(0, 0, 0, 1)' ><Text className={dmsansextra.className} fontSize={'16px'} color='#FFFFFF' fontWeight={700} lineHeight='21px' >Save and Update</Text></Button>
+                    <Button variant='outline' colorScheme='blackAlpha' w={{base:'100%',md:'12.625em'}}  h='54px' borderRadius={'2px'}  ><Text className={dmsansextra.className} fontSize={'16px'} color='#000000' fontWeight={700} lineHeight='21px' >Cancel</Text></Button>
 
                 </ButtonGroup>
 

@@ -6,8 +6,11 @@ var paystack = require("paystack-api")("sk_test_1fbf46ff165d68ab2c5a7ac01f12109f
 const sdk = require('api')('@qoreid/v1.0#79ra32ll9x7kn58');
 var serviceAccount = require("./permissions.json");
 const bcrypt = require('bcrypt');
+const { getSubscribedUsers, unSubscribeToMerchant, getSubscriptionsForUser, subscribeToMerchant, getGeneralSettings, CreateDeliveryDetails, GetDeliveryDetailsForUser, GetSettlementDetailsForUser, CreateSettlementDetails, getExpensesInMonths } = require('./reusable.js')
 var crypto = require('crypto');
 const express = require('express');
+const SwaggerSpec = require('./swagger.js');
+const swaggerUi = require('swagger-ui-express');
 var _ = require('lodash');
 
 admin.initializeApp({
@@ -25,8 +28,31 @@ var secret = "sk_test_1fbf46ff165d68ab2c5a7ac01f12109fb4073d00";
 
 
 
+// Serve Swagger API documentation
+SwaggerSpec.setUpSwaggerJSDoc();
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(SwaggerSpec.getSwaggerJSON()));
 
 
+/**
+ * @swagger
+ * /api/user/{id}:
+ *   get:
+ *     summary: Get all Events For a single user
+ *     tags: [USERS]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The user's id
+ *     responses:
+ *       200:
+ *         description: User found
+ *       400:
+ *         description: An error occured
+ */
+// ====== GET user by ID =====
 app.get('/api/user/:id', (req, res) => {
 
     (async () => {
@@ -329,11 +355,367 @@ app.get('/api/getBanks', (req, res) => {
 })
 
 
+/**
+ * @swagger
+ * /api/expenses/{userId}:
+ *   get:
+ *     summary: Get all Expenses For a single user
+ *     tags: [USERS]
+ *     parameters:
+ *       - in: path
+ *         name: userId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The user's id
+ *     responses:
+ *       200:
+ *         description: Expense found
+ *       400:
+ *         description: An error occured
+ */
+app.get('/api/expenses/:userId', async (req, res) => {
+    try {
+        const expenses = await getExpensesInMonths(db, req.params.userId, 7);
+
+        return res.status(200).send({ "error": false, "data": expenses });
+    } catch (error) {
+        return res.status(500).send({ "error": true, "msg": error.message })
+    }
+});
+
+
+/**
+ * @swagger
+ * /api/general-settings:
+ *   get:
+ *     summary: Get general settings
+ *     tags: [APP]
+ *     responses:
+ *       200:
+ *         description: General settings
+ *       400:
+ *         description: An error occured
+ */
+//============ Get the settings ============
+app.get('/api/general-settings', async (req, res) => {
+    try {
+        const settings = await getGeneralSettings(db);
+
+        return res.status(200).send({ "error": false, "data": settings });
+    } catch (error) {
+        return res.status(500).send({ "error": true, "msg": error.message })
+    }
+});
+
+
+
+/**
+ * @swagger
+ * /api/create-delivery-details:
+ *   post:
+ *     summary: Create Delivery details
+ *     tags: [USERS]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               userId:
+ *                 type: string
+ *                 description: The user Id
+ *               address:
+ *                 type: string
+ *                 description: The address
+ *               contact:
+ *                 type: string
+ *                 description: The contact
+ *               email:
+ *                 type: string
+ *                 description: The customer's email
+ *     responses:
+ *       200:
+ *         description:  success
+ *       400:
+ *         description: An error occured
+ */
+app.post('/api/create-delivery-details', async (req, res) => {
+    try {
+        const details = await GetDeliveryDetailsForUser(db, req.body.userId);
+        if (details) {
+            return res.status(400).send({ "error": true, "msg": "Delivery details already exists" })
+        }
+        const deliveryDetails = await CreateDeliveryDetails(db, req.body.address, req.body.contact, req.body.email, req.body.userId);
+
+        return res.status(200).send({ "error": false, "data": deliveryDetails })
+    } catch (error) {
+        return res.status(500).send({ "error": true, "msg": error.message })
+    }
+});
+
+
+/**
+ * @swagger
+ * /api/get-delivery-details/{userId}:
+ *   get:
+ *     summary: Get delivery details
+ *     tags: [USERS]
+ *     parameters:
+ *       - in: path
+ *         name: userId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The user's id
+ *     responses:
+ *       200:
+ *         description: Success
+ *       400:
+ *         description: An error occured
+ */
+app.get('/api/get-delivery-details/:userId', async (req, res) => {
+    try {
+        const details = await GetDeliveryDetailsForUser(db, req.params.userId);
+
+        return res.status(200).send({ "error": false, "data": details })
+    } catch (error) {
+        return res.status(500).send({ "error": true, "msg": error.message })
+    }
+});
+
+
+/**
+ * @swagger
+ * /api/add-settlements-details:
+ *   post:
+ *     summary: Create settlement details
+ *     tags: [USERS]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               userId:
+ *                 type: string
+ *                 description: The user Id
+ *               bankCode:
+ *                 type: string
+ *                 description: The customer's bank code  
+ *               bankName:
+ *                 type: string
+ *                 description: The customer's bank name
+ *               accountNumber:
+ *                 type: string
+ *                 description: The customer's account number
+ *               accountName:
+ *                 type: string
+ *                 description: The customer's account name
+ *     responses:
+ *       200:
+ *         description:  success
+ *       400:
+ *         description: An error occured
+ */
+app.post('/api/add-settlements-details', async (req, res) => {
+    try {
+        const details = await GetSettlementDetailsForUser(db, req.body.userId);
+        if (details) {
+            return res.status(400).send({ "error": true, "msg": "Settlement details already added" })
+        }
+        const settlementDetails = await CreateSettlementDetails(db, req.body.bankCode, req.body.bankName, req.body.accountNumber, req.body.accountName, req.body.userId);
+
+        return res.status(200).send({ "error": false, "data": settlementDetails })
+    } catch (error) {
+        return res.status(500).send({ "error": true, "msg": error.message })
+    }
+});
+
+/**
+ * @swagger
+ * /api/get-settlements-details/{userId}:
+ *   get:
+ *     summary: Get settlements details
+ *     tags: [USERS]
+ *     parameters:
+ *       - in: path
+ *         name: userId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The user's id
+ *     responses:
+ *       200:
+ *         description: Success
+ *       400:
+ *         description: An error occured
+ */
+app.get('/api/get-settlements-details/:userId', async (req, res) => {
+    try {
+        const details = await GetSettlementDetailsForUser(db, req.params.userId);
+
+        return res.status(200).send({ "error": false, "data": details })
+    } catch (error) {
+        return res.status(500).send({ "error": true, "msg": error.message })
+    }
+});
+
+/**
+ * @swagger
+ * /api/subscribe-to-merchant:
+ *   post:
+ *     summary: Subscribe to a merchant
+ *     tags: [USERS]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               userId:
+ *                 type: string
+ *                 description: The user Id
+ *               merchantId:
+ *                 type: string
+ *                 description: The merchant Id
+ *     responses:
+ *       200:
+ *         description: Success
+ *       400:
+ *         description: An error occured
+ */
+app.post('/api/subscribe-to-merchant', async (req, res) => {
+    try {
+        const details = await subscribeToMerchant(db, req.body.merchantId, req.body.userId);
+
+        if(details.status === true) {
+            return res.status(200).send({ "error": false, "message": details.message})
+        }else {
+           return res.status(200).send({ "error": true, "message": "An error occured" })
+        }
+    } catch (error) {
+        return res.status(500).send({ "error": true, "msg": error.message })
+    }
+});
+
+
+/**
+ * @swagger
+ * /api/unsubscribe:
+ *   post:
+ *     summary: Unsubscribe to a merchant
+ *     tags: [USERS]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               userId:
+ *                 type: string
+ *                 description: The user Id
+ *               merchantId:
+ *                 type: string
+ *                 description: The merchant Id
+ *     responses:
+ *       200:
+ *         description: Success
+ *       400:
+ *         description: An error occured
+ */
+app.post('/api/unsubscribe', async (req, res) => {
+    try {
+        const details = await unSubscribeToMerchant(db, req.body.merchantId, req.body.userId);
+
+        if(details.status === true) {
+            return res.status(200).send({ "error": false, "message": details.message})
+        }else {
+           return res.status(200).send({ "error": true, "message": "An error occured" })
+        }
+    } catch (error) {
+        return res.status(500).send({ "error": true, "msg": error.message })
+    }
+});
+
+
+/**
+ * @swagger
+ * /api/user/get-subscriptions/{userId}:
+ *   get:
+ *     summary: Get subscriptions for a user
+ *     tags: [USERS]
+ *     parameters:
+ *       - in: path
+ *         name: userId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The user's id
+ *     responses:
+ *       200:
+ *         description: Success
+ *       400:
+ *         description: An error occured
+ */
+app.get('/api/user/get-subscriptions/:userId', async (req, res) => {
+    try {
+        const details = await getSubscriptionsForUser(db, req.params.userId);
+
+        if(details.status === true) {
+            return res.status(200).send({ "error": false, "message": details.message, "data": details.data})
+        }else {
+           return res.status(200).send({ "error": true, "message": "An error occured" })
+        }
+    } catch (error) {
+        return res.status(500).send({ "error": true, "msg": error.message })
+    }
+});
 
 
 
 
 
+
+/**
+ * @swagger
+ * /api/merchant/get-subscribers/{merchantId}:
+ *   get:
+ *     summary: Get subscribers under a merchant account
+ *     tags: [USERS]
+ *     parameters:
+ *       - in: path
+ *         name: merchantId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The merchant's id
+ *     responses:
+ *       200:
+ *         description: Success
+ *       400:
+ *         description: An error occured
+ */
+app.get('/api/merchant/get-subscribers/:merchantId', async (req, res) => {
+    try {
+        const details = await getSubscribedUsers(db, req.params.merchantId);
+
+        if(details.status === true) {
+            return res.status(200).send({ "error": false, "message": details.message, "data": details.data})
+        }else {
+           return res.status(200).send({ "error": true, "message": "An error occured" })
+        }
+    } catch (error) {
+        return res.status(500).send({ "error": true, "msg": error.message })
+    }
+});
+
+
+//============ Withdraw from wallet =================
 app.post('/api/withdraw', (req, res) => {
 
 
@@ -343,6 +725,7 @@ app.post('/api/withdraw', (req, res) => {
             const senderWallet = db.collection('wallet').doc(req.body.senderId);
             const security = db.collection('security').doc(req.body.senderId);
             const senderInfo = db.collection('users').doc(req.body.senderId);
+
 
             let senderWalletInfo2 = await senderWallet.get()
             let hashPin2 = await security.get()
@@ -374,6 +757,7 @@ app.post('/api/withdraw', (req, res) => {
                                 if (difference.length === 0) {
 
                                     if (senderamount > transactionamount) {
+
                                         await senderWallet.update({
                                             personalBalance: (senderamount - transactionamount) / 100
                                         });
@@ -573,6 +957,7 @@ app.post('/api/withdraw', (req, res) => {
 // })
 
 
+// ======== Receive and Make Payment ========
 app.post('/api/wallet/add', (req, res) => {
 
     (async () => {
@@ -582,6 +967,8 @@ app.post('/api/wallet/add', (req, res) => {
             const senderInfo = db.collection('users').doc(req.body.senderId);
             const receiverWallet = db.collection('wallet').doc(req.body.receiverId);
             const security = db.collection('security').doc(req.body.senderId);
+            const general_settings = await getGeneralSettings(db);
+            const max_per_transaction = general_settings.max_per_transaction * 100;
 
 
             let senderWalletInfo2 = await senderWallet.get()
@@ -594,6 +981,8 @@ app.post('/api/wallet/add', (req, res) => {
             let senderInfoData = sender.data()
             let hashPinData = hashPin2.data()
             var transactionamount = req.body.amount * 100
+            var transactionfee = req.body.fee * 100
+            var totalAmountToDeduct = transactionamount + transactionfee;
             var receiveramount = receiverWalletInfo.personalBalance * 100;
             var senderamount = senderWalletInfo.personalBalance * 100;
             var hashPin = hashPinData.pin
@@ -601,30 +990,45 @@ app.post('/api/wallet/add', (req, res) => {
 
             bcrypt.compare(req.body.pin, hashPin).then(async function (result) {
                 if (result) {
-                    if (senderamount > transactionamount) {
-                        await senderWallet.update({
-                            personalBalance: (senderamount - transactionamount) / 100
-                        });
-                        await receiverWallet.update({
-                            personalBalance: (receiveramount + transactionamount) / 100
-                        });
-                        await db.collection('transactions').add({
-                            createdAt: new Date().toLocaleDateString(),
-                            amount: req.body.amount.toString(),
-                            transactionStatus: "Success",
-                            senderId: req.body.senderId,
-                            receiverId: req.body.receiverId,
-                            sendername: senderInfoData.firstName + " " + senderInfoData.lastName,
-                            users: [
-                                req.body.senderId,
-                                req.body.receiverId
-                            ],
-                            transactionType: "TR"
-                        });
-                        return res.status(200).send({
-                            'status': true,
-                            'messege': "transaction sucessful"
-                        });
+                    if (senderamount > totalAmountToDeduct) {
+                        if (transactionamount < max_per_transaction) {
+                            await senderWallet.update({
+                                personalBalance: (senderamount - totalAmountToDeduct) / 100
+                            });
+                            await receiverWallet.update({
+                                personalBalance: (receiveramount + transactionamount) / 100
+                            });
+                            await db.collection('transactions').add({
+                                createdAt: new Date().toLocaleDateString(),
+                                amount: req.body.amount.toString(),
+                                transactionStatus: "Success",
+                                senderId: req.body.senderId,
+                                receiverId: req.body.receiverId,
+                                sendername: senderInfoData.firstName + " " + senderInfoData.lastName,
+                                users: [
+                                    req.body.senderId,
+                                    req.body.receiverId
+                                ],
+                                transactionType: "TR"
+                            });
+                            await db.collection('transaction_fees').add({
+                                createdAt: new Date().toLocaleDateString(),
+                                amount: req.body.amount.toString(),
+                                fee: req.body.fee.toString(),
+                                senderId: req.body.senderId,
+                                receiverId: req.body.receiverId,
+                            });
+                            return res.status(200).send({
+                                'status': true,
+                                'messege': "transaction sucessful"
+                            });
+                        } else {
+                            return res.status(404).send({
+                                'status': false,
+                                'messege': "Transaction amount has exceeded maximum threshold per transaction."
+                            });
+                        }
+
 
                     } else {
                         return res.status(404).send({

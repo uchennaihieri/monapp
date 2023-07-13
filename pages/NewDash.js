@@ -7,7 +7,7 @@ import {
     Flex,
     HStack,
     VStack,
-    Icon,
+    Icon, ButtonGroup,
     useColorModeValue,
     Drawer,
     DrawerContent,
@@ -22,6 +22,13 @@ import {
     MenuList,
     Image,
     InputGroup,
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalFooter,
+    ModalBody,
+    ModalCloseButton,
     InputLeftElement,
     Input,
     Spacer,
@@ -53,8 +60,8 @@ import { DM_Sans, Rubik, } from '@next/font/google';
 import { BsChevronDown, BsDot } from 'react-icons/bs';
 import { GoPrimitiveDot } from 'react-icons/go';
 import MyChart from '@/components/myChart';
-import { activePage } from '@/recoil/atoms';
-import { useRecoilState } from 'recoil';
+import { activePage, personState } from '@/recoil/atoms';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import DashboardIcon from '@/components/Icons/dashboardIcon';
@@ -63,6 +70,7 @@ import TransactionIcon from '@/components/Icons/transactionIcon';
 import MerchantsIcon from '@/components/Icons/merchantsIcon';
 import settingIcon from '@/components/Icons/settingIcon';
 import LogoutIcon from '@/components/Icons/logoutIcon';
+import { auth, signOut } from '@/services/firebase';
 
 
 const dmsans = DM_Sans({ weight: '400', subsets: ['latin'] })
@@ -70,7 +78,7 @@ const dmsansbold = DM_Sans({ weight: '500', subsets: ['latin'] })
 const rubik = Rubik({ weight: ['300', '400'], subsets: ['latin'] })
 
 const LinkItems = [
-    { name: 'Dashboard', icon: DashboardIcon, pathname: '/dashboardd' },
+    { name: 'Dashboard', icon: DashboardIcon, pathname: '/Dashboard' },
     { name: 'My Cards', icon: MyCardsIcon, pathname: '/my_cards' },
     { name: 'Transaction', icon: TransactionIcon, pathname: '/transactions' },
     { name: 'Merchants', icon: MerchantsIcon, pathname: '/merchants' },
@@ -89,6 +97,9 @@ export default function NewDash({
 }) {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [currentPage, setCurrentPage] = useRecoilState(activePage)
+
+    //   console.log(firstName)
+
     return (
         <Box minH="100vh" bg={'#FCFCFC'}>
             <SidebarContent
@@ -109,7 +120,7 @@ export default function NewDash({
             </Drawer>
             {/* mobilenav */}
             <MobileNav onOpen={onOpen} />
-            <Box ml={{ base: 0, md: '17.25rem' }} p="4">
+            <Box ml={{ base: 0, md: '17.25rem', '2xl': '26rem' }} p="4">
 
 
                 {children}
@@ -158,51 +169,81 @@ const SidebarContent = ({ onClose, ...rest }) => {
 const NavItem = ({ icon, to, name, children, ...rest }) => {
 
     const router = useRouter();
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const { firstName, lastName } = useRecoilValue(personState)
     const checkClick = (name) => {
 
         if (name === 'Logout') {
 
-            alert('a')
+            onOpen()
         } else null
     }
 
+    const handleLogout = () => {
+        signOut(auth).then(() => {
+            router.push('/auth')
+        }).catch((error) => {
+            console.log({ error })
+        });
+    }
+
+
     return (
-        <Link
-            href={`${to}`}
-            onClick={() => checkClick(name)}
 
+        <>
+            <Modal size='3xl' isOpen={isOpen} onClose={onClose} isCentered blockScrollOnMount={false}>
+                <ModalOverlay />
+                <ModalContent h='355px'>
+                    <ModalCloseButton />
+                    <ModalBody>
+                        <Flex flexDirection='column' align='center' justify='center' pt='38px' pb='65px' textAlign='center'>
+                            <Text mb='26px' fontSize='18px' className={dmsans.className}>Hey, {firstName + ' ' + lastName}.! </Text>
+                            <Text mb='75px' maxW='301px' fontSize='28px' fontWeight={'500'} className={dmsans.className}>Are you sure you want to logout?</Text>
+                            <ButtonGroup gap={{ base: '1.125em', md: '18px' }} flexWrap='wrap' justifyContent='center'>
+                                <Button variant='solid' colorScheme='blackAlpha' w={{ base: '100%', md: '12.625em' }} h='54px' borderRadius={'2px'} bg='rgba(0, 0, 0, 1)' ><Text fontSize={'16px'} color='#FFFFFF' fontWeight={700} lineHeight='21px' className={dmsans.className} onClick={handleLogout}>Yes, log out</Text></Button>
+                                <Button variant='outline' colorScheme='blackAlpha' w={{ base: '100%', md: '12.625em' }} h='54px' borderRadius={'2px'} onClick={onClose}  ><Text fontSize={'16px'} color='#000000' fontWeight={700} lineHeight='21px' className={dmsans.className} > No, Cancel</Text></Button>
 
-            passHref style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
-            <Flex
-                align="center"
-                p="4"
-                mx="12"
-                borderRadius="lg"
-                role="group"
-                cursor="pointer"
-                color={router.pathname === to ? '#000000' : '#A5B3CD'}
-                fontWeight={router.pathname === to ? 'bold' : 'normal'}
-                className={dmsans.className}
-                fontSize={'18px'}
-                _hover={{
-                    color: '#000000',
-                    fontWeight: 'semibold'
-                }}
-                {...rest}>
-                {icon && (
-                    <Icon
-                        mr="17.5px"
-                        fontSize="16px"
-                        color={router.pathname === to ? '#000000' : '#A5B3CD'}
-                        _groupHover={{
-                            color: '#000000',
-                        }}
-                        as={icon}
-                    />
-                )}
-                {children}
-            </Flex>
-        </Link>
+                            </ButtonGroup>
+                        </Flex>
+                    </ModalBody>
+                </ModalContent>
+            </Modal>
+
+            <Link
+                href={`${to}`}
+                onClick={() => checkClick(name)}
+                passHref style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
+                <Flex
+                    align="center"
+                    p="4"
+                    ml="12"
+                    borderRadius="lg"
+                    role="group"
+                    cursor="pointer"
+                    color={router.pathname === to ? '#000000' : '#A5B3CD'}
+                    fontWeight={router.pathname === to ? 'bold' : 'normal'}
+                    className={dmsans.className}
+                    fontSize={'18px'}
+                    _hover={{
+                        color: '#000000',
+                        fontWeight: 'semibold'
+                    }}
+                    {...rest}>
+                    {icon && (
+                        <Icon
+                            mr="17.5px"
+                            fontSize="16px"
+                            color={router.pathname === to ? '#000000' : '#A5B3CD'}
+                            _groupHover={{
+                                color: '#000000',
+                            }}
+                            as={icon}
+                        />
+                    )}
+                    {children}
+                </Flex>
+            </Link>
+        </>
     );
 };
 
@@ -211,7 +252,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
 
     const router = useRouter();
     const routeNames = {
-        '/dashboardd': 'Dashboard',
+        '/Dashboard': 'Dashboard',
         '/my_cards': 'My Cards',
         '/transactions': 'Transaction',
         '/merchants': 'Merchants',
@@ -220,71 +261,84 @@ const MobileNav = ({ onOpen, ...rest }) => {
 
     const currentRoute = router.pathname;
     const title = routeNames[currentRoute];
+    const { firstName, lastName } = useRecoilValue(personState)
+
 
     return (
-        <Flex
-            ml={{ base: 0, md: '6.375rem' }}
-            px={{ base: 4, md: '3.1875rem' }}
-            height={{ base: '20', md: '8.8rem' }}
-            alignItems="center"
-            bg={'#FCFCFC'}
-            // borderBottomWidth="1px"
-            // borderBottomColor={useColorModeValue('gray.200', 'gray.700')}
-            justifyContent={{ base: 'space-between', md: 'flex-end' }}
-            {...rest}>
-            <IconButton
-                display={{ base: 'flex', md: 'none' }}
-                onClick={onOpen}
-                variant="outline"
-                aria-label="open menu"
-                icon={<FiMenu />}
-            />
-
-
-            <Image display={{ base: 'flex', md: 'none' }} src={'/footerlogo.png'} width={{ base: '9.8rem' }} height={'auto'} />
-            <HStack display={{ base: 'none', md: 'flex' }} w='100%' ml="17.25rem" mr="2.375rem" >
-                <Box>
-                    <Text fontSize={'32px'} fontWeight={500} >{title}</Text>
-                    <Text fontSize={'14px'} fontWeight={400} >Tuesday, 14th May, 2023</Text>
-                </Box>
-                <Spacer />
-
-                <InputGroup align="center" w="35.125rem" h="3.75rem"  >
-                    <InputLeftElement
-                        h="3.75rem"
-                        pointerEvents='none'
-                        children={<SearchIcon w="14.91px" h="15.06px" color="#A5B3CD" />}
-                    />
-                    <Input type="search"
-                        borderRadius="8px" w="35.125rem" h="3.75rem" variant='outline' _placeholder={{ opacity: 1, color: "#A5B3CD", fontSize: '1rem' }} placeholder='Search a transaction' bg="#FFFFFF" />
-                </InputGroup>
-
-            </HStack>
-            <HStack spacing={{ base: '.75rem', md: '1.39rem' }}>
+        <>
+            <Flex
+                ml={{ base: 0, md: '6.375rem', '2xl': '13.375rem' }}
+                px={{ base: 4, md: '3.1875rem' }}
+                height={{ base: '20', md: '8.8rem' }}
+                alignItems="center"
+                bg={'#FCFCFC'}
+                // borderBottomWidth="1px"
+                // borderBottomColor={useColorModeValue('gray.200', 'gray.700')}
+                justifyContent={{ base: 'space-between', md: 'flex-end' }}
+                {...rest}>
                 <IconButton
-                    borderRadius={'100%'}
-                    size="lg"
+                    display={{ base: 'flex', md: 'none' }}
+                    onClick={onOpen}
                     variant="outline"
                     aria-label="open menu"
-
-                    icon={<FiBell />}
+                    icon={<FiMenu />}
                 />
 
-                <Box
-                    style={{
-                        filter: "drop-shadow(0px 14px 54px rgba(0, 0, 0, 0.06))",
-                    }}
-                >
-                    <Avatar
-                        size={'lg'}
-                        src={
-                            'https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
-                        }
+
+                <Image display={{ base: 'flex', md: 'none' }} src={'/footerlogo.png'} width={{ base: '9.8rem' }} height={'auto'} />
+                <HStack display={{ base: 'none', md: 'flex' }} w='100%' ml="17.25rem" mr="2.375rem" >
+                    <Box display={{}}>
+                        <Text fontSize={'32px'} fontWeight={500} >{title}</Text>
+                        <Text fontSize={'14px'} fontWeight={500} >Hi, {firstName ? firstName + " " + lastName : 'User'}</Text>
+                    </Box>
+                    <Spacer />
+
+                    <InputGroup align="center" w="35.125rem" h="3.75rem"  >
+                        <InputLeftElement
+                            h="3.75rem"
+                            pointerEvents='none'
+
+                        ><SearchIcon w="14.91px" h="15.06px" color="#A5B3CD" /></InputLeftElement>
+                        <Input type="search"
+                            borderRadius="8px" w="35.125rem" h="3.75rem" variant='outline' _placeholder={{ opacity: 1, color: "#A5B3CD", fontSize: '1rem' }} placeholder='Search a transaction' bg="#FFFFFF" />
+                    </InputGroup>
+
+                </HStack>
+                <HStack spacing={{ base: '.75rem', md: '1.39rem' }}>
+                    <IconButton
+                        borderRadius={'100%'}
+                        size="lg"
+                        variant="outline"
+                        aria-label="open menu"
+
+                        icon={<FiBell />}
                     />
 
+                    <Box
+                        style={{
+                            filter: "drop-shadow(0px 14px 54px rgba(0, 0, 0, 0.06))",
+                        }}
+                    >
+                        <Avatar
+                            display={{ base: 'none', md: 'flex' }}
+                            size={'lg'}
+                            name={firstName + " " + lastName}
+                            src={''}
+                        />
 
-                </Box>
-            </HStack>
-        </Flex >
+
+                    </Box>
+                </HStack>
+
+            </Flex >
+            <Box display={{ md: 'none' }}
+                ml={{ base: 0, md: '6.375rem' }}
+                px={{ base: 4, md: '3.1875rem' }}
+                height={{ base: '20', md: '8.8rem' }}
+            >
+                <Text fontSize={'22px'} fontWeight={500} >{title}</Text>
+                <Text fontSize={'14px'} fontWeight={400} >Hi {firstName ? firstName : 'User'}</Text>
+            </Box>
+        </>
     );
 };

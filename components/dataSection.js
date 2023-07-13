@@ -17,15 +17,26 @@ import {
 } from '@chakra-ui/react';
 import { MdCheckCircle } from 'react-icons/md'
 import { AiOutlineRight } from 'react-icons/ai'
-import { Bree_Serif, DM_Sans, Inter, Plus_Jakarta_Sans } from '@next/font/google'
+import { Bree_Serif, Covered_By_Your_Grace, DM_Sans, Inter, Plus_Jakarta_Sans } from '@next/font/google'
 import { useRouter } from 'next/router';
+import Features from './features';
+import CheckIcon from './Icons/checkIcon';
 
 const plus = Plus_Jakarta_Sans({ weight: ['500', '700'], subsets: ['latin'] })
 
 
+
+
 const dmsansBold = DM_Sans({ weight: '500', subsets: ['latin'] })
+const dmsansExtreBold = DM_Sans({ weight: '700', subsets: ['latin'] })
 const dmsans = DM_Sans({ weight: '400', subsets: ['latin'] })
 const bree = Bree_Serif({ weight: '400', subsets: ['latin'] })
+const grace = Covered_By_Your_Grace({ weight: '400', subsets: ['latin'] })
+
+
+const brokerPoints = [
+    'Custom limits and control', 'Link debit cards', 'Scam Protection', 'Multi-purpose'
+]
 
 export default function DataSection() {
     const router = useRouter()
@@ -35,86 +46,81 @@ export default function DataSection() {
     }
 
     return (
-        <Box bg="#F9FAFC" h={{ base: "56.125em", md: "53.12em" }}>
-            <Container maxW='79.81em' pt={{ base: "0.75rem", md: "5.25rem" }} centerContent>
+        <Box bg="#F9FAFC" h={{ base: "56.125em", md: "63.12em" }} >
+
+            <Container maxW='100%' centerContent>
                 <Flex flexDirection={{ base: "column", md: "row" }} justify={{ base: "center", md: 'space-between' }} align={{ base: "center", md: 'start' }}>
-                    <Box position="relative">
-                        <Image
-                            alt={'feature image'}
-                            src={'/cardPhone.png'
-                            }
 
-                            w={{ base: "23.75rem", md: "44.12rem" }}
-                            h={{ base: "23.75rem", md: "44.12rem" }}
-                        />
-                        <Image
-                            display={{ base: 'none', md: 'flex' }}
-                            alt={'feature image'}
-                            src={'/cord.svg'
-                            }
-                            position="absolute"
-                            right={'-21rem'}
-                            bottom={'-22rem'}
-                            w="37.39rem"
-                            h="23.76rem"
-                        />
-                    </Box>
-                    <Stack textAlign={{ base: "center", md: 'start' }} w={{ base: '22.43rem', md: "31.93rem" }} spacing={4} >
+                    <Flex direction={'row'} mt='9.25rem' gap='6.83rem'>
+                        <Flex position='relative' >
 
-                        <Text
-                            mt={{ base: '4.125rem', md: '2.3125rem' }}
-                            mb={'1.625rem'}
-                            color='#000000'
-                            letterSpacing={{ base: '-0.39px', md: '-0.5px' }}
-                            lineHeight={{ base: '2.37rem', md: '3.75rem' }}
-                            fontWeight={400}
-                            fontSize={{ base: '1.75rem', md: '2.5rem' }}
-                            className={bree.className}
-                        >Sleek, luxurious card to rule them all. Experience next generation cashless. </Text>
-                        <Text
-                            mb={{ base: '0.87rem', md: '1rem' }}
-                            color={'#02073E'}
-                            lineHeight={{ base: '1.5rem', md: '1.78125rem' }}
-                            fontWeight={400}
-                            fontSize={{ base: '1rem', md: '1.0625rem' }}
-                            className={dmsans.className}
-                        >
-                            Our authentication card enables you to make payment from any location in Nigeria. With a focus on speed to enable use-cases such as bus fares and market purchases.
-                        </Text>
+                            <Image src={'/firstImage.png'} h='31.75rem' w={'auto'} mt='6rem' ml='0rem' />
 
-                        <List spacing={1} mb={{ base: '0.875rem', md: "1.56rem" }}>
-                            <Flex flexDirection={{ base: 'row', md: 'column' }} justify={{ base: 'space-between', md: 'start' }}>
-                                <ListItem
-                                    color={'#000000'}
-                                    lineHeight={{ base: '1.73rem', md: '2.812rem' }}
+                            <Image src={'/secondImage.png'} h='31.75rem' w={'auto'} ml='-8rem' mt='-4rem' />
+
+                        </Flex>
+                        <Box>
+                            <Stack textAlign={{ base: "center", md: 'start' }} w={{ base: '22.43rem', md: "31.93rem" }} spacing={4} >
+
+                                <Text
+
+                                    mb={'2.12rem'}
+                                    color='#000000'
+                                    lineHeight={{ base: '2.37rem', md: '3.25rem' }}
+                                    fontWeight={600}
+                                    fontSize={{ base: '1.75rem', md: '2.5rem' }}
+                                    className='clashSemiBold'
+                                >Sleek & luxurious <br /> Monapp QR code card</Text>
+                                <Text
+                                    mb={{ base: '0.87rem', md: '1rem' }}
+                                    color={'#818C96'}
+                                    lineHeight={{ base: '1.5rem', md: '2.23838rem' }}
                                     fontWeight={500}
-                                    fontSize={{ base: '0.61rem', md: '1rem' }}
-                                    className={dmsansBold.className}>
-                                    <ListIcon fontSize={{ base: '0.75rem', md: "1.25rem" }} as={MdCheckCircle} color='#3FDBB1' />
-                                    Offline payments
-
-                                </ListItem>
-                                <ListItem
-                                    color={'#000000'}
-                                    lineHeight={{ base: '1.73rem', md: '2.812rem' }}
-                                    fontWeight={500}
-                                    fontSize={{ base: '0.61rem', md: '1rem' }}
+                                    fontSize={{ base: '1rem', md: '1.25rem' }}
                                     className={dmsansBold.className}
+                                    letterSpacing={'-0.01rem'}
                                 >
-                                    <ListIcon fontSize={{ base: '0.75rem', md: "1.25rem" }} as={MdCheckCircle} color='#3FDBB1' />
-                                    Online Payments
+                                    Our authentication card enables you to make payments from any location in Nigeria. Shop online and offline with confidence knowing that your sensitive data is protected.
+                                </Text>
 
-                                </ListItem>
-                            </Flex>
-                        </List>
+                                <SimpleGrid columns={2} spacingX='6.25rem' spacingY='2.38rem' mb='4.38rem'>
 
-                        <Button alignSelf={{ base: "center", md: 'start' }} bg={{ base: 'black', md: 'transparent' }} _hover={{
-                            backgroundColor: 'none'
-                        }} color={{ base: '#ffffff', md: '#3183FF' }} w={{ base: "17.5em", md: "6.6em" }} rightIcon={<AiOutlineRight />} onClick={getStarted}>Get Started</Button>
+                                    {brokerPoints.map((point, index) => <Flex key={index}><CheckIcon boxSize={'18px'} mr='1rem' /> <Text
+                                        color='#000'
+                                        fontSize='1.141rem'
+                                        className={dmsansBold.className}
+                                        letterSpacing={'0.01144rem'}
 
-                    </Stack>
+                                        lineHeight='142%'
 
+                                    >{point}</Text></Flex>)}
+
+
+                                </SimpleGrid>
+
+                                <Button variant='solid' w={{ base: "17.5em", md: "13.75rem" }} h={'3.875rem'}
+                                    borderRadius='0.62144rem'
+                                    background='#000'
+                                    _hover={{
+                                        background: '#222'
+                                    }}
+
+                                >
+                                    <Text color='#FFF'
+                                        fontSize='1.45rem'
+                                        className={dmsansBold.className}
+                                        lineHeight='2.71944rem'
+                                        letterSpacing='-0.00831rem'>Start earning</Text>
+
+                                </Button>
+
+                            </Stack>
+                        </Box>
+
+                    </Flex>
                 </Flex>
+
+
             </Container>
         </Box >
     );

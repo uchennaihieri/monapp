@@ -35,6 +35,11 @@ import {
     Td,
     Heading,
     Divider,
+    Tabs,
+    Tab,
+    TabList,
+    TabPanels,
+    TabPanel,
 } from '@chakra-ui/react';
 import {
     FiHome,
@@ -52,8 +57,6 @@ import { SearchIcon } from '@chakra-ui/icons';
 import { DM_Sans, Rubik, } from '@next/font/google';
 import { BsChevronDown, BsDot } from 'react-icons/bs';
 import { GoPrimitiveDot } from 'react-icons/go';
-import DebitTransaction from '@/components/debitTransaction';
-import CreditTransaction from '@/components/creditTransaction';
 import NewDash from './NewDash';
 import { activePage } from '@/recoil/atoms';
 import { useRecoilState } from 'recoil';
@@ -81,7 +84,7 @@ function Setting() {
             <div>
 
 
-                <Box ml={{ base: 0, md: '8rem' }} mt='18px' px='10px'>
+                <Box ml={{ base: 0, md: '8rem' }} display={{base:'none', md:'flex'}} mt='18px' px='10px'>
 
                     <Box dropShadow='lg' w='100%' minH='221px' my='26px' >
                         <Flex flexDir="row">
@@ -101,21 +104,11 @@ function Setting() {
                                                 <Text fontSize={'10px'} lineHeight='13px' className={dmsans.className} fontStyle="normal" fontWeight={400} color={currentPage === 'profile' ? "#000000" : 'rgba(0, 0, 0, 0.4)'} >your personal information</Text>
                                             </Box>
 
-
                                         </HStack>
-
-
 
                                     </Flex>
                                     <Divider />
                                 </Box>
-
-
-
-
-
-
-
 
                                 <Box px='22px' borderLeft={currentPage === 'notification' && "1.2px solid #000000"}  // Example styling for left border
                                     borderRight={currentPage === 'notification' && "1.2px solid #000000"} _hover={{ cursor: 'pointer' }} onClick={() => {
@@ -139,17 +132,6 @@ function Setting() {
                                 </Box>
 
 
-
-
-
-
-
-
-
-
-
-
-
                                 <Box px='22px' borderLeft={currentPage === 'billing' && "1.2px solid #000000"}  // Example styling for left border
                                     borderRight={currentPage === 'billing' && "1.2px solid #000000"} _hover={{ cursor: 'pointer' }} onClick={() => {
                                         setCurrentPage('billing'); // Update the current page when a link is clicked
@@ -170,19 +152,6 @@ function Setting() {
                                     </Flex>
                                     <Divider />
                                 </Box>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
                                 <Box px='22px' borderLeft={currentPage === 'security' && "1.2px solid #000000"}  // Example styling for left border
@@ -226,6 +195,62 @@ function Setting() {
 
 
 
+                {/* Mobile View */}
+                <Box display={{base:'flex', md:'none'}} >
+                    <Tabs isFitted  width='100%' variant='colorful' colorScheme='blackAlpha.900' >
+                            <TabList mb='1em'>
+                                <Tab >
+                                     <HStack  align='center' >
+
+                                            <ProfileIcon boxSize={4} />
+                                            <Box textAlign={'left'} >  <Text fontSize={'0.625em'} mb='0.25em' lineHeight='1.139em' className={dmsansbold.className}  fontStyle="normal" fontWeight={600}>Your Profile</Text>
+                                            </Box>
+
+                                        </HStack>
+
+                                </Tab>
+                                <Tab>
+                                      <HStack  align='center' >
+                                            <ProfileIcon boxSize={4}  />
+                                            <Box textAlign={'left'} >  <Text fontSize={'0.625em'} mb='0.25em' lineHeight='1.139em' className={dmsansbold.className}  fontStyle="normal" fontWeight={600}>Notifications</Text>
+                                            </Box>
+                                        </HStack>
+                                </Tab>
+                                <Tab>
+                                      <HStack  align='center' >
+                                            <ProfileIcon boxSize={4}  />
+                                            <Box textAlign={'left'} >  <Text fontSize={'0.625em'} mb='0.25em' lineHeight='1.139em' className={dmsansbold.className}  fontStyle="normal" fontWeight={600}>Billing</Text>
+                                            </Box>
+                                        </HStack>
+                                </Tab>
+                                <Tab>
+                                      <HStack  align='center' >
+                                            <ProfileIcon boxSize={4}  />
+                                            <Box textAlign={'left'} >  <Text fontSize={'0.625em'} mb='0.25em' lineHeight='1.139em' className={dmsansbold.className}  fontStyle="normal" fontWeight={600}>Security</Text>
+                                            </Box>
+                                        </HStack>
+                                </Tab>
+                            </TabList>
+                            <TabPanels>
+                                <TabPanel>
+                                <ProfileSetting />
+                                </TabPanel>
+
+                                <TabPanel>
+                               <NotificationSetting />
+                                </TabPanel>
+                                <TabPanel>
+                               <BillingSetting />
+                                </TabPanel>
+                                <TabPanel>
+                                <SecuritySetting />
+                                </TabPanel>
+
+                            </TabPanels>
+                    </Tabs>
+
+                </Box>
+                    
 
 
 

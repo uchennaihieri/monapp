@@ -114,7 +114,7 @@ const Auth = () => {
                     >Work with us</Button>
                 </Flex>
                 <Box mb={{ base: '2.75rem', md: "5.06rem" }}>
-                    <Image src={'/footerlogo.png'} w={'14.17rem'} h={'3.06rem'} />
+                    <Image src={'/footerlogo.png'} alt='footer logo' w={'14.17rem'} h={'3.06rem'} />
                 </Box>
 
                 <Tabs index={page} onChange={handleTabsChange} isFitted m="0" mb="2.92rem" p="0">
@@ -143,8 +143,8 @@ const Auth = () => {
                 <Flex>
 
                     <HStack mb="10.93rem">
-                        <Image src={'/playstore.png'} w={'9.25rem'} h={'3.03rem'} />
-                        <Image src={'/appstore.png'} w={'9.3rem'} h={'3.10rem'} />
+                        <Image src={'/playstore.png'} alt='download from playstore' w={'9.25rem'} h={'3.03rem'} />
+                        <Image src={'/appstore.png'} alt='download from appstore' w={'9.3rem'} h={'3.10rem'} />
                     </HStack>
                 </Flex>
 
@@ -355,6 +355,7 @@ export const Signup = () => {
     const onSubmit = async (data) => {
         setLoadingState(true)
         const q = query(collection(db, "users"), where("phoneNumber", "==", `${data.phoneNumber}`));
+
 
         const querySnapshot = await getDocs(q);
         if (querySnapshot.empty) {
