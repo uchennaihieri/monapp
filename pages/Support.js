@@ -68,7 +68,7 @@ export default function Support() {
 
         </NewHero>
 
-        <Box ml={{ base: '2rem', md: '15rem', '2xl': '30rem' }} mb='5rem' color={'#000'}>
+        <Box ml={{ base: '2rem', md: '15rem', '2xl': '30rem' }} mb='5rem' color={'#000'} >
           <Flex overflowX={'auto'}>
             <HStack mt={'3rem'} gap={['4', '10']}  >
               <Flex direction={'column'} w={['9.35425rem', '19.1875rem']} h={['5.69788rem', '11.6875rem']} justifyContent='center' bgColor={'#fff'} borderRadius={['0.975px ', '12px']}
@@ -212,14 +212,14 @@ export default function Support() {
               <Box mb="21.87px">
                 <FormControl id="firstName" >
                   <FormLabel fontSize={['1.25rem', '1.5rem']} fontWeight={'500'} lineHeight={'200%'} letterSpacing={'0.03rem'} color={'#000'}>First Name</FormLabel>
-                  <Input h={['3.5rem', "5.5625rem"]} w={['24.25rem', '42rem']} borderRadius={'2px'} bg="#ffffff" border={'1.4px solid #000'} type="text" />
+                  <Input h={['3.5rem', "5.5625rem"]} w={['95%', '42rem']} borderRadius={'2px'} bg="#ffffff" border={'1.4px solid #000'} type="text" />
 
                 </FormControl>
               </Box>
               <Box mb="21.87px">
                 <FormControl id="firstName" >
                   <FormLabel fontSize={['1.25rem', '1.5rem']} fontWeight={'500'} lineHeight={'200%'} letterSpacing={'0.03rem'} color={'#000'}>Last Name</FormLabel>
-                  <Input h={['3.5rem', "5.5625rem"]} w={['24.25rem', '42rem']} borderRadius={'2px'} bg="#ffffff" border={'1.4px solid #000'} type="text" />
+                  <Input h={['3.5rem', "5.5625rem"]} w={['95%', '42rem']} borderRadius={'2px'} bg="#ffffff" border={'1.4px solid #000'} type="text" />
 
                 </FormControl>
               </Box>
@@ -229,14 +229,14 @@ export default function Support() {
               <Box mb="21.87px">
                 <FormControl id="firstName" >
                   <FormLabel fontSize={['1.25rem', '1.5rem']} fontWeight={'500'} lineHeight={'200%'} letterSpacing={'0.03rem'} color={'#000'}>Email</FormLabel>
-                  <Input h={['3.5rem', "5.5625rem"]} w={['24.25rem', '42rem']} borderRadius={'2px'} bg="#ffffff" border={'1.4px solid #000'} type="email" />
+                  <Input h={['3.5rem', "5.5625rem"]} w={['95%', '42rem']} borderRadius={'2px'} bg="#ffffff" border={'1.4px solid #000'} type="email" />
 
                 </FormControl>
               </Box>
               <Box mb="21.87px">
                 <FormControl id="firstName" >
                   <FormLabel fontSize={['1.25rem', '1.5rem']} fontWeight={'500'} lineHeight={'200%'} letterSpacing={'0.03rem'} color={'#000'}>Phone Number</FormLabel>
-                  <Input h={['3.5rem', "5.5625rem"]} w={['24.25rem', '42rem']} borderRadius={'2px'} bg="#ffffff" border={'1.4px solid #000'} type="tel" />
+                  <Input h={['3.5rem', "5.5625rem"]} w={['95%', '42rem']} borderRadius={'2px'} bg="#ffffff" border={'1.4px solid #000'} type="tel" />
 
                 </FormControl>
               </Box>
@@ -245,14 +245,14 @@ export default function Support() {
             <Box mb="21.87px">
               <FormControl id="firstName" >
                 <FormLabel fontSize={['1.25rem', '1.5rem']} fontWeight={'500'} lineHeight={'200%'} letterSpacing={'0.03rem'} color={'#000'}>Message</FormLabel>
-                <Textarea h="16.25rem" w={['24.25rem', '87.375rem']} borderRadius={'2px'} bg="#ffffff" border={'1.4px solid #000'} type="text" />
+                <Textarea h="16.25rem" w={['95%', '87.375rem']} borderRadius={'2px'} bg="#ffffff" border={'1.4px solid #000'} type="text" />
 
               </FormControl>
             </Box>
 
 
 
-            <Button variant='solid' colorScheme='blackAlpha' w={['24.25rem', '22.6875rem']} h={['3.375rem', '5.375rem']} mt='3rem' bgColor='#000' borderRadius={['0.25rem', '10px']}>
+            <Button variant='solid' colorScheme='blackAlpha' w={['95%', '22.6875rem']} h={['3.375rem', '5.375rem']} mt='3rem' bgColor='#000' borderRadius={['0.25rem', '10px']}>
               <Text fontSize={['1.125rem', '16px']} color='#FFFFFF' fontWeight={500} lineHeight={'2.71944rem'} className={dmsans.className} >Submit</Text>
             </Button>
 

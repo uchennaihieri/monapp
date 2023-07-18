@@ -96,13 +96,13 @@ const theme = extendTheme({
 
                     container: {
                             border:'2px solid rgba(0, 0, 0, 0.40)',
-                            width: ['24.5rem','74.625rem'],
+                            width: ['98%','74.625rem'],
                             borderRadius: '4px',           
                             // boxShadow:'0px 8px 64px 0px rgba(167, 167, 167, 0.24)',
                             my:'1.625rem'
                             },
                     button: {
-                         width: ['24.5rem','74.625rem'],
+                         width: ['100%','74.625rem'],
                         height: '5.0625rem',
                         borderRadius: '4px',
                         fontSize:['1rem','1.625rem'],
