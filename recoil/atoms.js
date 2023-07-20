@@ -35,6 +35,12 @@ export const sellerType = atom({
     default: "",
 });
 
+export const countDown = atom({
+    key: "countDown",
+    default: false,
+});
+
+
 export const businessReg = atom({
     key: "businessReg",
     default: "",

@@ -15,12 +15,13 @@ import { AuthAction, useAuthUser, withAuthUser, withAuthUserTokenSSR } from 'nex
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRecoilState } from 'recoil';
-import { businessCat, businessReg, bvnN, myAddress, myPostalCode, myCity, myLocation, pinID, seller, sellerType } from '@/recoil/atoms';
+import { businessCat, businessReg, bvnN, myAddress, myPostalCode, myCity, myLocation, pinID, seller, sellerType, countDown } from '@/recoil/atoms';
 import QRCode from 'qrcode'
 import { addDoc, collection, doc, getDocs, limit, onSnapshot, orderBy, query, setDoc, updateDoc, where } from 'firebase/firestore';
 import { getDownloadURL, getStorage, ref, uploadString } from "firebase/storage";
 import { db } from '@/services/firebase';
 import { useRouter } from 'next/router';
+import CountdownTimer from '@/components/countDownTimer';
 
 function ConfirmOtp({ person }) {
 
@@ -46,8 +47,19 @@ function ConfirmOtp({ person }) {
     const [otp, setOtp] = useState('')
     const [verificationNumber, setVerificationNumber] = useRecoilState(bvnN);
     const toast = useToast()
+    const initialTargetTime = +new Date() + 3 * 60 * 1000;
+    const [targetTime, setTargetTime] = useState(initialTargetTime);
+    const [isCountdownFinished, setIsCountdownFinished] = useRecoilState(countDown);
 
 
+    const handleRestart = () => {
+        verifyUser()
+        setTargetTime(+new Date() + 3 * 60 * 1000);
+        setIsCountdownFinished(false); // Reset the countdown status
+    };
+
+
+    console.log(isCountdownFinished)
 
     useEffect(() => {
 
@@ -135,63 +147,69 @@ function ConfirmOtp({ person }) {
 
                 if (res.verified == true) {
 
-                    await fetch('http://127.0.0.1:5001/monapp-33057/us-central1/app/api/anchor/subaccount/create', {
 
-                        // Adding method type
-                        method: "POST",
+                    await QRCode.toDataURL(qrData, { errorCorrectionLevel: 'M' }).then(async (val) => {
+                        await uploadString(storageRef, `${val}`, 'data_url').then((snapshot) => {
+                            getDownloadURL(snapshot.ref).then(async (downloadURL) => {
+                                await updateDoc(doc(db, "cards", `${card.id}`), {
+                                    qrImage: `${downloadURL}`
+                                });
+                            });
+                        })
 
-                        // Adding body or contents to send
-                        body: JSON.stringify({
-                            "customerId": person.anchor_customerId
-                        }),
+                        await setDoc(doc(db, "onboarding", `${person.userID}`), {
+                            onboardingStep: 1
+                        });
 
-                        // Adding headers to the request
-                        headers: {
-                            "Content-type": "application/json; charset=UTF-8"
-                        }
-                    }).then(function (response) {
-                        return response.json();
+                        await updateDoc(doc(db, "users", `${person.userID}`), {
+                            verified: true,
+                        });
+
+
+                        router.push('/Dashboard')
+
+                    }).catch((error) => {
+                        console.log({ error })
                     })
 
 
-                        // Converting to JSON
-                        .then(async function (res) {
+                    // await fetch('http://127.0.0.1:5001/monapp-33057/us-central1/app/api/anchor/subaccount/create', {
 
-                            console.log(res)
-                            await updateDoc(doc(db, "wallet", `${wallet.id}`), {
-                                anchor_subAccountId: res.data.data.subAccountId,
-                                anchor_customerId: res.data.data.customerId,
-                                anchor_subAccountType: res.data.data.subAccountType,
-                                anchor_createdDate: res.data.data.createdAt
-                            });
+                    //     // Adding method type
+                    //     method: "POST",
 
+                    //     // Adding body or contents to send
+                    //     body: JSON.stringify({
+                    //         "customerId": person.anchor_customerId
+                    //     }),
 
-                            await QRCode.toDataURL(qrData, { errorCorrectionLevel: 'M' }).then(async (val) => {
-                                await uploadString(storageRef, `${val}`, 'data_url').then((snapshot) => {
-                                    getDownloadURL(snapshot.ref).then(async (downloadURL) => {
-                                        await updateDoc(doc(db, "cards", `${card.id}`), {
-                                            qrImage: `${downloadURL}`
-                                        });
-                                    });
-                                })
+                    //     // Adding headers to the request
+                    //     headers: {
+                    //         "Content-type": "application/json; charset=UTF-8"
+                    //     }
+                    // }).then(function (response) {
+                    //     return response.json();
+                    // })
 
 
+                    //     // Converting to JSON
+                    //     .then(async function (res) {
 
-                                await updateDoc(doc(db, "users", `${person.userID}`), {
-                                    verified: true,
-                                });
+                    //         console.log(res)
+                    //         await updateDoc(doc(db, "wallet", `${wallet.id}`), {
+                    //             anchor_subAccountId: res.data.data.subAccountId,
+                    //             anchor_customerId: res.data.data.customerId,
+                    //             anchor_subAccountType: res.data.data.subAccountType,
+                    //             anchor_createdDate: res.data.data.createdAt
+                    //         });
 
 
-                                router.push('/Dashboard')
-
-                            }).catch((error) => {
-                                console.log({ error })
-                            })
 
 
-                        }).catch((error) => {
-                            console.log({ error })
-                        })
+
+                    //     }).catch((error) => {
+                    //         console.log({ error })
+                    //     })
                 } else if (res.verified == 'Expired') {
                     setLoadingState(false)
                     toast({
@@ -305,11 +323,13 @@ function ConfirmOtp({ person }) {
                     </Center>
                 </FormControl>
                 <Stack
-
+                    mt="2rem"
                     direction={{ base: 'row' }}
-                    align={'start'}
+                    align={'center'}
                     justify={'left'}>
-                    <Button mt="2rem" variant="link" disabled color={'#000000'} onClick={verifyUser}>Resend link</Button>
+                    <Button variant="link" color={'#000000'} onClick={handleRestart} isDisabled={!isCountdownFinished}>Resend link</Button>
+
+                    <CountdownTimer targetTime={targetTime} />
                 </Stack>
 
                 <Stack spacing={6}>
