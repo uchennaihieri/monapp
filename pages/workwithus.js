@@ -70,13 +70,13 @@ export default function Workwithus() {
                             `}
                             >
                                 <GridItem area={'l1'} >
-                                    <Image src='/l1.png' />
+                                    <Image alt="" src='/l1.png' />
                                 </GridItem>
                                 <GridItem area={'l2'}   >
-                                    <Image src='/l2.png' />
+                                    <Image alt="" src='/l2.png' />
                                 </GridItem>
                                 <GridItem area={'l3'}  >
-                                    <Image src='/l3.png' />
+                                    <Image alt="" src='/l3.png' />
                                 </GridItem>
                             </Grid>
                         </Box>
