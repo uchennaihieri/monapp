@@ -198,7 +198,7 @@ export default function FooterSection() {
           fontSize={{ base: "0.875rem" }}
           className={dmsans.className}
         >
-          Copyright @ MONAPP 2023. All Rights Reserved.
+          Copyright @ MONAPP {new Date().getFullYear()}. All Rights Reserved.
         </Text>
 
         </Flex>
@@ -280,7 +280,7 @@ export default function FooterSection() {
           fontSize={{ base: "0.875rem" }}
           className={dmsans.className}
         >
-          Copyright @ MONAPP 2023. All Rights Reserved.
+          Copyright @ MONAPP {new Date().getFullYear()}. All Rights Reserved.
         </Text>
       
 

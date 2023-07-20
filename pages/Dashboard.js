@@ -10,6 +10,12 @@ import {
   DrawerCloseButton,
   PinInputField,
   PinInput,
+  Tooltip,
+  FormControl,
+  FormLabel,
+  RadioGroup,
+  Stack,
+  Radio,
 } from "@chakra-ui/react";
 import {
   FiHome,
@@ -33,17 +39,18 @@ import { IconType } from "react-icons";
 import { ReactText } from "react";
 import { SearchIcon } from "@chakra-ui/icons";
 import { DM_Sans, Rubik } from "@next/font/google";
-import { BsChevronDown, BsDot } from "react-icons/bs";
+import { BsChevronDown, BsDot, BsInfoCircleFill } from "react-icons/bs";
 import { GoPrimitiveDot } from "react-icons/go";
 import MyChart from "@/components/myChart";
 import NewDash from "./NewDash";
 import AllTransactions from "@/components/AllTransactions";
-import { db, doc, onSnapshot } from "@/services/firebase";
+import { db, doc, onSnapshot, updateDoc } from "@/services/firebase";
 import { getWallet, getCard, getTransactions } from "@/services/request";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { personState } from "@/recoil/atoms";
 import { HiOutlineX } from "react-icons/hi";
 import CancelIcon from "@/components/Icons/cancelIcon";
+import axios from "axios";
 const dayjs = require("dayjs");
 
 const dmsans = DM_Sans({ weight: "400", subsets: ["latin"] });
@@ -62,6 +69,11 @@ function Dashboard({ person }) {
   const [pin, setPin] = useState('')
   const [loadingState, setLoadingState] = useState('')
   const [confirmPin, setConfirmPin] = useState('')
+  const [bvn, setBvn] = useState("")
+  const [broker, setBroker] = useState("false")
+  const [brokerNum, setBrokerNum] = useState("")
+  const [dOB, setDOB] = useState("")
+  const [gender, setGender] = useState("Male")
   const [drawerContent, setDrawerContent] = useState('')
   const d = new Date(Date.now())
 
@@ -69,12 +81,12 @@ function Dashboard({ person }) {
 
   const { lastName, firstName } = person
 
-  // console.log('user',user);
+  console.log(bvn, dOB, gender);
 
 
 
   useEffect(() => {
-    checkPin()
+    checkOnboarding()
     setPersonState(person)
     getWallet(setWallet, person);
     getCard(setCard, person);
@@ -84,21 +96,27 @@ function Dashboard({ person }) {
 
   }, [person]);
 
-  // console.log('card',card);
+  console.log(person)
+
+  const checkOnboarding = () => {
+
+    const unsub = onSnapshot(doc(db, "onboarding", `${person.userID}`), (doc) => {
+      const onboardingData = doc.data()
 
 
-
-  const checkPin = () => {
-
-    const unsub = onSnapshot(doc(db, "security", person.userID), (doc) => {
-      if (doc.data()) {
-
-        console.log(doc.data())
-      } else {
+      if (!onboardingData || onboardingData.onboardingStep == 1) {
         setDrawerContent('setPin')
         onOpen()
+      } else if (onboardingData.onboardingStep == 2) {
+        setDrawerContent('selectBroker')
+        onOpen()
+      } else if (onboardingData.onboardingStep == 3) {
+        setDrawerContent('verifyAccount')
+        onOpen()
       }
+
     });
+
 
   }
 
@@ -106,7 +124,7 @@ function Dashboard({ person }) {
   const createPin = () => {
     setLoadingState(true)
 
-    if (pin.length === 6) {
+    if (pin.length === 4) {
 
       if (pin != confirmPin) {
         setLoadingState(false)
@@ -119,23 +137,18 @@ function Dashboard({ person }) {
           position: 'top',
         })
       } else {
-
-        fetch("http://127.0.0.1:5001/monapp-33057/us-central1/app/api/crypt", {
-
-          // Adding method type
-          method: "POST",
-          body: JSON.stringify({
-            pin: pin,
-            id: person.userID
-          })
-        }).then(function (res) {
-          return res.json();
+        axios.post("http://127.0.0.1:5001/monapp-33057/us-central1/app/api/pin/create", {
+          pin: pin,
+          userId: person.userID
         })
-          // Converting to JSON
-          .then(function (data) {
+          .then(async function ({ data }) {
 
-            if (data.successful) {
-              setLoadingState(false)
+
+            if (data.error == false) {
+              await updateDoc(doc(db, "onboarding", `${person.userID}`), {
+                onboardingStep: 2
+              });
+
               toast({
                 title: 'Pin creation successful',
                 description: 'Your pin has been created',
@@ -144,11 +157,12 @@ function Dashboard({ person }) {
                 isClosable: true,
                 position: 'top',
               })
+              setLoadingState(false)
             } else {
               setLoadingState(false)
               toast({
                 title: 'Pin creation error',
-                description: 'There was an error somewhere, please try again',
+                description: data.message,
                 status: 'error',
                 duration: 9000,
                 isClosable: true,
@@ -158,8 +172,64 @@ function Dashboard({ person }) {
           })
           .catch(function (error) {
             setLoadingState(false)
-            console.log(error);
+            toast({
+              title: 'Pin creation error',
+              description: error.message,
+              status: 'error',
+              duration: 9000,
+              isClosable: true,
+              position: 'top',
+            })
           })
+
+        // fetch("http://127.0.0.1:5001/monapp-33057/us-central1/app/api/pin/create", {
+
+        //   // Adding method type
+        //   method: "POST",
+        //   body: JSON.stringify({
+        //     pin: pin,
+        //     userId: person.userID
+        //   })
+        // }).then(function (res) {
+        //   return res.json();
+        // })
+        //   // Converting to JSON
+        //   .then(function (data) {
+        //     console.log(data)
+
+        //     if (data.successful) {
+        //       setLoadingState(false)
+        //       toast({
+        //         title: 'Pin creation successful',
+        //         description: 'Your pin has been created',
+        //         status: 'success',
+        //         duration: 9000,
+        //         isClosable: true,
+        //         position: 'top',
+        //       })
+        //     } else {
+        //       setLoadingState(false)
+        //       toast({
+        //         title: 'Pin creation error',
+        //         description: data.message,
+        //         status: 'error',
+        //         duration: 9000,
+        //         isClosable: true,
+        //         position: 'top',
+        //       })
+        //     }
+        //   })
+        //   .catch(function (error) {
+        //     setLoadingState(false)
+        //     toast({
+        //       title: 'Pin creation error',
+        //       description: error.message,
+        //       status: 'error',
+        //       duration: 9000,
+        //       isClosable: true,
+        //       position: 'top',
+        //     })
+        //   })
       }
 
     } else {
@@ -176,6 +246,166 @@ function Dashboard({ person }) {
 
 
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  const handleSetBroker = () => {
+    setLoadingState(true)
+
+    axios.post("http://127.0.0.1:5001/monapp-33057/us-central1/app/api/set/broker", {
+      broker: broker,
+      userId: person.userID,
+      brokerNumber: brokerNum
+    })
+      .then(async function ({ data }) {
+
+
+        if (data.error == false) {
+          await updateDoc(doc(db, "onboarding", `${person.userID}`), {
+            onboardingStep: 3
+          });
+
+          toast({
+            title: 'Broker added successfully',
+            description: 'Your broker has been added',
+            status: 'success',
+            duration: 9000,
+            isClosable: true,
+            position: 'top',
+          })
+          setLoadingState(false)
+        } else {
+          setLoadingState(false)
+          toast({
+            title: 'Broker error',
+            description: data.message,
+            status: 'error',
+            duration: 9000,
+            isClosable: true,
+            position: 'top',
+          })
+        }
+      })
+      .catch(function (error) {
+        setLoadingState(false)
+
+        toast({
+          title: 'Broker error',
+          description: error.response.data.message,
+          status: 'error',
+          duration: 9000,
+          isClosable: true,
+          position: 'top',
+        })
+      })
+
+  }
+
+
+
+
+
+
+
+
+
+
+  const handleVerifyAccount = () => {
+    setLoadingState(true)
+
+    axios.post("https://us-central1-monapp-33057.cloudfunctions.net/app/api/anchor/tier_two/verify-customer", {
+      customerId: person.anchor_customerId,
+      dateOfBirth: dOB,
+      gender: gender,
+      bvn: bvn
+    })
+      .then(async function ({ data }) {
+
+
+        if (data.error == false) {
+          await updateDoc(doc(db, "onboarding", `${person.userID}`), {
+            onboardingStep: "completed"
+          });
+
+          toast({
+            title: 'Onboarding Completed',
+            description: 'You have completed the onboarding steps',
+            status: 'success',
+            duration: 9000,
+            isClosable: true,
+            position: 'top',
+          })
+          onClose()
+          setLoadingState(false)
+        } else {
+          setLoadingState(false)
+          toast({
+            title: 'Verification error',
+            description: data.message,
+            status: 'error',
+            duration: 9000,
+            isClosable: true,
+            position: 'top',
+          })
+        }
+      })
+      .catch(function (error) {
+        setLoadingState(false)
+
+        toast({
+          title: 'Verification error',
+          description: error.response.data.message,
+          status: 'error',
+          duration: 9000,
+          isClosable: true,
+          position: 'top',
+        })
+      })
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   const handleTopupwallet = () => {
@@ -205,6 +435,12 @@ function Dashboard({ person }) {
   }
 
 
+  const handleBrokerChange = (value) => {
+    setBroker(value);
+    if (value === 'false') {
+      setBrokerNum(''); // Reset brokerNum to empty when broker is false
+    }
+  };
 
 
   return (
@@ -323,13 +559,11 @@ function Dashboard({ person }) {
                 >
 
                   <DrawerHeader mb='52px'><Flex flexDirection='row' align='center' justify='space-between'>
-                    <Text className={dmsans.className} fontSize='30px' fontWeight={700}>Set Transaction Pin</Text>
-                    <CancelIcon boxSize='16px' onClick={onClose} _hover={{
-                      cursor: 'pointer'
-                    }} />
+                    <Text className={dmsans.className} fontSize='30px' fontWeight={700}>Create Transaction Pin </Text>
+
                   </Flex></DrawerHeader>
 
-                  <DrawerBody>
+                  <DrawerBody><Box mb="1.6rem">
                     <Text mb={'11px'}>Pin</Text>
                     <HStack>
                       <PinInput size='lg' mask otp onChange={(e) => setPin(e)}>
@@ -337,29 +571,173 @@ function Dashboard({ person }) {
                         <PinInputField />
                         <PinInputField />
                         <PinInputField />
-                        <PinInputField />
-                        <PinInputField />
                       </PinInput>
                     </HStack>
-                    <Text mt={'12px'} mb={'11px'}>Confirm Pin</Text>
-                    <InputGroup>
-                      <HStack>
-                        <PinInput size='lg' mask otp onChange={(e) => setConfirmPin(e)}>
-                          <PinInputField />
-                          <PinInputField />
-                          <PinInputField />
-                          <PinInputField />
-                          <PinInputField />
-                          <PinInputField />
-                        </PinInput>
-                      </HStack>
-                    </InputGroup>
+
+
+                  </Box>
+
+                    <Box mb="1.6rem">
+
+                      <Text mt={'20px'} mb={'11px'}>Confirm Pin</Text>
+                      <InputGroup>
+                        <HStack>
+                          <PinInput size='lg' mask otp onChange={(e) => setConfirmPin(e)}>
+                            <PinInputField />
+                            <PinInputField />
+                            <PinInputField />
+                            <PinInputField />
+                          </PinInput>
+                        </HStack>
+                      </InputGroup>
+                    </Box>
+
+
+
+
+
                     <Button isLoading={loadingState}
                       loadingText='Creating..' variant='solid' colorScheme='blackAlpha' w={'100%'} mt={'71px'} h='54px' borderRadius={'2px'} bg='rgba(0, 0, 0, 1)' ><Text className={dmsans.className} fontSize={'16px'} color='#FFFFFF' fontWeight={700} lineHeight='21px' onClick={createPin} >Create My Pin</Text></Button>
 
 
                   </DrawerBody>
                 </DrawerContent>}
+
+
+
+
+
+                {drawerContent == 'selectBroker' && <DrawerContent
+                  px='48px' pt='61px'
+                >
+
+                  <DrawerHeader mb='52px'><Flex flexDirection='row' align='center' justify='space-between'>
+                    <Text className={dmsans.className} fontSize='30px' fontWeight={700}>Set Broker</Text>
+
+                  </Flex></DrawerHeader>
+
+                  <DrawerBody>
+                    <Box mb="1.6rem">
+                      <FormControl id="email" >
+
+
+                        <FormLabel className={dmsans.className}>Do you have a broker?</FormLabel>
+                        <RadioGroup onChange={(e) => handleBrokerChange(e)} value={broker} mb='1rem'>
+                          <Stack direction='row'>
+                            <Radio value='false'>No</Radio>
+                            <Radio value='true'>Yes</Radio>
+                          </Stack>
+                        </RadioGroup>
+                        {
+                          broker == 'true' &&
+                          <Input
+                            value={brokerNum}
+                            onChange={(e) => setBrokerNum(e.target.value)} h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'} type="tel" maxLength={11} placeholder="What is your broker's number?" />
+
+
+
+
+                        }
+
+
+
+                      </FormControl>
+                    </Box>
+
+                    <Button isLoading={loadingState}
+                      loadingText='Creating..' variant='solid' colorScheme='blackAlpha' w={'100%'} mt={'71px'} h='54px' borderRadius={'2px'} bg='rgba(0, 0, 0, 1)' ><Text className={dmsans.className} fontSize={'16px'} color='#FFFFFF' fontWeight={700} lineHeight='21px' onClick={handleSetBroker} >Set My Broker</Text></Button>
+
+
+                  </DrawerBody>
+                </DrawerContent>}
+
+
+
+
+
+
+
+
+
+
+
+
+
+                {drawerContent == 'verifyAccount' && <DrawerContent
+                  px='48px' pt='61px'
+                >
+
+                  <DrawerHeader mb='52px'><Flex flexDirection='row' align='center' justify='space-between'>
+                    <Text className={dmsans.className} fontSize='30px' fontWeight={700}>Verify Account</Text>
+
+                  </Flex></DrawerHeader>
+
+                  <DrawerBody>
+                    <Box mb="1.6rem">
+                      <FormControl id="email" >
+
+
+                        <FormLabel className={dmsans.className}>What is your gender?</FormLabel>
+                        <RadioGroup onChange={setGender} value={gender} mb='1rem'>
+                          <Stack direction='row'>
+                            <Radio value='Male'>Male</Radio>
+                            <Radio value='Female'>Female</Radio>
+                          </Stack>
+                        </RadioGroup>
+                      </FormControl>
+                    </Box>
+
+
+
+
+                    <Box >
+                      <FormControl id="email" >
+                        <FormLabel className={dmsans.className}>BVN</FormLabel>
+
+                        <Input
+                          type="text"
+                          value={bvn}
+                          onChange={(e) => setBvn(e.target.value)} mb="1.6rem" h="3.6rem" maxLength={11} borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'} placeholder='BVN number for verification' />
+
+
+                      </FormControl>
+                    </Box>
+
+
+                    <Box>
+                      <FormControl id="email" >
+                        <FormLabel className={dmsans.className}>Date of Birth</FormLabel>
+                        <Input
+                          mb="1.6rem"
+                          h="3.6rem"
+                          borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'}
+                          placeholder="Select Date and Time"
+                          value={dOB}
+                          onChange={(e) => setDOB(e.target.value)}
+                          type="date"
+                        />
+                      </FormControl>
+                    </Box>
+
+                    <Button isLoading={loadingState}
+                      loadingText='Creating..' variant='solid' colorScheme='blackAlpha' w={'100%'} mt={'71px'} h='54px' borderRadius={'2px'} bg='rgba(0, 0, 0, 1)' ><Text className={dmsans.className} fontSize={'16px'} color='#FFFFFF' fontWeight={700} lineHeight='21px' onClick={handleVerifyAccount} >Verify My Account</Text></Button>
+
+
+                  </DrawerBody>
+                </DrawerContent>}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                 {drawerContent == 'receivePayment' && <DrawerContent
@@ -389,6 +767,31 @@ function Dashboard({ person }) {
 
                   </DrawerBody>
                 </DrawerContent>}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -437,6 +840,30 @@ function Dashboard({ person }) {
                 </DrawerContent>}
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 {drawerContent == 'settlementAccount' && <DrawerContent
                   px='48px' pt='61px'
                 >
@@ -479,6 +906,36 @@ function Dashboard({ person }) {
 
                   </DrawerBody>
                 </DrawerContent>}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
