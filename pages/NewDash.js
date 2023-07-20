@@ -297,8 +297,8 @@ const MobileNav = ({ onOpen, ...rest }) => {
                         <InputLeftElement
                             h="3.75rem"
                             pointerEvents='none'
-                            children={<SearchIcon w="14.91px" h="15.06px" color="#A5B3CD" />}
-                        />
+
+                        ><SearchIcon w="14.91px" h="15.06px" color="#A5B3CD" /></InputLeftElement>
                         <Input type="search"
                             borderRadius="8px" w="35.125rem" h="3.75rem" variant='outline' _placeholder={{ opacity: 1, color: "#A5B3CD", fontSize: '1rem' }} placeholder='Search a transaction' bg="#FFFFFF" />
                     </InputGroup>

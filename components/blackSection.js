@@ -2,6 +2,11 @@ import { ReactElement } from 'react';
 import { Box, SimpleGrid, Icon, Text, Stack, Flex, Image, Container, VStack } from '@chakra-ui/react';
 import { FcAssistant, FcDonate, FcInTransit } from 'react-icons/fc';
 import { Bree_Serif, Roboto_Slab, DM_Sans } from '@next/font/google'
+import DeviceIcon from './Icons/deviceIcon';
+import QrScanIcon from './Icons/qrScanIcon';
+import ExchangeIcon from './Icons/exchangeIcon';
+import CareIcon from './Icons/careIcon';
+
 
 const dmsans = DM_Sans({ weight: '400', subsets: ['latin'] })
 
@@ -9,19 +14,20 @@ const dmsansBold = DM_Sans({ weight: '500', subsets: ['latin'] })
 const bree = Bree_Serif({ weight: '400', subsets: ['latin'] })
 const roboto = Roboto_Slab({ weight: '300', subsets: ['latin'] })
 
+const deviceIcon = <DeviceIcon boxSize={'2.75rem'} />
+const qrScan = <QrScanIcon boxSize={'3.125rem'} />
+const exchangeIcon = <ExchangeIcon boxSize={'2.57638rem'} />
+const careIcon = <CareIcon boxSize={'1.6875rem'} />
+
+
 const Feature = ({ title, text, icon }) => {
     return (
 
         <Flex justify={'left'} w={{ base: '22.25rem', md: '19.3125rem' }} h='17.4375rem' borderRadius={'0.875rem'} border={' 2px solid #FFF'} background='#000'
             boxShadow='4px 12px 28px 2px rgba(143, 143, 143, 0.12)' flexDirection={'column'} py='1.75rem' px='1.5rem'
         >
-            <Box
-                p="0"
-                mb={{ base: '1.55rem', md: '0px' }}
-                mr={'1.9rem'}>
-                <Text className={roboto.className} fontSize={{ base: '2.81rem', md: '3rem' }} lineHeight={{ base: '2.93rem', md: '3.125rem' }} letterSpacing={{ base: '-0.47px', md: '-0.5px' }}> {icon}</Text>
-
-            </Box>
+            <Flex flexDirection={'row'} justify={'center'} align={'center'} w='3.3125rem' h='3.3125rem' mb='1.88rem' borderRadius='0.34869rem'
+                border='1.2px solid #FFF' > {icon}</Flex>
             <Box>
                 <Text color={'#ffffff'} className='clashMedium' fontSize={{ base: "1.01rem", md: '1.25rem' }} mb={{ base: "0.91rem", md: '0.88rem' }} >{title}</Text>
                 <Text fontWeight={400} className={dmsans.className} fontSize={{ base: "0.90rem", md: '1rem' }} lineHeight={{ base: "1.37rem", md: '1.15863rem' }} >{text}</Text>
@@ -61,8 +67,8 @@ export default function BlackSection() {
                 <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10} >
 
                     <VStack justify={'center'} align='center' spacing='3.62rem'>
-                        <Feature title='Mobile & Web App' text='Intuitive features so you can effortlessly manage your financial transactions' />
-                        <Feature title='Monapp QR Code Card' text='Shop online and offline with our QR code card. Free delivery and zero maintenance fee' />
+                        <Feature icon={deviceIcon} title='Mobile & Web App' text='Intuitive features so you can effortlessly manage your financial transactions' />
+                        <Feature icon={qrScan} title='Monapp QR Code Card' text='Shop online and offline with our QR code card. Free delivery and zero maintenance fee' />
                     </VStack>
 
                     <Box overflow={'hidden'}>
@@ -70,8 +76,8 @@ export default function BlackSection() {
                     </Box>
 
                     <VStack justify={'center'} align='center' spacing='3.62rem'>
-                        <Feature title='Payment Links' text='Use Payment Links to collect payments swiftly. Share the link with your customers and they can pay through multiple channels.' />
-                        <Feature title='First-Level Technical Support' text='No queue. Resolve your queries and concerns swiftly on the app with our one-on-one first-level support.' />
+                        <Feature icon={exchangeIcon} title='Payment Links' text='Use Payment Links to collect payments swiftly. Share the link with your customers and they can pay through multiple channels.' />
+                        <Feature icon={careIcon} title='First-Level Technical Support' text='No queue. Resolve your queries and concerns swiftly on the app with our one-on-one first-level support.' />
                     </VStack>
 
                 </SimpleGrid>
