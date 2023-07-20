@@ -534,7 +534,7 @@ export const Verify = ({ person }) => {
         const querySnapshot = await getDocs(q);
         if (querySnapshot.empty) {
 
-            await fetch('http://127.0.0.1:5001/monapp-33057/us-central1/app/api/anchor/create-customer', {
+            await fetch('https://us-central1-monapp-33057.cloudfunctions.net/app/api/anchor/create-customer', {
 
                 // Adding method type
                 method: "POST",
