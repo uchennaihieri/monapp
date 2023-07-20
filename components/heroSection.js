@@ -48,7 +48,7 @@ export default function HeroSection() {
                 pb={'6rem'}
                 direction={{ base: 'column', md: 'row' }}
                 w={'72.813vw'}
-                spacing='3.69rem'
+                spacing={{base:'3.69rem','2xl':'30rem'}}
             >
 
                 <Stack w={{ base: '100%', md: '31.5rem' }} mt={{ base: '0em', md: '3.395625em' }} align={{ base: "center", md: "start" }} >
@@ -97,7 +97,7 @@ export default function HeroSection() {
                             Enjoy fast and easy local payments. With our end-to-end solution, you can confirm payments in real-time and enjoy the best customer experience and support in the industry.
                         </Text>
                     </Box>
-                    <HStack spacing={{ base: '0.85rem', md: '2.3rem' }}  >
+                    <HStack spacing={{ base: '0.85rem', md: '2.3rem', }}  >
                         <Image
                             alt={'Hero Image'}
 
@@ -134,6 +134,7 @@ export default function HeroSection() {
 
 
                 </Stack>
+
                 <Flex
                     flex={1}
                     justify={'center'}
