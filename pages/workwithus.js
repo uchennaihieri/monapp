@@ -70,13 +70,13 @@ export default function Workwithus() {
                             `}
                             >
                                 <GridItem area={'l1'} >
-                                    <Image src='/l1.png' />
+                                    <Image alt="" src='/l1.png' />
                                 </GridItem>
                                 <GridItem area={'l2'}   >
-                                    <Image src='/l2.png' />
+                                    <Image alt="" src='/l2.png' />
                                 </GridItem>
                                 <GridItem area={'l3'}  >
-                                    <Image src='/l3.png' />
+                                    <Image alt="" src='/l3.png' />
                                 </GridItem>
                             </Grid>
                         </Box>
@@ -89,7 +89,7 @@ export default function Workwithus() {
                                 Be a payment broker: work and earn from home </Text>
 
                             <Text fontSize={{ md: '1.125rem', '2xl': '1.3rem' }} mt={['', '1.5rem']} textAlign='center' className={dmsans.className} h={{ base: '5.3125rem', md: '5.9375rem' }} w={{ base: '22.375rem', md: '36.75rem' }}>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</Text>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s,</Text>
 
                             <Button variant='solid' bgColor={'#fff'} mb={['4rem', '']} mt={['1rem', '']} borderRadius={['0.25rem', '0.62144rem']} _hover={{ bg: '#eee', color: '#000' }} w={{ base: '7.4375rem', md: '12.5rem' }} h={['2.30563rem', '3.875rem']} >
                                 <Text fontSize={['0.86275rem', '1.45rem']} color='#000' fontWeight={700} lineHeight='2.71944rem' letterSpacing={'0.00831rem'} className={dmsans.className} >Join now</Text>
