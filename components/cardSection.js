@@ -223,7 +223,7 @@ export default function CardSection() {
           <Box>
             <Grid
               templateRows="repeat(2, 1fr)"
-              templateColumns="repeat(4, 1fr)"
+              templateColumns={[ "1fr","repeat(4, 1fr)"]}
               gap={"2.88rem"}
             >
               {gridData.map((d, index) => (
