@@ -634,21 +634,6 @@ export const Verify = ({ person }) => {
                 }
             })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         } else {
             setLoadingState(false)
             toast({
