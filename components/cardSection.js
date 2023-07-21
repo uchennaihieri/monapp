@@ -256,7 +256,7 @@ const BrokerPart = () => {
         lineHeight={["3rem", "4.75rem"]}
         letterSpacing="-0.125rem"
         mb={["0", "0.3rem"]}
-        w={[" 22.9375rem", ""]}
+        w={[" 22.9375rem", "74.1875rem"]}
         textAlign={["center", ""]}
       >
         Everything you need to start earning
@@ -268,7 +268,7 @@ const BrokerPart = () => {
         className={grace.className}
         lineHeight={["3rem", "6.25rem"]}
         letterSpacing="-0.125rem"
-        mb={["2.62rem", "14.12rem"]}
+        mb={["2.62rem", "5.12rem"]}
       >
         Join Our Payments Revolution
       </Text>
