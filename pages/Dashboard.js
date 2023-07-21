@@ -137,7 +137,7 @@ function Dashboard({ person }) {
           position: 'top',
         })
       } else {
-        axios.post("http://127.0.0.1:5001/monapp-33057/us-central1/app/api/pin/create", {
+        axios.post("https://us-central1-monapp-33057.cloudfunctions.net/app/api/pin/create", {
           pin: pin,
           userId: person.userID
         })
@@ -268,7 +268,7 @@ function Dashboard({ person }) {
   const handleSetBroker = () => {
     setLoadingState(true)
 
-    axios.post("http://127.0.0.1:5001/monapp-33057/us-central1/app/api/set/broker", {
+    axios.post("https://us-central1-monapp-33057.cloudfunctions.net/app/api/set/broker", {
       broker: broker,
       userId: person.userID,
       brokerNumber: brokerNum

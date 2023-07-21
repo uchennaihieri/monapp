@@ -119,7 +119,7 @@ function ConfirmOtp({ person }) {
     //     console.log(qrData)
     // }
 
-    console.log(qrData)
+
 
     const url = "https://us-central1-monapp-33057.cloudfunctions.net/app/api/verifyOtp";
     var info = {
