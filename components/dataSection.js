@@ -51,15 +51,15 @@ export default function DataSection() {
   };
 
   return (
-    <Box bg="#F0F4FC" h={" 66.75rem"}>
+    <Box bg="#F0F4FC" h={{base:"70rem", md:" 66.75rem"}}>
       <Container maxW="100%" centerContent>
         <Flex 
           flexDirection={{ base: "column", md: "row" }}
           justify={{ base: "center", md: "space-between" }}
           align={{ base: "center", md: "start" }}
         >
-          <Flex direction={["column-reverse","row"]} mt={["4.75rem","9.25rem"]} gap="6.83rem" >
-            <Flex position="relative" >
+          <Flex direction={["column-reverse","row"]} mt={["4.75rem","9.25rem"]} gap={["8rem","6.83rem"]}  >
+            <Flex position="relative"  >
               <Image
                 src={"/firstImage.png"}
                 h={["16.36063rem","31.75rem"]}
@@ -129,16 +129,17 @@ export default function DataSection() {
                   ))}
                 </SimpleGrid>
 
+                <Box w={"100%"} m={"auto"} >
                 <Button
                   variant="solid"
-                  w={{ base: "100%", md: "13.75rem" }}
+                  w={"13.75rem"}
                   h={"3.875rem"}
                   borderRadius="0.62144rem"
                   background="#000"
                   _hover={{
                     background: "#222",
                   }}
-                  ml={["5rem","0"]}
+                  // ml={["5rem","0"]}
 
                 >
                   <Text
@@ -151,6 +152,7 @@ export default function DataSection() {
                     Start earning
                   </Text>
                 </Button>
+                </Box>
               </Stack>
             </Box>
           </Flex>
