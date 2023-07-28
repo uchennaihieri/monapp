@@ -51,7 +51,7 @@ export default function DataSection() {
   };
 
   return (
-    <Box bg="#F0F4FC" h={{base:"70rem", md:" 66.75rem"}}>
+    <Box bg="#F0F4FC" h={{base:"80rem", md:" 66.75rem"}}>
       <Container maxW="100%" centerContent>
         <Flex 
           flexDirection={{ base: "column", md: "row" }}
