@@ -13,6 +13,9 @@ import profileCircleIcon from "./Icons/profileCircleIcon";
 import easySettingIcon from "./Icons/easySettingIcon";
 import flashIcon from "./Icons/flashIcon";
 import settingIcon from "./Icons/settingIcon";
+import whiteSettingIcon from "./Icons/whitesettings";
+import whiteprofile from "./Icons/whiteprofile";
+import whiteflash from "./Icons/whiteflash";
 
 const dmsans = DM_Sans({ weight: "400", subsets: ["latin"] });
 
@@ -157,7 +160,7 @@ function WhiteEasySteps() {
               </Flex>
               
               <Icon
-                as={profileCircleIcon}
+                as={whiteprofile}
                 h={["2.84975rem","5rem"]}
                 w={["2.84975rem","5rem"]}
                 color={"red"}
@@ -225,7 +228,7 @@ function WhiteEasySteps() {
                 2
               </Flex>
               <Icon
-                as={easySettingIcon}
+                as={whiteSettingIcon}
                 h={["2.84975rem","5rem"]}
                 w={["2.84975rem","5rem"]}
               ></Icon>
@@ -291,7 +294,7 @@ function WhiteEasySteps() {
                 3
               </Flex>
               <Icon
-                as={settingIcon}
+                as={whiteflash}
                 h={["2.84975rem","5rem"]}
                 w={["2.84975rem","5rem"]}
               ></Icon>
