@@ -1,11 +1,10 @@
 import React from "react";
 import { Box, Flex, Text, Icon, VStack, Image } from "@chakra-ui/react";
-import { SettingsIcon } from "@chakra-ui/icons";
+import { SettingsIcon, FlashIcon } from "@chakra-ui/icons";
 import { Bree_Serif, DM_Sans } from "@next/font/google";
 import profileCircleIcon from "./Icons/profileCircleIcon";
 import easySettingIcon from "./Icons/easySettingIcon";
-import flashIcon from "./Icons/flashIcon";
-import settingIcon from "./Icons/settingIcon";
+import whiteflash from "./Icons/whiteflash";
 
 const dmsans = DM_Sans({ weight: "400", subsets: ["latin"] });
 
@@ -272,7 +271,7 @@ function EasySteps() {
                 3
               </Flex>
               <Icon
-                as={settingIcon}
+                as={FlashIcon}
                 h={["2.84975rem","5rem"]}
                 w={["2.84975rem","5rem"]}
               ></Icon>

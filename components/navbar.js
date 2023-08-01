@@ -246,7 +246,7 @@ const NAV_ITEMS = [
     },
     {
         label: 'Become a broker',
-        href: '/workwithus'
+        href: '/broker'
     },
     {
         label: 'Sign in',
