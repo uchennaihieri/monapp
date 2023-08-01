@@ -74,7 +74,7 @@ export default function Support() {
               <Flex direction={'column'} w={['9.35425rem', '19.1875rem']} h={['5.69788rem', '11.6875rem']} justifyContent='center' bgColor={'#fff'} borderRadius={['0.975px ', '12px']}
                 alignItems='center' border='1.2px solid rgba(0, 0, 0, 0.20)' _hover={{ border: '2px #000 solid' }} gap={['0.5', '5']} boxShadow='0px 8px 64px 0px rgba(167, 167, 167,0.24)'>
                 <Box w={['2.22431rem', ' 3.375rem']} h={['2.22431rem', ' 3.375rem']} borderRadius='50%' bgColor='#D9D9D9'>
-                  <Image src='/gettingStarted.png' width={50} height={50} />
+                  <Image src='/gettingstarted.png' width={50} height={50} />
                 </Box>
 
                 <Text fontSize={['0.79219rem', '1.625rem']} lineHeight={['0.85319rem', '1.75rem']} className='clashMedium' fontWeight={'500'}>Getting Started</Text>
