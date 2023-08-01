@@ -22,6 +22,7 @@ import { getDownloadURL, getStorage, ref, uploadString } from "firebase/storage"
 import { db } from '@/services/firebase';
 import { useRouter } from 'next/router';
 import CountdownTimer from '@/components/countDownTimer';
+import baseURL from '@/services/baseUrl';
 
 function ConfirmOtp({ person }) {
 
@@ -119,9 +120,9 @@ function ConfirmOtp({ person }) {
     //     console.log(qrData)
     // }
 
-    console.log(qrData)
 
-    const url = "https://us-central1-monapp-33057.cloudfunctions.net/app/api/verifyOtp";
+
+    const url = `${baseURL}/api/verifyOtp`;
     var info = {
         "pinId": tokenPin,
         "pin": otp
@@ -237,7 +238,7 @@ function ConfirmOtp({ person }) {
     const verifyUser = async () => {
 
 
-        await fetch("https://us-central1-monapp-33057.cloudfunctions.net/app/api/verifyBvn", {
+        await fetch(`${baseURL}/api/verifyBvn`, {
 
             // Adding method type
             method: "POST",
@@ -364,7 +365,7 @@ export const getServerSideProps = withAuthUserTokenSSR({
     // Optionally, get other props.
     const token = await AuthUser.getIdToken(true)
     const UID = AuthUser.id
-    const response = await fetch(`https://us-central1-monapp-33057.cloudfunctions.net/app/api/user/${UID}`, {
+    const response = await fetch(`${baseURL}/api/user/${UID}`, {
         method: 'GET',
         headers: {
             Authorization: token,

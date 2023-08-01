@@ -4,7 +4,8 @@ import { SettingsIcon, FlashIcon } from "@chakra-ui/icons";
 import { Bree_Serif, DM_Sans } from "@next/font/google";
 import profileCircleIcon from "./Icons/profileCircleIcon";
 import easySettingIcon from "./Icons/easySettingIcon";
-import whiteflash from "./Icons/whiteflash";
+import settingIcon from "./Icons/settingIcon";
+import FlashIcon from "./Icons/flashIcon";
 
 const dmsans = DM_Sans({ weight: "400", subsets: ["latin"] });
 
@@ -16,11 +17,11 @@ function EasySteps() {
     <>
       <VStack
         bg={"#000000"}
-        maxWidth={["24.375rem","87.375rem"]}
-        m={["6rem auto 7.8rem","7.62rem auto 11.5rem"]}
-        h={["58.9375rem","44.4375rem"]}
+        maxWidth={["24.375rem", "87.375rem"]}
+        m={["6rem auto 7.8rem", "7.62rem auto 11.5rem"]}
+        h={["58.9375rem", "44.4375rem"]}
         color="#ffffff"
-        borderRadius={["2.375rem","3rem"]}
+        borderRadius={["2.375rem", "3rem"]}
       >
         <Image
           src="/birds.png"
@@ -32,25 +33,25 @@ function EasySteps() {
           display={["none", "block"]}
         />
         <Text
-          fontSize={["2rem","2.5rem"]}
+          fontSize={["2rem", "2.5rem"]}
           fontStyle={"normal"}
           className="clashRegular"
           fontWeight="600"
-          lineHeight={["1.97919rem","3rem"]}
-          letterSpacing={["0.04rem","0.05rem"]}
+          lineHeight={["1.97919rem", "3rem"]}
+          letterSpacing={["0.04rem", "0.05rem"]}
           textAlign={"center"}
           pt={["2.62rem", "0.94rem"]}
-          w={[" 17.8125rem","auto"]}
+          w={[" 17.8125rem", "auto"]}
         >
           Getting Started in 3 easy steps
         </Text>
         <Text
           textAlign="center"
-          letterSpacing={["-0.0175rem","1.4"]}
-          fontSize={["0.875rem","1.25rem"]}
+          letterSpacing={["-0.0175rem", "1.4"]}
+          fontSize={["0.875rem", "1.25rem"]}
           className="manRope"
-          w={["16.71006rem","31.25rem"]}
-          lineHeight={["1.16969rem","2.1875rem"]}
+          w={["16.71006rem", "31.25rem"]}
+          lineHeight={["1.16969rem", "2.1875rem"]}
           fontWeight={"400"}
         >
           Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -58,7 +59,7 @@ function EasySteps() {
         </Text>
         <Flex
           align="center"
-          flexDir={["column","row"]}
+          flexDir={["column", "row"]}
           textAlign={"center"}
           alignItems={"center"}
           justify={"center"}
@@ -66,7 +67,7 @@ function EasySteps() {
           m={"auto"}
           pt={"2.88rem"}
           position={"relative"}
-          gap={["4.5rem","5rem"]}
+          gap={["4.5rem", "5rem"]}
         >
           <Box
             display="flex"
@@ -80,7 +81,7 @@ function EasySteps() {
               position={"absolute"}
               left={"16.75rem"}
               top="7.5rem"
-              display={["none","block"]}
+              display={["none", "block"]}
             />
 
             <Image
@@ -89,28 +90,28 @@ function EasySteps() {
               position={"absolute"}
               right={"16.75rem"}
               top="7.5rem"
-              display={["none","block"]}
+              display={["none", "block"]}
 
             />
-              <Image
+            <Image
               src="/dashedline.png"
               position={"absolute"}
-             top={"15.5rem"}
-              display={["block","none"]}
+              top={"15.5rem"}
+              display={["block", "none"]}
             />
-                          <Image
+            <Image
               src="/dashedline.png"
               position={"absolute"}
-             top={"31rem"}
-              display={["block","none"]}
+              top={"31rem"}
+              display={["block", "none"]}
             />
 
 
 
             <Flex
               border="1px dashed white"
-              w={[" 5.6995rem","10rem"]}
-              h={[" 5.6995rem","10rem"]}
+              w={[" 5.6995rem", "10rem"]}
+              h={[" 5.6995rem", "10rem"]}
               p={"1.42456rem 1.42488rem 1.42519rem 1.42488rem"}
               borderRadius="5rem"
               alignItems="center"
@@ -133,31 +134,31 @@ function EasySteps() {
                 position={"absolute"}
                 left={"-1.25rem"}
                 top={"-1rem"}
-                display={["none","flex"]}
+                display={["none", "flex"]}
               >
                 1
               </Flex>
               <Icon
                 as={profileCircleIcon}
-                h={["2.84975rem","5rem"]}
-                w={["2.84975rem","5rem"]}
+                h={["2.84975rem", "5rem"]}
+                w={["2.84975rem", "5rem"]}
               ></Icon>
             </Flex>
             <Text
-              fontSize={["0.85494rem","1.5rem"]}
+              fontSize={["0.85494rem", "1.5rem"]}
               className={"clashRegular"}
               fontWeight={"500"}
-              mt={["1.9rem","3.375rem"]}
-              mb={["0.4rem","0.88rem"]}
+              mt={["1.9rem", "3.375rem"]}
+              mb={["0.4rem", "0.88rem"]}
             >
               Download & Register
             </Text>
             <Text
-              fontSize={["0.56994rem","1rem"]}
-              w={["11.39894rem","20rem"]}
+              fontSize={["0.56994rem", "1rem"]}
+              w={["11.39894rem", "20rem"]}
               className="manRope"
-              lineHeight={["1.13988rem","2rem"]}
-              letterSpacing={["-0.01138rem","-0.02rem"]}
+              lineHeight={["1.13988rem", "2rem"]}
+              letterSpacing={["-0.01138rem", "-0.02rem"]}
               textAlign={"center"}
               fontWeight={"200"}
             >
@@ -175,8 +176,8 @@ function EasySteps() {
           >
             <Flex
               border="1px dashed white"
-              w={[" 5.6995rem","10rem"]}
-              h={[" 5.6995rem","10rem"]}
+              w={[" 5.6995rem", "10rem"]}
+              h={[" 5.6995rem", "10rem"]}
               p={"1.42456rem 1.42488rem 1.42519rem 1.42488rem"}
               borderRadius="5rem"
               alignItems="center"
@@ -199,32 +200,32 @@ function EasySteps() {
                 position={"absolute"}
                 left={"-1.25rem"}
                 top={"-1rem"}
-                display={["none","flex"]}
+                display={["none", "flex"]}
 
               >
                 2
               </Flex>
               <Icon
                 as={easySettingIcon}
-                h={["2.84975rem","5rem"]}
-                w={["2.84975rem","5rem"]}
+                h={["2.84975rem", "5rem"]}
+                w={["2.84975rem", "5rem"]}
               ></Icon>
             </Flex>
             <Text
-              fontSize={["0.85494rem","1.5rem"]}
+              fontSize={["0.85494rem", "1.5rem"]}
               className={"clashRegular"}
               fontWeight={"500"}
-              mt={["1.9rem","3.375rem"]}
-              mb={["0.4rem","0.88rem"]}
+              mt={["1.9rem", "3.375rem"]}
+              mb={["0.4rem", "0.88rem"]}
             >
               Complete Setup
             </Text>
             <Text
-              fontSize={["0.56994rem","1rem"]}
-              w={["11.39894rem","20rem"]}
+              fontSize={["0.56994rem", "1rem"]}
+              w={["11.39894rem", "20rem"]}
               className="manRope"
-              lineHeight={["1.13988rem","2rem"]}
-              letterSpacing={["-0.01138rem","-0.02rem"]}
+              lineHeight={["1.13988rem", "2rem"]}
+              letterSpacing={["-0.01138rem", "-0.02rem"]}
               textAlign={"center"}
             >
               Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -241,8 +242,8 @@ function EasySteps() {
           >
             <Flex
               border="1px dashed white"
-              w={[" 5.6995rem","10rem"]}
-              h={[" 5.6995rem","10rem"]}
+              w={[" 5.6995rem", "10rem"]}
+              h={[" 5.6995rem", "10rem"]}
               p={"1.42456rem 1.42488rem 1.42519rem 1.42488rem"}
               borderRadius="5rem"
               alignItems="center"
@@ -265,32 +266,32 @@ function EasySteps() {
                 position={"absolute"}
                 left={"-1.25rem"}
                 top={"-1rem"}
-                display={["none","flex"]}
+                display={["none", "flex"]}
 
               >
                 3
               </Flex>
               <Icon
-                as={FlashIcon}
+                as={settingIcon}
                 h={["2.84975rem","5rem"]}
                 w={["2.84975rem","5rem"]}
               ></Icon>
             </Flex>
             <Text
-              fontSize={["0.85494rem","1.5rem"]}
+              fontSize={["0.85494rem", "1.5rem"]}
               className={"clashRegular"}
               fontWeight={"500"}
-              mt={["1.9rem","3.375rem"]}
-              mb={["0.4rem","0.88rem"]}
+              mt={["1.9rem", "3.375rem"]}
+              mb={["0.4rem", "0.88rem"]}
             >
               Start Transacting
             </Text>
             <Text
-              fontSize={["0.56994rem","1rem"]}
-              w={["11.39894rem","20rem"]}
+              fontSize={["0.56994rem", "1rem"]}
+              w={["11.39894rem", "20rem"]}
               className="manRope"
-              lineHeight={["1.13988rem","2rem"]}
-              letterSpacing={["-0.01138rem","-0.02rem"]}
+              lineHeight={["1.13988rem", "2rem"]}
+              letterSpacing={["-0.01138rem", "-0.02rem"]}
               textAlign={"center"}
             >
               Lorem Ipsum is simply dummy text of the printing and typesetting

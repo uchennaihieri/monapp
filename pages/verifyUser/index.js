@@ -47,7 +47,7 @@ import { useRouter } from 'next/router';
 import useIdentityPayKYC from 'react-identity-kyc'
 import { useRecoilState } from 'recoil'
 import { Bree_Serif, DM_Sans, Roboto_Slab } from '@next/font/google';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { AiOutlineLeft } from 'react-icons/ai';
 import { RiEyeCloseFill, RiEyeFill } from 'react-icons/ri';
 import { businessCat, businessReg, bvnN, myLocation, pinID, seller, sellerType, myCity, myAddress, myPostalCode } from '@/recoil/atoms';
@@ -55,6 +55,7 @@ import { useForm } from "react-hook-form";
 import { auth, createUserWithEmailAndPassword, db, deleteDoc, doc, deleteUser, serverTimestamp, setDoc, signInWithEmailAndPassword } from '@/services/firebase';
 import { reauthenticateWithCredential } from 'firebase/auth';
 import { addDoc, collection, getDocs, query, updateDoc, where } from 'firebase/firestore';
+import baseURL from '@/services/baseUrl';
 
 const dmsansBold = DM_Sans({ weight: '500', subsets: ['latin'] })
 const bree = Bree_Serif({ weight: '400', subsets: ['latin'] })
@@ -534,7 +535,7 @@ export const Verify = ({ person }) => {
         const querySnapshot = await getDocs(q);
         if (querySnapshot.empty) {
 
-            await fetch('http://127.0.0.1:5001/monapp-33057/us-central1/app/api/anchor/create-customer', {
+            await fetch(`${baseURL}/api/anchor/create-customer`, {
 
                 // Adding method type
                 method: "POST",
@@ -603,7 +604,7 @@ export const Verify = ({ person }) => {
                     });
 
 
-                    await fetch("https://us-central1-monapp-33057.cloudfunctions.net/app/api/verifyBvn", {
+                    await fetch(`${baseURL}/api/verifyBvn`, {
 
                         // Adding method type
                         method: "POST",
@@ -634,21 +635,6 @@ export const Verify = ({ person }) => {
                 }
             })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         } else {
             setLoadingState(false)
             toast({
@@ -666,6 +652,7 @@ export const Verify = ({ person }) => {
 
 
     return (
+
         <Box
             m="0px"
             borderRadius={'2px'}
@@ -674,25 +661,25 @@ export const Verify = ({ person }) => {
             bg={'#F9FAFC'}
             border={'1px solid rgba(0, 0, 0, 0.14);'}
             py={'4.5rem'} px={'4.8rem'}>
+            <Suspense fallback={<p>Loading...</p>}>
+                <Stack >
+                    <Box >
+                        <FormControl id="email" >
+                            <FormLabel className={roboto.className}>Select State</FormLabel>
 
-            <Stack >
-                <Box >
-                    <FormControl id="email" >
-                        <FormLabel className={roboto.className}>Select State</FormLabel>
+                            <Select value={selectedOption ? selectedOption.state : ''}
+                                onChange={handleSelectChange}
+                                placeholder="Select an option"
+                                variant='outline' mb="1.6rem" h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'}>
+                                {locations?.map((loc, index) => <option key={index} value={loc.state}>{loc.state}</option>)}
 
-                        <Select value={selectedOption ? selectedOption.state : ''}
-                            onChange={handleSelectChange}
-                            placeholder="Select an option"
-                            variant='outline' mb="1.6rem" h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'}>
-                            {locations?.map((loc, index) => <option key={index} value={loc.state}>{loc.state}</option>)}
+                            </Select>
 
-                        </Select>
-
-                    </FormControl>
-                </Box>
+                        </FormControl>
+                    </Box>
 
 
-                {/* <Box >
+                    {/* <Box >
                     <FormControl id="email" >
                         <FormLabel className={roboto.className}>City</FormLabel>
 
@@ -704,7 +691,7 @@ export const Verify = ({ person }) => {
                     </FormControl>
                 </Box> */}
 
-                {/* <Box >
+                    {/* <Box >
                     <FormControl id="email" >
                         <FormLabel className={roboto.className}>Address</FormLabel>
 
@@ -716,25 +703,25 @@ export const Verify = ({ person }) => {
                     </FormControl>
                 </Box> */}
 
-                <Box >
-                    <FormControl id="email" >
-                        <FormLabel className={roboto.className}>tag</FormLabel>
-                        <InputGroup h="3.6rem" mb="1.6rem">
-                            <InputLeftAddon h='100%'>
-                                @
-                            </InputLeftAddon>
+                    <Box >
+                        <FormControl id="email" >
+                            <FormLabel className={roboto.className}>tag</FormLabel>
+                            <InputGroup h="3.6rem" mb="1.6rem">
+                                <InputLeftAddon h='100%'>
+                                    @
+                                </InputLeftAddon>
 
-                            <Input
-                                value={tag}
-                                onChange={(e) => setTag(e.target.value)} h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'} type="text" placeholder='set a unique tag' />
-                        </InputGroup>
+                                <Input
+                                    value={tag}
+                                    onChange={(e) => setTag(e.target.value)} h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'} type="text" placeholder='set a unique tag' />
+                            </InputGroup>
 
-                    </FormControl>
-                </Box>
+                        </FormControl>
+                    </Box>
 
 
 
-                {/* <Box >
+                    {/* <Box >
                     <FormControl id="email" >
                         <FormLabel className={roboto.className}>Broker's Number</FormLabel>
 
@@ -747,7 +734,7 @@ export const Verify = ({ person }) => {
                 </Box> */}
 
 
-                {/* <Box >
+                    {/* <Box >
                     <FormControl id="email" >
                         <FormLabel className={roboto.className}>Postal Code</FormLabel>
 
@@ -758,7 +745,7 @@ export const Verify = ({ person }) => {
 
                     </FormControl>
                 </Box> */}
-                {/* 
+                    {/* 
 
                 {merchant &&
                     <>
@@ -770,14 +757,14 @@ export const Verify = ({ person }) => {
                                     <Radio value='2'>Registered Business</Radio>
                                 </Stack>
                             </RadioGroup> */}
-                {/* <CheckboxGroup colorScheme='green' defaultValue={['naruto', 'kakashi']}>
+                    {/* <CheckboxGroup colorScheme='green' defaultValue={['naruto', 'kakashi']}>
 
                                 <HStack > <Checkbox value='personal'></Checkbox>
                                     <Checkbox value='registered_business'></Checkbox></HStack>
                             </CheckboxGroup> */}
-                {/* </Box> */}
+                    {/* </Box> */}
 
-                {/* {merchantType == '1' && <>
+                    {/* {merchantType == '1' && <>
                             <Box  >
                                 <FormControl id="email" isDisabled >
                                     <FormLabel className={roboto.className}>Merchant Name</FormLabel>
@@ -806,7 +793,7 @@ export const Verify = ({ person }) => {
 
 
 
-                {/* {merchantType == '2' && <>
+                    {/* {merchantType == '2' && <>
                             <Box  >
                                 <FormControl id="email" >
                                     <FormLabel className={roboto.className}>Merchant Name</FormLabel>
@@ -844,11 +831,11 @@ export const Verify = ({ person }) => {
                         </>} */}
 
 
-                {/* 
+                    {/* 
                     </>
                 } */}
 
-                {/* <Box >
+                    {/* <Box >
                     <FormControl id="email" >
                         <FormLabel className={roboto.className}>Beta Code</FormLabel>
 
@@ -860,27 +847,28 @@ export const Verify = ({ person }) => {
                     </FormControl>
                 </Box> */}
 
-                <Button
-                    type='submit'
-                    isLoading={loadingState}
-                    loadingText='Please wait..'
-                    onClick={verifyUser}
-                    borderRadius={'0.125rem'}
-                    h="4rem"
-                    bg={'#000000'}
-                    color={'white'}
-                    _hover={{
-                        bg: 'black.400',
-                    }}>
-                    <Text
-                        fontSize="1.5rem" className={roboto.className} >
-                        Proceed
-                    </Text>
+                    <Button
+                        type='submit'
+                        isLoading={loadingState}
+                        loadingText='Please wait..'
+                        onClick={verifyUser}
+                        borderRadius={'0.125rem'}
+                        h="4rem"
+                        bg={'#000000'}
+                        color={'white'}
+                        _hover={{
+                            bg: 'black.400',
+                        }}>
+                        <Text
+                            fontSize="1.5rem" className={roboto.className} >
+                            Proceed
+                        </Text>
 
-                </Button>
-            </Stack>
-
+                    </Button>
+                </Stack>
+            </Suspense>
         </Box>
+
     );
 }
 
@@ -896,7 +884,7 @@ export const getServerSideProps = withAuthUserTokenSSR({
     // Optionally, get other props.
     const token = await AuthUser.getIdToken(true)
     const UID = AuthUser.id
-    const response = await fetch(`https://us-central1-monapp-33057.cloudfunctions.net/app/api/user/${UID}`, {
+    const response = await fetch(`${baseURL}/api/user/${UID}`, {
         method: 'GET',
         headers: {
             Authorization: token,

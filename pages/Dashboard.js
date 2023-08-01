@@ -51,6 +51,7 @@ import { personState } from "@/recoil/atoms";
 import { HiOutlineX } from "react-icons/hi";
 import CancelIcon from "@/components/Icons/cancelIcon";
 import axios from "axios";
+import baseURL from "@/services/baseUrl";
 const dayjs = require("dayjs");
 
 const dmsans = DM_Sans({ weight: "400", subsets: ["latin"] });
@@ -137,7 +138,7 @@ function Dashboard({ person }) {
           position: 'top',
         })
       } else {
-        axios.post("http://127.0.0.1:5001/monapp-33057/us-central1/app/api/pin/create", {
+        axios.post(`${baseURL}/api/pin/create`, {
           pin: pin,
           userId: person.userID
         })
@@ -268,7 +269,7 @@ function Dashboard({ person }) {
   const handleSetBroker = () => {
     setLoadingState(true)
 
-    axios.post("http://127.0.0.1:5001/monapp-33057/us-central1/app/api/set/broker", {
+    axios.post(`${baseURL}/api/set/broker`, {
       broker: broker,
       userId: person.userID,
       brokerNumber: brokerNum
@@ -329,7 +330,7 @@ function Dashboard({ person }) {
   const handleVerifyAccount = () => {
     setLoadingState(true)
 
-    axios.post("https://us-central1-monapp-33057.cloudfunctions.net/app/api/anchor/tier_two/verify-customer", {
+    axios.post(`${baseURL}/api/anchor/tier_two/verify-customer`, {
       customerId: person.anchor_customerId,
       dateOfBirth: dOB,
       gender: gender,
@@ -1496,10 +1497,10 @@ export const getServerSideProps = withAuthUserTokenSSR({
 })(async ({ AuthUser }) => {
   // Optionally, get other props.
   const token = await AuthUser.getIdToken(true);
-
+  console.log(baseURL)
   const UID = AuthUser.id;
   const response = await fetch(
-    `https://us-central1-monapp-33057.cloudfunctions.net/app/api/user/${UID}`,
+    `${baseURL}/api/user/${UID}`,
     {
       method: "GET",
       headers: {
