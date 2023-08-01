@@ -50,7 +50,7 @@ export default function Support() {
             <Flex mt='2rem' mb={['6rem', '0']} justifyContent={'center'} alignItems={'center'} ml={['', '3rem']} flexDir={{ base: 'column', md: 'row' }} gap={'1.5rem'}>
               <InputGroup  >
                 <InputLeftElement __css={{ p: '8px', mt: '1.48rem' }} display={['none', 'block']}>
-                  <BiSearch size='1.5rem' color='white.400' />
+                  <BiSearch size='1.5rem' color='white.400'/>
                 </InputLeftElement>
 
                 <Input h={{ base: '3.3125rem', md: "5.0625rem" }} w={{ base: '24.3125rem', md: '46.625rem' }} fontSize={['0.98325rem', '1.5rem']} borderRadius={['0.25rem', '12px']} fontWeight={400} lineHeight={'1.65625rem'} border={'1.4px solid #fff'} type='text' placeholder='write a question or problem' />
@@ -89,7 +89,7 @@ export default function Support() {
 
                 <Box w={['2.22431rem', ' 4.5625rem']} h={['2.22431rem', ' 4.5625rem']} borderRadius='50%' border='0.5px rgba(0, 0, 0, 0.50) solid' display='flex' justifyContent='center' alignItems='center' >
                   {/* <Image src='/pricingPlan.png'  width={['1.0665rem','2.1875rem']} height={['1.0665rem','2.1875rem']} /> */}
-                  <Icon as={IoPricetag} h={["1.0665rem", "2.1875rem"]} w={["2.84975rem", "2.1875rem"]}/>
+                  <Icon as={IoPricetag}  h={["1.0665rem", "2.1875rem"]} w={["2.84975rem", "2.1875rem"]}/>
                 </Box>
 
                 <Text fontSize={['0.79219rem', '1.625rem']} className='clashMedium' lineHeight={['0.85319rem', '1.75rem']} fontWeight={'500'}>Pricing and Plan</Text>
