@@ -16,7 +16,7 @@ import {
   useToast,
   Spacer,
   GridItem,
-  Grid,
+  Grid,Link
 } from "@chakra-ui/react";
 import { MdCheckCircle } from "react-icons/md";
 import {
@@ -109,6 +109,7 @@ const GridBox = (data) => {
       </Text>
 
       <Spacer />
+      <Link href={'/auth?task=signup'}>
       <Button
         alignSelf={{ base: "center", md: "start" }}
         variant={"unstyled"}
@@ -132,6 +133,7 @@ const GridBox = (data) => {
           <GoIcon boxSize={"14px"} />
         </Flex>
       </Button>
+      </Link>
     </Flex>
   );
 };
@@ -195,6 +197,7 @@ export default function CardSection() {
             </Text>
 
             <Box w={"100%"} m={"auto"}>
+              <Link href="/auth?task=signup">
               <Button
                 variant="solid"
                 w={{ base: "12.92731rem", md: "12.5rem" }}
@@ -217,6 +220,7 @@ export default function CardSection() {
                   Register now
                 </Text>
               </Button>
+              </Link>
             </Box>
           </Stack>
 
@@ -350,6 +354,7 @@ const BrokerPart = () => {
               ))}
             </SimpleGrid>
 <Box w={"100%"} m={"auto"}>
+  <Link href={"/broker"}>
             <Button
               variant="solid"
               w={{ base: "17.5em", md: "13.75rem" }}
@@ -370,7 +375,9 @@ const BrokerPart = () => {
               >
                 Start earning
               </Text>
-            </Button></Box>
+            </Button>
+            </Link>
+            </Box>
           </Stack>
         </Box>
       </Flex>

@@ -27,7 +27,7 @@ import {
   FiBell,
   FiChevronDown,
 } from "react-icons/fi";
-import { PiCopyFill } from "react-icons/pi";
+// import { PiCopyFill } from "react-icons/pi";
 
 import {
   AuthAction,

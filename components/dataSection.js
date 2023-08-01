@@ -7,7 +7,7 @@ import {
   Text,
   Stack,
   StackDivider,
-  Icon,
+  Icon, Link,
   useColorModeValue,
   Box,
   List,
@@ -130,6 +130,7 @@ export default function DataSection() {
                 </SimpleGrid>
 
                 <Box w={"100%"} m={"auto"} >
+                  <Link href={"/broker"}>
                 <Button
                   variant="solid"
                   w={"13.75rem"}
@@ -152,6 +153,7 @@ export default function DataSection() {
                     Start earning
                   </Text>
                 </Button>
+                </Link>
                 </Box>
               </Stack>
             </Box>
