@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Image from 'next/image'
+// import Image from 'next/image'
 
 import { Inter, DM_Sans, } from '@next/font/google'
 
@@ -9,16 +9,18 @@ import Features from '@/components/features'
 import DataSection from '@/components/dataSection'
 import CardSection from '@/components/cardSection'
 
-import { Box, Center, InputGroup, Input, HStack, Button, Text, InputLeftElement, Flex, VStack, Accordion, AccordionItem, AccordionButton, AccordionIcon, AccordionPanel, IconButton, FormControl, FormLabel, ButtonGroup, Textarea } from '@chakra-ui/react'
+import { Box, Center, InputGroup, Input, HStack, Button, Image,Icon, Text, InputLeftElement, Flex, VStack, Accordion, AccordionItem, AccordionButton, AccordionIcon, AccordionPanel, IconButton, FormControl, FormLabel, ButtonGroup, Textarea } from '@chakra-ui/react'
 
 import FooterSection from '@/components/footerSection'
 import BlackSection from '@/components/blackSection'
 import PageSeo from '@/Seo/pageSeo'
 import NewHero from '@/components/NewHero'
 
-import { BiSearch } from 'react-icons/bi'
+import { BiSearch, BiSolidPieChartAlt2 } from 'react-icons/bi'
 import OurCommunity from '@/components/OurCommunity'
 import EasySteps from '@/components/EasySteps'
+import { IoPricetag, IoRocket } from 'react-icons/io5'
+import { FaHandshake } from 'react-icons/fa'
 
 const inter = Inter({ subsets: ['latin'] })
 const dmsans = DM_Sans({ weight: "400", subsets: ["latin"] });
@@ -48,7 +50,7 @@ export default function Support() {
             <Flex mt='2rem' mb={['6rem', '0']} justifyContent={'center'} alignItems={'center'} ml={['', '3rem']} flexDir={{ base: 'column', md: 'row' }} gap={'1.5rem'}>
               <InputGroup  >
                 <InputLeftElement __css={{ p: '8px', mt: '1.48rem' }} display={['none', 'block']}>
-                  <BiSearch size='1.5rem' color='white.400' />
+                  <BiSearch size='1.5rem' color='white.400'/>
                 </InputLeftElement>
 
                 <Input h={{ base: '3.3125rem', md: "5.0625rem" }} w={{ base: '24.3125rem', md: '46.625rem' }} fontSize={['0.98325rem', '1.5rem']} borderRadius={['0.25rem', '12px']} fontWeight={400} lineHeight={'1.65625rem'} border={'1.4px solid #fff'} type='text' placeholder='write a question or problem' />
@@ -73,8 +75,11 @@ export default function Support() {
             <HStack mt={'3rem'} gap={['4', '10']}  >
               <Flex direction={'column'} w={['9.35425rem', '19.1875rem']} h={['5.69788rem', '11.6875rem']} justifyContent='center' bgColor={'#fff'} borderRadius={['0.975px ', '12px']}
                 alignItems='center' border='1.2px solid rgba(0, 0, 0, 0.20)' _hover={{ border: '2px #000 solid' }} gap={['0.5', '5']} boxShadow='0px 8px 64px 0px rgba(167, 167, 167,0.24)'>
-                <Box w={['2.22431rem', ' 3.375rem']} h={['2.22431rem', ' 3.375rem']} borderRadius='50%' bgColor='#D9D9D9'>
-                  <Image src='/gettingStarted.png' width={50} height={50} />
+                <Box w={['2.22431rem', ' 4.5625rem']} h={['2.22431rem', ' 4.5625rem']} borderRadius='50%' border='0.5px rgba(0, 0, 0, 0.50) solid' display='flex' justifyContent='center' alignItems='center'>
+                  {/* <Image src='/gettingstarted.png' width={['1.0665rem','2.1875rem']} height={['1.0665rem','2.1875rem']} /> */}
+                  
+                  <Icon as={IoRocket}  h={["1.0665rem", "2.1875rem"]} w={["2.84975rem", "2.1875rem"]}/>
+                  
                 </Box>
 
                 <Text fontSize={['0.79219rem', '1.625rem']} lineHeight={['0.85319rem', '1.75rem']} className='clashMedium' fontWeight={'500'}>Getting Started</Text>
@@ -82,8 +87,9 @@ export default function Support() {
               <Flex direction={'column'} w={['9.35425rem', '19.1875rem']} h={['5.69788rem', '11.6875rem']} justifyContent='center' bgColor={'#fff'} borderRadius={['0.975px ', '12px']}
                 alignItems='center' border='1.2px solid rgba(0, 0, 0, 0.20)' _hover={{ border: '2px #000 solid' }} gap={['0.5', '5']} boxShadow='0px 8px 64px 0px rgba(167, 167, 167,0.24)'>
 
-                <Box w={['2.22431rem', ' 3.375rem']} h={['2.22431rem', ' 3.375rem']} borderRadius='50%' >
-                  <Image src='/pricingPlan.png' width={50} height={50} />
+                <Box w={['2.22431rem', ' 4.5625rem']} h={['2.22431rem', ' 4.5625rem']} borderRadius='50%' border='0.5px rgba(0, 0, 0, 0.50) solid' display='flex' justifyContent='center' alignItems='center' >
+                  {/* <Image src='/pricingPlan.png'  width={['1.0665rem','2.1875rem']} height={['1.0665rem','2.1875rem']} /> */}
+                  <Icon as={IoPricetag}  h={["1.0665rem", "2.1875rem"]} w={["2.84975rem", "2.1875rem"]}/>
                 </Box>
 
                 <Text fontSize={['0.79219rem', '1.625rem']} className='clashMedium' lineHeight={['0.85319rem', '1.75rem']} fontWeight={'500'}>Pricing and Plan</Text>
@@ -91,8 +97,10 @@ export default function Support() {
               <Flex direction={'column'} w={['9.35425rem', '19.1875rem']} h={['5.69788rem', '11.6875rem']} justifyContent='center' bgColor={'#fff'} borderRadius={['0.975px ', '12px']}
                 alignItems='center' border='1.2px solid rgba(0, 0, 0, 0.20)' _hover={{ border: '2px #000 solid' }} gap={['0.5', '5']} boxShadow='0px 8px 64px 0px rgba(167, 167, 167,0.24)'>
 
-                <Box w={['2.22431rem', ' 3.375rem']} h={['2.22431rem', ' 3.375rem']} borderRadius='50%' >
-                  <Image src='/saleQuestions.png' width={50} height={50} />
+                <Box w={['2.22431rem', ' 4.5625rem']} h={['2.22431rem', ' 4.5625rem']} borderRadius='50%' border='0.5px rgba(0, 0, 0, 0.50) solid' display='flex'  justifyContent='center' alignItems='center' >
+                  {/* <Image src='/saleQuestions.png'  width={['1.0665rem','2.1875rem']} height={['1.0665rem','2.1875rem']}  /> */}
+                    <Icon as={FaHandshake}  h={["1.0665rem", "2.1875rem"]} w={["2.84975rem", "2.1875rem"]}/>
+
                 </Box>
 
                 <Text fontSize={['0.79219rem', '1.625rem']} className='clashMedium' lineHeight={['0.85319rem', '1.75rem']} fontWeight={'500'}>Sales Questions</Text>
@@ -100,8 +108,10 @@ export default function Support() {
               <Flex direction={'column'} w={['9.35425rem', '19.1875rem']} h={['5.69788rem', '11.6875rem']} justifyContent='center' bgColor={'#fff'} borderRadius={['0.975px ', '12px']}
                 alignItems='center' border='1.2px solid rgba(0, 0, 0, 0.20)' _hover={{ border: '2px #000 solid' }} gap={['0.5', '5']} boxShadow='0px 8px 64px 0px rgba(167, 167, 167,0.24)'>
 
-                <Box w={['2.22431rem', ' 3.375rem']} h={['2.22431rem', ' 3.375rem']} borderRadius='50%' >
-                  <Image src='/UsageGuides.png' width={50} height={50} />
+                <Box w={['2.22431rem', ' 4.5625rem']} h={['2.22431rem', ' 4.5625rem']} borderRadius='50%' border='0.5px rgba(0, 0, 0, 0.50) solid' display='flex' justifyContent='center' alignItems='center' >
+                  {/* <Image src='/UsageGuides.png'  width={['1.0665rem','2.1875rem']} height={['1.0665rem','2.1875rem']}  /> */}
+                    <Icon as={BiSolidPieChartAlt2}  h={["1.0665rem", "2.1875rem"]} w={["2.84975rem", "2.1875rem"]}/>
+
                 </Box>
 
                 <Text fontSize={['0.79219rem', '1.625rem']} className='clashMedium' lineHeight={['0.85319rem', '1.75rem']} fontWeight={'500'}>Usage Guides</Text>
