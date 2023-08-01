@@ -89,7 +89,7 @@ export default function Support() {
 
                 <Box w={['2.22431rem', ' 4.5625rem']} h={['2.22431rem', ' 4.5625rem']} borderRadius='50%' border='0.5px rgba(0, 0, 0, 0.50) solid' display='flex' justifyContent='center' alignItems='center' >
                   {/* <Image src='/pricingPlan.png'  width={['1.0665rem','2.1875rem']} height={['1.0665rem','2.1875rem']} /> */}
-                  <Icon as={IoPricetag}  h={["1.0665rem", "2.1875rem"]} w={["2.84975rem", "2.1875rem"]}/>
+                  <Icon as={IoPricetag} h={["1.0665rem", "2.1875rem"]} w={["2.84975rem", "2.1875rem"]}/>
                 </Box>
 
                 <Text fontSize={['0.79219rem', '1.625rem']} className='clashMedium' lineHeight={['0.85319rem', '1.75rem']} fontWeight={'500'}>Pricing and Plan</Text>
