@@ -1,10 +1,10 @@
 import React from "react";
 import { Box, Flex, Text, Icon, VStack, Image } from "@chakra-ui/react";
-import { SettingsIcon } from "@chakra-ui/icons";
+// import { SettingsIcon} from "@chakra-ui/icons";
 import { Bree_Serif, DM_Sans } from "@next/font/google";
 import profileCircleIcon from "./Icons/profileCircleIcon";
 import easySettingIcon from "./Icons/easySettingIcon";
-import settingIcon from "./Icons/settingIcon";
+// import settingIcon from "./Icons/settingIcon";
 import FlashIcon from "./Icons/flashIcon";
 
 const dmsans = DM_Sans({ weight: "400", subsets: ["latin"] });

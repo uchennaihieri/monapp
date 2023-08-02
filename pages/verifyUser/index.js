@@ -56,6 +56,8 @@ import { auth, createUserWithEmailAndPassword, db, deleteDoc, doc, deleteUser, s
 import { reauthenticateWithCredential } from 'firebase/auth';
 import { addDoc, collection, getDocs, query, updateDoc, where } from 'firebase/firestore';
 import baseURL from '@/services/baseUrl';
+import Loading from '../loading';
+
 
 const dmsansBold = DM_Sans({ weight: '500', subsets: ['latin'] })
 const bree = Bree_Serif({ weight: '400', subsets: ['latin'] })
@@ -527,7 +529,6 @@ export const Verify = ({ person }) => {
     };
 
 
-    console.log(person.email)
 
     const verifyUser = async () => {
         setLoadingState(true)
@@ -661,212 +662,58 @@ export const Verify = ({ person }) => {
             bg={'#F9FAFC'}
             border={'1px solid rgba(0, 0, 0, 0.14);'}
             py={'4.5rem'} px={'4.8rem'}>
-            <Suspense fallback={<p>Loading...</p>}>
-                <Stack >
-                    <Box >
-                        <FormControl id="email" >
-                            <FormLabel className={roboto.className}>Select State</FormLabel>
-
-                            <Select value={selectedOption ? selectedOption.state : ''}
-                                onChange={handleSelectChange}
-                                placeholder="Select an option"
-                                variant='outline' mb="1.6rem" h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'}>
-                                {locations?.map((loc, index) => <option key={index} value={loc.state}>{loc.state}</option>)}
-
-                            </Select>
-
-                        </FormControl>
-                    </Box>
-
-
-                    {/* <Box >
+            <Stack >
+                <Box >
                     <FormControl id="email" >
-                        <FormLabel className={roboto.className}>City</FormLabel>
+                        <FormLabel className={roboto.className}>Select State</FormLabel>
 
-                        <Input
-                            value={city}
-                            onChange={(e) => setCity(e.target.value)} mb="1.6rem" h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'} type="text" placeholder='What is your city?' />
+                        <Select value={selectedOption ? selectedOption.state : ''}
+                            onChange={handleSelectChange}
+                            placeholder="Select an option"
+                            variant='outline' mb="1.6rem" h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'}>
+                            {locations?.map((loc, index) => <option key={index} value={loc.state}>{loc.state}</option>)}
 
+                        </Select>
 
                     </FormControl>
-                </Box> */}
+                </Box>
 
-                    {/* <Box >
+                <Box >
                     <FormControl id="email" >
-                        <FormLabel className={roboto.className}>Address</FormLabel>
+                        <FormLabel className={roboto.className}>tag</FormLabel>
+                        <InputGroup h="3.6rem" mb="1.6rem">
+                            <InputLeftAddon h='100%'>
+                                @
+                            </InputLeftAddon>
 
-                        <Input
-                            value={address}
-                            onChange={(e) => setAddress(e.target.value)} mb="1.6rem" h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'} type="text" placeholder='What is your address?' />
-
+                            <Input
+                                value={tag}
+                                onChange={(e) => setTag(e.target.value)} h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'} type="text" placeholder='set a unique tag' />
+                        </InputGroup>
 
                     </FormControl>
-                </Box> */}
+                </Box>
 
-                    <Box >
-                        <FormControl id="email" >
-                            <FormLabel className={roboto.className}>tag</FormLabel>
-                            <InputGroup h="3.6rem" mb="1.6rem">
-                                <InputLeftAddon h='100%'>
-                                    @
-                                </InputLeftAddon>
+                <Button
+                    type='submit'
+                    isLoading={loadingState}
+                    loadingText='Please wait..'
+                    onClick={verifyUser}
+                    borderRadius={'0.125rem'}
+                    h="4rem"
+                    bg={'#000000'}
+                    color={'white'}
+                    _hover={{
+                        bg: 'black.400',
+                    }}>
+                    <Text
+                        fontSize="1.5rem" className={roboto.className} >
+                        Proceed
+                    </Text>
 
-                                <Input
-                                    value={tag}
-                                    onChange={(e) => setTag(e.target.value)} h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'} type="text" placeholder='set a unique tag' />
-                            </InputGroup>
+                </Button>
+            </Stack>
 
-                        </FormControl>
-                    </Box>
-
-
-
-                    {/* <Box >
-                    <FormControl id="email" >
-                        <FormLabel className={roboto.className}>Broker's Number</FormLabel>
-
-                        <Input
-                            value={broker}
-                            onChange={(e) => setBroker(e.target.value)} mb="1.6rem" h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'} type="text" placeholder="What is your broker's number?" />
-
-
-                    </FormControl>
-                </Box> */}
-
-
-                    {/* <Box >
-                    <FormControl id="email" >
-                        <FormLabel className={roboto.className}>Postal Code</FormLabel>
-
-                        <Input
-                            value={postalCode}
-                            onChange={(e) => setPostalCode(e.target.value)} mb="1.6rem" h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'} type="text" placeholder='code' />
-
-
-                    </FormControl>
-                </Box> */}
-                    {/* 
-
-                {merchant &&
-                    <>
-                        <Box >
-
-                            <RadioGroup colorScheme='green' onChange={setMerchantType} value={merchantType} >
-                                <Stack mb="1.6rem" spacing={4} direction='row'>
-                                    <Radio value='1'>Personal</Radio>
-                                    <Radio value='2'>Registered Business</Radio>
-                                </Stack>
-                            </RadioGroup> */}
-                    {/* <CheckboxGroup colorScheme='green' defaultValue={['naruto', 'kakashi']}>
-
-                                <HStack > <Checkbox value='personal'></Checkbox>
-                                    <Checkbox value='registered_business'></Checkbox></HStack>
-                            </CheckboxGroup> */}
-                    {/* </Box> */}
-
-                    {/* {merchantType == '1' && <>
-                            <Box  >
-                                <FormControl id="email" isDisabled >
-                                    <FormLabel className={roboto.className}>Merchant Name</FormLabel>
-                                    <FormHelperText mb='0.3em' >Name must be the same with your bank account name.</FormHelperText>
-                                    <Input
-                                        value={merchantName}
-                                        onChange={(e) => setMerchantName(e.target.value)} mb="1.6rem" h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'} type="text" placeholder='Business name' />
-
-                                </FormControl>
-                            </Box>
-                            <Box >
-                                <FormControl id="email" >
-                                    <FormLabel className={roboto.className}>Select Business Category</FormLabel>
-
-                                    <Select placeholder='Select option' value={myBusiness}
-                                        onChange={(e) => setMyBusiness(e.target.value)} variant='outline' mb="1.6rem" h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'}>
-                                        {business?.map((loc, index) => <option key={index} value={loc}>{loc}</option>)}
-                                    </Select>
-
-                                </FormControl>
-                            </Box>
-
-
-                        </>} */}
-
-
-
-
-                    {/* {merchantType == '2' && <>
-                            <Box  >
-                                <FormControl id="email" >
-                                    <FormLabel className={roboto.className}>Merchant Name</FormLabel>
-                                    <FormHelperText mb='0.3em'>Name must be the same with your bank account name.</FormHelperText>
-                                    <Input
-                                        onChange={(e) => setMerchantName(e.target.value)} mb="1.6rem" h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'} type="text" placeholder='Business name' />
-
-                                </FormControl>
-
-                            </Box>
-                            <Box >
-                                <FormControl id="email" >
-                                    <FormLabel className={roboto.className}>Select Business Category</FormLabel>
-
-                                    <Select placeholder='Select option' value={myBusiness}
-                                        onChange={(e) => setMyBusiness(e.target.value)} variant='outline' mb="1.6rem" h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'}>
-                                        {business?.map((loc, index) => <option key={index} value={loc}>{loc}</option>)}
-                                    </Select>
-
-                                </FormControl>
-                            </Box>
-                            <Box >
-                                <FormControl id="email" >
-                                    <FormLabel className={roboto.className}>Registered Number</FormLabel>
-
-                                    <Input
-                                        value={regNum}
-                                        onChange={(e) => setRegNum(e.target.value)} mb="1.6rem" h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'} type="text" placeholder='CAC Registration Number' />
-
-
-                                </FormControl>
-                            </Box>
-
-
-                        </>} */}
-
-
-                    {/* 
-                    </>
-                } */}
-
-                    {/* <Box >
-                    <FormControl id="email" >
-                        <FormLabel className={roboto.className}>Beta Code</FormLabel>
-
-                        <Input
-                            value={betaCode}
-                            onChange={(e) => setBetaCode(e.target.value)} mb="1.6rem" h="3.6rem" borderRadius={'0.125rem'} bg="#ffffff" border={'1px solid #D5D6D6'} type="text" placeholder='What is the beta code?' />
-
-
-                    </FormControl>
-                </Box> */}
-
-                    <Button
-                        type='submit'
-                        isLoading={loadingState}
-                        loadingText='Please wait..'
-                        onClick={verifyUser}
-                        borderRadius={'0.125rem'}
-                        h="4rem"
-                        bg={'#000000'}
-                        color={'white'}
-                        _hover={{
-                            bg: 'black.400',
-                        }}>
-                        <Text
-                            fontSize="1.5rem" className={roboto.className} >
-                            Proceed
-                        </Text>
-
-                    </Button>
-                </Stack>
-            </Suspense>
         </Box>
 
     );
@@ -919,6 +766,14 @@ export const getServerSideProps = withAuthUserTokenSSR({
     }
 })
 
-export default withAuthUser()(VerifyUser)
+export default withAuthUser(
+    {
+
+        whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
+        whenUnauthedAfterInit: AuthAction.RENDER,
+        LoaderComponent: Loading,
+
+    }
+)(VerifyUser)
 
 

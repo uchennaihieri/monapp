@@ -10,9 +10,10 @@ initAuth()
 
 
 export default function App({ Component, pageProps }) {
-  return <ChakraProvider theme={theme}>
-    <RecoilRoot>
+  return <RecoilRoot>
+    <ChakraProvider theme={theme}>
       <Component {...pageProps} />
-    </RecoilRoot>
-  </ChakraProvider>
+    </ChakraProvider>
+  </RecoilRoot>
+
 }
