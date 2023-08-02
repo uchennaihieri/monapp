@@ -34,6 +34,7 @@ import { auth, createUserWithEmailAndPassword, db, doc, serverTimestamp, setDoc,
 import { AuthAction, withAuthUser } from 'next-firebase-auth';
 import PageSeo from '@/Seo/pageSeo';
 import { collection, getDocs, query, where } from 'firebase/firestore';
+import Loading from './loading';
 
 const dmsansBold = DM_Sans({ weight: '500', subsets: ['latin'] })
 const bree = Bree_Serif({ weight: '400', subsets: ['latin'] })
@@ -512,5 +513,8 @@ export const Signup = () => {
 
 export default withAuthUser({
     whenAuthed: AuthAction.REDIRECT_TO_APP,
+    whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
+    whenUnauthedAfterInit: AuthAction.RENDER,
+    LoaderComponent: Loading,
     authPageURL: '/Dashboard',
 })(Auth)
