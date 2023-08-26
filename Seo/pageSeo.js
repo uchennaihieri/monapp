@@ -1,11 +1,11 @@
-import { NextSeo } from 'next-seo';
+// import { NextSeo } from 'next-seo';
 
 const PageSeo = ({ title, description }) => (
     <>
-        <NextSeo
+        {/* <NextSeo
             title={title}
             description={description}
-        />
+        /> */}
     </>
 );
 

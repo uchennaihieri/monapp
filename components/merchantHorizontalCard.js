@@ -1,5 +1,5 @@
 import { Avatar, Box, Checkbox, Divider, Flex, HStack, Text } from '@chakra-ui/react'
-import { DM_Sans } from '@next/font/google'
+import { DM_Sans } from "next/font/google"
 import React from 'react'
 
 

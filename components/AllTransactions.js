@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { HStack, Image, Td, Text, Tr, Icon, useBreakpointValue, Box, Flex } from '@chakra-ui/react'
 import { RxDotFilled } from 'react-icons/rx'
-import TransactionDrawer from '@/pages/transactionsDrawer'
+import TransactionDrawer from '@/components/transactionsDrawer'
 
 function AllTransactions({ amount, Date, sendername, status, SN, transactionType, transactionId }) {
   const isDesktop = useBreakpointValue({ base: false, lg: true })

@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { Box, SimpleGrid, Icon, Text, Stack, Flex, Image, Container, VStack } from '@chakra-ui/react';
 import { FcAssistant, FcDonate, FcInTransit } from 'react-icons/fc';
-import { Bree_Serif, Roboto_Slab, DM_Sans } from '@next/font/google'
+import { Bree_Serif, Roboto_Slab, DM_Sans } from "next/font/google"
 import DeviceIcon from './Icons/deviceIcon';
 import QrScanIcon from './Icons/qrScanIcon';
 import ExchangeIcon from './Icons/exchangeIcon';

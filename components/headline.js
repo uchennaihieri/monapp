@@ -7,7 +7,7 @@ import {
     StatNumber,
     useColorModeValue,
 } from '@chakra-ui/react';
-import { DM_Sans } from '@next/font/google';
+import { DM_Sans } from "next/font/google";
 
 
 const dmsans = DM_Sans({ weight: '400', subsets: ['latin'] })

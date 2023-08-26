@@ -19,8 +19,8 @@ import {
 import { BsFacebook, BsTwitter } from "react-icons/bs";
 import { AiFillInstagram, AiFillLinkedin } from "react-icons/ai";
 import { FcAssistant, FcDonate, FcInTransit } from "react-icons/fc";
-import { Bree_Serif, DM_Sans, Poppins } from "@next/font/google";
-import { useRouter } from "next/router";
+import { Bree_Serif, DM_Sans, Poppins } from "next/font/google";
+import { useRouter } from "next/navigation";
 
 const bree = Bree_Serif({ weight: "400", subsets: ["latin"] });
 const dmsans = DM_Sans({ weight: "400", subsets: ["latin"] });
@@ -60,11 +60,11 @@ export default function FooterSection() {
       bgImg="url('/footerbg.svg')"
       color="#ffffff"
 
-      mt='20rem' 
+      mt='20rem'
 
-      
+
     >
-        {/* blue part */}
+      {/* blue part */}
       <Center>
         <Box
           h={{ base: "23.6875rem", md: "24.8125rem" }}
@@ -77,10 +77,10 @@ export default function FooterSection() {
         >
           <Flex
             flexDirection={"column"}
-            ml={['0','7rem']}
+            ml={['0', '7rem']}
             mt={'3.5rem'}
             gap={'2rem'}
-            
+
           >
             {/* <Box
               textAlign={{ base: "center", md: "start" }}
@@ -88,29 +88,29 @@ export default function FooterSection() {
               w={{ base: "15.68em", md: "29.87em" }}
               
             > */}
-              <Text
-                // letterSpacing={{ base: "-0.26px", md: "0" }}
-                lineHeight={{ base: "1.8rem", md: "2.65625rem" }}
-               
-                fontWeight={'600'}
-                fontSize={{ base: "1.625rem", md: "2.375rem" }}
-                color={"#fff"}
-                className='clashSemiBold'
-                w={['20rem','33.5625rem']}
-                textAlign={'center'}
-                // pr={["0","11rem"]}
-              >
-                Join community of 137k+ users start making payment today.
-              </Text>
-              <Text color="#ffffff"  w={['19.75rem','34.0625rem']} h={['4.6875rem','4.6875rem']} fontSize={['0.875rem','1.125rem']}justifyContent={'center'}  lineHeight={['1.25rem','1.78125rem']} letterSpacing={['0.0175rem','-0.0225rem']} >
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry Lorem Ipsum is simply. Lorem Ipsum is simply.
-              </Text>
+            <Text
+              // letterSpacing={{ base: "-0.26px", md: "0" }}
+              lineHeight={{ base: "1.8rem", md: "2.65625rem" }}
+
+              fontWeight={'600'}
+              fontSize={{ base: "1.625rem", md: "2.375rem" }}
+              color={"#fff"}
+              className='clashSemiBold'
+              w={['20rem', '33.5625rem']}
+              textAlign={'center'}
+            // pr={["0","11rem"]}
+            >
+              Join community of 137k+ users start making payment today.
+            </Text>
+            <Text color="#ffffff" w={['19.75rem', '34.0625rem']} h={['4.6875rem', '4.6875rem']} fontSize={['0.875rem', '1.125rem']} justifyContent={'center'} lineHeight={['1.25rem', '1.78125rem']} letterSpacing={['0.0175rem', '-0.0225rem']} >
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry Lorem Ipsum is simply. Lorem Ipsum is simply.
+            </Text>
             {/* </Box> */}
 
             <HStack
-            // mt={["0","2rem"]}
-            gap={'1.5rem'}
+              // mt={["0","2rem"]}
+              gap={'1.5rem'}
             >
               <Image
                 src={"/app-store.svg"}
@@ -131,48 +131,48 @@ export default function FooterSection() {
         </Box>
       </Center>
 
-              {/* phone short */}
-          <Flex 
-          position={'Absolute'}
-          bottom={'23rem'}
-          right={{md:'25rem','2xl':'50rem'}}
-          display={{base:'none',md:'flex'}}
-          >
-            <Image
-            width={'18.0185rem'}
-            // height={'34.15163rem'}
-            alt="mobile dashboard"
-            src={'/mobileDash.png'}
-            />
-            
-            <Image
-            src="mobilePayment.png"
-            width={'16.51756rem'}
-            // height={'30.76281rem'}
-            alt="mobile Payment"
-            ml='-4.2rem'
-            mt='4.7rem'
-            />
-          </Flex>
+      {/* phone short */}
+      <Flex
+        position={'Absolute'}
+        bottom={'23rem'}
+        right={{ md: '25rem', '2xl': '50rem' }}
+        display={{ base: 'none', md: 'flex' }}
+      >
+        <Image
+          width={'18.0185rem'}
+          // height={'34.15163rem'}
+          alt="mobile dashboard"
+          src={'/mobileDash.png'}
+        />
+
+        <Image
+          src="mobilePayment.png"
+          width={'16.51756rem'}
+          // height={'30.76281rem'}
+          alt="mobile Payment"
+          ml='-4.2rem'
+          mt='4.7rem'
+        />
+      </Flex>
 
 
-{/* lower part */}
+      {/* lower part */}
 
       <Flex
         py={{ base: "2.75rem", md: "4.125rem" }}
         px={{ base: "3.68rem", md: "11.87rem" }}
         justify="space-evenly"
-        gap={["10px","40px"]}
-        flexDirection={["column","row"]}        
+        gap={["10px", "40px"]}
+        flexDirection={["column", "row"]}
       >
 
         {/* monapp logo */}
         <Flex
           flexDirection={"column"}
-          gap={["10px","40px"]}
+          gap={["10px", "40px"]}
           mb={{ base: "3rem", md: "1.5rem" }}
           justifyContent={"center"}
-          alignItems={["center","start"]}
+          alignItems={["center", "start"]}
         >
           <Image
             src={"/logo.png"}
@@ -186,90 +186,90 @@ export default function FooterSection() {
             <Icon as={AiFillLinkedin} fontSize="1.38rem" color="#ffffff" />
           </HStack>
 
-          <Text 
-      display={{base:'none',md:'flex'}}
-          textAlign={{ base: "center", md: "start" }}
-          mt={{ base: "0rem", md: "0rem" }}
-          mb={{ base: "4rem", md: "0rem" }}
-          color="#ffffff"
-          opacity={"0.6"}
-          lineHeight={{ base: "1.12rem", md: "2.18rem" }}
-          fontWeight={400}
-          fontSize={{ base: "0.875rem" }}
-          className={dmsans.className}
-        >
-          Copyright @ MONAPP {new Date().getFullYear()}. All Rights Reserved.
-        </Text>
+          <Text
+            display={{ base: 'none', md: 'flex' }}
+            textAlign={{ base: "center", md: "start" }}
+            mt={{ base: "0rem", md: "0rem" }}
+            mb={{ base: "4rem", md: "0rem" }}
+            color="#ffffff"
+            opacity={"0.6"}
+            lineHeight={{ base: "1.12rem", md: "2.18rem" }}
+            fontWeight={400}
+            fontSize={{ base: "0.875rem" }}
+            className={dmsans.className}
+          >
+            Copyright @ MONAPP {new Date().getFullYear()}. All Rights Reserved.
+          </Text>
 
         </Flex>
 
 
 
-            {/* feat and com */}
+        {/* feat and com */}
         <Flex
-        flexDirection={"row"}
-        gap={"10rem"}
-        mb={['4rem','0rem']}  
-    >
-            <VStack
+          flexDirection={"row"}
+          gap={"10rem"}
+          mb={['4rem', '0rem']}
+        >
+          <VStack
             fontSize="1rem"
             gap={'.5rem'}
-            alignItems={"start"}           
-            >
-                <Text fontSize="1.125rem" lineHeight={'0.9375rem'}>Features</Text>
-                <Link bg="none" _hover={"none"} fontSize={"0.75rem"}>QR Code </Link>
-                <Link bg="none" _hover={"none"} fontSize={"0.75rem"}>QR Code</Link>
-                <Link bg="none" _hover={"none"} fontSize={"0.75rem"}>QR Code</Link>
-                <Link bg="none" _hover={"none"} fontSize={"0.75rem"}>QR Code</Link>
-                <Link bg="none" _hover={"none"} fontSize={"0.75rem"}>QR Code</Link>
-            </VStack>
+            alignItems={"start"}
+          >
+            <Text fontSize="1.125rem" lineHeight={'0.9375rem'}>Features</Text>
+            <Link bg="none" _hover={"none"} fontSize={"0.75rem"}>QR Code </Link>
+            <Link bg="none" _hover={"none"} fontSize={"0.75rem"}>QR Code</Link>
+            <Link bg="none" _hover={"none"} fontSize={"0.75rem"}>QR Code</Link>
+            <Link bg="none" _hover={"none"} fontSize={"0.75rem"}>QR Code</Link>
+            <Link bg="none" _hover={"none"} fontSize={"0.75rem"}>QR Code</Link>
+          </VStack>
 
 
-            <VStack
+          <VStack
             // textAlign={["center","start"]}
-            alignItems={"start"}           
+            alignItems={"start"}
             gap={'0.5rem'}
-            >
-                <Text fontSize="1.125rem" lineHeight={'0.9375rem'}>Company</Text>
-                <Link bg="none" _hover={"none"} fontSize={"0.75rem"}>About us</Link>
-                <Link bg="none" _hover={"none"} fontSize={"0.75rem"}>Career</Link>
-                <Link bg="none" _hover={"none"} fontSize={"0.75rem"}>Press</Link>
-                <Link bg="none" _hover={"none"} fontSize={"0.75rem"}>Blog</Link>
-                <Link bg="none" _hover={"none"} fontSize={"0.75rem"}>Contact</Link>
-  
-            </VStack>
+          >
+            <Text fontSize="1.125rem" lineHeight={'0.9375rem'}>Company</Text>
+            <Link bg="none" _hover={"none"} fontSize={"0.75rem"}>About us</Link>
+            <Link bg="none" _hover={"none"} fontSize={"0.75rem"}>Career</Link>
+            <Link bg="none" _hover={"none"} fontSize={"0.75rem"}>Press</Link>
+            <Link bg="none" _hover={"none"} fontSize={"0.75rem"}>Blog</Link>
+            <Link bg="none" _hover={"none"} fontSize={"0.75rem"}>Contact</Link>
+
+          </VStack>
         </Flex>
 
 
         {/* legal and app */}
         <Flex
-       flexDirection={"row"}
-        gap={"6rem"}
-        mb={['4rem','0rem']}  >
+          flexDirection={"row"}
+          gap={"6rem"}
+          mb={['4rem', '0rem']}  >
 
-           <VStack
-            alignItems={"start"} 
-             gap={'1rem'}
-            >
-            <Text fontSize="1.125rem" lineHeight={'0.9375rem'}>Legal</Text>
-                <Link bg="none" _hover={"none"} fontSize={"0.75rem"}>Privacy</Link>
-                <Link bg="none" _hover={"none"} fontSize={"0.75rem"}>Terms & Condition</Link>
-            </VStack>
-            
-            <VStack
-            // textAlign={["center","start"]}
-            alignItems={["center","start"]}
+          <VStack
+            alignItems={"start"}
             gap={'1rem'}
-        
-            >
+          >
+            <Text fontSize="1.125rem" lineHeight={'0.9375rem'}>Legal</Text>
+            <Link bg="none" _hover={"none"} fontSize={"0.75rem"}>Privacy</Link>
+            <Link bg="none" _hover={"none"} fontSize={"0.75rem"}>Terms & Condition</Link>
+          </VStack>
+
+          <VStack
+            // textAlign={["center","start"]}
+            alignItems={["center", "start"]}
+            gap={'1rem'}
+
+          >
             <Text fontSize="1.125rem" lineHeight={'0.9375rem'}>Get the app</Text>
-                <Image
-                 src={"/qr.png"}
-                 _hover={{ cursor: "pointer" }}></Image>
-            </VStack>
+            <Image
+              src={"/qr.png"}
+              _hover={{ cursor: "pointer" }}></Image>
+          </VStack>
         </Flex>
-<Text 
-      display={{base:'flex',md:'none'}}
+        <Text
+          display={{ base: 'flex', md: 'none' }}
           textAlign={{ base: "center", md: "start" }}
           mt={{ base: "0rem", md: "0rem" }}
           mb={{ base: "4rem", md: "0rem" }}
@@ -282,7 +282,7 @@ export default function FooterSection() {
         >
           Copyright @ MONAPP {new Date().getFullYear()}. All Rights Reserved.
         </Text>
-      
+
 
       </Flex>
 

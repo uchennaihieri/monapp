@@ -1,5 +1,5 @@
 import { Box, Button, ButtonGroup, FormControl, FormLabel, Input, Text } from '@chakra-ui/react'
-import { DM_Sans } from '@next/font/google'
+import { DM_Sans } from "next/font/google"
 import React from 'react'
 
 const dmsansextra = DM_Sans({ weight: '700', subsets: ['latin'] })

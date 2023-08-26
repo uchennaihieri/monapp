@@ -1,5 +1,5 @@
 import { Box, Button, ButtonGroup, FormControl, FormLabel, HStack, IconButton, Input, Text } from '@chakra-ui/react'
-import { DM_Sans } from '@next/font/google'
+import { DM_Sans } from "next/font/google"
 import React from 'react'
 import { AiOutlinePicture } from 'react-icons/ai'
 

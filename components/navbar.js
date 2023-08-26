@@ -17,15 +17,11 @@ import {
     Badge,
     Spacer,
 } from '@chakra-ui/react';
-import { DM_Sans } from '@next/font/google'
-import {
-    HamburgerIcon,
-    CloseIcon,
-    ChevronDownIcon,
-} from '@chakra-ui/icons';
+import { DM_Sans } from "next/font/google"
+
 import Image from 'next/image';
 import { RiMenu3Line } from 'react-icons/ri';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 const dmsans = DM_Sans({ weight: ['500', '700'], subsets: ['latin'] })
 
@@ -49,10 +45,10 @@ export default function Navbar() {
             <Flex
                 color={useColorModeValue('gray.600', 'white')}
                 pt={{ base: '2.875rem', md: '4.08vh' }}
-                w={['100%','72.813vw']}
+                w={['100%', '72.813vw']}
                 px={['1rem', 'auto']}
                 align={'center'}>
-                
+
 
                 <Flex justify={{ base: 'start', md: 'start' }} onClick={goHome} _hover={{
                     cursor: "pointer"
@@ -84,9 +80,10 @@ export default function Navbar() {
                         cursor: 'pointer'
                     }}
                 >
+                    {/* <CloseIcon color="white" w={5} h={5} onClick={onToggle} /> */}
 
                     {
-                        isOpen ? <CloseIcon color="white" w={5} h={5} onClick={onToggle} /> : <RiMenu3Line color="white" w={5} h={5} onClick={onToggle} />
+                        isOpen ? "" : <RiMenu3Line color="white" w={5} h={5} onClick={onToggle} />
                     }
 
                 </Flex>
@@ -169,7 +166,7 @@ const MobileNav = () => {
             p={4}
             // bgColor={'green'}
             // mt={'20rem'}
-            
+
             display={{ md: 'none' }}>
             {NAV_ITEMS.map((navItem) => (
                 <MobileNavItem key={navItem.label} {...navItem} />
@@ -182,7 +179,7 @@ const MobileNavItem = ({ label, children, href }) => {
     const { isOpen, onToggle } = useDisclosure();
 
     return (
-        <Stack spacing={4}  onClick={children && onToggle}>
+        <Stack spacing={4} onClick={children && onToggle}>
             <Flex
                 py={2}
                 as={Link}
@@ -200,14 +197,14 @@ const MobileNavItem = ({ label, children, href }) => {
                     }}>
                     {label}
                 </Text>
-                {children && (
-                    <Icon
-                        as={ChevronDownIcon}
-                        transition={'all .25s ease-in-out'}
-                        transform={isOpen ? 'rotate(180deg)' : ''}
-                        w={6}
-                        h={6}
-                    />
+                {children && (<></>
+                    // <Icon
+                    //     as={ChevronDownIcon}
+                    //     transition={'all .25s ease-in-out'}
+                    //     transform={isOpen ? 'rotate(180deg)' : ''}
+                    //     w={6}
+                    //     h={6}
+                    // />
                 )}
             </Flex>
 
@@ -241,7 +238,7 @@ const NAV_ITEMS = [
     },
     {
         label: 'Support',
-        href: '/Support'
+        href: '/support'
 
     },
     {
@@ -250,11 +247,11 @@ const NAV_ITEMS = [
     },
     {
         label: 'Sign in',
-        href: '/auth?task=signin'
+        href: '/auth'
     },
     {
         label: 'Get Started',
-        href: '/auth?task=signup'
+        href: '/auth'
     }
 
 ];

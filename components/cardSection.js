@@ -16,7 +16,7 @@ import {
   useToast,
   Spacer,
   GridItem,
-  Grid,Link
+  Grid, Link
 } from "@chakra-ui/react";
 import { MdCheckCircle } from "react-icons/md";
 import {
@@ -31,7 +31,7 @@ import {
   Inter,
   Plus_Jakarta_Sans,
   Covered_By_Your_Grace,
-} from "@next/font/google";
+} from "next/font/google";
 import GoIcon from "./Icons/goIcon";
 import EllipseIcon from "./Icons/ellipseIcon";
 
@@ -110,29 +110,29 @@ const GridBox = (data) => {
 
       <Spacer />
       <Link href={'/auth?task=signup'}>
-      <Button
-        alignSelf={{ base: "center", md: "start" }}
-        variant={"unstyled"}
-        m="0"
-        p="0"
-        bg="none"
-        id="cardButton"
-      >
-        <Flex flexDirection={"row"} justify={"center"}>
-          <Text
-            fontSize="0.67575rem"
-            className={dmsansBold.className}
-            mr={"0.34rem"}
-            fontWeight={500}
-            lineHeight="0.94606rem"
-            letterSpacing="-0.00425rem"
-          >
-            Get Started
-          </Text>
+        <Button
+          alignSelf={{ base: "center", md: "start" }}
+          variant={"unstyled"}
+          m="0"
+          p="0"
+          bg="none"
+          id="cardButton"
+        >
+          <Flex flexDirection={"row"} justify={"center"}>
+            <Text
+              fontSize="0.67575rem"
+              className={dmsansBold.className}
+              mr={"0.34rem"}
+              fontWeight={500}
+              lineHeight="0.94606rem"
+              letterSpacing="-0.00425rem"
+            >
+              Get Started
+            </Text>
 
-          <GoIcon boxSize={"14px"} />
-        </Flex>
-      </Button>
+            <GoIcon boxSize={"14px"} />
+          </Flex>
+        </Button>
       </Link>
     </Flex>
   );
@@ -158,7 +158,7 @@ export default function CardSection() {
       <Container
         maxW="79.81em"
         centerContent
-        pt={{ base: "3.875rem", md: "10.25rem" }}
+        pt={{ base: "55.875rem", md: "35.25rem" }}
         pb={["6rem","15.25rem"]}
       >
         <Flex
@@ -198,28 +198,28 @@ export default function CardSection() {
 
             <Box w={"100%"} m={"auto"}>
               <Link href="/auth?task=signup">
-              <Button
-                variant="solid"
-                w={{ base: "12.92731rem", md: "12.5rem" }}
-                h={"3.875rem"}
-                borderRadius="0.62144rem"
-                p={"0.28744rem 1.22275rem 0.28744rem 1.22163rem"}
-                mb={{ base: "3.42rem" }}
-                background="#000"
-                _hover={{
-                  background: "#222",
-                }}
-              >
-                <Text
-                  color="#FFF"
-                  fontSize="1.45rem"
-                  className={dmsansBold.className}
-                  lineHeight="2.71944rem"
-                  letterSpacing="-0.00831rem"
+                <Button
+                  variant="solid"
+                  w={{ base: "12.92731rem", md: "12.5rem" }}
+                  h={"3.875rem"}
+                  borderRadius="0.62144rem"
+                  p={"0.28744rem 1.22275rem 0.28744rem 1.22163rem"}
+                  mb={{ base: "3.42rem" }}
+                  background="#000"
+                  _hover={{
+                    background: "#222",
+                  }}
                 >
-                  Register now
-                </Text>
-              </Button>
+                  <Text
+                    color="#FFF"
+                    fontSize="1.45rem"
+                    className={dmsansBold.className}
+                    lineHeight="2.71944rem"
+                    letterSpacing="-0.00831rem"
+                  >
+                    Register now
+                  </Text>
+                </Button>
               </Link>
             </Box>
           </Stack>
@@ -227,7 +227,7 @@ export default function CardSection() {
           <Box>
             <Grid
               templateRows="repeat(2, 1fr)"
-              templateColumns={[ "1fr","repeat(4, 1fr)"]}
+              templateColumns={["1fr", "repeat(4, 1fr)"]}
               gap={"2.88rem"}
             >
               {gridData.map((d, index) => (
@@ -251,12 +251,12 @@ const BrokerPart = () => {
       direction={"column"}
       justify={"center"}
       align={"center"}
-      mt={["5rem","13.91rem"]}
+      mt={["5rem", "13.91rem"]}
     >
       <Text
         color="#2E2F35"
         fontSize={["2rem", "4rem"]}
-        className={dmsansExtreBold.className}
+        className="clashSemiBold"
         lineHeight={["3rem", "4.75rem"]}
         letterSpacing="-0.125rem"
         mb={["0", "0.3rem"]}
@@ -309,7 +309,7 @@ const BrokerPart = () => {
             spacing={4}
           >
             <Text
-              mb={["1.24rem","2.12rem"]}
+              mb={["1.24rem", "2.12rem"]}
               color="#000000"
               lineHeight={{ base: "2.37rem", md: "3.25rem" }}
               fontWeight={600}
@@ -340,10 +340,10 @@ const BrokerPart = () => {
             >
               {brokerPoints.map((point, index) => (
                 <Flex key={index}>
-                  <EllipseIcon boxSize={["10px","18px"]} mr={["0.5rem","1rem"]} />{" "}
+                  <EllipseIcon boxSize={["10px", "18px"]} mr={["0.5rem", "1rem"]} />{" "}
                   <Text
                     color="#000"
-                    fontSize={["0.74106rem","1.141rem"]}
+                    fontSize={["0.74106rem", "1.141rem"]}
                     className={dmsansBold.className}
                     letterSpacing={"0.01144rem"}
                     lineHeight="142%"
@@ -353,30 +353,30 @@ const BrokerPart = () => {
                 </Flex>
               ))}
             </SimpleGrid>
-<Box w={"100%"} m={"auto"}>
-  <Link href={"/broker"}>
-            <Button
-              variant="solid"
-              w={{ base: "17.5em", md: "13.75rem" }}
-              h={"3.875rem"}
-              mt={"2rem"}
-              borderRadius="0.62144rem"
-              background="#000"
-              _hover={{
-                background: "#222",
-              }}
-            >
-              <Text
-                color="#FFF"
-                fontSize="1.45rem"
-                className={dmsansBold.className}
-                lineHeight="2.71944rem"
-                letterSpacing="-0.00831rem"
-              >
-                Start earning
-              </Text>
-            </Button>
-            </Link>
+            <Box w={"100%"} m={"auto"}>
+              <Link href={"/broker"}>
+                <Button
+                  variant="solid"
+                  w={{ base: "17.5em", md: "13.75rem" }}
+                  h={"3.875rem"}
+                  mt={"2rem"}
+                  borderRadius="0.62144rem"
+                  background="#000"
+                  _hover={{
+                    background: "#222",
+                  }}
+                >
+                  <Text
+                    color="#FFF"
+                    fontSize="1.45rem"
+                    className={dmsansBold.className}
+                    lineHeight="2.71944rem"
+                    letterSpacing="-0.00831rem"
+                  >
+                    Start earning
+                  </Text>
+                </Button>
+              </Link>
             </Box>
           </Stack>
         </Box>

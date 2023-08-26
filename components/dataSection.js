@@ -23,8 +23,8 @@ import {
   DM_Sans,
   Inter,
   Plus_Jakarta_Sans,
-} from "@next/font/google";
-import { useRouter } from "next/router";
+} from "next/font/google";
+import { useRouter } from "next/navigation";
 import Features from "./features";
 import CheckIcon from "./Icons/checkIcon";
 
@@ -51,29 +51,29 @@ export default function DataSection() {
   };
 
   return (
-    <Box bg="#F0F4FC" h={{base:"80rem", md:" 66.75rem"}}>
+    <Box bg="#F0F4FC" h={{ base: "80rem", md: " 66.75rem" }}>
       <Container maxW="100%" centerContent>
-        <Flex 
+        <Flex
           flexDirection={{ base: "column", md: "row" }}
           justify={{ base: "center", md: "space-between" }}
           align={{ base: "center", md: "start" }}
         >
-          <Flex direction={["column-reverse","row"]} mt={["4.75rem","9.25rem"]} gap={["8rem","6.83rem"]}  >
+          <Flex direction={["column-reverse", "row"]} mt={["4.75rem", "9.25rem"]} gap={["8rem", "6.83rem"]}  >
             <Flex position="relative"  >
               <Image
                 src={"/firstImage.png"}
-                h={["16.36063rem","31.75rem"]}
+                h={["16.36063rem", "31.75rem"]}
                 w={"auto"}
-                mt={["-2rem","6rem"]}
-                ml={["1rem","0rem"]}
+                mt={["-2rem", "6rem"]}
+                ml={["1rem", "0rem"]}
               />
 
               <Image
                 src={"/secondImage.png"}
-                h={["16.36063rem","31.75rem"]}
+                h={["16.36063rem", "31.75rem"]}
                 w={"auto"}
-                ml={["-5rem","-8rem"]}
-                mt={["-6rem","-4rem"]}
+                ml={["-5rem", "-8rem"]}
+                mt={["-6rem", "-4rem"]}
               />
             </Flex>
             <Box  >
@@ -100,7 +100,7 @@ export default function DataSection() {
                   fontSize={{ base: "1.125rem", md: "1.25rem" }}
                   className={dmsansBold.className}
                   letterSpacing={"-0.01rem"}
-                  pb={{base:"2rem"}}
+                  pb={{ base: "2rem" }}
                 >
                   Our authentication card enables you to make payments from any
                   location in Nigeria. Shop online and offline with confidence
@@ -109,12 +109,12 @@ export default function DataSection() {
 
                 <SimpleGrid
                   columns={2}
-                  spacingX={["2rem","6.25rem"]}
+                  spacingX={["2rem", "6.25rem"]}
                   spacingY="2.38rem"
-                  mb={["5rem","4.38rem"]}
+                  mb={["5rem", "4.38rem"]}
                 >
                   {brokerPoints.map((point, index) => (
-                    <Flex key={index}  textAlign={"start"} pb={{base:"1rem", md:"0"}}>
+                    <Flex key={index} textAlign={"start"} pb={{ base: "1rem", md: "0" }}>
                       <CheckIcon boxSize={"18px"} mr="1rem" />{" "}
                       <Text
                         color="#000"
@@ -131,29 +131,29 @@ export default function DataSection() {
 
                 <Box w={"100%"} m={"auto"} >
                   <Link href={"/broker"}>
-                <Button
-                  variant="solid"
-                  w={"13.75rem"}
-                  h={"3.875rem"}
-                  borderRadius="0.62144rem"
-                  background="#000"
-                  _hover={{
-                    background: "#222",
-                  }}
-                  // ml={["5rem","0"]}
+                    <Button
+                      variant="solid"
+                      w={"13.75rem"}
+                      h={"3.875rem"}
+                      borderRadius="0.62144rem"
+                      background="#000"
+                      _hover={{
+                        background: "#222",
+                      }}
+                    // ml={["5rem","0"]}
 
-                >
-                  <Text
-                    color="#FFF"
-                    fontSize="1.45rem"
-                    className={dmsansBold.className}
-                    lineHeight="2.71944rem"
-                    letterSpacing="-0.00831rem"
-                  >
-                    Start earning
-                  </Text>
-                </Button>
-                </Link>
+                    >
+                      <Text
+                        color="#FFF"
+                        fontSize="1.45rem"
+                        className={dmsansBold.className}
+                        lineHeight="2.71944rem"
+                        letterSpacing="-0.00831rem"
+                      >
+                        Start earning
+                      </Text>
+                    </Button>
+                  </Link>
                 </Box>
               </Stack>
             </Box>

@@ -1,5 +1,5 @@
 import { Avatar, AvatarBadge, Box, Button, Center, Checkbox, CloseButton, HStack, Icon, Slide, Text, VStack, useDisclosure } from '@chakra-ui/react'
-import { DM_Sans } from '@next/font/google'
+import { DM_Sans } from "next/font/google"
 import React from 'react'
 import { AiOutlineCheckCircle } from 'react-icons/ai'
 import { BiNavigation } from 'react-icons/bi'
