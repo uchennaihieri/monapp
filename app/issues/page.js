@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Box, Flex } from "@chakra-ui/react";
 import { orderBy, query, limit, startAfter, where, onSnapshot, collection } from "firebase/firestore";
 import _ from "lodash"
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { InView } from 'react-intersection-observer';
 import Post from "@/components/Post";
 import PostCard from "@/components/postCard";
