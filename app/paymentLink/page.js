@@ -54,7 +54,6 @@ import {
   setDoc,
   signInWithEmailAndPassword,
 } from "@/services/firebase";
-import { AuthAction, withAuthUser } from "next-firebase-auth";
 import PageSeo from "@/Seo/pageSeo";
 import { collection, getDocs, query, where } from "firebase/firestore";
 
@@ -82,15 +81,7 @@ const PaymentLink = () => {
     }
   }, [router.query]);
 
-  console.log(page);
 
-  const goSupport = () => {
-    router.push("/workwithus");
-  };
-
-  const goHome = () => {
-    router.push("/");
-  };
 
   const handleTabsChange = (index) => {
     setPage(index);
