@@ -7,7 +7,7 @@ import { AiFillFolderOpen, AiOutlineUser } from 'react-icons/ai'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime';
 import updateLocale from 'dayjs/plugin/updateLocale';
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { GiJourney } from 'react-icons/gi'
 import { MdSchool, MdGroups, MdLocalLibrary, MdNoteAlt } from 'react-icons/md'
 import { useRecoilState } from 'recoil';
