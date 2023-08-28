@@ -14,7 +14,6 @@ import {
   ListItem,
   Stack,
   Text,
-  useColorModeValue,
   HStack,
   Card,
   Icon,
@@ -111,7 +110,7 @@ const Pricing = () => {
               className="clashSemiBold"
               lineHeight={["2.30219rem", "2.97894rem"]}
             >
-Transact with Ease            </Text>
+              Transact with Ease            </Text>
             <Text
               color="#02073E"
               fontSize={["0.86944rem", "1.125rem"]}
@@ -119,7 +118,7 @@ Transact with Ease            </Text>
               fontWeight="400"
               lineHeight={["1.28rem", "1.65625rem"]}
             >
-Unlock a world of seamless transactions, We are on a mission to make transactions hassle-free for Africans.         </Text>
+              Unlock a world of seamless transactions, We are on a mission to make transactions hassle-free for Africans.         </Text>
             <Button
               colorScheme="#000000"
               variant={"outline"}
@@ -152,7 +151,7 @@ Unlock a world of seamless transactions, We are on a mission to make transaction
               fontWeight="400"
               lineHeight={["1.28rem", "1.65625rem"]}
             >
-            seamless Digital payment.
+              seamless Digital payment.
             </Text>
             <Box mt={"1rem"}>
               <HStack>
@@ -164,8 +163,8 @@ Unlock a world of seamless transactions, We are on a mission to make transaction
                   className={dmsans.className}
                   fontSize={["0.77281rem", "1rem"]}
                 >
-               
-No hidden charges
+
+                  No hidden charges
 
                 </Text>
               </HStack>
@@ -178,7 +177,7 @@ No hidden charges
                   className={dmsans.className}
                   fontSize={["0.77281rem", "1rem"]}
                 >
-                Low Transaction Fee
+                  Low Transaction Fee
                 </Text>
               </HStack>
               <HStack>
@@ -190,7 +189,7 @@ No hidden charges
                   className={dmsans.className}
                   fontSize={["0.77281rem", "1rem"]}
                 >
-                 On-demand Settlement
+                  On-demand Settlement
                 </Text>
               </HStack>
             </Box>
@@ -214,7 +213,7 @@ No hidden charges
               className="clashSemiBold"
               lineHeight={["2.30219rem", "2.97894rem"]}
             >
-          Monapp QR Card
+              Monapp QR Card
             </Text>
             <Text
               color="#02073E"
@@ -224,8 +223,8 @@ No hidden charges
               lineHeight={["1.28rem", "1.65625rem"]}
             >
 
-Elevate your payment experience with the Monapp QR Card, redefining convenience in every transaction.
-          </Text>
+              Elevate your payment experience with the Monapp QR Card, redefining convenience in every transaction.
+            </Text>
             <Button
               bg={"#000000"}
               color="#ffffff"
@@ -243,7 +242,7 @@ Elevate your payment experience with the Monapp QR Card, redefining convenience 
               letterSpacing="-0.00831rem"
               lineHeight={["2.10169rem", " 2.71944rem"]}
             >
-         Order Now 
+              Order Now
             </Button>
             <Text
               fontSize={"2.5rem"}
@@ -261,7 +260,7 @@ Elevate your payment experience with the Monapp QR Card, redefining convenience 
               fontWeight="400"
               lineHeight="1.65625rem"
             >
-             Enjoy easy transactions and benefits Such as:
+              Enjoy easy transactions and benefits Such as:
             </Text>
             <Box mt={"1rem"}>
               <HStack>
@@ -297,7 +296,7 @@ Elevate your payment experience with the Monapp QR Card, redefining convenience 
                   className={dmsans.className}
                   fontSize={["0.77281rem", "1rem"]}
                 >
-                 Manage Card Effortlessly
+                  Manage Card Effortlessly
                 </Text>
               </HStack>
             </Box>
@@ -320,7 +319,7 @@ Elevate your payment experience with the Monapp QR Card, redefining convenience 
               className="clashSemiBold"
               lineHeight={["2.30219rem", "2.97894rem"]}
             >
-            Become a Broker
+              Become a Broker
             </Text>
             <Text
               color="#02073E"
@@ -329,7 +328,7 @@ Elevate your payment experience with the Monapp QR Card, redefining convenience 
               fontWeight="400"
               lineHeight={["1.28rem", "1.65625rem"]}
             >
-Join us, guide users through transactions, and earn. Be a part of the Monapp revolution.            </Text>
+              Join us, guide users through transactions, and earn. Be a part of the Monapp revolution.            </Text>
             <Button
               colorScheme="#000000"
               variant={"outline"}
@@ -345,7 +344,7 @@ Join us, guide users through transactions, and earn. Be a part of the Monapp rev
               letterSpacing="-0.00831rem"
               lineHeight={["2.10169rem", " 2.71944rem"]}
             >
-             Join Us
+              Join Us
             </Button>
             <Text
               fontSize={"2.5rem"}
@@ -375,7 +374,7 @@ Join us, guide users through transactions, and earn. Be a part of the Monapp rev
                   className={dmsans.className}
                   fontSize={["0.77281rem", "1rem"]}
                 >
-                Seize Opportunity
+                  Seize Opportunity
                 </Text>
               </HStack>
               <HStack>
@@ -387,7 +386,7 @@ Join us, guide users through transactions, and earn. Be a part of the Monapp rev
                   className={dmsans.className}
                   fontSize={["0.77281rem", "1rem"]}
                 >
-                 Flexible Earnings 
+                  Flexible Earnings
                 </Text>
               </HStack>
               <HStack>
@@ -399,7 +398,7 @@ Join us, guide users through transactions, and earn. Be a part of the Monapp rev
                   className={dmsans.className}
                   fontSize={["0.77281rem", "1rem"]}
                 >
-               Community Impact
+                  Community Impact
                 </Text>
               </HStack>
             </Box>

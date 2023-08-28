@@ -13,7 +13,6 @@ import {
     Icon,
     Text,
     Image,
-    useColorModeValue,
     Tabs,
     TabList,
     Tab,

@@ -4,8 +4,10 @@ import { tabsTheme } from './components/Tabs'
 
 
 const theme = extendTheme({
-    initialColorMode: 'light',
-    useSystemColorMode: false,
+    config: {
+        initialColorMode: "light",
+        useSystemColorMode: false,
+    },
     components: {
         Checkbox: {
             variants: {

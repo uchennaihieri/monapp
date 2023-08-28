@@ -19,7 +19,8 @@ function AuthCover({ children }) {
 
     const [fetchData, setFetchData] = useState(false);
     const [person, setPerson] = useRecoilState(personState)
-    const [loggedUser, setLoggedUser] = useState(undefined);
+    const [loading, setLoading] = useState(false)
+    const [loggedUser, setLoggedUser] = useState(null);
     const fetcher = url => axios.get(url).then(res => res.data)
     const { data, error, isLoading } = useSWR(fetchData ? `${baseURL}/api/user/${loggedUser?.uid}` : null, fetcher)
 
@@ -40,34 +41,41 @@ function AuthCover({ children }) {
 
 
     useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
+
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+
             if (user) {
                 setLoggedUser(user)
                 setFetchData(true)
+
             } else {
-                setLoggedUser(false)
+                setLoggedUser(null)
                 router.push('/auth')
+
             }
         });
-    }, [loggedUser]);
+
+        return () => unsubscribe();
+    }, []);
 
 
     useEffect(() => {
+        setLoading(true)
         updatePerson()
+        setLoading(false)
     }, [data]);
 
 
     const updatePerson = () => {
-        setPerson(data)
-    }
+        if (data) {
+            setPerson(data);
+        }
+    };
 
 
-
-    if (loggedUser == undefined || isLoading) {
+    if (loading || isLoading) {
         return <Loading />;
     }
-
-
 
 
 

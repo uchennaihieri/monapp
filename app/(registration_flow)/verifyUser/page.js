@@ -344,7 +344,7 @@ const VerifyUser = () => {
     const handleClick = () => setShow(!show)
 
 
-
+    console.log(person)
 
 
     const goSupport = () => {

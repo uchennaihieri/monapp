@@ -1,7 +1,7 @@
 'use client'
 import React, { ReactNode, useEffect, useState } from "react";
 import {
-  IconButton, Avatar, Box, CloseButton, Flex, HStack, VStack, Icon, useColorModeValue, Link, Drawer, DrawerContent, Text,
+  IconButton, Avatar, Box, CloseButton, Flex, HStack, VStack, Icon, Link, Drawer, DrawerContent, Text,
   useDisclosure, BoxProps, FlexProps, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Image, InputGroup, InputLeftElement,
   Input, Spacer, Button, Table, Thead, Tr, Th, Tbody, Td, Heading, Divider, useToast,
   DrawerBody,
@@ -73,21 +73,19 @@ function Dashboard() {
   const d = new Date(Date.now())
   const person = useRecoilValue(personState)
 
-  console.log(person)
+
 
   const { lastName, firstName } = person
 
 
-  console.log(person)
-
   useEffect(() => {
 
-    checkOnboarding()
-    getWallet(setWallet, person);
-    getCard(setCard, person);
-    getTransactions(setTransactions, person, 3);
-
-
+    if (person && Object.keys(person).length > 0) {
+      checkOnboarding()
+      getWallet(setWallet, person);
+      getCard(setCard, person);
+      getTransactions(setTransactions, person, 3);
+    }
 
   }, [person]);
 
@@ -1061,8 +1059,8 @@ function Dashboard() {
                     This week
                   </MenuButton>
                   <MenuList
-                    bg={useColorModeValue("white", "gray.900")}
-                    borderColor={useColorModeValue("gray.200", "gray.700")}
+                    bg="white"
+                    borderColor="gray.200"
                   >
                     <MenuItem>Sunday</MenuItem>
 

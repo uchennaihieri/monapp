@@ -7,7 +7,6 @@ import {
     Input,
     useToast,
     Stack,
-    useColorModeValue,
     HStack,
 } from '@chakra-ui/react';
 import { PinInput, PinInputField } from '@chakra-ui/react';

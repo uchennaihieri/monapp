@@ -10,7 +10,6 @@ import {
     HStack,
     VStack,
     Icon, ButtonGroup,
-    useColorModeValue,
     Drawer,
     DrawerContent,
     Text,
@@ -111,22 +110,24 @@ export default function NewDash({
 
 
 
+
+
+
     useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
             console.log(user)
-
-            if (user == null) {
-                setLoggedUser(null)
-                router.push('/auth')
-
-            } else {
-                console.log(user)
+            if (user) {
                 setLoggedUser(user)
                 setFetchData(true)
+            } else {
+                setLoggedUser(null)
+                router.push('/auth')
             }
         });
 
-    })
+        return () => unsubscribe();
+    }, []);
+
 
     useEffect(() => {
         updatePerson()
@@ -134,9 +135,10 @@ export default function NewDash({
 
 
     const updatePerson = () => {
-
-        setPerson(data)
-    }
+        if (data) {
+            setPerson(data);
+        }
+    };
 
 
     if (loggedUser == null || isLoading) {
@@ -240,6 +242,8 @@ const NavItem = ({ icon, to, name, children, ...rest }) => {
     const router = useRouter();
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { firstName, lastName } = useRecoilValue(personState)
+
+
     const checkClick = (name) => {
 
         if (name === 'Logout') {
@@ -342,7 +346,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
                 alignItems="center"
                 bg={'#FCFCFC'}
                 // borderBottomWidth="1px"
-                // borderBottomColor={useColorModeValue('gray.200', 'gray.700')}
+
                 justifyContent={{ base: 'space-between', md: 'flex-end' }}
                 {...rest}>
                 <IconButton
