@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Container,
@@ -8,16 +8,13 @@ import {
   Text,
   Image,
   Flex,
-  keyframes,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 
-// Keyframe animation for infinite left sliding
-const slideAnimation = keyframes`
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
-`;
-
 const Commercial = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const slidesToShow = useBreakpointValue({ base: 1, md: 2, lg: 3 }) || 1;
+
   const images = [
     "/images/driver-1.svg",
     "/images/driver-2.svg",
@@ -26,8 +23,22 @@ const Commercial = () => {
     "/images/driver-5.svg",
   ];
 
-  // Duplicate images to create the loop effect
   const extendedImages = [...images, ...images];
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % images.length);
+  };
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      nextSlide();
+    }, 3000);
+
+    return () => clearInterval(timer);
+  }, [currentSlide]);
+
+  const translateX =
+    (currentSlide * (100 / slidesToShow)) % (100 * images.length);
 
   return (
     <Box bg="white" py={16}>
@@ -42,29 +53,26 @@ const Commercial = () => {
           <Text as="span" color="green.600">
             30+
           </Text>{" "}
-          commercial drivers grow their transportation business with Monapp.
+          commercial driver grow their transportation business with Monapp.
         </Heading>
 
-        <Box position="relative" overflow="hidden" width="full">
-          <Flex
-            as="div"
-            animation={`${slideAnimation} 15s linear infinite`}
-            whiteSpace="nowrap"
-          >
+        <Box position="relative">
+          <Flex overflow="hidden">
             {extendedImages.map((image, index) => (
               <Box
                 key={index}
                 flexShrink={0}
-                width="248.43px"
-                height="64px"
-                mx={2}
+                width={`${100 / slidesToShow}%`}
+                transform={`translateX(-${translateX}%)`}
+                transition="transform 0.5s ease"
+                px={2}
               >
                 <Image
                   src={image}
                   alt={`Driver ${(index % images.length) + 1}`}
                   objectFit="cover"
-                  width="full"
-                  height="full"
+                  height="64"
+                  width="248.43"
                   rounded="lg"
                 />
               </Box>

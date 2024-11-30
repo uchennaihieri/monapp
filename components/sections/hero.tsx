@@ -11,7 +11,6 @@ import {
   Input,
   Text,
 } from "@chakra-ui/react";
-import { ChevronRightIcon } from "@chakra-ui/icons";
 
 export default function Hero() {
   return (
