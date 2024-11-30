@@ -20,7 +20,6 @@ const Commercial = () => {
     "/images/driver-2.svg",
     "/images/driver-3.svg",
     "/images/driver-4.svg",
-    "/images/driver-5.svg",
   ];
 
   const extendedImages = [...images, ...images];
@@ -62,7 +61,8 @@ const Commercial = () => {
               <Box
                 key={index}
                 flexShrink={0}
-                width={`${100 / slidesToShow}%`}
+                // width={`${100 / slidesToShow}%`}
+                width="248.43"
                 transform={`translateX(-${translateX}%)`}
                 transition="transform 0.5s ease"
                 px={2}
