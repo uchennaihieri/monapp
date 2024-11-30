@@ -7,11 +7,9 @@ import {
   GridItem,
   Heading,
   Text,
-  Icon,
   Stack,
 } from "@chakra-ui/react";
 import Image from "next/image";
-import { FaCreditCard, FaChartLine, FaWallet, FaLock } from "react-icons/fa";
 
 export default function CreditCardSection() {
   return (
@@ -49,17 +47,17 @@ export default function CreditCardSection() {
                 fontWeight="600"
                 fontSize="2.5rem"
               >
-                Monapp's credit card gives you instant credit for vehicle
-                maintenance — And That's Just the Start!
+                Monapp&apos;s credit card gives you instant credit for vehicle
+                maintenance — And That&apos;s Just the Start!
               </Heading>
               <Text
                 fontSize="1.25rem"
                 fontWeight={"semibold"}
                 lineHeight="1.80625rem"
               >
-                Whether it's repairs or upkeep, simply swipe the card and get
-                back on the road without worrying about upfront costs. It's the
-                ultimate financial tool for hassle-free driving!
+                Whether it&apos;s repairs or upkeep, simply swipe the card and
+                get back on the road without worrying about upfront costs.
+                It&apos;s the ultimate financial tool for hassle-free driving!
               </Text>
             </Stack>
           </GridItem>
@@ -102,9 +100,9 @@ export default function CreditCardSection() {
                   fontWeight="400"
                   letterSpacing="0.01875rem"
                 >
-                  Monapp's credit card for vehicle maintenance works just like
-                  any other card you already know. It's easy to use, no
-                  complicated apps or systems—just swipe and go!
+                  Monapp&apos;s credit card for vehicle maintenance works just
+                  like any other card you already know. It&apos;s easy to use,
+                  no complicated apps or systems—just swipe and go!
                 </Text>
               </Box>
 

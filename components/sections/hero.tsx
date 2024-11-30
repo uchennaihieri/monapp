@@ -55,7 +55,7 @@ export default function Hero() {
           {/* Left Content */}
           <Box flex="1">
             <Heading color="white" fontSize="3rem" lineHeight="4.335rem" mb={6}>
-              Financial solutions to power Africa's transportation future
+              Financial solutions to power Africa&apos;s transportation future
             </Heading>
             <Text
               color="white"

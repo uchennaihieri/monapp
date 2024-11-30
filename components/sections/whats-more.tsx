@@ -28,7 +28,7 @@ export default function WhatsMoreSection() {
             textAlign="center"
             color="white"
           >
-            What's More?
+            What&apos;s More?
           </Heading>
           <Text
             fontSize={{ base: "1.25rem", md: "1.25rem" }}
