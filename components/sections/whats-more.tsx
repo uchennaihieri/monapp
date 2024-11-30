@@ -1,0 +1,135 @@
+"use client";
+
+import {
+  Box,
+  Container,
+  Heading,
+  Text,
+  SimpleGrid,
+  VStack,
+} from "@chakra-ui/react";
+import Image from "next/image";
+
+import StarWhiteIcon from "@/public/icons/star-white.svg";
+import StarBlackIcon from "@/public/icons/star-black.svg";
+
+export default function WhatsMoreSection() {
+  const lightCardBg = "white";
+
+  return (
+    <Box bg="#000000" py={20}>
+      <Container maxW="container.xl">
+        <VStack spaceY={4} mb={16} textAlign="center">
+          <Heading
+            as="h2"
+            fontSize={{ base: "2.5rem", md: "2.5rem" }}
+            lineHeight={{ base: "3.6125rem", md: "3.6125rem" }}
+            fontWeight="600"
+            textAlign="center"
+            color="white"
+          >
+            What's More?
+          </Heading>
+          <Text
+            fontSize={{ base: "1.25rem", md: "1.25rem" }}
+            lineHeight={{ base: "1.80625rem", md: "1.80625rem" }}
+            fontWeight="600"
+            textAlign="center"
+            color="white"
+            maxW="519px"
+          >
+            Enhance your transportation business experience with our added
+            payment features:
+          </Text>
+        </VStack>
+
+        <SimpleGrid
+          columns={{ base: 1, md: 3 }}
+          spaceX={2}
+          spaceY={5}
+          justifyItems="center"
+          alignItems="center"
+          maxW="1200px"
+          mx="auto"
+        >
+          {/* Fast Collections Card */}
+          <Box
+            bg={"black"}
+            p={8}
+            borderRadius="16px"
+            boxShadow="4px 4px 24px 0px #FFFFFF33 inset, -8px -8px 24px 0px #00000040 inset"
+            spaceY={4}
+            width="22.375rem"
+            height="12.75rem"
+          >
+            <Image src={StarWhiteIcon} alt="star-icon" />
+            <Heading
+              as="h3"
+              fontSize="1.375rem"
+              lineHeight="1.98625rem"
+              fontWeight="700"
+              color={"#FFFFF"}
+            >
+              Fast Collections
+            </Heading>
+            <Text color={"#FFFFF"} fontSize={"sm"}>
+              Quick and seamless payment collection process for your
+              convenience.
+            </Text>
+          </Box>
+
+          {/* No Transaction Fees Card */}
+          <Box
+            bg={lightCardBg}
+            p={8}
+            borderRadius="16px"
+            boxShadow="xl"
+            spaceY={4}
+            width="22.375rem"
+            height="12.75rem"
+          >
+            <Image src={StarBlackIcon} alt="star-icon" />
+            <Heading
+              as="h3"
+              fontSize="1.375rem"
+              lineHeight="1.98625rem"
+              fontWeight="700"
+              color={"#222222"}
+            >
+              No Transaction Fees
+            </Heading>
+            <Text color={"#222222"} fontSize={"sm"}>
+              Enjoy zero transaction fees, keeping all your hard-earned money.
+            </Text>
+          </Box>
+
+          {/* Instant Transaction Alerts Card */}
+          <Box
+            bg={"black"}
+            p={8}
+            borderRadius="16px"
+            boxShadow="4px 4px 24px 0px #FFFFFF33 inset, -8px -8px 24px 0px #00000040 inset"
+            spaceY={4}
+            width="22.375rem"
+            height="12.75rem"
+          >
+            <Image src={StarWhiteIcon} alt="star-icon" />
+            <Heading
+              as="h3"
+              fontSize="1.375rem"
+              lineHeight="1.98625rem"
+              fontWeight="700"
+              color={"#FFFFF"}
+            >
+              Instant Transaction Alerts
+            </Heading>
+            <Text color={"#FFFFF"} fontSize={"sm"}>
+              Get immediate notifications for every payment, ensuring you stay
+              informed at all times.
+            </Text>
+          </Box>
+        </SimpleGrid>
+      </Container>
+    </Box>
+  );
+}
