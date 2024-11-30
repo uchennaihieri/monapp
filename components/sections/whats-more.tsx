@@ -46,7 +46,7 @@ export default function WhatsMoreSection() {
         <SimpleGrid
           columns={{ base: 1, md: 3 }}
           spaceX={2}
-          spaceY={5}
+          spaceY={{ base: 5, md: 0 }}
           justifyItems="center"
           alignItems="center"
           maxW="1200px"
