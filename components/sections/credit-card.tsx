@@ -39,21 +39,23 @@ export default function CreditCardSection() {
           alignItems="start"
         >
           <GridItem>
-            <Stack maxW="32.4375rem" spaceY={6} color={"#222222"}>
+            <Stack maxW="100%" spaceY={6} color={"#222222"}>
               <Heading
                 as="h2"
                 size="2xl"
-                lineHeight="3.6125rem"
+                lineHeight={{ base: "2rem", md: "3rem", lg: "3.6125rem" }}
                 fontWeight="600"
-                fontSize="2.5rem"
+                fontSize={{ base: "1.75rem", md: "2rem", lg: "2.5rem" }}
+                textAlign={{ base: "center", md: "left" }}
               >
                 Monapp&apos;s credit card gives you instant credit for vehicle
                 maintenance — And That&apos;s Just the Start!
               </Heading>
               <Text
-                fontSize="1.25rem"
+                fontSize={{ base: "1rem", md: "1.125rem", lg: "1.25rem" }}
                 fontWeight={"semibold"}
-                lineHeight="1.80625rem"
+                lineHeight={{ base: "1.5rem", md: "1.75rem", lg: "1.80625rem" }}
+                textAlign={{ base: "center", md: "left" }}
               >
                 Whether it&apos;s repairs or upkeep, simply swipe the card and
                 get back on the road without worrying about upfront costs.
@@ -64,155 +66,73 @@ export default function CreditCardSection() {
 
           <GridItem>
             <Grid
-              templateColumns="repeat(2, 16.0625rem)"
+              templateColumns={{
+                base: "1fr",
+                md: "repeat(2, 1fr)",
+                lg: "repeat(2, 16.0625rem)",
+              }}
               gap={6}
-              justifyContent="center"
+              justifyContent={{ base: "center", lg: "start" }}
               mx="auto"
             >
-              <Box
-                bg="white"
-                p={6}
-                borderRadius="lg"
-                boxShadow="0px 18px 58px 16px #0000000F"
-                spaceY={3}
-                width="16.0625rem"
-                height="17.3125rem"
-              >
-                <Image
-                  src="/icons/circle-layer.svg"
-                  height={27}
-                  width={30}
-                  alt="credit-icon"
-                />
-                <Heading
-                  as="h3"
-                  fontSize="22px"
-                  lineHeight="22px"
-                  fontWeight="700"
-                  letterSpacing="0.5px"
+              {[
+                {
+                  image: "/icons/circle-layer.svg",
+                  title: "Familiar Technology",
+                  text: "Monapp's credit card for vehicle maintenance works just like any other card you already know. It's easy to use, no complicated apps or systems—just swipe and go!",
+                },
+                {
+                  image: "/icons/rocket.svg",
+                  title: "Instant Credit Access",
+                  text: "Get Funds Instantly. Monapp ensures you have access to credit right when you need it—no delays!",
+                },
+                {
+                  image: "/icons/bag.svg",
+                  title: "Affordable Daily Repayment",
+                  text: "Repay daily based on your earnings. Enjoy rates as low as 0.2% daily interest. We adapt to your schedule for ease.",
+                },
+                {
+                  image: "/icons/restrict.svg",
+                  title: "Restricted Spending",
+                  text: "Your credit is strictly for vehicle repairs and maintenance. Stay on track and keep your vehicle running.",
+                },
+              ].map((item, index) => (
+                <Box
+                  key={index}
+                  bg="white"
+                  p={6}
+                  borderRadius="lg"
+                  boxShadow="0px 18px 58px 16px #0000000F"
+                  spaceY={3}
+                  width={{ base: "100%", lg: "16.0625rem" }}
+                  height="auto"
                 >
-                  Familiar Technology
-                </Heading>
-                <Text
-                  color="#222222"
-                  fontSize="0.875rem"
-                  lineHeight="1.5rem"
-                  fontWeight="400"
-                  letterSpacing="0.01875rem"
-                >
-                  Monapp&apos;s credit card for vehicle maintenance works just
-                  like any other card you already know. It&apos;s easy to use,
-                  no complicated apps or systems—just swipe and go!
-                </Text>
-              </Box>
-
-              <Box
-                bg="white"
-                p={6}
-                borderRadius="lg"
-                boxShadow="0px 18px 58px 16px #0000000F"
-                spaceY={3}
-                width="16.0625rem"
-                height="17.3125rem"
-              >
-                <Image
-                  src="/icons/rocket.svg"
-                  height={27}
-                  width={30}
-                  alt="credit-icon"
-                />
-                <Heading
-                  as="h3"
-                  fontSize="22px"
-                  lineHeight="22px"
-                  fontWeight="700"
-                  letterSpacing="0.5px"
-                >
-                  Instant Credit Access
-                </Heading>
-                <Text
-                  color="#222222"
-                  fontSize="0.875rem"
-                  lineHeight="1.5rem"
-                  fontWeight="400"
-                  letterSpacing="0.01875rem"
-                >
-                  Get Funds Instantly. Monapp ensures you have access to credit
-                  right when you need it—no delays!
-                </Text>
-              </Box>
-
-              <Box
-                bg="white"
-                p={6}
-                borderRadius="lg"
-                boxShadow="0px 18px 58px 16px #0000000F"
-                spaceY={3}
-                width="16.0625rem"
-                height="17.3125rem"
-              >
-                <Image
-                  src="/icons/bag.svg"
-                  height={27}
-                  width={30}
-                  alt="credit-icon"
-                />
-                <Heading
-                  as="h3"
-                  fontSize="22px"
-                  lineHeight="22px"
-                  fontWeight="700"
-                  letterSpacing="0.5px"
-                >
-                  Affordable Daily Repayment
-                </Heading>
-                <Text
-                  color="#222222"
-                  fontSize="0.875rem"
-                  lineHeight="1.5rem"
-                  fontWeight="400"
-                  letterSpacing="0.01875rem"
-                >
-                  Repay daily based on your earnings. Enjoy rates as low as 0.2%
-                  daily interest. We adapt to your schedule for ease.
-                </Text>
-              </Box>
-
-              <Box
-                bg="white"
-                p={6}
-                borderRadius="lg"
-                boxShadow="0px 18px 58px 16px #0000000F"
-                spaceY={3}
-                width="16.0625rem"
-                height="17.3125rem"
-              >
-                <Image
-                  src="/icons/restrict.svg"
-                  height={27}
-                  width={30}
-                  alt="credit-icon"
-                />
-                <Heading
-                  as="h3"
-                  fontSize="22px"
-                  lineHeight="22px"
-                  fontWeight="700"
-                  letterSpacing="0.5px"
-                >
-                  Restricted Spending
-                </Heading>
-                <Text
-                  color="#222222"
-                  fontSize="0.875rem"
-                  lineHeight="1.5rem"
-                  fontWeight="400"
-                  letterSpacing="0.01875rem"
-                >
-                  Your credit is strictly for vehicle repairs and maintenance.
-                  Stay on track and keep your vehicle running.
-                </Text>
-              </Box>
+                  <Image
+                    src={item.image}
+                    height={27}
+                    width={30}
+                    alt={`${item.title}-icon`}
+                  />
+                  <Heading
+                    as="h3"
+                    fontSize={{ base: "18px", md: "20px", lg: "22px" }}
+                    lineHeight={{ base: "20px", md: "22px" }}
+                    fontWeight="700"
+                    letterSpacing="0.5px"
+                  >
+                    {item.title}
+                  </Heading>
+                  <Text
+                    color="#222222"
+                    fontSize={{ base: "0.875rem", md: "1rem" }}
+                    lineHeight={{ base: "1.25rem", md: "1.5rem" }}
+                    fontWeight="400"
+                    letterSpacing="0.01875rem"
+                  >
+                    {item.text}
+                  </Text>
+                </Box>
+              ))}
             </Grid>
           </GridItem>
         </Grid>

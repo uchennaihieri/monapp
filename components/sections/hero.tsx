@@ -12,6 +12,8 @@ import {
   Text,
 } from "@chakra-ui/react";
 
+import Logo from "@/public/icons/monapp-logo-white.svg";
+
 export default function Hero() {
   return (
     <Box bg="black" position="relative" overflow="hidden" minH="100vh">
@@ -19,46 +21,52 @@ export default function Hero() {
       <Container maxW="container.xl" py={6}>
         <Flex justify="space-between" align="center">
           <Image
-            src="/icons/monapp-logo-white.svg"
+            src={Logo}
             alt="Monapp Logo"
-            width={150}
-            height={40}
+            className="w-[120px] md:w-[150px] md:h-[40px]"
           />
           <Button
             variant="outline"
             color="white"
             borderColor="white"
-            fontWeight={"bold"}
+            fontWeight="bold"
             borderWidth="2px"
             borderRadius="10px"
+            fontSize={{ base: "14px", md: "18px" }}
             display="flex"
             alignItems="center"
             justifyContent="center"
             _hover={{ bg: "whiteAlpha.200" }}
-            px={5}
-            py={4}
+            px={{ base: 3, md: 4, lg: 5 }}
+            py={{ base: 2, md: 3, lg: 4 }}
+            gap={2}
           >
             Become a Remote Agent
             <Image
               src="/icons/arrow-right.svg"
               alt="arrow-right-icon"
-              width={24}
-              height={24}
+              width={20}
+              height={20}
             />
           </Button>
         </Flex>
       </Container>
 
       {/* Hero Content */}
-      <Container maxW="container.xl" py={"16"} mt={10}>
+      <Container
+        maxW="container.xl"
+        py={{ base: "0", md: "16" }}
+        pb={{ base: "8", md: "0" }}
+        mt={10}
+      >
         <Flex direction={{ base: "column", lg: "row" }} gap={10}>
           {/* Left Content */}
-          <Box flex="1">
+          <Box flex="1" textAlign={{ base: "center", md: "left" }}>
             <Heading
               color="white"
               fontWeight={"semibold"}
-              fontSize="3rem"
-              lineHeight="4.335rem"
+              fontSize={{ base: "1.8rem", md: "2.5rem", lg: "3rem" }}
+              lineHeight={{ base: "2.5rem", md: "4rem" }}
               mb={6}
             >
               Financial solutions to power Africa&apos;s transportation future
@@ -66,8 +74,8 @@ export default function Hero() {
             <Text
               color="white"
               fontWeight={"semibold"}
-              fontSize="1.5rem"
-              lineHeight="2.16625rem"
+              fontSize={{ base: "1rem", md: "1.25rem", lg: "1.5rem" }}
+              lineHeight={{ base: "1.25rem", md: "2rem" }}
               mb={10}
             >
               From easy access to credit for vehicle maintenance to seamless
@@ -78,31 +86,23 @@ export default function Hero() {
             {/* Phone Input Group */}
             <Flex
               gap={2}
-              maxW="600px"
               bg="white"
-              px={4}
-              py={3}
+              px={{ base: "1", md: "2" }}
+              py={{ base: "1", md: "2" }}
               borderRadius={14}
-              height={"60px"}
-              width={"689px"}
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
+              maxW="100%"
+              width={{ base: "100%", md: "600px" }}
+              height="auto"
+              align="center"
             >
-              <Input
-                variant="outline"
-                placeholder="Enter your Phone Number"
-                pl={4}
-              />
+              <Input placeholder="Enter your Phone Number" flex="1" pl={4} />
               <Button
                 bg="#222222"
                 color="white"
-                borderRadius={14}
-                width={"155px"}
-                height={"50px"}
-                fontSize="24px"
-                lineHeight="34.68px"
-                _hover={{ bg: "blackAlpha.800" }}
+                borderRadius="10px"
+                height={{ base: "40px", md: "50px" }}
+                width={{ base: "35%", md: "160px" }}
+                fontSize="18px"
               >
                 Get Started
               </Button>
@@ -110,11 +110,17 @@ export default function Hero() {
           </Box>
 
           {/* Right Content - Images */}
-          <Box flex="1">
-            <Box position="absolute" top={-1} bottom={0} right={10} zIndex={1}>
+          <Box flex="1" mt={{ base: "10", md: "0" }}>
+            <Box
+              position="absolute"
+              top={{ base: "24rem", md: "-1" }}
+              right={{ base: "20", md: "10" }}
+              zIndex={1}
+            >
               <Image
                 src="/images/world-map.png"
                 alt="World Map"
+                className="w-[300] h-[100] md:w-[695.23] md:h-[267.68]"
                 width={695.23}
                 height={267.68}
               />
@@ -133,10 +139,15 @@ export default function Hero() {
         </Flex>
       </Container>
 
-      <Box position="absolute" bottom={"-20"} left={0} zIndex={1}>
+      <Box
+        position="absolute"
+        bottom={{ base: "-28", md: "0" }}
+        left={0}
+        zIndex={1}
+      >
         <Image
           src="/icons/hero-white-squigel.svg"
-          alt="World Map"
+          alt="white-squigle"
           width={660.23}
           height={267.68}
         />
@@ -148,11 +159,18 @@ export default function Hero() {
         bottom={"-20"}
         right="48.5%"
         zIndex={1}
+        display={{ base: "none", md: "block" }}
       >
         <Image src="/icons/dot.svg" alt="dot-icon" width={6} height={5} />
       </Box>
 
-      <Box position="absolute" bottom="30%" left="32%" zIndex={1}>
+      <Box
+        position="absolute"
+        bottom="30%"
+        left="32%"
+        zIndex={1}
+        display={{ base: "none", md: "block" }}
+      >
         <Image src="/icons/dot.svg" alt="dot-icon" width={6} height={5} />
       </Box>
     </Box>

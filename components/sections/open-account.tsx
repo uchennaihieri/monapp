@@ -8,20 +8,24 @@ const OpenAccount = () => {
     <Box bg="black">
       <Container
         maxW="container.xl"
-        py={"20"}
+        py={{ base: "12", md: "20" }}
         position="relative"
         overflow="hidden"
         minH="50vh"
-        color={"white"}
+        color="white"
       >
-        <Box textAlign="center" spaceY={10}>
-          <Heading fontWeight="semibold" fontSize="40px" lineHeight="4.335rem">
+        <Box textAlign="center" spaceY={6}>
+          <Heading
+            fontWeight="semibold"
+            fontSize={{ base: "30px", md: "40px" }}
+            lineHeight={{ base: "2.5rem", md: "3.5625rem" }}
+          >
             Enjoy a business solution designed to help you <br /> grow.
           </Heading>
           <Text
             fontWeight="semibold"
-            fontSize="1.25rem"
-            lineHeight="2.16625rem"
+            fontSize={{ base: "1rem", md: "1.25rem" }}
+            lineHeight={{ base: "1.5rem", md: "2.16625rem" }}
           >
             Discover a business solution tailored to help you grow, with tools
             for effortless management, <br /> scalability, financial support,
@@ -34,11 +38,11 @@ const OpenAccount = () => {
             bg="white"
             color="#222222"
             fontWeight="bold"
-            px={6}
-            py={7}
-            fontSize={"24px"}
-            borderRadius={"10px"}
-            lineHeight={"34px"}
+            px={{ base: 4, md: 6 }}
+            py={{ base: 5, md: 7 }}
+            fontSize={{ base: "18px", md: "24px" }}
+            borderRadius="10px"
+            lineHeight="34px"
             _hover={{ bg: "#f7f7f7" }}
           >
             Open an account

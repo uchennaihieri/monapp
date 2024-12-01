@@ -15,11 +15,16 @@ const Commercial = () => {
 
   return (
     <Box bg="white" py={16}>
-      <Container maxW="container.xl" bg={"#F4F4F4A6"} px={10} py={20}>
+      <Container
+        maxW="container.xl"
+        bg={"#F4F4F4A6"}
+        px={{ base: "5", lg: "10" }}
+        py={{ base: "8", md: "20" }}
+      >
         <Heading
           textAlign="center"
-          fontSize="3rem"
-          lineHeight="4.335rem"
+          fontSize={{ base: "1.2rem", md: "2rem", lg: "3rem" }}
+          lineHeight={{ base: "2rem", md: "3rem", lg: "4.5rem" }}
           fontWeight="semibold"
           color="black"
           mb={12}
@@ -43,16 +48,16 @@ const Commercial = () => {
               <Box
                 key={index}
                 flexShrink={0}
-                height="64"
-                width="248.43"
+                height={{ base: "48", md: "64" }}
+                width={{ base: "180px", md: "248px" }}
                 mx="2px"
               >
                 <Image
                   src={image}
                   alt={`Driver ${(index % images.length) + 1}`}
                   objectFit="cover"
-                  height="64"
-                  width="248.43"
+                  height="100%"
+                  width="100%"
                   rounded="lg"
                 />
               </Box>

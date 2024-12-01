@@ -16,11 +16,17 @@ const Footer = () => {
     <Box bg="black" color="white" py={16}>
       <Container maxW="container.xl">
         <Grid
-          templateColumns={{ base: "1fr", md: "2fr 1fr 1fr 1fr 1fr" }}
+          templateColumns={{ base: "1fr", md: "2fr 6fr" }}
           gap={8}
+          alignItems={{ base: "center", md: "flex-start" }}
+          justifyContent={{ base: "center", md: "flex-start" }}
         >
           {/* Logo and Social Icons */}
-          <VStack align="flex-start" spaceY={6}>
+          <VStack
+            spaceY={6}
+            textAlign={{ base: "center", md: "left" }}
+            alignItems={{ base: "center", md: "flex-start" }}
+          >
             <Image
               src="/icons/monapp-logo-white.svg"
               alt="Monapp Logo"
@@ -62,52 +68,65 @@ const Footer = () => {
             </Flex>
           </VStack>
 
-          {/* Features Column */}
-          <Stack spaceY={4}>
-            <Heading size="md" fontSize={"18px"}>
-              Features
-            </Heading>
-            <Stack spaceY={2} fontSize={"11.25px"}>
-              <Link href="#">QR Code</Link>
-              <Link href="#">Escrow Service</Link>
-              <Link href="#">Buy Now, Pay Later (BNPL)</Link>
-              <Link href="#">Saving Options</Link>
-              <Link href="#">Access To Loans</Link>
+          <Grid
+            templateColumns={{ base: "1fr 1fr", md: "1fr 1fr 1fr 1fr" }}
+            gapX={8}
+            gapY={{ base: "12", md: "8" }}
+            justifyItems={{ base: "center", md: "start" }}
+            alignItems={{ base: "center", md: "flex-start" }}
+          >
+            {/* Features Column */}
+            <Stack spaceY={4}>
+              <Heading size="md" fontSize={"18px"}>
+                Features
+              </Heading>
+              <Stack spaceY={2} fontSize={"11.25px"}>
+                <Link href="#">QR Code</Link>
+                <Link href="#">Escrow Service</Link>
+                <Link href="#">Buy Now, Pay Later (BNPL)</Link>
+                <Link href="#">Saving Options</Link>
+                <Link href="#">Access To Loans</Link>
+              </Stack>
             </Stack>
-          </Stack>
 
-          {/* Company Column */}
-          <Stack spaceY={4}>
-            <Heading size="md" fontSize={"18px"}>
-              Company
-            </Heading>
-            <Stack spaceY={2} fontSize={"11.25px"}>
-              <Link href="#">About us</Link>
-              <Link href="#">Careers</Link>
-              <Link href="#">Press</Link>
-              <Link href="#">Blog</Link>
-              <Link href="#">Contact</Link>
+            {/* Company Column */}
+            <Stack spaceY={4}>
+              <Heading size="md" fontSize={"18px"}>
+                Company
+              </Heading>
+              <Stack spaceY={2} fontSize={"11.25px"}>
+                <Link href="#">About us</Link>
+                <Link href="#">Careers</Link>
+                <Link href="#">Press</Link>
+                <Link href="#">Blog</Link>
+                <Link href="#">Contact</Link>
+              </Stack>
             </Stack>
-          </Stack>
 
-          {/* Legal Column */}
-          <Stack spaceY={4}>
-            <Heading size="md" fontSize={"18px"}>
-              Legal
-            </Heading>
-            <Stack spaceY={2} fontSize={"11.25px"}>
-              <Link href="#">Privacy</Link>
-              <Link href="#">Terms & Condition</Link>
+            {/* Legal Column */}
+            <Stack spaceY={4}>
+              <Heading size="md" fontSize={"18px"}>
+                Legal
+              </Heading>
+              <Stack spaceY={2} fontSize={"11.25px"}>
+                <Link href="#">Privacy</Link>
+                <Link href="#">Terms & Condition</Link>
+              </Stack>
             </Stack>
-          </Stack>
 
-          {/* QR Code */}
-          <VStack align="flex-start" spaceY={4}>
-            <Heading size="md" fontSize={"18px"}>
-              Get the app
-            </Heading>
-            <Image src="/icons/qr-code.svg" alt="QR Code" w="129px" h="124px" />
-          </VStack>
+            {/* QR Code */}
+            <VStack align="flex-start" spaceY={4}>
+              <Heading size="md" fontSize={"18px"}>
+                Get the app
+              </Heading>
+              <Image
+                src="/icons/qr-code.svg"
+                alt="QR Code"
+                w="129px"
+                h="124px"
+              />
+            </VStack>
+          </Grid>
         </Grid>
 
         {/* Copyright */}

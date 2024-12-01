@@ -59,7 +59,8 @@ export default function WhatsMoreSection() {
             borderRadius="16px"
             boxShadow="4px 4px 24px 0px #FFFFFF33 inset, -8px -8px 24px 0px #00000040 inset"
             spaceY={4}
-            width="22.375rem"
+            width={{ base: "100%", sm: "22.375rem" }}
+            color={"white"}
             height="12.75rem"
           >
             <Image src={StarWhiteIcon} alt="star-icon" />
@@ -85,7 +86,7 @@ export default function WhatsMoreSection() {
             borderRadius="16px"
             boxShadow="xl"
             spaceY={4}
-            width="22.375rem"
+            width={{ base: "100%", sm: "22.375rem" }}
             height="12.75rem"
           >
             <Image src={StarBlackIcon} alt="star-icon" />
@@ -110,7 +111,8 @@ export default function WhatsMoreSection() {
             borderRadius="16px"
             boxShadow="4px 4px 24px 0px #FFFFFF33 inset, -8px -8px 24px 0px #00000040 inset"
             spaceY={4}
-            width="22.375rem"
+            color={"white"}
+            width={{ base: "100%", sm: "22.375rem" }}
             height="12.75rem"
           >
             <Image src={StarWhiteIcon} alt="star-icon" />

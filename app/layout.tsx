@@ -43,7 +43,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${jostBook.variable} ${jostMedium.variable} ${jostSemi.variable} ${jostBold.variable} ${jostHeavy.variable}`}
+      className={`overflow-x-hidden ${jostBook.variable} ${jostMedium.variable} ${jostSemi.variable} ${jostBold.variable} ${jostHeavy.variable}`}
     >
       <body>
         <Provider>{children}</Provider>

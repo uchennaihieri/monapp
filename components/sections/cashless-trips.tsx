@@ -12,7 +12,7 @@ const CashlessTrips = () => {
       position="relative"
       color={"black"}
       overflow="hidden"
-      minH="100vh"
+      minH={{ base: "150vh", lg: "100vh" }}
     >
       {/* Hero Content */}
       <Container maxW="container.xl" py={"24"} mt={10}>
@@ -22,20 +22,20 @@ const CashlessTrips = () => {
           gap={10}
         >
           {/* Left Content */}
-          <Box flex="1">
+          <Box flex="1" textAlign={{ base: "center", lg: "left" }}>
             <Heading
-              fontSize="3rem"
+              fontSize={{ base: "2rem", lg: "3rem" }}
               fontWeight={"semibold"}
-              lineHeight="4.335rem"
+              lineHeight={{ base: "2.5rem", lg: "4.335rem" }}
               mb={6}
             >
               While allowing riders enjoy seamless, cashless trips with reliable
               digital payment options
             </Heading>
             <Text
-              fontSize="1.5rem"
+              fontSize={{ base: "1.25rem", lg: "1.5rem" }}
               fontWeight={"semibold"}
-              lineHeight="2.16625rem"
+              lineHeight={{ base: "1.75rem", lg: "2.16625rem" }}
               mb={10}
             >
               Monapp ensures riders enjoy seamless, cashless trips <br /> with
@@ -50,7 +50,7 @@ const CashlessTrips = () => {
           <Box flex="1" position="relative">
             <Box
               position="absolute"
-              top={-250}
+              top={{ base: -200, lg: -250 }}
               bottom={0}
               right={10}
               zIndex={1}
@@ -63,21 +63,42 @@ const CashlessTrips = () => {
               />
             </Box>
 
-            <Box position="absolute" top={-370} zIndex={2}>
-              <Image src={Phone1} alt="phone Images" width={691} height={616} />
+            <Box
+              position="absolute"
+              top={{ base: -250, lg: -370 }}
+              left={{ base: -120, lg: 0 }}
+              zIndex={2}
+            >
+              <Image
+                src={Phone1}
+                alt="phone Images"
+                className="w-[691px] h-[616px]"
+              />
             </Box>
 
-            <Box position="absolute" top={-170} left={-150} zIndex={2}>
-              <Image src={Phone2} alt="phone Images" width={563} height={502} />
+            <Box
+              position="absolute"
+              top={{ base: -100, lg: -170 }}
+              left={{ base: -120, lg: -150 }}
+              zIndex={2}
+            >
+              <Image
+                src={Phone2}
+                alt="phone Images"
+                className="w-[563px] h-[502px]"
+              />
             </Box>
 
-            <Box position="absolute" top={-170} right={-150} zIndex={2}>
+            <Box
+              position="absolute"
+              top={{ base: -100, lg: -170 }}
+              right={{ base: -120, lg: -150 }}
+              zIndex={2}
+            >
               <Image
                 src={Phone3}
                 className="w-[563px] h-[502px]"
                 alt="phone Images"
-                width={563}
-                height={502}
               />
             </Box>
           </Box>

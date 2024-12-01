@@ -5,31 +5,36 @@ import ArrowRight from "@/public/icons/arrow-right.svg";
 
 const DownloadApp = () => {
   return (
-    <Box bg="white" minH="50vh" position="relative">
-      <Container maxW="container.xl" py={"20"}>
-        <Box textAlign="center" spaceY={10} color={"black"}>
-          <Heading fontWeight="semibold" fontSize="40px" lineHeight="4.335rem">
-            Download the driver app or fill a form with your phone number <br />{" "}
+    <Box bg="white" minH="50vh" overflow={"hidden"} position="relative">
+      <Container maxW="container.xl" py={{ base: "12", md: "20" }}>
+        <Box textAlign="center" spaceY={6} color={"black"}>
+          <Heading
+            fontWeight="semibold"
+            fontSize={{ base: "24px", md: "40px" }}
+            lineHeight={{ base: "2.5rem", md: "4.335rem" }}
+          >
+            Download the driver app or fill a form with your phone number <br />
             for personalized support
           </Heading>
 
           <Box
             display="flex"
-            flexDirection="row"
+            flexDirection={{ base: "column", md: "row" }}
             alignItems="center"
             justifyContent="center"
             textAlign="center"
-            gap={8}
+            gap={6}
           >
             <Button
               bg="#222222"
               color="#FFFFFF"
               fontWeight="bold"
-              px={6}
-              py={7}
-              fontSize={"24px"}
+              px={{ base: 4, md: 6 }}
+              py={{ base: 5, md: 7 }}
+              fontSize={{ base: "18px", md: "20px" }}
               lineHeight={"34px"}
               borderRadius={"10px"}
+              mr={10}
             >
               Download App
               <Image
@@ -44,13 +49,13 @@ const DownloadApp = () => {
               gap={2}
               maxW="600px"
               bg="white"
-              px={3}
-              py={2}
+              px={{ base: "1", md: "2" }}
+              py={{ base: "1", md: "2" }}
               border="2px solid"
               borderColor="#222222"
               borderRadius="14px"
               height="auto"
-              width="689px"
+              width={{ base: "100%", md: "689px" }}
               alignItems="center"
             >
               <Input placeholder="Enter your Phone Number" flex="1" pl={4} />
@@ -58,8 +63,8 @@ const DownloadApp = () => {
                 bg="#222222"
                 color="white"
                 borderRadius="10px"
-                height="50px"
-                width="160px"
+                height={{ base: "40px", md: "50px" }}
+                width={{ base: "30%", md: "160px" }}
                 fontSize="18px"
               >
                 Get Started
@@ -68,7 +73,12 @@ const DownloadApp = () => {
           </Box>
         </Box>
       </Container>
-      <Box position="absolute" bottom={"0"} right={0} zIndex={1}>
+      <Box
+        position="absolute"
+        bottom={{ base: "-24", lg: "0" }}
+        right={0}
+        zIndex={1}
+      >
         <Image
           src="/icons/squigle-black-small.svg"
           alt="World Map"
