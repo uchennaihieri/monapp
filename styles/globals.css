@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --font-jost: var(--font-jost-book), var(--font-jost-medium),
+    var(--font-jost-semi), var(--font-jost-bold), var(--font-jost-heavy),
+    sans-serif;
+}
+
+body {
+  font-family: var(--font-jost);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-jost);
+}

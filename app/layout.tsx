@@ -4,15 +4,29 @@ import localFont from "next/font/local";
 import "@/styles/globals.css";
 import { Provider } from "@/components/ui/provider";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+const jostBook = localFont({
+  src: "./fonts/Jost-400-Book.otf",
+  variable: "--font-jost-book",
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+
+const jostMedium = localFont({
+  src: "./fonts/Jost-500-Medium.otf",
+  variable: "--font-jost-medium",
+});
+
+const jostSemi = localFont({
+  src: "./fonts/Jost-600-Semi.otf",
+  variable: "--font-jost-semi",
+});
+
+const jostBold = localFont({
+  src: "./fonts/Jost-700-Bold.otf",
+  variable: "--font-jost-bold",
+});
+
+const jostHeavy = localFont({
+  src: "./fonts/Jost-800-Heavy.ttf",
+  variable: "--font-jost-heavy",
 });
 
 export const metadata: Metadata = {
@@ -26,10 +40,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${jostBook.variable} ${jostMedium.variable} ${jostSemi.variable} ${jostBold.variable} ${jostHeavy.variable}`}
+    >
+      <body>
         <Provider>{children}</Provider>
       </body>
     </html>
