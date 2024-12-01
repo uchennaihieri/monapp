@@ -54,11 +54,12 @@ export default function Hero() {
         <Flex direction={{ base: "column", lg: "row" }} gap={10}>
           {/* Left Content */}
           <Box flex="1">
-            <Heading color="white" fontSize="3rem" lineHeight="4.335rem" mb={6}>
+            <Heading color="white" fontWeight={"semibold"} fontSize="3rem" lineHeight="4.335rem" mb={6}>
               Financial solutions to power Africa&apos;s transportation future
             </Heading>
             <Text
               color="white"
+              fontWeight={"semibold"}
               fontSize="1.5rem"
               lineHeight="2.16625rem"
               mb={10}
