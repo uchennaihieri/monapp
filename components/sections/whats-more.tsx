@@ -17,13 +17,13 @@ export default function WhatsMoreSection() {
   const lightCardBg = "white";
 
   return (
-    <Box bg="#000000" py={20}>
+    <Box bg="#000000" py={{ base: 10, md: 20 }}>
       <Container maxW="container.xl">
         <VStack spaceY={4} mb={16} textAlign="center">
           <Heading
             as="h2"
-            fontSize={{ base: "2.5rem", md: "2.5rem" }}
-            lineHeight={{ base: "3.6125rem", md: "3.6125rem" }}
+            fontSize={{ base: "16px", md: "2.5rem" }}
+            lineHeight={{ base: "23px", md: "3.6125rem" }}
             fontWeight="600"
             textAlign="center"
             color="white"
@@ -31,8 +31,8 @@ export default function WhatsMoreSection() {
             What&apos;s More?
           </Heading>
           <Text
-            fontSize={{ base: "1.25rem", md: "1.25rem" }}
-            lineHeight={{ base: "1.80625rem", md: "1.80625rem" }}
+            fontSize={{ base: "12px", md: "1.25rem" }}
+            lineHeight={{ base: "17px", md: "1.80625rem" }}
             fontWeight="600"
             textAlign="center"
             color="white"
@@ -44,9 +44,9 @@ export default function WhatsMoreSection() {
         </VStack>
 
         <SimpleGrid
-          columns={{ base: 1, md: 3 }}
+          columns={{ base: 1, lg: 3 }}
           spaceX={2}
-          spaceY={{ base: 5, md: 0 }}
+          spaceY={{ base: 5, lg: 0 }}
           justifyItems="center"
           alignItems="center"
           maxW="1200px"
@@ -66,8 +66,8 @@ export default function WhatsMoreSection() {
             <Image src={StarWhiteIcon} alt="star-icon" />
             <Heading
               as="h3"
-              fontSize="1.375rem"
-              lineHeight="1.98625rem"
+              fontSize={{ base: "14px", md: "1.375rem" }}
+              lineHeight={{ base: "20px", md: "1.98625rem" }}
               fontWeight="700"
               color={"#FFFFF"}
             >
@@ -92,8 +92,8 @@ export default function WhatsMoreSection() {
             <Image src={StarBlackIcon} alt="star-icon" />
             <Heading
               as="h3"
-              fontSize="1.375rem"
-              lineHeight="1.98625rem"
+              fontSize={{ base: "14px", md: "1.375rem" }}
+              lineHeight={{ base: "20px", md: "1.98625rem" }}
               fontWeight="700"
               color={"#222222"}
             >
@@ -118,8 +118,8 @@ export default function WhatsMoreSection() {
             <Image src={StarWhiteIcon} alt="star-icon" />
             <Heading
               as="h3"
-              fontSize="1.375rem"
-              lineHeight="1.98625rem"
+              fontSize={{ base: "14px", md: "1.375rem" }}
+              lineHeight={{ base: "20px", md: "1.98625rem" }}
               fontWeight="700"
               color={"#FFFFF"}
             >

@@ -15,12 +15,7 @@ const Footer = () => {
   return (
     <Box bg="black" color="white" py={16}>
       <Container maxW="container.xl">
-        <Grid
-          templateColumns={{ base: "1fr", md: "2fr 6fr" }}
-          gap={8}
-          alignItems={{ base: "center", md: "flex-start" }}
-          justifyContent={{ base: "center", md: "flex-start" }}
-        >
+        <Grid templateColumns={{ base: "1fr", md: "2fr 6fr" }} gap={8}>
           {/* Logo and Social Icons */}
           <VStack
             spaceY={6}
@@ -71,9 +66,10 @@ const Footer = () => {
           <Grid
             templateColumns={{ base: "1fr 1fr", md: "1fr 1fr 1fr 1fr" }}
             gapX={8}
+            mx={{ base: "auto", md: "unset" }}
             gapY={{ base: "12", md: "8" }}
-            justifyItems={{ base: "center", md: "start" }}
-            alignItems={{ base: "center", md: "flex-start" }}
+            justifyItems={{ base: "start", md: "start" }}
+            alignItems={{ base: "start", md: "flex-start" }}
           >
             {/* Features Column */}
             <Stack spaceY={4}>
@@ -104,7 +100,7 @@ const Footer = () => {
             </Stack>
 
             {/* Legal Column */}
-            <Stack spaceY={4}>
+            <VStack spaceY={4} align="flex-start">
               <Heading size="md" fontSize={"18px"}>
                 Legal
               </Heading>
@@ -112,7 +108,7 @@ const Footer = () => {
                 <Link href="#">Privacy</Link>
                 <Link href="#">Terms & Condition</Link>
               </Stack>
-            </Stack>
+            </VStack>
 
             {/* QR Code */}
             <VStack align="flex-start" spaceY={4}>

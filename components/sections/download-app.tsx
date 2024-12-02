@@ -6,20 +6,26 @@ import ArrowRight from "@/public/icons/arrow-right.svg";
 const DownloadApp = () => {
   return (
     <Box bg="white" minH="50vh" overflow={"hidden"} position="relative">
-      <Container maxW="container.xl" py={{ base: "12", md: "20" }}>
+      <Container
+        maxW="container.xl"
+        py={{ base: "16", md: "20" }}
+        pt={{ base: "20", md: "16" }}
+      >
         <Box textAlign="center" spaceY={6} color={"black"}>
           <Heading
             fontWeight="semibold"
-            fontSize={{ base: "24px", md: "40px" }}
-            lineHeight={{ base: "2.5rem", md: "4.335rem" }}
+            // fontSize={{ base: "16px", md: "40px" }}
+            // lineHeight={{ base: "23px", md: "4.335rem" }}
+            fontSize={{ base: "16px", md: "2rem", lg: "2.5rem" }}
+            lineHeight={{ base: "23px", md: "3rem", lg: "3.6125rem" }}
           >
-            Download the driver app or fill a form with your phone number <br />
+            Download the driver app or fill a form with your phone number <br className="hidden lg:block" />
             for personalized support
           </Heading>
 
           <Box
             display="flex"
-            flexDirection={{ base: "column", md: "row" }}
+            flexDirection={{ base: "column", lg: "row" }}
             alignItems="center"
             justifyContent="center"
             textAlign="center"
@@ -36,7 +42,7 @@ const DownloadApp = () => {
               borderRadius={"10px"}
               mr={10}
             >
-              Download App
+              Download Driver&#39;s App
               <Image
                 src={ArrowRight}
                 alt="arrow-right"

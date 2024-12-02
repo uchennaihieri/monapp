@@ -23,7 +23,7 @@ export default function Hero() {
           <Image
             src={Logo}
             alt="Monapp Logo"
-            className="w-[120px] md:w-[150px] md:h-[40px]"
+            className="w-[138px] h-[25px] md:w-[150px] md:h-[40px]"
           />
           <Button
             variant="outline"
@@ -34,11 +34,11 @@ export default function Hero() {
             borderRadius="10px"
             fontSize={{ base: "14px", md: "18px" }}
             display="flex"
+            width={{ base: "196px", md: "269px" }}
+            height={{ base: "42px", md: "50px" }}
             alignItems="center"
             justifyContent="center"
             _hover={{ bg: "whiteAlpha.200" }}
-            px={{ base: 3, md: 4, lg: 5 }}
-            py={{ base: 2, md: 3, lg: 4 }}
             gap={2}
           >
             Become a Remote Agent
@@ -59,14 +59,18 @@ export default function Hero() {
         pb={{ base: "8", md: "0" }}
         mt={10}
       >
-        <Flex direction={{ base: "column", lg: "row" }} gap={10}>
+        <Flex
+          direction={{ base: "column", lg: "row" }}
+          gap={10}
+          align={{base: "center", lg: "flex-start"}}
+        >
           {/* Left Content */}
-          <Box flex="1" textAlign={{ base: "center", md: "left" }}>
+          <Box flex="1" textAlign={{ base: "center", lg: "left" }}>
             <Heading
               color="white"
               fontWeight={"semibold"}
-              fontSize={{ base: "1.8rem", md: "2.5rem", lg: "3rem" }}
-              lineHeight={{ base: "2.5rem", md: "4rem" }}
+              fontSize={{ base: "24px", md: "2.5rem", lg: "3rem" }}
+              lineHeight={{ base: "34px", md: "4rem" }}
               mb={6}
             >
               Financial solutions to power Africa&apos;s transportation future
@@ -74,8 +78,8 @@ export default function Hero() {
             <Text
               color="white"
               fontWeight={"semibold"}
-              fontSize={{ base: "1rem", md: "1.25rem", lg: "1.5rem" }}
-              lineHeight={{ base: "1.25rem", md: "2rem" }}
+              fontSize={{ base: "14px", md: "1.25rem", lg: "1.5rem" }}
+              lineHeight={{ base: "20px", md: "2rem" }}
               mb={10}
             >
               From easy access to credit for vehicle maintenance to seamless
@@ -91,7 +95,7 @@ export default function Hero() {
               py={{ base: "1", md: "2" }}
               borderRadius={14}
               maxW="100%"
-              width={{ base: "100%", md: "600px" }}
+              width={{ base: "100%", lg: "600px" }}
               height="auto"
               align="center"
             >
@@ -113,8 +117,8 @@ export default function Hero() {
           <Box flex="1" mt={{ base: "10", md: "0" }}>
             <Box
               position="absolute"
-              top={{ base: "24rem", md: "-1" }}
-              right={{ base: "20", md: "10" }}
+              top={{ base: "17rem", lg: "-1" }}
+              right={{ base: "20", lg: "10" }}
               zIndex={1}
             >
               <Image

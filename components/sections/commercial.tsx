@@ -22,9 +22,9 @@ const Commercial = () => {
         py={{ base: "8", md: "20" }}
       >
         <Heading
-          textAlign="center"
-          fontSize={{ base: "1.2rem", md: "2rem", lg: "3rem" }}
-          lineHeight={{ base: "2rem", md: "3rem", lg: "4.5rem" }}
+          textAlign={"center"}
+          fontSize={{ base: "16px", md: "2rem", lg: "3rem" }}
+          lineHeight={{ base: "23px", md: "3rem", lg: "4.5rem" }}
           fontWeight="semibold"
           color="black"
           mb={12}

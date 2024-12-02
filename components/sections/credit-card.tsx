@@ -16,8 +16,8 @@ export default function CreditCardSection() {
     <Box
       position="relative"
       overflow="hidden"
-      pt={20}
-      pb={"64"}
+      pt={{ base: "5", md: "20" }}
+      pb={{ base: "32", md: "64" }}
       bg={"white"}
       color={"black"}
     >
@@ -35,7 +35,7 @@ export default function CreditCardSection() {
       <Container maxW="container.xl">
         <Grid
           templateColumns={{ base: "1fr", lg: "1fr 1fr" }}
-          gap={5}
+          gap={{ base: 5, md: 10 }}
           alignItems="start"
         >
           <GridItem>
@@ -43,23 +43,30 @@ export default function CreditCardSection() {
               <Heading
                 as="h2"
                 size="2xl"
-                lineHeight={{ base: "2rem", md: "3rem", lg: "3.6125rem" }}
+                lineHeight={{ base: "23px", md: "3rem", lg: "3.6125rem" }}
                 fontWeight="600"
-                fontSize={{ base: "1.75rem", md: "2rem", lg: "2.5rem" }}
-                textAlign={{ base: "center", md: "left" }}
+                fontSize={{ base: "16px", md: "2rem", lg: "2.5rem" }}
+                textAlign={{ base: "center", lg: "left" }}
               >
-                Monapp&apos;s credit card gives you instant credit for vehicle
-                maintenance — And That&apos;s Just the Start!
+                Monapp&apos;s credit card gives
+                <br className="hidden lg:block" />
+                you instant credit for vehicle maintenance — And That&apos;s
+                <br className="hidden lg:block" />
+                Just the Start!
               </Heading>
+
               <Text
-                fontSize={{ base: "1rem", md: "1.125rem", lg: "1.25rem" }}
+                fontSize={{ base: "12px", md: "1.125rem", lg: "1.25rem" }}
                 fontWeight={"semibold"}
-                lineHeight={{ base: "1.5rem", md: "1.75rem", lg: "1.80625rem" }}
-                textAlign={{ base: "center", md: "left" }}
+                lineHeight={{ base: "17px", md: "1.75rem", lg: "1.80625rem" }}
+                textAlign={{ base: "center", lg: "left" }}
               >
-                Whether it&apos;s repairs or upkeep, simply swipe the card and
-                get back on the road without worrying about upfront costs.
-                It&apos;s the ultimate financial tool for hassle-free driving!
+                Whether it&apos;s repairs or upkeep, simply swipe the card{" "}
+                <br className="hidden lg:block" />
+                and get back on the road without worrying about upfront{" "}
+                <br className="hidden lg:block" />
+                costs. It&apos;s the ultimate financial tool for hassle-free
+                driving!
               </Text>
             </Stack>
           </GridItem>
@@ -115,8 +122,8 @@ export default function CreditCardSection() {
                   />
                   <Heading
                     as="h3"
-                    fontSize={{ base: "18px", md: "20px", lg: "22px" }}
-                    lineHeight={{ base: "20px", md: "22px" }}
+                    fontSize={{ base: "14px", md: "20px", lg: "22px" }}
+                    lineHeight={{ base: "15px", md: "22px" }}
                     fontWeight="700"
                     letterSpacing="0.5px"
                   >
@@ -138,7 +145,12 @@ export default function CreditCardSection() {
         </Grid>
       </Container>
 
-      <Box position="absolute" bottom={"-20"} left={0} zIndex={1}>
+      <Box
+        position="absolute"
+        bottom={{ base: "-30", md: "-20" }}
+        left={0}
+        zIndex={1}
+      >
         <Image
           src="/icons/squigle-black.svg"
           alt="World Map"
