@@ -10,7 +10,7 @@ import Footer from "@/components/footer";
 
 export default function Home() {
   return (
-    <div className="overflow-hidden">
+    <>
       <Hero />
       <Commercial />
       <CreditCardSection />
@@ -20,6 +20,6 @@ export default function Home() {
       <OpenAccount />
       <DownloadApp />
       <Footer />
-    </div>
+    </>
   );
 }
