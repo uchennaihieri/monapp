@@ -62,7 +62,7 @@ export default function Hero() {
         <Flex
           direction={{ base: "column", lg: "row" }}
           gap={10}
-          align={{base: "center", lg: "flex-start"}}
+          align={{ base: "center", lg: "flex-start" }}
         >
           {/* Left Content */}
           <Box flex="1" textAlign={{ base: "center", lg: "left" }}>
