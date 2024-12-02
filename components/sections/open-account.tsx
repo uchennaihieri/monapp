@@ -7,7 +7,6 @@ const OpenAccount = () => {
         maxW="container.xl"
         py={{ base: "12", md: "20" }}
         position="relative"
-        overflow="hidden"
         color="white"
       >
         <Box textAlign="center" spaceY={6}>

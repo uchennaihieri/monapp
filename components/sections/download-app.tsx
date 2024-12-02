@@ -5,7 +5,7 @@ import ArrowRight from "@/public/icons/arrow-right.svg";
 
 const DownloadApp = () => {
   return (
-    <Box bg="white" minH="50vh" overflow={"hidden"} position="relative">
+    <Box bg="white" minH="50vh" position="relative">
       <Container
         maxW="container.xl"
         py={{ base: "16", md: "20" }}
@@ -14,12 +14,11 @@ const DownloadApp = () => {
         <Box textAlign="center" spaceY={6} color={"black"}>
           <Heading
             fontWeight="semibold"
-            // fontSize={{ base: "16px", md: "40px" }}
-            // lineHeight={{ base: "23px", md: "4.335rem" }}
             fontSize={{ base: "16px", md: "2rem", lg: "2.5rem" }}
             lineHeight={{ base: "23px", md: "3rem", lg: "3.6125rem" }}
           >
-            Download the driver app or fill a form with your phone number <br className="hidden lg:block" />
+            Download the driver app or fill a form with your phone number{" "}
+            <br className="hidden lg:block" />
             for personalized support
           </Heading>
 

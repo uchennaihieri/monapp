@@ -16,7 +16,7 @@ import Logo from "@/public/icons/monapp-logo-white.svg";
 
 export default function Hero() {
   return (
-    <Box bg="black" position="relative" overflow="hidden" minH="100vh">
+    <Box bg="black" position="relative" minH="100vh">
       {/* Navigation */}
       <Container maxW="container.xl" py={6}>
         <Flex justify="space-between" align="center">
@@ -56,7 +56,7 @@ export default function Hero() {
       <Container
         maxW="container.xl"
         py={{ base: "0", md: "16" }}
-        pb={{ base: "8", md: "0" }}
+        pb={{ base: "8", md: "12" }}
         mt={10}
       >
         <Flex
@@ -147,7 +147,7 @@ export default function Hero() {
         position="absolute"
         bottom={{ base: "-28", md: "0" }}
         left={0}
-        zIndex={1}
+        zIndex={0}
       >
         <Image
           src="/icons/hero-white-squigel.svg"

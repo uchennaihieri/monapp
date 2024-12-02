@@ -15,28 +15,17 @@ export default function CreditCardSection() {
   return (
     <Box
       position="relative"
-      overflow="hidden"
       pt={{ base: "5", md: "20" }}
       pb={{ base: "32", md: "64" }}
       bg={"white"}
       color={"black"}
     >
-      <Box
-        position="absolute"
-        bottom="-100px"
-        left="-100px"
-        width="600px"
-        height="600px"
-        bg="black"
-        borderRadius="50%"
-        transform="scale(2)"
-        zIndex={-1}
-      />
-      <Container maxW="container.xl">
+      <Container maxW="container.xl" overflow={"hidden"}>
         <Grid
           templateColumns={{ base: "1fr", lg: "1fr 1fr" }}
           gap={{ base: 5, md: 10 }}
           alignItems="start"
+          overflow={"hidden"}
         >
           <GridItem>
             <Stack maxW="100%" spaceY={6} color={"#222222"}>
@@ -78,9 +67,10 @@ export default function CreditCardSection() {
                 md: "repeat(2, 1fr)",
                 lg: "repeat(2, 16.0625rem)",
               }}
+              overflow={"hidden"}
               gap={6}
               justifyContent={{ base: "center", lg: "start" }}
-              mx="auto"
+              py={"10"}
             >
               {[
                 {
@@ -109,7 +99,7 @@ export default function CreditCardSection() {
                   bg="white"
                   p={6}
                   borderRadius="lg"
-                  boxShadow="0px 18px 58px 16px #0000000F"
+                  boxShadow="0px 4px 12px rgba(0, 0, 0, 0.08)"
                   spaceY={3}
                   width={{ base: "100%", lg: "16.0625rem" }}
                   height="auto"
@@ -149,7 +139,8 @@ export default function CreditCardSection() {
         position="absolute"
         bottom={{ base: "-30", md: "-20" }}
         left={0}
-        zIndex={1}
+        zIndex={0}
+        overflow={"hidden"}
       >
         <Image
           src="/icons/squigle-black.svg"
