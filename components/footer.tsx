@@ -79,7 +79,7 @@ const Footer = () => {
               <Stack spaceY={2} fontSize={"11.25px"}>
                 <Link href="#">QR Code</Link>
                 <Link href="#">Escrow Service</Link>
-                <Link href="#">Buy Now, Pay Later (BNPL)</Link>
+                <Link href="#">Buy Now, Pay Later</Link>
                 <Link href="#">Saving Options</Link>
                 <Link href="#">Access To Loans</Link>
               </Stack>
