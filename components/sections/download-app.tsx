@@ -31,7 +31,7 @@ const DownloadApp = () => {
             textAlign="center"
             gap={6}
           >
-            <Button className="group bg-[#222222] text-white font-bold px-4 md:px-6 py-5 md:py-7 text-[18px] md:text-[20px] leading-[34px] rounded-[10px] flex items-center justify-center mr-10">
+            <Button className="group bg-[#222222] text-white font-bold px-4 md:px-6 py-5 md:py-7 text-[18px] md:text-[20px] leading-[34px] rounded-[10px] flex items-center justify-center lg:mr-10">
               Download Driver&#39;s App
               <Image
                 src={ArrowRight}
