@@ -1,18 +1,11 @@
 "use client";
 
 import Image from "next/image";
-
-import {
-  Box,
-  Button,
-  Container,
-  Flex,
-  Heading,
-  Input,
-  Text,
-} from "@chakra-ui/react";
+import { motion } from "framer-motion";
+import { Box, Button, Container, Flex, Input } from "@chakra-ui/react";
 
 import Logo from "@/public/icons/monapp-logo-white.svg";
+import BlurIn from "../ui/blur-in";
 
 export default function Hero() {
   return (
@@ -25,26 +18,13 @@ export default function Hero() {
             alt="Monapp Logo"
             className="w-[138px] h-[25px] md:w-[150px] md:h-[40px]"
           />
-          <Button
-            variant="outline"
-            color="white"
-            borderColor="white"
-            fontWeight="bold"
-            borderWidth="2px"
-            borderRadius="10px"
-            fontSize={{ base: "14px", md: "18px" }}
-            display="flex"
-            width={{ base: "196px", md: "269px" }}
-            height={{ base: "42px", md: "50px" }}
-            alignItems="center"
-            justifyContent="center"
-            _hover={{ bg: "whiteAlpha.200" }}
-            gap={2}
-          >
+
+          <Button className="group border-2 border-white text-white font-bold rounded-[10px] flex items-center justify-center gap-2 w-[196px] md:w-[269px] h-[42px] md:h-[50px] text-[14px] md:text-[18px] hover:bg-white/20">
             Become a Remote Agent
             <Image
               src="/icons/arrow-right.svg"
               alt="arrow-right-icon"
+              className="transform transition-transform duration-300 group-hover:translate-x-2"
               width={20}
               height={20}
             />
@@ -66,26 +46,15 @@ export default function Hero() {
         >
           {/* Left Content */}
           <Box flex="1" textAlign={{ base: "center", lg: "left" }}>
-            <Heading
-              color="white"
-              fontWeight={"semibold"}
-              fontSize={{ base: "24px", md: "2.5rem", lg: "3rem" }}
-              lineHeight={{ base: "34px", md: "4rem" }}
-              mb={6}
-            >
-              Financial solutions to power Africa&apos;s transportation future
-            </Heading>
-            <Text
-              color="white"
-              fontWeight={"semibold"}
-              fontSize={{ base: "14px", md: "1.25rem", lg: "1.5rem" }}
-              lineHeight={{ base: "20px", md: "2rem" }}
-              mb={10}
-            >
-              From easy access to credit for vehicle maintenance to seamless
-              payments and micro-insurance, Monapp keeps your business on the
-              road without the stress.
-            </Text>
+            <BlurIn
+              word="Financial solutions to power Africa's transportation future"
+              className="text-white font-semibold text-[24px] md:text-[2.5rem] lg:text-[3rem] leading-[34px] md:leading-[4rem] mb-6"
+            />
+
+            <BlurIn
+              word="From easy access to credit for vehicle maintenance to seamless payments and micro-insurance, Monapp keeps your business on the road without the stress."
+              className="text-white font-semibold text-[14px] md:text-[1.25rem] lg:text-[1.5rem] leading-[20px] md:leading-[2rem] mb-10"
+            />
 
             {/* Phone Input Group */}
             <Flex
@@ -99,7 +68,12 @@ export default function Hero() {
               height="auto"
               align="center"
             >
-              <Input placeholder="Enter your Phone Number" flex="1" pl={4} />
+              <Input
+                placeholder="Enter your Phone Number"
+                className="text-black"
+                flex="1"
+                pl={4}
+              />
               <Button
                 bg="#222222"
                 color="white"
@@ -130,14 +104,20 @@ export default function Hero() {
               />
             </Box>
 
-            <Box position="relative" zIndex={2}>
-              <Image
-                src="/images/hero-image.png"
-                alt="Hero Images"
-                priority
-                width={575}
-                height={632}
-              />
+            <Box position="relative" zIndex={2} overflow={"hidden"}>
+              <motion.div
+                initial={{ x: "30vw", opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+              >
+                <Image
+                  src="/images/hero-image.png"
+                  alt="Hero Images"
+                  priority
+                  width={575}
+                  height={632}
+                />
+              </motion.div>
             </Box>
           </Box>
         </Flex>
