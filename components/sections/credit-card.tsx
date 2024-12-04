@@ -1,5 +1,6 @@
 "use client";
 
+import React, { useRef } from "react";
 import {
   Box,
   Container,
@@ -9,9 +10,13 @@ import {
   Text,
   Stack,
 } from "@chakra-ui/react";
+import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 
 export default function CreditCardSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false, amount: 0.1 });
+
   return (
     <Box
       position="relative"
@@ -19,6 +24,7 @@ export default function CreditCardSection() {
       pb={{ base: "32", md: "64" }}
       bg={"white"}
       color={"black"}
+      ref={ref}
     >
       <Container maxW="container.xl" overflow={"hidden"}>
         <Grid
@@ -28,36 +34,44 @@ export default function CreditCardSection() {
           overflow={"hidden"}
         >
           <GridItem>
-            <Stack maxW="100%" spaceY={6} color={"#222222"}>
-              <Heading
-                as="h2"
-                size="2xl"
-                lineHeight={{ base: "23px", md: "3rem", lg: "3.6125rem" }}
-                fontWeight="600"
-                fontSize={{ base: "16px", md: "2rem", lg: "2.5rem" }}
-                textAlign={{ base: "center", lg: "left" }}
-              >
-                Monapp&apos;s credit card gives
-                <br className="hidden lg:block" />
-                you instant credit for vehicle maintenance — And That&apos;s
-                <br className="hidden lg:block" />
-                Just the Start!
-              </Heading>
+            <motion.div
+              initial={{ opacity: 0, x: -100 }}
+              animate={
+                isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }
+              }
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <Stack maxW="100%" spaceY={6} color={"#222222"}>
+                <Heading
+                  as="h2"
+                  size="2xl"
+                  lineHeight={{ base: "23px", md: "3rem", lg: "3.6125rem" }}
+                  fontWeight="600"
+                  fontSize={{ base: "16px", md: "2rem", lg: "2.5rem" }}
+                  textAlign={{ base: "center", lg: "left" }}
+                >
+                  Monapp&apos;s credit card gives
+                  <br className="hidden lg:block" />
+                  you instant credit for vehicle maintenance — And That&apos;s
+                  <br className="hidden lg:block" />
+                  Just the Start!
+                </Heading>
 
-              <Text
-                fontSize={{ base: "12px", md: "1.125rem", lg: "1.25rem" }}
-                fontWeight={"semibold"}
-                lineHeight={{ base: "17px", md: "1.75rem", lg: "1.80625rem" }}
-                textAlign={{ base: "center", lg: "left" }}
-              >
-                Whether it&apos;s repairs or upkeep, simply swipe the card{" "}
-                <br className="hidden lg:block" />
-                and get back on the road without worrying about upfront{" "}
-                <br className="hidden lg:block" />
-                costs. It&apos;s the ultimate financial tool for hassle-free
-                driving!
-              </Text>
-            </Stack>
+                <Text
+                  fontSize={{ base: "12px", md: "1.125rem", lg: "1.25rem" }}
+                  fontWeight={"semibold"}
+                  lineHeight={{ base: "17px", md: "1.75rem", lg: "1.80625rem" }}
+                  textAlign={{ base: "center", lg: "left" }}
+                >
+                  Whether it&apos;s repairs or upkeep, simply swipe the card{" "}
+                  <br className="hidden lg:block" />
+                  and get back on the road without worrying about upfront{" "}
+                  <br className="hidden lg:block" />
+                  costs. It&apos;s the ultimate financial tool for hassle-free
+                  driving!
+                </Text>
+              </Stack>
+            </motion.div>
           </GridItem>
 
           <GridItem>
@@ -67,10 +81,10 @@ export default function CreditCardSection() {
                 md: "repeat(2, 1fr)",
                 lg: "repeat(2, 16.0625rem)",
               }}
-              overflow={"hidden"}
+              overflow="hidden"
               gap={6}
               justifyContent={{ base: "center", lg: "start" }}
-              py={"10"}
+              py={{ base: "10", lg: 0 }}
             >
               {[
                 {
@@ -100,7 +114,7 @@ export default function CreditCardSection() {
                   p={6}
                   borderRadius="lg"
                   boxShadow="0px 4px 12px rgba(0, 0, 0, 0.08)"
-                  spaceY={3}
+                  className="space-y-3 transition-transform duration-300 ease-out hover:-translate-y-3"
                   width={{ base: "100%", lg: "16.0625rem" }}
                   height="auto"
                 >

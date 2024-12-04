@@ -1,9 +1,15 @@
+"use client";
+
+import { useRef } from "react";
 import Image from "next/image";
 import { Box, Button, Container, Flex, Heading, Text } from "@chakra-ui/react";
-
+import { motion, useInView } from "framer-motion";
 import ArrowRight from "@/public/icons/arrow-right.svg";
 
 const CashlessTrips = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
   return (
     <Box
       bg="#F8F8F8"
@@ -33,7 +39,7 @@ const CashlessTrips = () => {
               mb={6}
             >
               <span className="text-[#0C8036]"> Are you a Rider? </span> <br />
-              Enjoy seamless, cashless trips with digital payment options
+              Enjoy seamless, cashless trips with digital payment options
             </Heading>
             <Text
               fontWeight="semibold"
@@ -47,39 +53,32 @@ const CashlessTrips = () => {
               smoother and smarter!
             </Text>
 
-            <Button
-              bg="#222222"
-              color="#FFFFFF"
-              fontWeight="bold"
-              px={{ base: 4, md: 6 }}
-              py={{ base: 5, md: 7 }}
-              fontSize={{ base: "18px", md: "20px" }}
-              lineHeight="34px"
-              borderRadius="10px"
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              mx={{ base: "auto", lg: "0" }}
-            >
-              Download Rider&#39;s App
+            <Button className="group bg-[#222222] text-white font-bold px-4 md:px-6 py-5 md:py-7 text-[18px] md:text-[20px] leading-[34px] rounded-[10px] flex items-center justify-center mx-auto lg:mx-0">
+              Download Rider&apos;s App
               <Image
                 src={ArrowRight}
                 alt="arrow-right"
-                className="w-6 h-6 ml-2"
+                className="w-6 h-6 ml-1 transform transition-transform duration-300 group-hover:translate-x-2"
               />
             </Button>
           </Box>
 
           {/* Right Content - Images */}
-          <Box flex="1" position="relative">
-            <Box mt={{ base: 5, lg: 0 }}>
-              <Image
-                src="/images/phones-mobile.png"
-                alt="World Map"
-                width={695.23}
-                height={267.68}
-              />
-            </Box>
+          <Box flex="1" position="relative" ref={ref} overflow={"hidden"}>
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: isInView ? 0 : "100%" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <Box mt={{ base: 5, lg: 0 }}>
+                <Image
+                  src="/images/phones-mobile.png"
+                  alt="World Map"
+                  width={695.23}
+                  height={267.68}
+                />
+              </Box>
+            </motion.div>
           </Box>
         </Flex>
       </Container>
