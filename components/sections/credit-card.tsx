@@ -100,7 +100,7 @@ export default function CreditCardSection() {
                 {
                   image: "/icons/bag.svg",
                   title: "Affordable Daily Repayment",
-                  text: "Repay daily based on your earnings. Enjoy rates as low as 0.2% daily interest. We adapt to your schedule for ease.",
+                  text: "Repay daily based on your earnings. Enjoy rates as low as 0.5% daily interest. We adapt to your schedule for ease.",
                 },
                 {
                   image: "/icons/restrict.svg",
