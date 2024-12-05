@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Box, Button, Container, Flex, Input } from "@chakra-ui/react";
+import NaijaFlag from "@/public/icons/naija-flag.svg";
 
 import Logo from "@/public/icons/monapp-logo-white.svg";
 import BlurIn from "../ui/blur-in";
@@ -68,6 +69,16 @@ export default function Hero() {
               height="auto"
               align="center"
             >
+              <div className="flex items-center text-black">
+                <Image
+                  src={NaijaFlag}
+                  alt="flag-icon"
+                  className="mr-2"
+                  width={24}
+                  height={24}
+                />
+                +234
+              </div>
               <Input
                 placeholder="Enter your Phone Number"
                 className="text-black"
