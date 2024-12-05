@@ -1,7 +1,8 @@
 import Image from "next/image";
 import { Box, Button, Container, Flex, Heading, Input } from "@chakra-ui/react";
+import NaijaFlag from "@/public/icons/naija-flag.svg";
 
-import ArrowRight from "@/public/icons/arrow-right.svg";
+import DownloadDialog from "../download-modal";
 
 const DownloadApp = () => {
   return (
@@ -31,14 +32,7 @@ const DownloadApp = () => {
             textAlign="center"
             gap={6}
           >
-            <Button className="group bg-[#222222] text-white font-bold px-4 md:px-6 py-5 md:py-7 text-[18px] md:text-[20px] leading-[34px] rounded-[10px] flex items-center justify-center lg:mr-10">
-              Download Driver&#39;s App
-              <Image
-                src={ArrowRight}
-                alt="arrow-right"
-                className="w-6 h-6 ml-1 transform transition-transform duration-300 group-hover:translate-x-2"
-              />
-            </Button>
+            <DownloadDialog />
 
             {/* Phone Input Group */}
             <Flex
@@ -54,6 +48,16 @@ const DownloadApp = () => {
               width={{ base: "100%", md: "689px" }}
               alignItems="center"
             >
+              <div className="flex items-center text-black">
+                <Image
+                  src={NaijaFlag}
+                  alt="flag-icon"
+                  className="mr-2"
+                  width={24}
+                  height={24}
+                />
+                +234
+              </div>
               <Input placeholder="Enter your Phone Number" flex="1" pl={4} />
               <Button
                 bg="#222222"
