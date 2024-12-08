@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import axios, { Axios } from "axios";
+import axios from "axios";
 import { Box, Button, Container, Fieldset, Flex, Input, Stack } from "@chakra-ui/react";
 import Logo from "@/public/icons/monapp-logo-white.svg";
 import { Field } from "@/components/ui/field";
@@ -22,7 +22,6 @@ export const VendorForm = () => {
   
   const [banks, setBanks] = useState<Bank[]>([]);
   const [loading, setLoading] = useState(false);
-  const [accountName, setAccountName] = useState("");
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 
@@ -166,7 +165,6 @@ console.log(accountNumber, bankCode)
   
       const data = await response.json();
       console.log(data.data)
-      setAccountName(data.data.accountName);
       setFormData(prevState => ({
         ...prevState,
         accountName: data.data.accountName, 
@@ -338,6 +336,7 @@ console.log(accountNumber, bankCode)
                   variant="outline"
                   border={"1.5px solid black"}
                   px="10px"
+                  disabled={loading}
                 />
               </Field>
 
