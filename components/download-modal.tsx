@@ -13,7 +13,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { Box, Heading, Text } from "@chakra-ui/react";
 import Link from "next/link";
-import { toaster } from "@/components/ui/toaster"
 import { FC } from "react";
 
 interface DownloadDialogProps {
