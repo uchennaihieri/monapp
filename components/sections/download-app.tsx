@@ -1,10 +1,60 @@
+"use client"
+
 import Image from "next/image";
 import { Box, Button, Container, Flex, Heading, Input } from "@chakra-ui/react";
 import NaijaFlag from "@/public/icons/naija-flag.svg";
 
 import DownloadDialog from "../download-modal";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import axios from "axios";
+import SuccessModal from "../success-modal";
 
 const DownloadApp = () => {
+
+
+  const router = useRouter()
+  const [loading, setLoading] =  useState(false)
+  const [result, setResult] = useState('none')
+  const [phone, setPhone] = useState('')
+  const [isModalOpen, setModalOpen] = useState(false);
+ 
+
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+ 
+  const onSubmit = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.post(`${baseUrl}/broker/brokerForm`,
+          {
+            FULL_NAME: "website customer prospect",
+            PHONE_NUMBER: phone,
+            EMAIL_ADDRESS: "",
+            STATE: "",
+          }
+        );
+        if (response.data.result === 'success') {
+          setLoading(false);
+          setModalOpen(true);
+         resetForm()
+        } else {
+          setLoading(false);
+          setResult('failed');
+          console.log('failed')
+        }
+      } catch (error) {
+        setLoading(false);
+        console.log('error');
+      }
+    };
+  
+
+
+    const resetForm = () => {
+      setLoading(false);
+    setPhone('')
+    };
+
   return (
     <Box bg="white" minH="50vh" position="relative">
       <Container
@@ -32,7 +82,7 @@ const DownloadApp = () => {
             textAlign="center"
             gap={6}
           >
-            <DownloadDialog />
+            <DownloadDialog buttonType="Driver" />
 
             {/* Phone Input Group */}
             <Flex
@@ -58,7 +108,16 @@ const DownloadApp = () => {
                 />
                 +234
               </div>
-              <Input placeholder="Enter your Phone Number" flex="1" pl={4} />
+              <Input
+                value={phone}
+                placeholder="Enter your Phone Number"
+                className="text-black no-spinner"
+                flex="1"
+                pl={4}
+                type="number"
+  maxLength={11}
+                onChange={e=> setPhone(e.target.value)}
+              />
               <Button
                 bg="#222222"
                 color="white"
@@ -66,12 +125,15 @@ const DownloadApp = () => {
                 height={{ base: "40px", md: "50px" }}
                 width={{ base: "30%", md: "160px" }}
                 fontSize="18px"
+                onClick={onSubmit}
+                disabled={loading}
               >
                 Get Started
               </Button>
             </Flex>
           </Box>
         </Box>
+        <SuccessModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
       </Container>
       <Box
         position="absolute"

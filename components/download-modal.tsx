@@ -13,13 +13,22 @@ import {
 import { Button } from "@/components/ui/button";
 import { Box, Heading, Text } from "@chakra-ui/react";
 import Link from "next/link";
+import { toaster } from "@/components/ui/toaster"
+import { FC } from "react";
 
-const DownloadDialog = () => {
+interface DownloadDialogProps {
+  buttonType: string;
+}
+
+const DownloadDialog : FC<DownloadDialogProps> = ({buttonType}) => {
+
+  const userName = buttonType
+
   return (
     <DialogRoot size={{ base: "xs", lg: "lg" }}>
       <DialogTrigger asChild>
         <Button className="group bg-[#222222] text-white font-bold px-4 md:px-6 py-5 md:py-7 text-[18px] md:text-[20px] leading-[34px] rounded-[10px] flex items-center justify-center lg:mr-10">
-          Download Driver&#39;s App
+          Download {userName}&#39;s App
           <Image
             src={ArrowRight}
             alt="arrow-right"
@@ -35,8 +44,9 @@ const DownloadDialog = () => {
             fontWeight="semibold"
             fontSize={{ base: "16px", md: "2rem", lg: "2.5rem" }}
             lineHeight={{ base: "23px", md: "3rem", lg: "3.6125rem" }}
+            textAlign="center"
           >
-            Download Monapp App for Free!
+            Download Monapp's {userName} App for Free!
           </Heading>
           <Text
             fontWeight="semibold"
@@ -65,7 +75,8 @@ const DownloadDialog = () => {
             </Link>
 
             <Link
-              href={""}
+            target="_blank"
+              href={userName === "Rider" ? "https://play.google.com/store/apps/details?id=com.monapp.mobile&pcampaignid=web_share" : "https://play.google.com/store/apps/details?id=com.monappdriver&pcampaignid=web_share"}
               className="rounded-[20px] flex border text-white border-white py-2 px-3 items-center justify-center"
             >
               <Image

@@ -7,8 +7,58 @@ import NaijaFlag from "@/public/icons/naija-flag.svg";
 
 import Logo from "@/public/icons/monapp-logo-white.svg";
 import BlurIn from "../ui/blur-in";
+import { useState } from "react";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import SuccessModal from "../success-modal";
 
 export default function Hero() {
+
+  const router = useRouter()
+  const [loading, setLoading] =  useState(false)
+  const [result, setResult] = useState('none')
+  const [phone, setPhone] = useState('')
+  const [isModalOpen, setModalOpen] = useState(false);
+ 
+
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+ 
+  const onSubmit = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.post(`${baseUrl}/broker/brokerForm`,
+          {
+            FULL_NAME: "website customer prospect",
+            PHONE_NUMBER: phone,
+            EMAIL_ADDRESS: "",
+            STATE: "",
+          }
+        );
+        if (response.data.result === 'success') {
+          setLoading(false);
+          setModalOpen(true);
+         resetForm()
+        } else {
+          setLoading(false);
+          setResult('failed');
+          console.log('failed')
+        }
+      } catch (error) {
+        setLoading(false);
+        console.log('error');
+      }
+    };
+  
+
+
+    const resetForm = () => {
+      setLoading(false);
+    setPhone('')
+    };
+  
+
+
+
   return (
     <Box bg="black" position="relative" minH="100vh">
       {/* Navigation */}
@@ -80,11 +130,16 @@ export default function Hero() {
                 +234
               </div>
               <Input
+              value={phone}
                 placeholder="Enter your Phone Number"
-                className="text-black"
+                className="text-black no-spinner"
                 flex="1"
                 pl={4}
+                type="number"
+  maxLength={11}
+                onChange={e=> setPhone(e.target.value)}
               />
+              
               <Button
                 bg="#222222"
                 color="white"
@@ -92,12 +147,14 @@ export default function Hero() {
                 height={{ base: "40px", md: "50px" }}
                 width={{ base: "35%", md: "160px" }}
                 fontSize="18px"
+                onClick={onSubmit}
+               disabled={loading}
               >
                 Get Started
               </Button>
             </Flex>
           </Box>
-
+          <SuccessModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
           {/* Right Content - Images */}
           <Box flex="1" mt={{ base: "10", md: "0" }}>
             <Box

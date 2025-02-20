@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Box, Button, Container, Flex, Heading, Text } from "@chakra-ui/react";
 import { motion, useInView } from "framer-motion";
 import ArrowRight from "@/public/icons/arrow-right.svg";
+import DownloadDialog from "../download-modal";
 
 const CashlessTrips = () => {
   const ref = useRef(null);
@@ -52,15 +53,7 @@ const CashlessTrips = () => {
               enjoy effortless payments every time you ride. Your journey, made
               smoother and smarter!
             </Text>
-
-            <Button className="group bg-[#222222] text-white font-bold px-4 md:px-6 py-5 md:py-7 text-[18px] md:text-[20px] leading-[34px] rounded-[10px] flex items-center justify-center mx-auto lg:mx-0">
-              Download Rider&apos;s App
-              <Image
-                src={ArrowRight}
-                alt="arrow-right"
-                className="w-6 h-6 ml-1 transform transition-transform duration-300 group-hover:translate-x-2"
-              />
-            </Button>
+            <DownloadDialog buttonType='Rider' />
           </Box>
 
           {/* Right Content - Images */}
