@@ -2,9 +2,8 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { Box, Button, Container, Flex, Heading, Text } from "@chakra-ui/react";
+import { Box,  Container, Flex, Heading, Text } from "@chakra-ui/react";
 import { motion, useInView } from "framer-motion";
-import ArrowRight from "@/public/icons/arrow-right.svg";
 import DownloadDialog from "../download-modal";
 
 const CashlessTrips = () => {

@@ -9,14 +9,12 @@ import Logo from "@/public/icons/monapp-logo-white.svg";
 import BlurIn from "../ui/blur-in";
 import { useState } from "react";
 import axios from "axios";
-import { useRouter } from "next/navigation";
 import SuccessModal from "../success-modal";
 
 export default function Hero() {
 
-  const router = useRouter()
+ 
   const [loading, setLoading] =  useState(false)
-  const [result, setResult] = useState('none')
   const [phone, setPhone] = useState('')
   const [isModalOpen, setModalOpen] = useState(false);
  
@@ -40,12 +38,11 @@ export default function Hero() {
          resetForm()
         } else {
           setLoading(false);
-          setResult('failed');
           console.log('failed')
         }
       } catch (error) {
         setLoading(false);
-        console.log('error');
+        console.log(error, 'error');
       }
     };
   

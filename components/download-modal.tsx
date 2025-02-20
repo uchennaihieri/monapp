@@ -46,7 +46,7 @@ const DownloadDialog : FC<DownloadDialogProps> = ({buttonType}) => {
             lineHeight={{ base: "23px", md: "3rem", lg: "3.6125rem" }}
             textAlign="center"
           >
-            Download Monapp's {userName} App for Free!
+            Download Monapp&apos;s {userName} App for Free!
           </Heading>
           <Text
             fontWeight="semibold"

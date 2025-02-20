@@ -5,7 +5,6 @@ import { Box, Button, Container, Flex, Heading, Input } from "@chakra-ui/react";
 import NaijaFlag from "@/public/icons/naija-flag.svg";
 
 import DownloadDialog from "../download-modal";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import axios from "axios";
 import SuccessModal from "../success-modal";
@@ -13,9 +12,7 @@ import SuccessModal from "../success-modal";
 const DownloadApp = () => {
 
 
-  const router = useRouter()
   const [loading, setLoading] =  useState(false)
-  const [result, setResult] = useState('none')
   const [phone, setPhone] = useState('')
   const [isModalOpen, setModalOpen] = useState(false);
  
@@ -39,12 +36,11 @@ const DownloadApp = () => {
          resetForm()
         } else {
           setLoading(false);
-          setResult('failed');
           console.log('failed')
         }
       } catch (error) {
         setLoading(false);
-        console.log('error');
+        console.log('error', error);
       }
     };
   
