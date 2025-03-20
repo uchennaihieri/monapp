@@ -4,7 +4,7 @@ const CommisionSection: React.FC = () => {
   return (
     <Box w={{ base: "90%", md: "90%" }}>
       <Text
-        mt={{ base: "0rem", md: "-1rem" }}
+        mt={{ base: "2rem", md: "5rem" }}
         fontWeight={500}
         color="#3A974C"
         fontSize={{ base: "1.125rem", md: "2.5rem" }}
