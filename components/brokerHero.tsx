@@ -18,7 +18,7 @@ const BrokerHero: React.FC = () => {
         mt={{ base: "3.0265rem", md: "5rem" }}
         pb={{ base: "5.233rem", md: "6rem" }}
         direction={{ base: "column", md: "row" }}
-        w={{ base: "90%", md: "90%", lg: "71.295vw" }}
+        w={{ base: "90%", md: "90%", lg: "90%" }}
         height="100%"
       >
         <Stack w={{ base: "90%", md: "31.5rem", lg: "35rem" }} align="start">

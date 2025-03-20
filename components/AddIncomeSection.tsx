@@ -17,7 +17,7 @@ const AddIncomeSection: React.FC = () => {
       pt={{ base: "3.1075rem", md: "8.8rem" }}
       pb={{ base: "2.544rem", md: "auto" }}
     >
-      <Box w={{ base: "90%", md: "84.875rem" }}>
+      <Box w={{ base: "90%", md: "90%" }}>
         <Text
           w="100%"
           fontWeight={800}

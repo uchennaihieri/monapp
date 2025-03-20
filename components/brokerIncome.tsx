@@ -7,7 +7,7 @@ export default function BrokerIncome() {
     <Flex
       background="#fff"
       flexDirection={{ base: "column-reverse", md: "row" }}
-      w={{ base: "90%", md: "90%", lg: "71.295vw" }}
+      w={{ base: "90%", md: "90%", lg: "90%" }}
       pt={{base:"", md:"6.06rem"}}
     
   

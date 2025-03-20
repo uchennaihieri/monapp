@@ -5,7 +5,7 @@ const WelcomeSection: React.FC = () => {
     <Flex
       background="#fff"
       flexDirection={{ base: "column", md: "row" }}
-      w={{ base: "90%", md: "90%", lg: "71.295vw" }}
+      w={{ base: "90%", md: "90%" }}
       pt={{ base: "3.413rem", md: "6.06rem" }}
       pb={{ base: "0rem", md: "8.06rem" }}
     >

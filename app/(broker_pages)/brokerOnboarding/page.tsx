@@ -10,8 +10,6 @@ import BrokerFeatures from "@/components/brokerFeatures";
 import BrokerIncome from "@/components/brokerIncome";
 import CommisionSection from "@/components/commisionSection";
 import AddIncomeSection from "@/components/AddIncomeSection";
-import GetStartedSection from "@/components/getStartedSection";
-
 const WelcomeSection = dynamic(() => import("@/components/welcomeSection"));
 const Footer = dynamic(() => import("@/components/footer"));
 
@@ -38,9 +36,6 @@ const BrokerUpdate: FC = () => {
         </Flex>
         <div>
           <AddIncomeSection />
-        </div>
-        <div>
-          <GetStartedSection />
         </div>
         <div>
           <Footer />

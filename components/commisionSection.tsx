@@ -2,7 +2,7 @@ import { Box, Text, Flex, Highlight } from "@chakra-ui/react";
 
 const CommisionSection: React.FC = () => {
   return (
-    <Box w={{ base: "90%", md: "auto" }}>
+    <Box w={{ base: "90%", md: "90%" }}>
       <Text
         mt={{ base: "0rem", md: "-1rem" }}
         fontWeight={500}
@@ -16,7 +16,7 @@ const CommisionSection: React.FC = () => {
       <Flex
         background="#fff"
         flexDirection={{ base: "column", md: "row" }}
-        w={{ base: "100%", md: "90%", lg: "71.295vw" }}
+        w={{ base: "100%", md: "90%", lg: "90%" }}
         pb={{ base: "3.125rem", md: "8.06rem" }}
       >
         {[
