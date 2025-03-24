@@ -10,6 +10,7 @@ import BlurIn from "../ui/blur-in";
 import { useState } from "react";
 import axios from "axios";
 import SuccessModal from "../success-modal";
+import Link from "next/link";
 
 export default function Hero() {
 
@@ -61,14 +62,16 @@ export default function Hero() {
       {/* Navigation */}
       <Container maxW="container.xl" py={6}>
         <Flex justify="space-between" align="center">
+        <Link href="https://monapp.ng" passHref>
           <Image
             src={Logo}
             alt="Monapp Logo"
             className="w-[138px] h-[25px] md:w-[150px] md:h-[40px]"
           />
-
+          </Link>
+<Link href="https://ebanker.monapp.ng" passHref>
           <Button className="group border-2 border-white text-white font-bold rounded-[10px] flex items-center justify-center gap-2 w-[196px] md:w-[269px] h-[42px] md:h-[50px] text-[14px] md:text-[18px] hover:bg-white/20">
-            Become a Remote Agent
+            Become an eBanker
             <Image
               src="/icons/arrow-right.svg"
               alt="arrow-right-icon"
@@ -77,6 +80,7 @@ export default function Hero() {
               height={20}
             />
           </Button>
+          </Link>
         </Flex>
       </Container>
 
