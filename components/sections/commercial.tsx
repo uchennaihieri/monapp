@@ -30,7 +30,7 @@ const Commercial = () => {
           mb={12}
         >
           <Text as="span" color="green.600">
-            10+
+            100+
           </Text>{" "}
           commercial drivers grow their transportation business with Monapp.
         </Heading>
